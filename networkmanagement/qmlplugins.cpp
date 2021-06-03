@@ -1,10 +1,9 @@
 #include "qmlplugins.h"
 #include "networkmodel.h"
 #include "networkmodelitem.h"
+#include "activeconnection.h"
 #include "appletproxymodel.h"
 #include "wiressitemsettings.h"
-#include "connectionicon.h"
-#include "network.h"
 #include "identitymodel.h"
 #include "handler.h"
 #include "enabledconnections.h"
@@ -18,11 +17,10 @@ void QmlPlugins::registerTypes(const char* uri)
 {
     qmlRegisterUncreatableType<NetworkModelItem>(uri, 1, 0, "NetworkModelItem",
                                                 QLatin1String("Cannot instantiate NetworkModelItem"));
+    qmlRegisterType<ActiveConnection>(uri, 1, 0, "ActiveConnection");
     qmlRegisterType<AppletProxyModel>(uri, 1, 0, "AppletProxyModel");
     qmlRegisterType<NetworkModel>(uri, 1, 0, "NetworkModel");
     qmlRegisterType<WirelessItemSettings>(uri, 1, 0, "WirelessItemSettings");
-    qmlRegisterType<ConnectionIcon>(uri, 1, 0, "ConnectionIcon");
-    qmlRegisterType<Network>(uri, 1, 0, "Network");
     qmlRegisterType<IdentityModel>(uri, 1, 0, "IdentityModel");
     qmlRegisterType<Handler>(uri, 1, 0, "Handler");
     qmlRegisterType<EnabledConnections>(uri, 1, 0, "EnabledConnections");

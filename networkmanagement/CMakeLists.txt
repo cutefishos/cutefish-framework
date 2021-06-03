@@ -2,6 +2,9 @@ set(NETWORKMGR_SRCS
     appletproxymodel.cpp
     appletproxymodel.h
 
+    activeconnection.cpp
+    activeconnection.h
+
     networkitemslist.cpp
     networkitemslist.h
 
@@ -11,17 +14,11 @@ set(NETWORKMGR_SRCS
     networkmodelitem.cpp
     networkmodelitem.h
 
-    network.cpp
-    network.h
-
     wiressitemsettings.cpp
     wiressitemsettings.h
 
     uiutils.cpp
     uiutils.h
-
-    connectionicon.cpp
-    connectionicon.h
 
     identitymodel.cpp
     identitymodel.h
