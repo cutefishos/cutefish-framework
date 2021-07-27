@@ -1,0 +1,3 @@
+module Cutefish.System
+
+plugin cutefishsystem_qmlplugins
