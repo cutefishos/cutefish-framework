@@ -5,27 +5,23 @@ Maintainer: CutefishOS <cutefishos@foxmail.com>
 Build-Depends: cmake,
                debhelper (>= 9),
                extra-cmake-modules,
+               libkf5networkmanagerqt-dev,
+               libkf5kio-dev,
+               libkf5screen-dev,
+               libkf5bluezqt-dev,
+               modemmanager-qt-dev,
+               libqt5sensors5-dev,
                qtbase5-dev,
                qtdeclarative5-dev,
                qtquickcontrols2-5-dev,
                qttools5-dev,
-               qttools5-dev-tools,
-               libpam0g-dev,
-               libx11-dev
+               qttools5-dev-tools
 Standards-Version: 4.5.0
-Homepage: https://github.com/cutefishos/screenlocker
+Homepage: https://github.com/cutefishos/libcutefish
 
 Package: libcutefish
 Architecture: any
-Depends: qml-module-qtquick-controls2,
-         qml-module-qtquick2,
-         qml-module-qtquick-layouts,
-         qml-module-qt-labs-platform,
-         qml-module-qt-labs-settings,
-         qml-module-qtqml,
-         qml-module-qtquick-window2,
-         qml-module-qtquick-shapes,
-         qml-module-qtquick-dialogs,
-         ${misc:Depends},
-         ${shlibs:Depends}
-Description: CutefishOS Screen Locker
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         libkf5screen-bin
+Description: CutefishOS Library
