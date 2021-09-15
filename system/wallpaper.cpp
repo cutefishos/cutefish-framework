@@ -2,8 +2,8 @@
 
 Wallpaper::Wallpaper(QObject *parent)
     : QObject(parent)
-    , m_interface("org.cutefish.Settings",
-                  "/Theme", "org.cutefish.Theme",
+    , m_interface("com.cutefish.Settings",
+                  "/Theme", "com.cutefish.Theme",
                   QDBusConnection::sessionBus(), this)
 {
     if (m_interface.isValid()) {
