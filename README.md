@@ -8,7 +8,7 @@ sudo pacman -S gcc cmake qt5-base qt5-quickcontrols2 networkmanager-qt modemmana
 
 Note that when using apt, the names of certain packages are different:
 ```shell
-sudo apt install qtbase5-dev qtquickcontrols2-5-dev modemmanager-qt-dev libqt5sensors5-dev libkf5networkmanagerqt-dev libkf5screen-dev libkf5bluezqt-dev
+sudo apt install qtbase5-dev qtquickcontrols2-5-dev modemmanager-qt-dev libqt5sensors5-dev libkf5networkmanagerqt-dev libkf5screen-dev libkf5bluezqt-dev libkf5kio-dev
 ```
 
 ## Build and Install
