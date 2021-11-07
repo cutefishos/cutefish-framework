@@ -66,8 +66,6 @@ void BluezQtExtensionPlugin::registerTypes(const char *uri)
 
     Q_ASSERT(QLatin1String(uri) == QLatin1String("Cutefish.Bluez"));
 
-    qmlRegisterType<DevicesProxyModel>(uri, 1, 0, "DevicesProxyModel");
-
     qmlRegisterSingletonType<DeclarativeManager>(uri, 1, 0, "Manager", manager_singleton);
     qmlRegisterType<DeclarativeDevicesModel>(uri, 1, 0, "DevicesModelPrivate");
     qmlRegisterUncreatableType<DeclarativeAdapter>(uri, 1, 0, "Adapter", QStringLiteral("Adapter cannot be created"));
@@ -78,4 +76,6 @@ void BluezQtExtensionPlugin::registerTypes(const char *uri)
     qmlRegisterUncreatableType<PendingCall>(uri, 1, 0, "PendingCall", QStringLiteral("PendingCall cannot be created"));
     qmlRegisterUncreatableType<Rfkill>(uri, 1, 0, "Rfkill", QStringLiteral("Rfkill cannot be created"));
     qmlRegisterSingletonType(uri, 1, 0, "Services", services_singleton);
+
+    qmlRegisterType<DevicesProxyModel>(uri, 1, 0, "DevicesProxyModel");
 }
