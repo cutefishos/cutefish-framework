@@ -13,11 +13,13 @@
 class DevicesProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
+    Q_PROPERTY(QString connectedName READ connectedName NOTIFY connectedNameChanged)
+    Q_PROPERTY(QString connectedAdress READ connectedAdress NOTIFY connectedAdressChanged)
 
 public:
     enum AdditionalRoles {
         SectionRole = BluezQt::DevicesModel::LastRole + 10,
-        DeviceFullNameRole = BluezQt::DevicesModel::LastRole + 11,
+        DeviceFullNameRole = BluezQt::DevicesModel::LastRole + 11
     };
 
     explicit DevicesProxyModel(QObject *parent = nullptr);
@@ -29,8 +31,23 @@ public:
 
     Q_INVOKABLE QString adapterHciString(const QString &ubi) const;
 
+    QString connectedName(){ return m_connectedName; };
+    QString connectedAdress(){ return m_connectedAdress; };
+
+signals:
+    void connectedNameChanged(const QString connectedName) const;
+    void connectedAdressChanged(const QString connectedAddress) const;
+
+private Q_SLOTS:
+    void bluetoothBlockedChanged(bool blocked);
+
 private:
     bool duplicateIndexAddress(const QModelIndex &idx) const;
+
+    mutable QString m_connectedName = "";
+    mutable QString m_connectedAdress = "";
+
+    BluezQt::Manager *m_manager;
 };
 
 #endif // DEVICESPROXYMODEL_H

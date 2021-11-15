@@ -8,6 +8,8 @@ set(bluezqtextensionplugin_SRCS
     declarativedevicesmodel.cpp
     bluezqtextensionplugin.cpp
     applet/devicesproxymodel.cpp
+    applet/bluetoothagent.cpp
+    applet/bluetoothmanager.cpp
 )
 
 add_library(cutefishbluez_qmlplugins SHARED ${bluezqtextensionplugin_SRCS})

@@ -107,6 +107,12 @@ QVariant NetworkModel::data(const QModelIndex &index, int role) const
                 return item->rxBytes();
             case TxBytesRole:
                 return item->txBytes();
+            case IpAddressRole:
+                return item->ipAddress();
+            case RouterRole:
+                return item->router();
+            case GateWayRole:
+                return item->gateway();
             default:
                 break;
         }
@@ -152,6 +158,10 @@ QHash<int, QByteArray> NetworkModel::roleNames() const
     roles[VpnType] = "vpnType";
     roles[RxBytesRole] = "rxBytes";
     roles[TxBytesRole] = "txBytes";
+
+    roles[IpAddressRole] = "ipAddress";
+    roles[RouterRole] = "router";
+    roles[GateWayRole] = "gateWay";
 
     return roles;
 }

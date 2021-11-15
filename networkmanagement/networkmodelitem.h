@@ -117,6 +117,15 @@ public:
     qulonglong txBytes() const;
     void setTxBytes(qulonglong bytes);
 
+    QString ipAddress() const;
+    void setIpAddress(const QString address);
+
+    QString router() const;
+    void setRouter(const QString router);
+
+    QString gateway();
+    void setGateway(const QString gateWay);
+
     bool operator==(const NetworkModelItem *item) const;
 
     QVector<int> changedRoles() const { return m_changedRoles; }
@@ -155,6 +164,10 @@ private:
     qulonglong m_txBytes;
     QString m_icon;
     QVector<int> m_changedRoles;
+
+    mutable QString m_ipAdress;
+    mutable QString m_router;
+    mutable QString m_gateway;
 };
 
 #endif // NETWORKMODELITEM_H

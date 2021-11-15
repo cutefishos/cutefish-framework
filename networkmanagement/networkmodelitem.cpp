@@ -503,6 +503,37 @@ void NetworkModelItem::setTxBytes(qulonglong bytes)
     }
 }
 
+QString NetworkModelItem::ipAddress() const
+{
+    updateDetails();
+    return m_ipAdress;
+}
+
+void NetworkModelItem::setIpAddress(const QString address)
+{
+    m_ipAdress = address;
+}
+
+QString NetworkModelItem::router() const
+{
+    return m_router;
+}
+
+void NetworkModelItem::setRouter(const QString router)
+{
+    m_router = router;
+}
+
+QString NetworkModelItem::gateway()
+{
+    return m_gateway;
+}
+
+void NetworkModelItem::setGateway(const QString gateWay)
+{
+    m_gateway = gateWay;
+}
+
 bool NetworkModelItem::operator==(const NetworkModelItem *item) const
 {
     if (!item->uuid().isEmpty() && !uuid().isEmpty()) {

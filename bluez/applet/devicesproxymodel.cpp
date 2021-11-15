@@ -8,12 +8,24 @@
 
 #include <BluezQt/Adapter>
 #include <BluezQt/Device>
+#include <BluezQt/Manager>
 
 DevicesProxyModel::DevicesProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent)
 {
     setDynamicSortFilter(true);
     sort(0, Qt::DescendingOrder);
+
+    m_manager = new BluezQt::Manager(this);
+    connect(m_manager, &BluezQt::Manager::bluetoothBlockedChanged, this, &DevicesProxyModel::bluetoothBlockedChanged);
+}
+
+void DevicesProxyModel::bluetoothBlockedChanged(bool blocked)
+{
+    if (blocked){
+        m_connectedName = "";
+        emit connectedNameChanged(m_connectedName);
+    }    
 }
 
 QHash<int, QByteArray> DevicesProxyModel::roleNames() const
@@ -28,10 +40,15 @@ QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
 {
     switch (role) {
     case SectionRole:
-        if (index.data(BluezQt::DevicesModel::ConnectedRole).toBool()) {
-            return QStringLiteral("Connected");
+        // if (index.data(BluezQt::DevicesModel::ConnectedRole).toBool()) {
+        //     return QStringLiteral("Connected");
+        // }
+        // return QStringLiteral("Available");
+
+        if (index.data(BluezQt::DevicesModel::PairedRole).toBool()) {
+            return QStringLiteral("My devices");
         }
-        return QStringLiteral("Available");
+        return QStringLiteral("Other devices");
 
     case DeviceFullNameRole:
         if (duplicateIndexAddress(index)) {
@@ -52,12 +69,21 @@ QVariant DevicesProxyModel::data(const QModelIndex &index, int role) const
 
 bool DevicesProxyModel::lessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    bool leftConnected = left.data(BluezQt::DevicesModel::ConnectedRole).toBool();
-    bool rightConnected = right.data(BluezQt::DevicesModel::ConnectedRole).toBool();
+    bool leftPaired = left.data(BluezQt::DevicesModel::PairedRole).toBool();
+    bool rightPaired = right.data(BluezQt::DevicesModel::PairedRole).toBool();
 
-    if (leftConnected < rightConnected) {
+    if (leftPaired < rightPaired) {
         return true;
-    } else if (leftConnected > rightConnected) {
+    } else if (leftPaired > rightPaired) {
+        return false;
+    }
+
+    qint16 leftRssi = left.data(BluezQt::DevicesModel::RssiRole).toInt();
+    qint16 rightRssi = right.data(BluezQt::DevicesModel::RssiRole).toInt();
+
+    if (!leftPaired && leftRssi < rightRssi) {
+        return true;
+    } else if (!leftPaired && leftRssi > rightRssi) {
         return false;
     }
 
@@ -97,6 +123,27 @@ bool DevicesProxyModel::duplicateIndexAddress(const QModelIndex &idx) const
 bool DevicesProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     const QModelIndex index = sourceModel()->index(source_row, 0, source_parent);
+
+    if (index.data(BluezQt::DevicesModel::ConnectedRole).toBool() && index.data(BluezQt::DevicesModel::PairedRole).toBool()){
+        m_connectedName = index.data(BluezQt::DevicesModel::NameRole).toString();
+        m_connectedAdress = index.data(BluezQt::DevicesModel::AddressRole).toString();
+        emit connectedNameChanged(m_connectedName);
+        emit connectedAdressChanged(m_connectedAdress);
+    }
+
+    if (index.data(BluezQt::DevicesModel::TypeRole).toInt() == 18){
+        return false;
+    }
+
+    if (index.data(BluezQt::DevicesModel::NameRole).toString().replace("-","") == 
+        index.data(BluezQt::DevicesModel::AddressRole).toString().replace(":","")) {
+        return false;
+    }
+
+    if (!index.data(BluezQt::DevicesModel::PairedRole).toBool() 
+            && index.data(BluezQt::DevicesModel::RssiRole).toInt() == -32768) {
+        return false;
+    }
 
     return index.data(BluezQt::DevicesModel::AdapterPoweredRole).toBool() &&
            index.data(BluezQt::DevicesModel::AdapterPairableRole).toBool();

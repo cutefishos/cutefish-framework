@@ -16,6 +16,8 @@
 #include "declarativemediaplayer.h"
 
 #include "applet/devicesproxymodel.h"
+#include "applet/bluetoothmanager.h"
+#include "applet/bluetoothagent.h"
 
 #include <BluezQt/Device>
 #include <BluezQt/PendingCall>
@@ -68,6 +70,9 @@ void BluezQtExtensionPlugin::registerTypes(const char *uri)
 
     qmlRegisterSingletonType<DeclarativeManager>(uri, 1, 0, "Manager", manager_singleton);
     qmlRegisterType<DeclarativeDevicesModel>(uri, 1, 0, "DevicesModelPrivate");
+    qmlRegisterType<BluetoothAgent>(uri, 1, 0, "BluetoothAgent");
+    qmlRegisterType<BluetoothManager>(uri, 1, 0, "BluetoothManager");
+
     qmlRegisterUncreatableType<DeclarativeAdapter>(uri, 1, 0, "Adapter", QStringLiteral("Adapter cannot be created"));
     // qmlRegisterUncreatableType<DeclarativeBattery>(uri, 1, 0, "Battery", QStringLiteral("Battery cannot be created"));
     qmlRegisterUncreatableType<DeclarativeDevice>(uri, 1, 0, "Device", QStringLiteral("Device cannot be created"));
