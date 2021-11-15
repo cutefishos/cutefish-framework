@@ -83,4 +83,10 @@ void BluezQtExtensionPlugin::registerTypes(const char *uri)
     qmlRegisterSingletonType(uri, 1, 0, "Services", services_singleton);
 
     qmlRegisterType<DevicesProxyModel>(uri, 1, 0, "DevicesProxyModel");
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+    qmlRegisterType<QAbstractItemModel>();
+#else
+    qmlRegisterAnonymousType<QAbstractItemModel>(uri, 1);
+#endif
 }
