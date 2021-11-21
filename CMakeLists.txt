@@ -9,11 +9,13 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/)
+
 include(GenerateExportHeader)
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
-set(QT Core Gui Quick QuickControls2 DBus Xml Concurrent)
+set(QT Core Gui Quick QuickControls2 Widgets DBus Xml Concurrent)
 find_package(Qt5 REQUIRED ${QT})
 
 # Get the installation directory from qmake
@@ -39,3 +41,4 @@ add_subdirectory(mpris)
 add_subdirectory(networkmanagement)
 add_subdirectory(screen)
 add_subdirectory(system)
+add_subdirectory(audio)
