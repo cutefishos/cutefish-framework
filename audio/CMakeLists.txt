@@ -74,6 +74,7 @@ target_link_libraries(cutefishaudio_qmlplugins
     Qt5::Widgets
     Qt5::DBus
     Qt5::Quick
+    Canberra::Canberra
     PkgConfig::LIBPULSE
     PkgConfig::LIBPULSE_MAINLOOP
 )
