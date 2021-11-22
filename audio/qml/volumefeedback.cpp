@@ -54,7 +54,7 @@ void VolumeFeedback::play(quint32 sinkIndex)
     ca_context_play(context,
                     cindex,
                     CA_PROP_EVENT_DESCRIPTION,
-                    "Volume Control Feedback Sound",
+                    "freedesktop",
                     CA_PROP_EVENT_ID,
                     "audio-volume-change",
                     CA_PROP_CANBERRA_CACHE_CONTROL,
