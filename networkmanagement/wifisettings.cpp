@@ -1,5 +1,6 @@
 /*
  *   Copyright 2018 Martin Kacej <m.kacej@atlas.sk>
+ *   Copyright 2021 Wang Rui <wangrui@jingos.com>
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU Library General Public License as
@@ -32,9 +33,16 @@
 #include <NetworkManagerQt/WiredSetting>
 #include <NetworkManagerQt/WirelessDevice>
 #include <NetworkManagerQt/WirelessSetting>
+#include <NetworkManagerQt/Security8021xSetting>
 
-WifiSettings::WifiSettings(QObject* parent) : QObject(parent)
+#include <sys/types.h>
+#include <pwd.h>
+
+WifiSettings::WifiSettings(QObject* parent)
+    : QObject(parent)
 {
+    ::passwd *pw = ::getpwuid(::getuid());
+    m_userName = QString::fromLocal8Bit(pw->pw_name);
 }
 
 WifiSettings::~WifiSettings()
@@ -287,4 +295,76 @@ QString WifiSettings::getAccessPointConnection()
         }
     }
     return QString();
+}
+
+bool WifiSettings::addOtherConnection(const QString ssid, const QString userName, const QString pwd, const QString type)
+{
+    NetworkManager::ConnectionSettings::Ptr connectionSettings;
+    connectionSettings = NetworkManager::ConnectionSettings::Ptr(new NetworkManager::ConnectionSettings(NetworkManager::ConnectionSettings::Wireless));
+    connectionSettings->setAutoconnect(true);
+    connectionSettings->setUuid(NetworkManager::ConnectionSettings::createNewUuid());
+    connectionSettings->setId(ssid);
+    connectionSettings->addToPermissions(m_userName, QString());
+
+    NMVariantMapMap csMapMap = connectionSettings->toMap();;
+    NetworkManager::WirelessSetting wirelessSetting;
+
+    wirelessSetting.setSsid(ssid.toUtf8());
+    wirelessSetting.setInitialized(true);
+    wirelessSetting.setMode(NetworkManager::WirelessSetting::Infrastructure);
+    wirelessSetting.setHidden(true);
+
+    if (type != "None") {
+        wirelessSetting.setSecurity("802-11-wireless-security");
+    }
+
+    NetworkManager::WirelessSecuritySetting wirelessSecuritySetting;
+    if(type == "None") {
+        wirelessSecuritySetting.setKeyMgmt(NetworkManager::WirelessSecuritySetting::Unknown);
+    } else if (type == "WEP") {
+        wirelessSecuritySetting.setKeyMgmt(NetworkManager::WirelessSecuritySetting::Ieee8021x);
+        NetworkManager::Security8021xSetting security8021x;
+        security8021x.setEapMethods(QList<NetworkManager::Security8021xSetting::EapMethod>() << NetworkManager::Security8021xSetting::EapMethodPwd);
+        security8021x.setIdentity(userName);
+        security8021x.setPassword(pwd);
+        security8021x.setPasswordFlags(NetworkManager::Setting::AgentOwned);
+        QVariantMap security8021xMap = security8021x.toMap();
+        csMapMap.insert(NetworkManager::Setting::typeAsString(NetworkManager::Setting::Security8021x), security8021xMap);
+    } else if (type == "WPA/WPA2") {
+        wirelessSecuritySetting.setKeyMgmt(NetworkManager::WirelessSecuritySetting::WpaPsk);
+        wirelessSecuritySetting.setPsk(pwd);
+        wirelessSecuritySetting.setPskFlags(NetworkManager::Setting::AgentOwned);
+    } else if (type == "WPA3") {
+        wirelessSecuritySetting.setKeyMgmt(NetworkManager::WirelessSecuritySetting::SAE);
+        wirelessSecuritySetting.setPsk(pwd);
+        wirelessSecuritySetting.setPskFlags(NetworkManager::Setting::AgentOwned);
+    } else if (type == "LEAP") {
+        wirelessSecuritySetting.setKeyMgmt(NetworkManager::WirelessSecuritySetting::Ieee8021x);
+        wirelessSecuritySetting.setAuthAlg(NetworkManager::WirelessSecuritySetting::Leap);
+        wirelessSecuritySetting.setLeapUsername(userName);
+        wirelessSecuritySetting.setLeapPassword(pwd);
+        wirelessSecuritySetting.setPskFlags(NetworkManager::Setting::AgentOwned);
+    } else if(type == "WepHex") {
+        wirelessSecuritySetting.setKeyMgmt(NetworkManager::WirelessSecuritySetting::Wep);
+        wirelessSecuritySetting.setWepKeyType(NetworkManager::WirelessSecuritySetting::Hex);
+        wirelessSecuritySetting.setWepTxKeyindex(1);
+        wirelessSecuritySetting.setWepKey0(pwd);
+        wirelessSecuritySetting.setAuthAlg(NetworkManager::WirelessSecuritySetting::Open);
+    }
+
+    NetworkManager::Ipv4Setting ipv4Setting;
+    ipv4Setting.setMethod(NetworkManager::Ipv4Setting::Automatic);
+
+    QVariantMap wifiSettingMap = wirelessSetting.toMap();
+    QVariantMap wifiSecurityMap = wirelessSecuritySetting.toMap();
+    QVariantMap ipv4Map = ipv4Setting.toMap();
+
+    csMapMap.insert(NetworkManager::Setting::typeAsString(NetworkManager::Setting::Wireless), wifiSettingMap);
+    if(type != "None") {
+        csMapMap.insert(NetworkManager::Setting::typeAsString(NetworkManager::Setting::WirelessSecurity), wifiSecurityMap);
+    }
+    csMapMap.insert(NetworkManager::Setting::typeAsString(NetworkManager::Setting::Ipv4), ipv4Map);
+    NetworkManager::addConnection(csMapMap);
+
+    return true;
 }

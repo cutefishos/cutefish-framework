@@ -34,7 +34,14 @@ public:
     Q_INVOKABLE void updateConnectionFromQML(const QString &path, const QVariantMap &map);
     Q_INVOKABLE QString getAccessPointDevice();
     Q_INVOKABLE QString getAccessPointConnection();
+
+    Q_INVOKABLE bool addOtherConnection(const QString ssid, const QString userName,
+                                        const QString pwd, const QString type);
+
     virtual ~WifiSettings();
+
+private:
+    QString m_userName;
 };
 
 #endif // WIFISETTINGS_H
