@@ -614,7 +614,7 @@ bool OutputModel::setReplicationSourceIndex(int outputIndex, int sourceIndex)
         m_config->setReplicationSource(output.ptr, source);
         output.posReset = output.ptr->pos();
         output.ptr->setPos(source->pos());
-        output.ptr->setExplicitLogicalSize(source->logicalSize());
+        output.ptr->setExplicitLogicalSize(source->explicitLogicalSize());
     }
 
     reposition();
