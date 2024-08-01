@@ -223,7 +223,7 @@ void OutputModel::add(const KScreen::OutputPtr &output)
     }
     m_outputs.insert(i, Output(output, pos));
 
-    connect(output.data(), &KScreen::Output::isPrimaryChanged,
+    connect(output.data(), &KScreen::Output::priorityChanged,
             this, [this, output](){
         roleChanged(output->id(), PrimaryRole);
     });
