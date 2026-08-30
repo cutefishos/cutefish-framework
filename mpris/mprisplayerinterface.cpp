@@ -42,10 +42,10 @@ MprisPlayerInterface::MprisPlayerInterface(const QString &service, const QString
     , m_canPause(false)
     , m_canPlay(false)
     , m_canSeek(false)
-    , m_loopStatus(Mpris::None)
+    , m_loopStatus(QStringLiteral("None"))
     , m_maximumRate(1)
     , m_minimumRate(1)
-    , m_playbackStatus(Mpris::Stopped)
+    , m_playbackStatus(QStringLiteral("Stopped"))
     , m_position(0)
     , m_rate(1)
     , m_shuffle(false)
@@ -156,4 +156,3 @@ void MprisPlayerInterface::onPropertyChanged(const QString &propertyName, const 
                    << propertyName;
     }
 }
-

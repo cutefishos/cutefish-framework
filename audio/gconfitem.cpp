@@ -50,7 +50,7 @@ static QVariant convertValue(GConfValue *src)
     } else {
         switch (src->type) {
         case GCONF_VALUE_INVALID:
-            return QVariant(QVariant::Invalid);
+            return QVariant();
         case GCONF_VALUE_BOOL:
             return QVariant((bool)gconf_value_get_bool(src));
         case GCONF_VALUE_INT:
@@ -90,14 +90,14 @@ static GConfValue *convertString(const QString &str)
 
 static GConfValueType primitiveType(const QVariant &elt)
 {
-    switch (elt.type()) {
-    case QVariant::String:
+    switch (elt.typeId()) {
+    case QMetaType::QString:
         return GCONF_VALUE_STRING;
-    case QVariant::Int:
+    case QMetaType::Int:
         return GCONF_VALUE_INT;
-    case QVariant::Double:
+    case QMetaType::Double:
         return GCONF_VALUE_FLOAT;
-    case QVariant::Bool:
+    case QMetaType::Bool:
         return GCONF_VALUE_BOOL;
     default:
         return GCONF_VALUE_INVALID;
@@ -130,26 +130,26 @@ static int convertValue(const QVariant &src, GConfValue **valp)
 {
     GConfValue *v;
 
-    switch (src.type()) {
-    case QVariant::Invalid:
+    switch (src.typeId()) {
+    case QMetaType::UnknownType:
         v = nullptr;
         break;
-    case QVariant::Bool:
+    case QMetaType::Bool:
         v = gconf_value_new(GCONF_VALUE_BOOL);
         gconf_value_set_bool(v, src.toBool());
         break;
-    case QVariant::Int:
+    case QMetaType::Int:
         v = gconf_value_new(GCONF_VALUE_INT);
         gconf_value_set_int(v, src.toInt());
         break;
-    case QVariant::Double:
+    case QMetaType::Double:
         v = gconf_value_new(GCONF_VALUE_FLOAT);
         gconf_value_set_float(v, src.toDouble());
         break;
-    case QVariant::String:
+    case QMetaType::QString:
         v = convertString(src.toString());
         break;
-    case QVariant::StringList: {
+    case QMetaType::QStringList: {
         GSList *elts = nullptr;
         v = gconf_value_new(GCONF_VALUE_LIST);
         gconf_value_set_list_type(v, GCONF_VALUE_STRING);

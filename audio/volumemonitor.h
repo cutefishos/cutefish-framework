@@ -10,6 +10,8 @@
 #include <QPointer>
 #include <QQmlParserStatus>
 
+#include "volumeobject.h"
+
 struct pa_stream;
 
 namespace QPulseAudio

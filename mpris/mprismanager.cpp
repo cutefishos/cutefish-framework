@@ -34,11 +34,16 @@
 
 #include <QtCore/QSignalMapper>
 
-static const QString mprisNameSpace = QStringLiteral("org.mpris.MediaPlayer2.*");
+static const QString mprisNameSpace = QStringLiteral("org.mpris.MediaPlayer2.");
 static const QString dBusService = QStringLiteral("org.freedesktop.DBus");
 static const QString dBusObjectPath = QStringLiteral("/org/freedesktop/DBus");
 static const QString dBusInterface = QStringLiteral("org.freedesktop.DBus");
 static const QString dBusNameOwnerChangedSignal = QStringLiteral("NameOwnerChanged");
+
+static inline bool isMprisService(const QString &service)
+{
+    return service.startsWith(mprisNameSpace);
+}
 
 static inline QDBusConnection getDBusConnection()
 {
@@ -69,9 +74,7 @@ MprisManager::MprisManager(QObject *parent)
     QStringList serviceNames = connection.interface()->registeredServiceNames();
     QStringList::const_iterator i = serviceNames.constBegin();
     while (i != serviceNames.constEnd()) {
-        QRegExp rx(mprisNameSpace);
-        rx.setPatternSyntax(QRegExp::Wildcard);
-        if (rx.exactMatch(*i)) {
+        if (isMprisService(*i)) {
             onServiceAppeared(*i);
         }
 
@@ -174,9 +177,7 @@ void MprisManager::setCurrentService(const QString &service)
         return;
     }
 
-    QRegExp rx(mprisNameSpace);
-    rx.setPatternSyntax(QRegExp::Wildcard);
-    if (!rx.exactMatch(service)) {
+    if (!isMprisService(service)) {
         qmlInfo(this) << service << "is not a proper Mpris2 service";
         return;
     }
@@ -381,9 +382,7 @@ void MprisManager::onNameOwnerChanged(const QString &service, const QString &old
     // bus, not just the ones for our name space of interest, and we
     // will have to filter on our own :(
 
-    QRegExp rx(mprisNameSpace);
-    rx.setPatternSyntax(QRegExp::Wildcard);
-    if (!rx.exactMatch(service)) {
+    if (!isMprisService(service)) {
         return;
     }
 

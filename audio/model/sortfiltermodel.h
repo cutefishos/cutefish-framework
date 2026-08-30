@@ -3,7 +3,7 @@
 
 #include <QAbstractItemModel>
 #include <QJSValue>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QSortFilterProxyModel>
 #include <QVector>
 

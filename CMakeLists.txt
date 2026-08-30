@@ -15,16 +15,13 @@ include(GenerateExportHeader)
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
-set(QT Core Gui Quick QuickControls2 Widgets DBus Xml Concurrent)
-find_package(Qt5 REQUIRED ${QT})
+set(QT Core Gui Quick QuickControls2 Widgets DBus Xml Concurrent Qml)
+find_package(Qt6 REQUIRED ${QT})
 
-# Get the installation directory from qmake
-get_target_property(QT_QMAKE_EXECUTABLE ${Qt5Core_QMAKE_EXECUTABLE} IMPORTED_LOCATION)
-if(NOT QT_QMAKE_EXECUTABLE)
-    message(FATAL_ERROR "qmake is not found.")
-endif()
+# Get the installation directory from Qt 6
+find_program(QT_PATHS_EXECUTABLE NAMES qtpaths6 REQUIRED)
 
-execute_process(COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_INSTALL_QML
+execute_process(COMMAND ${QT_PATHS_EXECUTABLE} -query QT_INSTALL_QML
     OUTPUT_VARIABLE INSTALL_QMLDIR
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
