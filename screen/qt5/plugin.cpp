@@ -13,8 +13,8 @@ public:
     void registerTypes(const char *uri) override
     {
         qmlRegisterType<Qt5Screen>(uri, 1, 0, "Screen");
-        qmlRegisterUncreatableType<Output>(uri, 1, 0, "Output",
-                                           QStringLiteral("Output is provided by Screen"));
+        qmlRegisterUncreatableMetaObject(Output::staticMetaObject, uri, 1, 0, "Output",
+                                         QStringLiteral("Output is only a namespace for enums"));
     }
 };
 
