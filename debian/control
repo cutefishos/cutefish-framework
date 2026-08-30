@@ -7,10 +7,8 @@ Build-Depends: cmake,
                extra-cmake-modules,
                libkf5networkmanagerqt-dev,
                libkf5kio-dev,
-               libkf5screen-dev,
                libkf5bluezqt-dev,
                modemmanager-qt-dev,
-               libqt5sensors5-dev,
                libcanberra-dev,
                libpulse-dev,
                sound-theme-freedesktop,
@@ -25,6 +23,5 @@ Homepage: https://cutefishos.com
 Package: libcutefish
 Architecture: any
 Depends: ${misc:Depends},
-         ${shlibs:Depends},
-         libkf5screen-bin
+         ${shlibs:Depends}
 Description: CutefishOS Library

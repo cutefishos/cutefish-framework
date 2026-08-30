@@ -1,17 +1,18 @@
+cmake_minimum_required(VERSION 3.5)
+project(cutefish-screen LANGUAGES CXX)
+
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
+
 set(SCREEN_SRCS
-    common/control.cpp
-    common/globals.cpp
-    common/orientation_sensor.cpp
-    common/utils.cpp
-    confighandler.cpp
-    outputmodel.cpp
-    plugin.cpp
-    screen.cpp
+    qt5/output.cpp
+    qt5/outputmodel.cpp
+    qt5/plugin.cpp
+    qt5/screen.cpp
 )
 
-find_package(KF5Screen REQUIRED)
-find_package(KF5KIO REQUIRED)
-find_package(Qt5 REQUIRED COMPONENTS Test Sensors)
+find_package(Qt5 REQUIRED COMPONENTS Core Gui Quick)
 
 add_library(cutefishscreen_qmlplugins SHARED ${SCREEN_SRCS})
 
@@ -19,12 +20,6 @@ target_link_libraries (cutefishscreen_qmlplugins
     Qt5::Core
     Qt5::Quick
     Qt5::Gui
-    Qt5::DBus
-    Qt5::Sensors
-    Qt5::Test
-
-    KF5::Screen
-    KF5::KIOCore
 )
 
 install(TARGETS cutefishscreen_qmlplugins DESTINATION ${INSTALL_QMLDIR}/Cutefish/Screen)
