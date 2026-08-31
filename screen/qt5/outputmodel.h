@@ -2,10 +2,11 @@
 
 #include "output.h"
 
-#include <QAbstractListModel>
-#include <QScreen>
+#include <KScreen/Config>
 
-class Qt5OutputModel : public QAbstractListModel
+#include <QAbstractListModel>
+
+class KScreenOutputModel : public QAbstractListModel
 {
     Q_OBJECT
 
@@ -30,7 +31,7 @@ public:
         ReplicasModelRole
     };
 
-    explicit Qt5OutputModel(QObject *parent = nullptr);
+    explicit KScreenOutputModel(QObject *parent = nullptr);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index,
@@ -38,16 +39,31 @@ public:
     bool setData(const QModelIndex &index,
                  const QVariant &value,
                  int role = Qt::EditRole) override;
+    Qt::ItemFlags flags(const QModelIndex &index) const override;
 
-    void setScreens(const QList<QScreen *> &screens);
+    void setConfig(const KScreen::ConfigPtr &config);
 
 protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private:
-    static Output::Rotation rotationForScreen(const QScreen *screen);
-    static QString screenName(const QScreen *screen);
+    struct ModeChoice {
+        QString id;
+        QSize size;
+        float refreshRate = 0;
+    };
 
-    QList<QScreen *> m_screens;
+    KScreen::OutputPtr outputAt(int row) const;
+    QList<ModeChoice> modesForOutput(const KScreen::OutputPtr &output) const;
+    QList<QSize> resolutionsForOutput(const KScreen::OutputPtr &output) const;
+    QList<float> refreshRatesForOutput(const KScreen::OutputPtr &output,
+                                       const QSize &size) const;
+
+    static QString outputName(const KScreen::OutputPtr &output);
+    static QString formatResolution(const QSize &size);
+    static QString formatRefreshRate(float refreshRate);
+    static bool sameRefreshRate(float first, float second);
+
+    KScreen::ConfigPtr m_config;
+    QList<KScreen::OutputPtr> m_outputs;
 };
-

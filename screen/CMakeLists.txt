@@ -13,6 +13,7 @@ set(SCREEN_SRCS
 )
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick)
+find_package(KF6Screen REQUIRED)
 
 add_library(cutefishscreen_qmlplugins SHARED ${SCREEN_SRCS})
 
@@ -20,6 +21,7 @@ target_link_libraries (cutefishscreen_qmlplugins
     Qt6::Core
     Qt6::Quick
     Qt6::Gui
+    KF6::Screen
 )
 
 install(TARGETS cutefishscreen_qmlplugins DESTINATION ${INSTALL_QMLDIR}/Cutefish/Screen)

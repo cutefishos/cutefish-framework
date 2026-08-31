@@ -2,48 +2,87 @@
 
 #include "outputmodel.h"
 
+#include <KScreen/ConfigMonitor>
+#include <KScreen/GetConfigOperation>
+#include <KScreen/SetConfigOperation>
+
+#include <QDebug>
 #include <QGuiApplication>
+#include <QTimer>
 
-Qt5Screen::Qt5Screen(QObject *parent)
+KScreenScreen::KScreenScreen(QObject *parent)
     : QObject(parent)
-    , m_outputModel(new Qt5OutputModel(this))
+    , m_outputModel(new KScreenOutputModel(this))
 {
-    refreshScreens();
+    if (QGuiApplication::platformName().contains(QStringLiteral("wayland"), Qt::CaseInsensitive)
+        && qEnvironmentVariableIsEmpty("KSCREEN_BACKEND")) {
+        qputenv("KSCREEN_BACKEND", QByteArrayLiteral("kwayland"));
+    }
 
-    connect(qApp, &QGuiApplication::screenAdded, this, &Qt5Screen::connectScreen);
-    connect(qApp, &QGuiApplication::screenAdded, this, &Qt5Screen::refreshScreens);
-    connect(qApp, &QGuiApplication::screenRemoved, this, &Qt5Screen::refreshScreens);
+    connect(KScreen::ConfigMonitor::instance(), &KScreen::ConfigMonitor::configurationChanged,
+            this, [this] {
+                if (!m_applying) {
+                    loadConfig();
+                }
+            });
+
+    QTimer::singleShot(0, this, &KScreenScreen::loadConfig);
 }
 
-Qt5OutputModel *Qt5Screen::outputModel() const
+KScreenOutputModel *KScreenScreen::outputModel() const
 {
     return m_outputModel;
 }
 
-void Qt5Screen::connectScreen(QScreen *screen)
+void KScreenScreen::loadConfig()
 {
-    if (!screen) {
+    if (m_applying) {
         return;
     }
 
-    connect(screen, &QScreen::geometryChanged, this, &Qt5Screen::refreshScreens, Qt::UniqueConnection);
-    connect(screen, &QScreen::orientationChanged, this, &Qt5Screen::refreshScreens, Qt::UniqueConnection);
-    connect(screen, &QScreen::physicalDotsPerInchChanged, this, &Qt5Screen::refreshScreens, Qt::UniqueConnection);
-}
-
-void Qt5Screen::refreshScreens()
-{
-    const QList<QScreen *> screens = QGuiApplication::screens();
-    for (QScreen *screen : screens) {
-        connectScreen(screen);
+    KScreen::GetConfigOperation operation(KScreen::ConfigOperation::NoOptions, this);
+    if (!operation.exec() || operation.hasError() || !operation.config()) {
+        qWarning() << "Unable to read the display configuration from KScreen:"
+                   << operation.errorString();
+        if (m_config) {
+            KScreen::ConfigMonitor::instance()->removeConfig(m_config);
+        }
+        m_config.clear();
+        m_outputModel->setConfig({});
+        emit outputModelChanged();
+        return;
     }
-    m_outputModel->setScreens(screens);
+
+    if (m_config) {
+        KScreen::ConfigMonitor::instance()->removeConfig(m_config);
+    }
+    m_config = operation.config();
+    KScreen::ConfigMonitor::instance()->addConfig(m_config);
+    m_outputModel->setConfig(m_config);
     emit outputModelChanged();
 }
 
-void Qt5Screen::save()
+void KScreenScreen::save()
 {
-    // Display configuration is managed by KScreen/system settings on KDE6.
-    // QScreen is a read-only Qt API, so there is nothing to write here.
-}
+    if (!m_config || m_applying) {
+        return;
+    }
 
+    if (!KScreen::Config::canBeApplied(m_config,
+                                       KScreen::Config::ValidityFlag::RequireAtLeastOneEnabledScreen)) {
+        qWarning() << "The requested display configuration is not valid";
+        loadConfig();
+        return;
+    }
+
+    m_applying = true;
+    KScreen::SetConfigOperation operation(m_config, this);
+    const bool applied = operation.exec() && !operation.hasError();
+    if (!applied) {
+        qWarning() << "Unable to apply the display configuration through KWin Wayland:"
+                   << operation.errorString();
+    }
+    m_applying = false;
+
+    loadConfig();
+}

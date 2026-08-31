@@ -5,6 +5,7 @@ Maintainer: CutefishOS <support@cutefishos.com>
 Build-Depends: cmake,
                debhelper (>= 9),
                extra-cmake-modules,
+               libkscreen-dev,
                libkf6networkmanagerqt-dev,
                libkf6bluezqt-dev,
                libkf6modemmanagerqt-dev,
@@ -22,5 +23,6 @@ Homepage: https://cutefishos.com
 Package: libcutefish
 Architecture: any
 Depends: ${misc:Depends},
-         ${shlibs:Depends}
+         ${shlibs:Depends},
+         libkscreen-bin
 Description: CutefishOS Library

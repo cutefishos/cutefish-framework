@@ -1,29 +1,30 @@
 #pragma once
 
+#include <KScreen/Config>
+
 #include <QObject>
 
-class Qt5OutputModel;
-class QScreen;
+class KScreenOutputModel;
 
-class Qt5Screen : public QObject
+class KScreenScreen : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(Qt5OutputModel *outputModel READ outputModel NOTIFY outputModelChanged)
+    Q_PROPERTY(KScreenOutputModel *outputModel READ outputModel NOTIFY outputModelChanged)
 
 public:
-    explicit Qt5Screen(QObject *parent = nullptr);
+    explicit KScreenScreen(QObject *parent = nullptr);
 
-    Qt5OutputModel *outputModel() const;
+    KScreenOutputModel *outputModel() const;
     Q_INVOKABLE void save();
-
-private slots:
-    void refreshScreens();
-    void connectScreen(QScreen *screen);
 
 signals:
     void outputModelChanged();
 
-private:
-    Qt5OutputModel *m_outputModel;
-};
+private slots:
+    void loadConfig();
 
+private:
+    KScreen::ConfigPtr m_config;
+    KScreenOutputModel *m_outputModel;
+    bool m_applying = false;
+};
