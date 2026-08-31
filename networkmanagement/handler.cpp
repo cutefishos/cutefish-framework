@@ -272,22 +272,6 @@ void Handler::addAndActivateConnection(const QString& device, const QString& spe
         m_tmpDevicePath = device;
         m_tmpSpecificPath = specificObject;
 
-        // QPointer<ConnectionEditorDialog> editor = new ConnectionEditorDialog(settings);
-        // editor->show();
-        // KWindowSystem::setState(editor->winId(), NET::KeepAbove);
-        // KWindowSystem::forceActiveWindow(editor->winId());
-        // connect(editor.data(), &ConnectionEditorDialog::accepted,
-        //         [editor, this] () {
-        //             addConnection(editor->setting());
-        //         });
-        // connect(editor.data(), &ConnectionEditorDialog::finished,
-        //         [editor] () {
-        //             if (editor) {
-        //                 editor->deleteLater();
-        //             }
-        //         });
-        // editor->setModal(true);
-        // editor->show();
     } else {
         if (securityType == NetworkManager::StaticWep) {
             wifiSecurity->setKeyMgmt(NetworkManager::WirelessSecuritySetting::Wep);
@@ -864,4 +848,3 @@ void Handler::unlockRequiredChanged(MMModemLock modemLock)
     }
 }
 #endif
-
