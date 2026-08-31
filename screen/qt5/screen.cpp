@@ -70,15 +70,7 @@ static void saveDisplayConfiguration(const KScreen::ConfigPtr &config)
         settings.setValue(QStringLiteral("Scale"), output->scale());
         settings.setValue(QStringLiteral("Rotation"), static_cast<int>(output->rotation()));
 
-        // Virtual SPICE/QEMU modes follow the host window. Persisting the
-        // current mode would make the next Wayland session restore an old
-        // UTM size instead of accepting the host's current size.
-        if (isDynamicDisplay(output)) {
-            settings.remove(QStringLiteral("ModeId"));
-            settings.remove(QStringLiteral("ModeWidth"));
-            settings.remove(QStringLiteral("ModeHeight"));
-            settings.remove(QStringLiteral("ModeRefreshRate"));
-        } else if (const KScreen::ModePtr mode = output->currentMode()) {
+        if (const KScreen::ModePtr mode = output->currentMode()) {
             settings.setValue(QStringLiteral("ModeId"), mode->id());
             settings.setValue(QStringLiteral("ModeWidth"), mode->size().width());
             settings.setValue(QStringLiteral("ModeHeight"), mode->size().height());
