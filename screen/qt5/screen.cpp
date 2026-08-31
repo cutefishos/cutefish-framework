@@ -4,11 +4,83 @@
 
 #include <KScreen/ConfigMonitor>
 #include <KScreen/GetConfigOperation>
+#include <KScreen/Mode>
 #include <KScreen/SetConfigOperation>
 
 #include <QDebug>
 #include <QGuiApplication>
+#include <QSettings>
 #include <QTimer>
+
+static QString displayOutputKey(const KScreen::OutputPtr &output)
+{
+    if (!output) {
+        return QString();
+    }
+
+    QString key = output->hashMd5();
+    if (key.isEmpty()) {
+        key = output->name();
+    }
+    if (key.isEmpty()) {
+        key = QString::number(output->id());
+    }
+    return key.replace(QLatin1Char('/'), QLatin1Char('_'));
+}
+
+static void saveDisplayConfiguration(const KScreen::ConfigPtr &config)
+{
+    if (!config) {
+        return;
+    }
+
+    QSettings settings(QSettings::UserScope, QStringLiteral("cutefishos"), QStringLiteral("display"));
+    settings.setValue(QStringLiteral("Version"), 1);
+    settings.beginGroup(QStringLiteral("Outputs"));
+    const KScreen::OutputList outputs = config->outputs();
+    for (auto it = outputs.cbegin(); it != outputs.cend(); ++it) {
+        const KScreen::OutputPtr output = it.value();
+        if (!output || !output->isConnected()) {
+            continue;
+        }
+
+        settings.beginGroup(displayOutputKey(output));
+        settings.setValue(QStringLiteral("Name"), output->name());
+        settings.setValue(QStringLiteral("Enabled"), output->isEnabled());
+        settings.setValue(QStringLiteral("Priority"), output->priority());
+        settings.setValue(QStringLiteral("PositionX"), output->pos().x());
+        settings.setValue(QStringLiteral("PositionY"), output->pos().y());
+        settings.setValue(QStringLiteral("Scale"), output->scale());
+        settings.setValue(QStringLiteral("Rotation"), static_cast<int>(output->rotation()));
+
+        if (const KScreen::ModePtr mode = output->currentMode()) {
+            settings.setValue(QStringLiteral("ModeId"), mode->id());
+            settings.setValue(QStringLiteral("ModeWidth"), mode->size().width());
+            settings.setValue(QStringLiteral("ModeHeight"), mode->size().height());
+            settings.setValue(QStringLiteral("ModeRefreshRate"), mode->refreshRate());
+        }
+        settings.endGroup();
+    }
+    settings.endGroup();
+    settings.sync();
+
+    KScreen::OutputPtr primary = config->primaryOutput();
+    if (!primary) {
+        for (const KScreen::OutputPtr &output : config->connectedOutputs()) {
+            if (output && output->isEnabled()) {
+                primary = output;
+                break;
+            }
+        }
+    }
+    if (primary) {
+        QSettings themeSettings(QSettings::UserScope,
+                                QStringLiteral("cutefishos"),
+                                QStringLiteral("theme"));
+        themeSettings.setValue(QStringLiteral("PixelRatio"), primary->scale());
+        themeSettings.sync();
+    }
+}
 
 KScreenScreen::KScreenScreen(QObject *parent)
     : QObject(parent)
@@ -76,6 +148,10 @@ void KScreenScreen::save()
     }
 
     m_applying = true;
+    // Cutefish owns the persistent display configuration. KWin is only the
+    // live display server to which this snapshot is applied.
+    saveDisplayConfiguration(m_config);
+
     KScreen::SetConfigOperation operation(m_config, this);
     const bool applied = operation.exec() && !operation.hasError();
     if (!applied) {
