@@ -12,13 +12,30 @@
 #include <QSettings>
 #include <QTimer>
 
+static bool isDynamicDisplay(const KScreen::OutputPtr &output)
+{
+    if (!output) {
+        return false;
+    }
+
+    const QString identity = QStringLiteral("%1 %2 %3")
+                                 .arg(output->name(), output->vendor(), output->model());
+    return identity.contains(QStringLiteral("virtual"), Qt::CaseInsensitive)
+        || identity.contains(QStringLiteral("qemu"), Qt::CaseInsensitive)
+        || identity.contains(QStringLiteral("spice"), Qt::CaseInsensitive)
+        || identity.contains(QStringLiteral("virtio"), Qt::CaseInsensitive);
+}
+
 static QString displayOutputKey(const KScreen::OutputPtr &output)
 {
     if (!output) {
         return QString();
     }
 
-    QString key = output->hashMd5();
+    // Virtual outputs can change their EDID/mode list whenever the host
+    // resizes the guest window. Their hash is therefore not a stable
+    // identity; use the compositor's output name instead.
+    QString key = isDynamicDisplay(output) ? output->name() : output->hashMd5();
     if (key.isEmpty()) {
         key = output->name();
     }

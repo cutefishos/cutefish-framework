@@ -32,6 +32,7 @@ else()
 endif()
 # -------------------------------------------
 
+add_subdirectory(applications)
 add_subdirectory(accounts)
 add_subdirectory(bluez)
 add_subdirectory(mpris)
