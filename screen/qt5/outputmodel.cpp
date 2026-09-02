@@ -151,7 +151,7 @@ QVariant KScreenOutputModel::data(const QModelIndex &index, int role) const
             || outputName(output).startsWith(QStringLiteral("eDP"), Qt::CaseInsensitive)
             || outputName(output).startsWith(QStringLiteral("LVDS"), Qt::CaseInsensitive);
     case PrimaryRole:
-        return output->isPrimary();
+        return m_config && m_config->primaryOutput() == output;
     case SizeRole:
         return output->size();
     case PositionRole:
