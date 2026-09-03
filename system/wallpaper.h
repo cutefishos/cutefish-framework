@@ -4,6 +4,10 @@
 #include <QObject>
 #include <QDBusInterface>
 
+/**
+ * The desktop background as cutefish-settings publishes it over
+ * com.cutefish.Theme: an image (type 0) or a plain colour (type 1).
+ */
 class Wallpaper : public QObject
 {
     Q_OBJECT
@@ -11,6 +15,7 @@ class Wallpaper : public QObject
     Q_PROPERTY(QString path READ path NOTIFY pathChanged)
     Q_PROPERTY(bool dimsWallpaper READ dimsWallpaper NOTIFY dimsWallpaperChanged)
     Q_PROPERTY(QString color READ color NOTIFY colorChanged)
+    Q_PROPERTY(bool backgroundVisible READ backgroundVisible NOTIFY backgroundVisibleChanged)
 
 public:
     explicit Wallpaper(QObject *parent = nullptr);
@@ -21,19 +26,26 @@ public:
     bool dimsWallpaper() const;
 
     QString color() const;
+    bool backgroundVisible() const;
 
 signals:
     void pathChanged();
     void dimsWallpaperChanged();
     void typeChanged();
     void colorChanged();
+    void backgroundVisibleChanged();
+
+private:
+    QVariant themeProperty(const char *name) const;
 
 private slots:
+    void init();
     void onPathChanged(QString path);
 
 private:
-    QDBusInterface m_interface;
-    QString m_wallpaper;
+    // Recreated in init(): a QDBusInterface built while cutefish-settings is
+    // not on the bus caches a failed introspection and never recovers.
+    QDBusInterface *m_interface;
 };
 
 #endif // WALLPAPER_H
