@@ -5,8 +5,8 @@
 #include <QDBusInterface>
 
 /**
- * The desktop background as cutefish-settings publishes it over
- * com.cutefish.Theme: an image (type 0) or a plain colour (type 1).
+ * The desktop background as cutefish-services publishes it over
+ * com.cutefish.Services.Appearance: an image (type 0) or a plain colour (type 1).
  */
 class Wallpaper : public QObject
 {
@@ -43,7 +43,7 @@ private slots:
     void onPathChanged(QString path);
 
 private:
-    // Recreated in init(): a QDBusInterface built while cutefish-settings is
+    // Recreated in init(): a QDBusInterface built while cutefish-services is
     // not on the bus caches a failed introspection and never recovers.
     QDBusInterface *m_interface;
 };

@@ -6,12 +6,12 @@ Wallpaper::Wallpaper(QObject *parent)
     : QObject(parent)
     , m_interface(nullptr)
 {
-    // The shell starts before cutefish-settings, so the signals are hooked up
+    // The shell starts before cutefish-services, so the signals are hooked up
     // again once the service appears; without this the desktop would keep the
     // background it read at startup for the rest of the session.
     QDBusServiceWatcher *watcher = new QDBusServiceWatcher(this);
     watcher->setConnection(QDBusConnection::sessionBus());
-    watcher->addWatchedService("com.cutefish.Settings");
+    watcher->addWatchedService("com.cutefish.Services");
     connect(watcher, &QDBusServiceWatcher::serviceRegistered, this, &Wallpaper::init);
 
     init();
@@ -20,8 +20,9 @@ Wallpaper::Wallpaper(QObject *parent)
 void Wallpaper::init()
 {
     delete m_interface;
-    m_interface = new QDBusInterface("com.cutefish.Settings",
-                                     "/Theme", "com.cutefish.Theme",
+    m_interface = new QDBusInterface("com.cutefish.Services",
+                                     "/com/cutefish/Services/Appearance",
+                                     "com.cutefish.Services.Appearance",
                                      QDBusConnection::sessionBus(), this);
 
     if (!m_interface->isValid())
