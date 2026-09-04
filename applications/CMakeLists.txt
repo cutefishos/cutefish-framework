@@ -1,3 +1,5 @@
+find_package(Qt6 REQUIRED COMPONENTS Core DBus Gui Qml)
+
 set(CUTEFISH_APPLICATIONS_SRCS
     applicationlauncher.cpp
     applicationlauncher.h

@@ -1,3 +1,5 @@
+find_package(Qt6 REQUIRED COMPONENTS Core DBus Qml)
+
 set(bluezqtextensionplugin_SRCS
     declarativemanager.cpp
     declarativeadapter.cpp

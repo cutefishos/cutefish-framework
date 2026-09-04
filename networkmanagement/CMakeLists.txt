@@ -1,3 +1,5 @@
+find_package(Qt6 REQUIRED COMPONENTS Core DBus Gui Quick)
+
 set(NETWORKMGR_SRCS
     appletproxymodel.cpp
     appletproxymodel.h

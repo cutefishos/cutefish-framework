@@ -1,3 +1,5 @@
+find_package(Qt6 REQUIRED COMPONENTS Core DBus Gui Qml Quick Widgets)
+
 add_definitions(-DTRANSLATION_DOMAIN=\"cutefish_pulseaudio\")
 
 set(USE_GSETTINGS False)

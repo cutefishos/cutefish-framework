@@ -1,3 +1,5 @@
+find_package(Qt6 REQUIRED COMPONENTS Core DBus Gui Quick)
+
 set(ACCOUNTS_SRCS
     accountsmanager.cpp
     accountsmanager.h

@@ -1,22 +1,29 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.16)
 
-project(libcutefish)
+project(CutefishFramework
+    VERSION 1.0.0
+    LANGUAGES CXX
+)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
-include(GenerateExportHeader)
+list(APPEND CMAKE_MODULE_PATH
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
+)
+
 include(GNUInstallDirs)
+include(GenerateExportHeader)
 include(CMakePackageConfigHelpers)
 
-set(QT Core Gui Quick QuickControls2 Widgets DBus Xml Concurrent Qml)
-find_package(Qt6 REQUIRED ${QT})
+find_package(Qt6 REQUIRED COMPONENTS
+    Core
+    Qml
+)
 
 # Get the installation directory from Qt 6
 find_program(QT_PATHS_EXECUTABLE NAMES qtpaths6 REQUIRED)
