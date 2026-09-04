@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
  */
 
-import Cutefish.Bluez 1.0 as Bluez
+import Cutefish.Bluetooth 1.0 as Bluetooth
 
-Bluez.DevicesModelPrivate {
-    manager: Bluez.Manager
+Bluetooth.DevicesModelPrivate {
+    manager: Bluetooth.Manager
 }

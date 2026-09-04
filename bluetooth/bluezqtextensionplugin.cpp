@@ -66,7 +66,7 @@ void BluezQtExtensionPlugin::registerTypes(const char *uri)
 {
     using namespace BluezQt;
 
-    Q_ASSERT(QLatin1String(uri) == QLatin1String("Cutefish.Bluez"));
+    Q_ASSERT(QLatin1String(uri) == QLatin1String("Cutefish.Bluetooth"));
 
     qmlRegisterSingletonType<DeclarativeManager>(uri, 1, 0, "Manager", manager_singleton);
     qmlRegisterType<DeclarativeDevicesModel>(uri, 1, 0, "DevicesModelPrivate");

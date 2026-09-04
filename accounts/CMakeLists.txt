@@ -1,6 +1,6 @@
 find_package(Qt6 REQUIRED COMPONENTS Core DBus Gui Quick)
 
-set(ACCOUNTS_SRCS
+set(CUTEFISH_ACCOUNTS_SOURCES
     accountsmanager.cpp
     accountsmanager.h
     accountsmanager_p.h
@@ -13,23 +13,31 @@ set(ACCOUNTS_SRCS
     qmlplugins.cpp
 )
 
-qt6_add_dbus_interface(ACCOUNTS_SRCS
+qt6_add_dbus_interface(CUTEFISH_ACCOUNTS_SOURCES
                        org.freedesktop.Accounts.User.xml
                        user_interface)
-qt6_add_dbus_interface(ACCOUNTS_SRCS
+qt6_add_dbus_interface(CUTEFISH_ACCOUNTS_SOURCES
                        org.freedesktop.Accounts.xml
                        accounts_interface)
 
-# set_source_files_properties(${ACCOUNTS_SRCS} PROPERTIES SKIP_AUTOGEN ON)
+add_library(cutefish-framework-accounts SHARED ${CUTEFISH_ACCOUNTS_SOURCES})
 
-add_library(cutefishaccounts_qmlplugins SHARED ${ACCOUNTS_SRCS})
+qt_add_qml_module(cutefish-framework-accounts
+    URI Cutefish.Accounts
+    VERSION 1.0
+    PLUGIN_TARGET cutefish-framework-accounts
+    CLASS_NAME QmlPlugins
+    NO_GENERATE_PLUGIN_SOURCE
+    OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Cutefish/Accounts"
+)
 
-target_link_libraries (cutefishaccounts_qmlplugins
+add_library(Cutefish::Accounts ALIAS cutefish-framework-accounts)
+
+target_link_libraries(cutefish-framework-accounts PUBLIC
     Qt6::Core
     Qt6::DBus
     Qt6::Quick
     Qt6::Gui
 )
 
-install(TARGETS cutefishaccounts_qmlplugins DESTINATION ${INSTALL_QMLDIR}/Cutefish/Accounts)
-install(FILES qmldir DESTINATION ${INSTALL_QMLDIR}/Cutefish/Accounts)
+cutefish_install_qml_module(cutefish-framework-accounts)

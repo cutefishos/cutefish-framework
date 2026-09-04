@@ -14,7 +14,7 @@
 class BluezQtExtensionPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "Cutefish.Bluez")
+    Q_PLUGIN_METADATA(IID "Cutefish.Bluetooth")
 
 public:
     void registerTypes(const char *uri) override;

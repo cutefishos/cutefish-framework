@@ -9,12 +9,12 @@ set(CUTEFISH_APPLICATIONS_SRCS
     desktopentry.h
 )
 
-add_library(cutefishapplications STATIC ${CUTEFISH_APPLICATIONS_SRCS})
-set_target_properties(cutefishapplications PROPERTIES POSITION_INDEPENDENT_CODE ON)
-set_target_properties(cutefishapplications PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
+add_library(cutefish-framework-applications STATIC ${CUTEFISH_APPLICATIONS_SRCS})
+add_library(Cutefish::Applications ALIAS cutefish-framework-applications)
+set_target_properties(cutefish-framework-applications PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
-target_include_directories(cutefishapplications PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(cutefishapplications
+target_include_directories(cutefish-framework-applications PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(cutefish-framework-applications
     PUBLIC
         Qt6::Core
         Qt6::DBus

@@ -1,4 +1,0 @@
-module Cutefish.Bluez
-plugin cutefishbluez_qmlplugins
-
-DevicesModel 1.0 DevicesModel.qml

@@ -25,6 +25,24 @@ find_package(Qt6 REQUIRED COMPONENTS
     Qml
 )
 
+qt_policy(SET QTP0001 NEW)
+
+function(cutefish_install_qml_module target)
+    qt_query_qml_module("${target}"
+        TARGET_PATH module_path
+        QMLDIR module_qmldir
+        TYPEINFO module_qmltypes
+    )
+
+    set(module_install_dir "${INSTALL_QMLDIR}/${module_path}")
+    install(TARGETS "${target}" DESTINATION "${module_install_dir}")
+    install(FILES "${module_qmldir}" DESTINATION "${module_install_dir}")
+
+    if(module_qmltypes)
+        install(FILES "${module_qmltypes}" DESTINATION "${module_install_dir}")
+    endif()
+endfunction()
+
 # Get the installation directory from Qt 6
 find_program(QT_PATHS_EXECUTABLE NAMES qtpaths6 REQUIRED)
 
@@ -41,9 +59,9 @@ endif()
 
 add_subdirectory(applications)
 add_subdirectory(accounts)
-add_subdirectory(bluez)
-add_subdirectory(mpris)
-add_subdirectory(networkmanagement)
+add_subdirectory(bluetooth)
+add_subdirectory(media)
+add_subdirectory(network)
 add_subdirectory(screen)
-add_subdirectory(system)
+add_subdirectory(appearance)
 add_subdirectory(audio)

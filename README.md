@@ -7,6 +7,23 @@ It provides common access to application metadata, networking, Bluetooth,
 audio, display, appearance, accounts, media controls, and other desktop
 services.
 
+## Components
+
+The framework provides these CMake targets and C++ aliases:
+
+- `cutefish-framework-applications` / `Cutefish::Applications`
+- `cutefish-framework-accounts` / `Cutefish::Accounts`
+- `cutefish-framework-audio` / `Cutefish::Audio`
+- `cutefish-framework-appearance` / `Cutefish::Appearance`
+- `cutefish-framework-bluetooth` / `Cutefish::Bluetooth`
+- `cutefish-framework-media` / `Cutefish::Media`
+- `cutefish-framework-network` / `Cutefish::Network`
+- `cutefish-framework-screen` / `Cutefish::Screen`
+
+The QML modules are `Cutefish.Accounts`, `Cutefish.Appearance`,
+`Cutefish.Audio`, `Cutefish.Bluetooth`, `Cutefish.Media`,
+`Cutefish.Network`, and `Cutefish.Screen`.
+
 ## Dependencies
 
 The framework uses Qt 6, KDE Frameworks 6, and a C++20 compiler.
