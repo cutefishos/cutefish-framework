@@ -21,7 +21,7 @@
 #ifndef NETWORKMODELITEM_H
 #define NETWORKMODELITEM_H
 
-#include <networkmanager_export.h>
+#include <network_export.h>
 
 #include <NetworkManagerQt/ActiveConnection>
 #include <NetworkManagerQt/Connection>
@@ -31,7 +31,7 @@
 
 #include "networkmodel.h"
 
-class NETWORKMANAGER_EXPORT NetworkModelItem : public QObject
+class CUTEFISH_NETWORK_EXPORT NetworkModelItem : public QObject
 {
     Q_OBJECT
 

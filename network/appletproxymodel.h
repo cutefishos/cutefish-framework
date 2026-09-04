@@ -22,12 +22,12 @@
 #ifndef APPLETPROXYMODEL_H
 #define APPLETPROXYMODEL_H
 
-#include <networkmanager_export.h>
+#include <network_export.h>
 #include <QSortFilterProxyModel>
 
 #include "networkmodelitem.h"
 
-class NETWORKMANAGER_EXPORT AppletProxyModel : public QSortFilterProxyModel
+class CUTEFISH_NETWORK_EXPORT AppletProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
     Q_PROPERTY(Type type READ type WRITE setType NOTIFY typeChanged)

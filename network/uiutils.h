@@ -22,7 +22,7 @@
 #ifndef UIUTILS_H
 #define UIUTILS_H
 
-#include <networkmanager_export.h>
+#include <network_export.h>
 
 #include <NetworkManagerQt/Device>
 #include <NetworkManagerQt/ModemDevice>
@@ -42,7 +42,7 @@
 #include <ModemManagerQt/modem.h>
 #endif
 
-class NETWORKMANAGER_EXPORT UiUtils
+class CUTEFISH_NETWORK_EXPORT UiUtils
 {
 public:
     enum SortedConnectionType {

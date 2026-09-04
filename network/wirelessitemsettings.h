@@ -1,13 +1,13 @@
 #ifndef WIRELESSITEMSETTINGS_H
 #define WIRELESSITEMSETTINGS_H
 
-#include <networkmanager_export.h>
+#include <network_export.h>
 
 #include <QtCore/QObject>
 
 #include <NetworkManagerQt/Connection>
 
-class NETWORKMANAGER_EXPORT WirelessItemSettings : public QObject
+class CUTEFISH_NETWORK_EXPORT WirelessItemSettings : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)

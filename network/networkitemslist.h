@@ -21,7 +21,7 @@
 #ifndef NETWORKITEMSLIST_H
 #define NETWORKITEMSLIST_H
 
-#include <networkmanager_export.h>
+#include <network_export.h>
 
 #include <QAbstractListModel>
 
@@ -29,7 +29,7 @@
 
 class NetworkModelItem;
 
-class NETWORKMANAGER_EXPORT NetworkItemsList : public QObject
+class CUTEFISH_NETWORK_EXPORT NetworkItemsList : public QObject
 {
     Q_OBJECT
 

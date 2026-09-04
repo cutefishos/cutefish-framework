@@ -21,7 +21,7 @@
 #ifndef NETWORKMODEL_H
 #define NETWORKMODEL_H
 
-#include <networkmanager_export.h>
+#include <network_export.h>
 
 #include <QAbstractListModel>
 #include <QLoggingCategory>
@@ -39,7 +39,7 @@
 
 Q_DECLARE_LOGGING_CATEGORY(gLcNm)
 
-class NETWORKMANAGER_EXPORT NetworkModel : public QAbstractListModel
+class CUTEFISH_NETWORK_EXPORT NetworkModel : public QAbstractListModel
 {
     Q_OBJECT
 

@@ -3,7 +3,7 @@
 #include "networkmodelitem.h"
 #include "activeconnection.h"
 #include "appletproxymodel.h"
-#include "wiressitemsettings.h"
+#include "wirelessitemsettings.h"
 #include "identitymodel.h"
 #include "handler.h"
 #include "enabledconnections.h"

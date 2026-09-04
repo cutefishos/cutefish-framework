@@ -16,8 +16,8 @@ set(CUTEFISH_NETWORK_SOURCES
     networkmodelitem.cpp
     networkmodelitem.h
 
-    wiressitemsettings.cpp
-    wiressitemsettings.h
+    wirelessitemsettings.cpp
+    wirelessitemsettings.h
 
     uiutils.cpp
     uiutils.h
@@ -48,7 +48,7 @@ find_package(KF6NetworkManagerQt REQUIRED)
 find_package(KF6ModemManagerQt REQUIRED)
 
 add_library(cutefish-framework-network SHARED ${CUTEFISH_NETWORK_SOURCES})
-generate_export_header(cutefish-framework-network EXPORT_FILE_NAME ${CMAKE_CURRENT_BINARY_DIR}/networkmanager_export.h BASE_NAME NetworkManager)
+generate_export_header(cutefish-framework-network EXPORT_FILE_NAME ${CMAKE_CURRENT_BINARY_DIR}/network_export.h BASE_NAME Cutefish_Network)
 
 qt_add_qml_module(cutefish-framework-network
     URI Cutefish.Network

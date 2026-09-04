@@ -2,7 +2,7 @@
 #include <NetworkManagerQt/WiredSetting>
 #include <QDebug>
 
-#include "wiressitemsettings.h"
+#include "wirelessitemsettings.h"
 
 #include <sys/types.h>
 #include <unistd.h>
