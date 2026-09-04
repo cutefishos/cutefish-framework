@@ -2,6 +2,7 @@
 
 #include <QDir>
 #include <QDirIterator>
+#include <QStandardPaths>
 
 Wallpaper::Wallpaper(QObject *parent)
     : Appearance(parent)
@@ -43,14 +44,23 @@ void Wallpaper::setColor(const QString &color)
 
 QStringList Wallpaper::backgrounds() const
 {
-    QStringList result;
-    QDirIterator iterator(QStringLiteral("/usr/share/backgrounds/cutefishos"),
-                          {QStringLiteral("*.jpg"), QStringLiteral("*.png")},
-                          QDir::Files,
-                          QDirIterator::Subdirectories);
-    while (iterator.hasNext())
-        result.append(iterator.next());
+    // Every XDG data directory, so a user's own wallpapers in
+    // ~/.local/share/backgrounds/cutefishos show up next to the shipped ones.
+    const QStringList dirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation,
+                                                       QStringLiteral("backgrounds/cutefishos"),
+                                                       QStandardPaths::LocateDirectory);
 
+    QStringList result;
+    for (const QString &dir : dirs) {
+        QDirIterator iterator(dir,
+                              {QStringLiteral("*.jpg"), QStringLiteral("*.png")},
+                              QDir::Files,
+                              QDirIterator::Subdirectories);
+        while (iterator.hasNext())
+            result.append(iterator.next());
+    }
+
+    result.removeDuplicates();
     result.sort();
     return result;
 }
