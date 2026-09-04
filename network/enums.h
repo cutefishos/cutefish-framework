@@ -22,10 +22,13 @@
 #define PLASMA_NM_ENUMS_H
 
 #include <QObject>
+#include <QtQml/qqmlregistration.h>
 
 class Enums : public QObject
 {
 Q_OBJECT
+QML_ELEMENT
+QML_UNCREATABLE("Enums is only a namespace for enums")
 Q_ENUMS(ConnectionStatus)
 Q_ENUMS(ConnectionType)
 Q_ENUMS(SecurityType)

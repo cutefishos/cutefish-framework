@@ -22,6 +22,7 @@
 #define PLASMA_NM_CONFIGURATION_H
 
 #include <QObject>
+#include <QtQml/qqmlregistration.h>
 
 #include <NetworkManagerQt/Manager>
 
@@ -37,6 +38,7 @@ class Q_DECL_EXPORT Configuration : public QObject
     //Readonly constant property, as this value should only be set by the platform
     Q_PROPERTY(bool showPasswordDialog READ showPasswordDialog CONSTANT)
     Q_OBJECT
+    QML_ELEMENT
 
 public:
     Configuration();
@@ -68,4 +70,3 @@ private:
 };
 
 #endif // PLAMA_NM_CONFIGURATION_H
-

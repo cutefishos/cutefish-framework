@@ -22,6 +22,7 @@
 #define PLASMA_NM_ENABLED_CONNECTIONS_H
 
 #include <QObject>
+#include <QtQml/qqmlregistration.h>
 
 #include <NetworkManagerQt/Manager>
 
@@ -49,6 +50,7 @@ Q_PROPERTY(bool wwanEnabled READ isWwanEnabled NOTIFY wwanEnabled)
 Q_PROPERTY(bool wwanHwEnabled READ isWwanHwEnabled NOTIFY wwanHwEnabled)
 
 Q_OBJECT
+QML_ELEMENT
 public:
     explicit EnabledConnections(QObject* parent = nullptr);
     ~EnabledConnections() override;

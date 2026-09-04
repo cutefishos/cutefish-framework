@@ -24,6 +24,7 @@ qt_add_qml_module(cutefish-framework-bluetooth
     PLUGIN_TARGET cutefish-framework-bluetooth
     CLASS_NAME BluezQtExtensionPlugin
     NO_GENERATE_PLUGIN_SOURCE
+    NO_PLUGIN_OPTIONAL
     OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Cutefish/Bluetooth"
     QML_FILES DevicesModel.qml
 )

@@ -22,6 +22,7 @@
 #define NETWORKMODELITEM_H
 
 #include <network_export.h>
+#include <QtQml/qqmlregistration.h>
 
 #include <NetworkManagerQt/ActiveConnection>
 #include <NetworkManagerQt/Connection>
@@ -34,6 +35,8 @@
 class CUTEFISH_NETWORK_EXPORT NetworkModelItem : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
+    QML_UNCREATABLE("NetworkModelItem is created by NetworkModel")
 
 public:
     enum ItemType { UnavailableConnection, AvailableConnection, AvailableAccessPoint };

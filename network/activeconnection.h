@@ -21,6 +21,7 @@
 #define ACTIVECONNECTION_H
 
 #include <QObject>
+#include <QtQml/qqmlregistration.h>
 
 #include <NetworkManagerQt/ActiveConnection>
 #include <NetworkManagerQt/Connection>
@@ -30,6 +31,7 @@
 class ActiveConnection : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(QString wirelessName READ wirelessName NOTIFY wirelessNameChanged)
     Q_PROPERTY(QString wirelessIcon READ wirelessIcon NOTIFY wirelessIconChanged)
 

@@ -25,6 +25,7 @@
 
 #include <QAbstractListModel>
 #include <QLoggingCategory>
+#include <QtQml/qqmlregistration.h>
 
 #include "networkitemslist.h"
 
@@ -42,6 +43,7 @@ Q_DECLARE_LOGGING_CATEGORY(gLcNm)
 class CUTEFISH_NETWORK_EXPORT NetworkModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
 
 public:
     explicit NetworkModel(QObject *parent = nullptr);

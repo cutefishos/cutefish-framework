@@ -23,6 +23,7 @@
 
 #include <QDBusInterface>
 #include <QTimer>
+#include <QtQml/qqmlregistration.h>
 
 #include <NetworkManagerQt/Connection>
 #include <NetworkManagerQt/Settings>
@@ -35,6 +36,7 @@
 class Q_DECL_EXPORT Handler : public QObject
 {
 Q_OBJECT
+QML_ELEMENT
 
 public:
     enum HandlerAction {

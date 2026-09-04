@@ -1,51 +1,40 @@
 #ifndef WALLPAPER_H
 #define WALLPAPER_H
 
-#include <QObject>
-#include <QDBusInterface>
+#include "appearance.h"
+
+#include <QStringList>
 
 /**
  * The desktop background as cutefish-services publishes it over
  * com.cutefish.Services.Appearance: an image (type 0) or a plain colour (type 1).
  */
-class Wallpaper : public QObject
+class Wallpaper : public Appearance
 {
     Q_OBJECT
-    Q_PROPERTY(int type READ type NOTIFY typeChanged)
-    Q_PROPERTY(QString path READ path NOTIFY pathChanged)
-    Q_PROPERTY(bool dimsWallpaper READ dimsWallpaper NOTIFY dimsWallpaperChanged)
-    Q_PROPERTY(QString color READ color NOTIFY colorChanged)
-    Q_PROPERTY(bool backgroundVisible READ backgroundVisible NOTIFY backgroundVisibleChanged)
+    Q_PROPERTY(int type READ type WRITE setType NOTIFY typeChanged)
+    Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
+    Q_PROPERTY(QString color READ color WRITE setColor NOTIFY colorChanged)
+    Q_PROPERTY(QStringList backgrounds READ backgrounds CONSTANT)
 
 public:
     explicit Wallpaper(QObject *parent = nullptr);
 
     int type() const;
+    Q_INVOKABLE void setType(int type);
 
     QString path() const;
-    bool dimsWallpaper() const;
+    Q_INVOKABLE void setPath(const QString &path);
 
     QString color() const;
-    bool backgroundVisible() const;
+    Q_INVOKABLE void setColor(const QString &color);
+
+    QStringList backgrounds() const;
 
 signals:
     void pathChanged();
-    void dimsWallpaperChanged();
     void typeChanged();
     void colorChanged();
-    void backgroundVisibleChanged();
-
-private:
-    QVariant themeProperty(const char *name) const;
-
-private slots:
-    void init();
-    void onPathChanged(QString path);
-
-private:
-    // Recreated in init(): a QDBusInterface built while cutefish-services is
-    // not on the bus caches a failed introspection and never recovers.
-    QDBusInterface *m_interface;
 };
 
 #endif // WALLPAPER_H

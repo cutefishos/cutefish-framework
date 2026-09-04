@@ -4,12 +4,14 @@
 #include <network_export.h>
 
 #include <QtCore/QObject>
+#include <QtQml/qqmlregistration.h>
 
 #include <NetworkManagerQt/Connection>
 
 class CUTEFISH_NETWORK_EXPORT WirelessItemSettings : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
     Q_PROPERTY(QString path READ path WRITE setPath NOTIFY pathChanged)
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(bool autoConnect READ autoConnect WRITE setAutoConnect NOTIFY autoConnectChanged)

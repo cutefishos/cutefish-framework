@@ -28,6 +28,7 @@ qt_add_qml_module(cutefish-framework-accounts
     PLUGIN_TARGET cutefish-framework-accounts
     CLASS_NAME QmlPlugins
     NO_GENERATE_PLUGIN_SOURCE
+    NO_PLUGIN_OPTIONAL
     OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Cutefish/Accounts"
 )
 

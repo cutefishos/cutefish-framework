@@ -1,79 +1,56 @@
 #include "wallpaper.h"
 
-#include <QDBusServiceWatcher>
+#include <QDir>
+#include <QDirIterator>
 
 Wallpaper::Wallpaper(QObject *parent)
-    : QObject(parent)
-    , m_interface(nullptr)
+    : Appearance(parent)
 {
-    // The shell starts before cutefish-services, so the signals are hooked up
-    // again once the service appears; without this the desktop would keep the
-    // background it read at startup for the rest of the session.
-    QDBusServiceWatcher *watcher = new QDBusServiceWatcher(this);
-    watcher->setConnection(QDBusConnection::sessionBus());
-    watcher->addWatchedService("com.cutefish.Services");
-    connect(watcher, &QDBusServiceWatcher::serviceRegistered, this, &Wallpaper::init);
-
-    init();
-}
-
-void Wallpaper::init()
-{
-    delete m_interface;
-    m_interface = new QDBusInterface("com.cutefish.Services",
-                                     "/com/cutefish/Services/Appearance",
-                                     "com.cutefish.Services.Appearance",
-                                     QDBusConnection::sessionBus(), this);
-
-    if (!m_interface->isValid())
-        return;
-
-    connect(m_interface, SIGNAL(wallpaperChanged(QString)), this, SLOT(onPathChanged(QString)));
-    connect(m_interface, SIGNAL(darkModeDimsWallpaerChanged()), this, SIGNAL(dimsWallpaperChanged()));
-    connect(m_interface, SIGNAL(backgroundTypeChanged()), this, SIGNAL(typeChanged()));
-    connect(m_interface, SIGNAL(backgroundColorChanged()), this, SIGNAL(colorChanged()));
-    connect(m_interface, SIGNAL(backgroundVisibleChanged()), this, SIGNAL(backgroundVisibleChanged()));
-
-    emit typeChanged();
-    emit pathChanged();
-    emit colorChanged();
-    emit dimsWallpaperChanged();
-    emit backgroundVisibleChanged();
-}
-
-QVariant Wallpaper::themeProperty(const char *name) const
-{
-    return m_interface ? m_interface->property(name) : QVariant();
+    connect(this, &Appearance::backgroundTypeChanged, this, &Wallpaper::typeChanged);
+    connect(this, &Appearance::wallpaperChanged, this, &Wallpaper::pathChanged);
+    connect(this, &Appearance::backgroundColorChanged, this, &Wallpaper::colorChanged);
 }
 
 int Wallpaper::type() const
 {
-    return themeProperty("backgroundType").toInt();
+    return backgroundType();
+}
+
+void Wallpaper::setType(int type)
+{
+    setBackgroundType(type);
 }
 
 QString Wallpaper::path() const
 {
-    return themeProperty("wallpaper").toString();
+    return wallpaper();
 }
 
-bool Wallpaper::dimsWallpaper() const
+void Wallpaper::setPath(const QString &path)
 {
-    return themeProperty("darkModeDimsWallpaer").toBool();
+    setWallpaper(path);
 }
 
 QString Wallpaper::color() const
 {
-    return themeProperty("backgroundColor").toString();
+    return backgroundColor();
 }
 
-bool Wallpaper::backgroundVisible() const
+void Wallpaper::setColor(const QString &color)
 {
-    return themeProperty("backgroundVisible").toBool();
+    setBackgroundColor(color);
 }
 
-void Wallpaper::onPathChanged(QString path)
+QStringList Wallpaper::backgrounds() const
 {
-    Q_UNUSED(path);
+    QStringList result;
+    QDirIterator iterator(QStringLiteral("/usr/share/backgrounds/cutefishos"),
+                          {QStringLiteral("*.jpg"), QStringLiteral("*.png")},
+                          QDir::Files,
+                          QDirIterator::Subdirectories);
+    while (iterator.hasNext())
+        result.append(iterator.next());
 
-    emit pathChanged();
+    result.sort();
+    return result;
 }

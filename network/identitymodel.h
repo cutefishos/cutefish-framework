@@ -20,10 +20,12 @@
 
 #include <QIdentityProxyModel>
 #include <QModelIndex>
+#include <QtQml/qqmlregistration.h>
 
 class Q_DECL_EXPORT IdentityModel : public QIdentityProxyModel
 {
     Q_OBJECT
+    QML_ELEMENT
 
 public:
     explicit IdentityModel(QObject *parent = nullptr);

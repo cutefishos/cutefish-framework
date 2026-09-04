@@ -21,10 +21,12 @@
 #define WIFISETTINGS_H
 
 #include <QObject>
+#include <QtQml/qqmlregistration.h>
 
 class WifiSettings : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 
 public:
     WifiSettings(QObject *parent = nullptr);

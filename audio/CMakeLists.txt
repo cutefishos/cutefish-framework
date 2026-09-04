@@ -74,6 +74,7 @@ qt_add_qml_module(cutefish-framework-audio
     PLUGIN_TARGET cutefish-framework-audio
     CLASS_NAME Plugin
     NO_GENERATE_PLUGIN_SOURCE
+    NO_PLUGIN_OPTIONAL
     OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Cutefish/Audio"
     QML_FILES ${CUTEFISH_AUDIO_QML_FILES}
 )
