@@ -1,14 +1,14 @@
-set(SCREEN_SRCS
-    qt5/output.cpp
-    qt5/outputmodel.cpp
-    qt5/plugin.cpp
-    qt5/screen.cpp
+set(CUTEFISH_SCREEN_SOURCES
+    output.cpp
+    outputmodel.cpp
+    plugin.cpp
+    screen.cpp
 )
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick)
 find_package(KF6Screen REQUIRED)
 
-add_library(cutefish-framework-screen SHARED ${SCREEN_SRCS})
+add_library(cutefish-framework-screen SHARED ${CUTEFISH_SCREEN_SOURCES})
 
 qt_add_qml_module(cutefish-framework-screen
     URI Cutefish.Screen
