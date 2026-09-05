@@ -1,26 +1,16 @@
 #include "applicationlauncher.h"
-
-#include <QDBusConnection>
-#include <QDBusInterface>
-#include <QProcess>
+#include "applicationruntime.h"
 
 bool ApplicationLauncher::startDetached(const QStringList &command,
-                                        const QString &workingDirectory)
+                                        const QString &workingDirectory,
+                                        const QString &appId)
 {
-    if (command.isEmpty() || command.first().isEmpty())
-        return false;
+    // Every application start of the session goes through the runtime, which
+    // falls back to starting the process here when it is not running.
+    return ApplicationRuntime::instance()->launchCommand(command, workingDirectory, appId);
+}
 
-    const QString program = command.first();
-    const QStringList arguments = command.mid(1);
-
-    // Keep using the session launch service when it is available. It applies
-    // the desktop session's environment and startup handling consistently.
-    QDBusInterface session("com.cutefish.Session", "/Session",
-                           "com.cutefish.Session", QDBusConnection::sessionBus());
-    if (session.isValid()) {
-        session.asyncCall("launch", program, arguments);
-        return true;
-    }
-
-    return QProcess::startDetached(program, arguments, workingDirectory);
+bool ApplicationLauncher::quit(const QString &appId)
+{
+    return ApplicationRuntime::instance()->quitApplication(appId);
 }

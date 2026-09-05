@@ -1,4 +1,5 @@
 #include "applicationregistry.h"
+#include "applicationruntime.h"
 
 #include <QDir>
 #include <QDirIterator>
@@ -426,6 +427,11 @@ void registerApplicationsQmlTypes()
         "Cutefish.Applications", 1, 0, "DesktopEntries",
         [](QQmlEngine *, QJSEngine *) -> QObject * {
             return ApplicationRegistry::instance();
+        });
+    qmlRegisterSingletonType<ApplicationRuntime>(
+        "Cutefish.Applications", 1, 0, "AppRuntime",
+        [](QQmlEngine *, QJSEngine *) -> QObject * {
+            return ApplicationRuntime::instance();
         });
     qmlRegisterUncreatableType<DesktopEntry>(
         "Cutefish.Applications", 1, 0, "DesktopEntry",

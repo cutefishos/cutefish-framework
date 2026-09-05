@@ -1,6 +1,7 @@
 #include "desktopentry.h"
 
 #include "applicationlauncher.h"
+#include "applicationruntime.h"
 
 #include <QFile>
 #include <QFileInfo>
@@ -246,8 +247,13 @@ QStringList DesktopEntry::commandForArguments(const QStringList &arguments) cons
 
 bool DesktopEntry::launch(const QStringList &arguments) const
 {
+    // Prefer the entry id so the runtime can tie the process to this
+    // application; the expanded command is only the fallback path.
+    if (ApplicationRuntime::instance()->launchApplication(m_id, arguments))
+        return true;
+
     return ApplicationLauncher::startDetached(commandForArguments(arguments),
-                                               m_workingDirectory);
+                                              m_workingDirectory, m_id);
 }
 
 QStringList DesktopEntry::parseExec(const QString &exec)
