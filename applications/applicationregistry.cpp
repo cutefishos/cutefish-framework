@@ -79,27 +79,6 @@ QString normalized(const QString &value)
     return value.trimmed().toLower();
 }
 
-bool desktopMatches(const DesktopEntryData &entry, const QByteArray &desktop)
-{
-    const QStringList currentDesktops = QString::fromLocal8Bit(desktop)
-        .split(QLatin1Char(':'), Qt::SkipEmptyParts);
-    auto containsDesktop = [&currentDesktops](const QStringList &desktops) {
-        for (const QString &desktop : desktops) {
-            for (const QString &current : currentDesktops) {
-                if (desktop.compare(current, Qt::CaseInsensitive) == 0)
-                    return true;
-            }
-        }
-        return false;
-    };
-
-    if (!entry.onlyShowIn.isEmpty() && !containsDesktop(entry.onlyShowIn))
-        return false;
-    if (containsDesktop(entry.notShowIn))
-        return false;
-    return true;
-}
-
 } // namespace
 
 DesktopEntryModel::DesktopEntryModel(QObject *parent)
@@ -365,7 +344,7 @@ void ApplicationRegistry::applyScan(const QList<DesktopEntryData> &results)
     QHash<QString, DesktopEntry *> newEntriesByPath;
     QList<DesktopEntry *> allEntries;
     QList<DesktopEntry *> visibleEntries;
-    const QByteArray currentDesktop = qgetenv("XDG_CURRENT_DESKTOP");
+    const QStringList currentDesktops = DesktopEntry::currentDesktops();
 
     for (const DesktopEntryData &data : results) {
         DesktopEntry *entry = oldEntries.take(data.id);
@@ -377,7 +356,7 @@ void ApplicationRegistry::applyScan(const QList<DesktopEntryData> &results)
         newEntriesByPath.insert(QFileInfo(data.path).absoluteFilePath(), entry);
         allEntries.append(entry);
 
-        if (!data.hidden && !data.noDisplay && desktopMatches(data, currentDesktop))
+        if (entry->shouldShow(currentDesktops))
             visibleEntries.append(entry);
     }
 

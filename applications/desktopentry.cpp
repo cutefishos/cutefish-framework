@@ -7,6 +7,7 @@
 #include <QLocale>
 #include <QMap>
 #include <QRegularExpression>
+#include <QStandardPaths>
 
 namespace {
 
@@ -32,6 +33,27 @@ QString unescapeValue(QString value)
 bool parseBool(const QString &value)
 {
     return value.compare(QStringLiteral("true"), Qt::CaseInsensitive) == 0;
+}
+
+// TryExec may be a bare name to look up in PATH or an absolute path.
+bool executableExists(const QString &program)
+{
+    if (program.contains(QLatin1Char('/'))) {
+        const QFileInfo info(program);
+        return info.exists() && info.isExecutable();
+    }
+    return !QStandardPaths::findExecutable(program).isEmpty();
+}
+
+bool listContainsDesktop(const QStringList &list, const QStringList &desktops)
+{
+    for (const QString &wanted : list) {
+        for (const QString &current : desktops) {
+            if (wanted.compare(current, Qt::CaseInsensitive) == 0)
+                return true;
+        }
+    }
+    return false;
 }
 
 QString localizedValue(const QMap<QString, QString> &values,
@@ -148,15 +170,48 @@ QString DesktopEntry::genericName() const { return m_genericName; }
 QString DesktopEntry::comment() const { return m_comment; }
 QString DesktopEntry::icon() const { return m_icon; }
 QString DesktopEntry::exec() const { return m_exec; }
+QString DesktopEntry::tryExec() const { return m_tryExec; }
 QStringList DesktopEntry::command() const { return m_command; }
 QString DesktopEntry::workingDirectory() const { return m_workingDirectory; }
 QString DesktopEntry::startupWMClass() const { return m_startupWMClass; }
 QStringList DesktopEntry::categories() const { return m_categories; }
 QStringList DesktopEntry::keywords() const { return m_keywords; }
 QStringList DesktopEntry::mimeTypes() const { return m_mimeTypes; }
+QStringList DesktopEntry::onlyShowIn() const { return m_onlyShowIn; }
+QStringList DesktopEntry::notShowIn() const { return m_notShowIn; }
 bool DesktopEntry::terminal() const { return m_terminal; }
 bool DesktopEntry::noDisplay() const { return m_noDisplay; }
 bool DesktopEntry::hidden() const { return m_hidden; }
+bool DesktopEntry::dbusActivatable() const { return m_dbusActivatable; }
+
+QStringList DesktopEntry::currentDesktops()
+{
+    QString value = qEnvironmentVariable("XDG_CURRENT_DESKTOP");
+    if (value.isEmpty())
+        value = QStringLiteral("Cutefish");
+    return value.split(QLatin1Char(':'), Qt::SkipEmptyParts);
+}
+
+bool DesktopEntry::shouldShow() const
+{
+    return shouldShow(currentDesktops());
+}
+
+bool DesktopEntry::shouldShow(const QStringList &desktops) const
+{
+    // Hidden means the entry is deleted; it only exists to mask a system one.
+    if (m_hidden || m_noDisplay)
+        return false;
+    if (m_exec.isEmpty() && !m_dbusActivatable)
+        return false;
+    if (!m_tryExec.isEmpty() && !executableExists(m_tryExec))
+        return false;
+    if (!m_onlyShowIn.isEmpty() && !listContainsDesktop(m_onlyShowIn, desktops))
+        return false;
+    if (listContainsDesktop(m_notShowIn, desktops))
+        return false;
+    return true;
+}
 
 QStringList DesktopEntry::commandForArguments(const QStringList &arguments) const
 {
@@ -227,6 +282,7 @@ bool DesktopEntry::parse(const QString &id, const QString &path,
             data.comment = localizedValue(values, localized, QStringLiteral("Comment"));
             data.icon = values.value(QStringLiteral("Icon"));
             data.exec = values.value(QStringLiteral("Exec"));
+            data.tryExec = values.value(QStringLiteral("TryExec"));
             data.workingDirectory = values.value(QStringLiteral("Path"));
             data.startupWMClass = values.value(QStringLiteral("StartupWMClass"));
             data.categories = splitList(values.value(QStringLiteral("Categories")));
@@ -237,6 +293,7 @@ bool DesktopEntry::parse(const QString &id, const QString &path,
             data.terminal = parseBool(values.value(QStringLiteral("Terminal")));
             data.noDisplay = parseBool(values.value(QStringLiteral("NoDisplay")));
             data.hidden = parseBool(values.value(QStringLiteral("Hidden")));
+            data.dbusActivatable = parseBool(values.value(QStringLiteral("DBusActivatable")));
         } else if (group.startsWith(QStringLiteral("Desktop Action "))) {
             const QString actionId = group.mid(QStringLiteral("Desktop Action ").size());
             const auto action = actionValues.value(actionId);
@@ -287,7 +344,11 @@ bool DesktopEntry::parse(const QString &id, const QString &path,
     }
     finishGroup();
 
-    if (data.type != QStringLiteral("Application") || data.name.isEmpty())
+    // A Hidden entry is kept without a Name so it still masks the system entry
+    // of the same id further down XDG_DATA_DIRS.
+    if (data.type != QStringLiteral("Application"))
+        return false;
+    if (data.name.isEmpty() && !data.hidden)
         return false;
 
     *result = data;
@@ -316,6 +377,10 @@ void DesktopEntry::update(const DesktopEntryData &data)
         m_icon = data.icon;
         emit iconChanged();
     }
+    if (m_tryExec != data.tryExec) {
+        m_tryExec = data.tryExec;
+        emit tryExecChanged();
+    }
     const bool hasExecChanged = m_exec != data.exec;
     if (hasExecChanged) {
         m_exec = data.exec;
@@ -341,6 +406,14 @@ void DesktopEntry::update(const DesktopEntryData &data)
         m_mimeTypes = data.mimeTypes;
         emit mimeTypesChanged();
     }
+    if (m_onlyShowIn != data.onlyShowIn) {
+        m_onlyShowIn = data.onlyShowIn;
+        emit onlyShowInChanged();
+    }
+    if (m_notShowIn != data.notShowIn) {
+        m_notShowIn = data.notShowIn;
+        emit notShowInChanged();
+    }
     if (m_terminal != data.terminal) {
         m_terminal = data.terminal;
         emit terminalChanged();
@@ -352,6 +425,10 @@ void DesktopEntry::update(const DesktopEntryData &data)
     if (m_hidden != data.hidden) {
         m_hidden = data.hidden;
         emit hiddenChanged();
+    }
+    if (m_dbusActivatable != data.dbusActivatable) {
+        m_dbusActivatable = data.dbusActivatable;
+        emit dbusActivatableChanged();
     }
 
     const QStringList command = commandForArguments(QStringList());
