@@ -15,9 +15,9 @@ namespace cutefish::upower {
 
 class Device;
 
-// The battery as cutefish-services reports it, and whether the system runs
-// on it (UPower's OnBattery). Everything is read asynchronously and kept
-// here, so the getters never block.
+// The computer's batteries taken together, as cutefish-services reports
+// them, and whether the system runs on them (UPower's OnBattery). Everything
+// is read asynchronously and kept here, so the getters never block.
 class BatteryStatus
 {
 public:
@@ -44,12 +44,12 @@ public:
     // The service's enum: NoCharge, Charging, Discharging, FullyCharged.
     int chargeState() const { return m_chargeState; }
     int chargePercent() const { return m_chargePercent; }
-    int capacity() const { return m_capacity; }
     const std::string& statusString() const { return m_statusString; }
     int lastChargedPercent() const { return m_lastChargedPercent; }
     int64_t lastChargedSecs() const { return m_lastChargedSecs; }
-    // The UPower device object path.
-    const std::string& udi() const { return m_udi; }
+    // The UPower device object paths of the batteries, each with its own
+    // capacity, charge limit and history.
+    const std::vector<std::string>& batteries() const { return m_batteries; }
 
     // Asks the service to read the battery again.
     void refresh();
@@ -59,10 +59,9 @@ public:
     base::Signal<> onBatteryChanged;
     base::Signal<> chargeStateChanged;
     base::Signal<> chargePercentChanged;
-    base::Signal<> capacityChanged;
     base::Signal<> statusStringChanged;
     base::Signal<> lastChargedChanged;
-    base::Signal<> udiChanged;
+    base::Signal<> batteriesChanged;
 
 private:
     void fetchState();
@@ -83,11 +82,10 @@ private:
     bool m_onBattery = false;
     int m_chargeState = 0;
     int m_chargePercent = 0;
-    int m_capacity = 0;
     std::string m_statusString;
     int m_lastChargedPercent = 0;
     int64_t m_lastChargedSecs = 0;
-    std::string m_udi;
+    std::vector<std::string> m_batteries;
 };
 
 } // namespace cutefish::upower

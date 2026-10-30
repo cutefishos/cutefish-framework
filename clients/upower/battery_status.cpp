@@ -55,8 +55,8 @@ BatteryStatus::BatteryStatus(Connection* sessionBus, Connection* systemBus)
     }
 
     // The signals only say that something moved; one GetAll brings every value up to date.
-    for (const char* signal : {"chargeStateChanged", "chargePercentChanged", "capacityChanged",
-                               "remainingTimeChanged", "lastChargedPercentChanged", "lastChargedSecsChanged"})
+    for (const char* signal : {"chargeStateChanged", "chargePercentChanged", "remainingTimeChanged",
+                               "lastChargedPercentChanged", "lastChargedSecsChanged", "batteriesChanged"})
         m_matches.push_back(m_service.onSignal(signal, [this](const Message&) { fetchState(); }));
 
     m_matches.push_back(m_upower.onPropertiesChanged(
@@ -110,11 +110,15 @@ void BatteryStatus::applyState(const VariantMap& properties)
 
     const int chargeState = int(integer("chargeState", m_chargeState));
     const int chargePercent = int(integer("chargePercent", m_chargePercent));
-    const int capacity = int(integer("capacity", m_capacity));
     const std::string statusString = string("statusString", m_statusString);
     const int lastChargedPercent = int(integer("lastChargedPercent", m_lastChargedPercent));
     const int64_t lastChargedSecs = integer("lastChargedSecs", m_lastChargedSecs);
-    const std::string udi = string("udi", m_udi);
+    std::vector<std::string> batteries = m_batteries;
+    if (const auto it = properties.find("batteries"); it != properties.end()) {
+        batteries.clear();
+        for (const ObjectPath& path : it->second.value<std::vector<ObjectPath>>())
+            batteries.push_back(path.path);
+    }
 
     if (m_chargeState != chargeState) {
         m_chargeState = chargeState;
@@ -123,10 +127,6 @@ void BatteryStatus::applyState(const VariantMap& properties)
     if (m_chargePercent != chargePercent) {
         m_chargePercent = chargePercent;
         chargePercentChanged.emit();
-    }
-    if (m_capacity != capacity) {
-        m_capacity = capacity;
-        capacityChanged.emit();
     }
     if (m_statusString != statusString) {
         m_statusString = statusString;
@@ -137,9 +137,9 @@ void BatteryStatus::applyState(const VariantMap& properties)
         m_lastChargedSecs = lastChargedSecs;
         lastChargedChanged.emit();
     }
-    if (m_udi != udi) {
-        m_udi = udi;
-        udiChanged.emit();
+    if (m_batteries != batteries) {
+        m_batteries = std::move(batteries);
+        batteriesChanged.emit();
     }
 }
 

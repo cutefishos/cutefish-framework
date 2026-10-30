@@ -8,6 +8,7 @@
 #include <memory>
 #include <thread>
 #include <tuple>
+#include <vector>
 
 #include "base/event_loop.h"
 #include "cutefish/upower/battery_status.h"
@@ -62,6 +63,7 @@ public:
     // cutefish-services' battery.
     int32_t chargePercent = 64;
     int64_t lastChargedSecs = 1700000000;
+    std::vector<ObjectPath> batteries{{kDevicePath}};
     int refreshes = 0;
     std::unique_ptr<Object> batteryObject;
 
@@ -95,13 +97,13 @@ private:
             Object& battery = *batteryObject;
             battery.addProperty("chargeState", [] { return int32_t(2); });
             battery.addProperty("chargePercent", [this] { return chargePercent; });
-            battery.addProperty("capacity", [] { return int32_t(93); });
             battery.addProperty("statusString", [] { return std::string("Discharging"); });
             battery.addProperty("lastChargedPercent", [] { return int32_t(100); });
             battery.addProperty("lastChargedSecs", [this] { return lastChargedSecs; });
-            battery.addProperty("udi", [] { return std::string(kDevicePath); });
+            battery.addProperty("batteries", [this] { return batteries; });
             battery.addMethod("refresh", [this] { ++refreshes; });
             battery.addSignal("chargePercentChanged", "i");
+            battery.addSignal("batteriesChanged", "");
             published = battery.publish();
         }
 
@@ -219,11 +221,10 @@ TEST_F(UPowerTest, BatteryStatusReadsAndFollowsTheService)
     EXPECT_EQ(available, 1);
     EXPECT_EQ(status.chargeState(), 2);
     EXPECT_EQ(status.chargePercent(), 64);
-    EXPECT_EQ(status.capacity(), 93);
     EXPECT_EQ(status.statusString(), "Discharging");
     EXPECT_EQ(status.lastChargedPercent(), 100);
     EXPECT_EQ(status.lastChargedSecs(), 1700000000);
-    EXPECT_EQ(status.udi(), kDevicePath);
+    EXPECT_EQ(status.batteries(), std::vector<std::string>{kDevicePath});
 
     // A change signal is only a cue: the values come from a fresh read.
     int percent = 0;
@@ -234,6 +235,16 @@ TEST_F(UPowerTest, BatteryStatusReadsAndFollowsTheService)
     });
     ASSERT_TRUE(waitFor([&] { return status.chargePercent() == 65; }));
     EXPECT_EQ(percent, 1);
+
+    int batteries = 0;
+    Subscription batteriesSubscription = status.batteriesChanged.connect([&] { ++batteries; });
+    m_services->inService([&] {
+        m_services->batteries.push_back({"/org/freedesktop/UPower/devices/battery_BAT1"});
+        m_services->batteryObject->emitSignal("batteriesChanged");
+    });
+    ASSERT_TRUE(waitFor([&] { return status.batteries().size() == 2; }));
+    EXPECT_EQ(status.batteries()[1], "/org/freedesktop/UPower/devices/battery_BAT1");
+    EXPECT_EQ(batteries, 1);
 
     status.refresh();
     ASSERT_TRUE(waitFor([&] { return m_services->inService([&] { return m_services->refreshes; }) == 1; }));
