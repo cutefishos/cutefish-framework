@@ -475,7 +475,8 @@ void Handler::deactivateConnection(const std::string& connection, const std::str
         m_client->call(managerPath, managerInterface, "DeactivateConnection", {path(active)}, &m_context, {},
                        Client::authorizedTimeout);
     };
-    // Unlike taking the connection down, this keeps the device from connecting again by itself.
+    // Unlike taking the connection down, this keeps the device from connecting
+    // again by itself, so another Wi-Fi network is not joined in its place.
     const auto disconnect = [this](const std::string& device) {
         m_client->call(device, deviceInterface, "Disconnect", {}, &m_context, {}, Client::authorizedTimeout);
     };
@@ -488,8 +489,10 @@ void Handler::deactivateConnection(const std::string& connection, const std::str
             continue;
 
         // A VPN rides on another device's connection, and a profile named
-        // without a device (WireGuard's) has an interface of its own.
-        if (device.empty() || toBool(m_client->property(active, activeInterface, "Vpn")))
+        // without a device (WireGuard's) has an interface of its own. A wired
+        // device keeps its autoconnect flag, which is the Ethernet switch.
+        if (device.empty() || toBool(m_client->property(active, activeInterface, "Vpn"))
+            || m_client->deviceType(device) != DeviceWifi)
             takeDown(active);
         else if (onDevice)
             disconnect(device);

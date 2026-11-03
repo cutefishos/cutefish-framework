@@ -655,6 +655,15 @@ TEST_F(ClientTest, SwitchesGoToNetworkManager)
     EXPECT_EQ(nm->last("Disconnect").path, wiredDevice);
 }
 
+TEST_F(ClientTest, DisconnectingAWiredProfileLeavesEthernetOn)
+{
+    Handler handler;
+    handler.deactivateConnection(wiredProfile, wiredDevice);
+    ASSERT_TRUE(waitFor([&] { return nm->count("DeactivateConnection") == 1; }));
+    EXPECT_EQ(pathArgument(nm->last("DeactivateConnection"), 0), wiredActive);
+    EXPECT_EQ(nm->count("Disconnect"), 0);
+}
+
 TEST_F(ClientTest, HotspotKeepsOneProfile)
 {
     Handler handler;
