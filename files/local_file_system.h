@@ -32,6 +32,11 @@ public:
     static void remove(const Url& url, OperationContext& context);
     static void mkdir(const std::string& path);
 
+    // Whether items may be added to the folder or taken out of it, by the
+    // user or, for the shared Applications folder, once an administrator
+    // agreed.
+    static bool canChange(const std::string& folder);
+
     static Url trash(const Url& url, OperationContext& context);
     static Url restore(const Url& url, ConflictPolicy policy, OperationContext& context);
     static void emptyTrash(OperationContext& context);

@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <sys/syscall.h>
 
+#include "applications_folder_p.h"
 #include "base/application_bundle.h"
 #include "base/strings.h"
 #include "base/uuid.h"
@@ -392,6 +393,43 @@ static std::string temporaryName(const char* prefix)
     return std::string(prefix) + id;
 }
 
+// A folder that is setgid and group-writable is shared with its group, which
+// may then change what arrives in it too.
+static bool isShared(int folder, gid_t* group)
+{
+    struct stat st;
+    if (::fstat(folder, &st) != 0 || (st.st_mode & (S_ISGID | S_IWGRP)) != (S_ISGID | S_IWGRP))
+        return false;
+    *group = st.st_gid;
+    return true;
+}
+
+static void shareAt(int parent, const std::string& name, gid_t group, const std::string& path)
+{
+    struct stat st;
+    check(::fstatat(parent, name.c_str(), &st, AT_SYMLINK_NOFOLLOW), path);
+    if (st.st_gid != group)
+        check(::fchownat(parent, name.c_str(), uid_t(-1), group, AT_SYMLINK_NOFOLLOW), path);
+    if (S_ISLNK(st.st_mode))
+        return;
+    if ((st.st_mode & S_IWGRP) == 0)
+        check(::fchmodat(parent, name.c_str(), (st.st_mode & 07777) | S_IWGRP, 0), path);
+    if (!S_ISDIR(st.st_mode))
+        return;
+    Fd directory(::openat(parent, name.c_str(), O_RDONLY | O_DIRECTORY | O_NOFOLLOW | O_CLOEXEC));
+    check(directory.value, path);
+    children(directory.value, path, [&](const std::string& child, const std::string& childPath) {
+        shareAt(directory.value, child, group, childPath);
+    });
+}
+
+static void shareWithFolder(int folder, const std::string& name, const std::string& path)
+{
+    gid_t group = 0;
+    if (isShared(folder, &group))
+        shareAt(folder, name, group, path);
+}
+
 static std::string publish(int parent, const std::string& temporary, const std::string& source,
                            const std::string& destination, ConflictPolicy policy, OperationContext& ctx)
 {
@@ -455,6 +493,52 @@ static std::string publish(int parent, const std::string& temporary, const std::
     }
 }
 
+// Into the Applications folder as a user who may not change it: copied into
+// a staging folder of the user's own there, then published by the helper. An
+// item is replaced whole, folders included.
+static std::string copyThroughHelper(const std::string& source, const std::string& destination,
+                                     ConflictPolicy policy, OperationContext& ctx)
+{
+    const std::string staging = applications_folder::prepare();
+    try {
+        const std::string name = native(fileNameOf(destination));
+        LocalFileSystem::copy(source, staging + '/' + name, ConflictPolicy::Fail, ctx);
+
+        std::string target = name;
+        bool replace = false;
+        for (int suffix = 1;;) {
+            struct stat st;
+            if (::lstat((absolutePathOf(destination) + '/' + target).c_str(), &st) != 0)
+                break;
+            if (policy == ConflictPolicy::Ask) {
+                policy = ctx.conflict ? ctx.conflict(source, destination) : ConflictPolicy::Fail;
+                ctx.checkpoint(destination);
+            }
+            if (policy == ConflictPolicy::Skip) {
+                applications_folder::discard(staging);
+                return {};
+            }
+            if (policy == ConflictPolicy::Fail)
+                throw Failure(EEXIST, destination);
+            if (policy == ConflictPolicy::Replace) {
+                validateReplacement(source, destination);
+                replace = true;
+                break;
+            }
+            target = keptName(destination, suffix++);
+        }
+        if (target != name)
+            check(::rename((staging + '/' + name).c_str(), (staging + '/' + target).c_str()), destination);
+        return applications_folder::publish(staging, target, replace);
+    } catch (...) {
+        try {
+            applications_folder::discard(staging);
+        } catch (...) {
+        }
+        throw;
+    }
+}
+
 std::string LocalFileSystem::copy(const std::string& source, const std::string& destination, ConflictPolicy policy,
                                   OperationContext& ctx)
 {
@@ -466,6 +550,9 @@ std::string LocalFileSystem::copy(const std::string& source, const std::string& 
     if (!duplicate || policy != ConflictPolicy::KeepBoth)
         validateDestination(source, destination);
 
+    if (applications_folder::needsHelper(absolutePathOf(destination)))
+        return copyThroughHelper(source, destination, policy, ctx);
+
     ctx.checkpoint(source);
     Parent input(source), output(destination);
     const std::string temporary = temporaryName(".cutefish-copy-");
@@ -473,6 +560,7 @@ std::string LocalFileSystem::copy(const std::string& source, const std::string& 
     try {
         Writeback writeback;
         copyAt(input.fd.value, input.name, output.fd.value, temporary, source, ctx, writeback);
+        shareWithFolder(output.fd.value, temporary, destination);
         ctx.checkpoint(source);
 
         auto result = publish(output.fd.value, temporary, source, destination, policy, ctx);
@@ -526,6 +614,31 @@ static bool isNewCase(const std::string& source, const std::string& destination)
         && a.st_dev == b.st_dev && a.st_ino == b.st_ino && (S_ISDIR(a.st_mode) || a.st_nlink == 1);
 }
 
+// Out of the Applications folder as a user who may not change it: the helper
+// hands the item over in a staging folder, from where it moves on; it goes
+// back when it does not.
+static std::string moveOutThroughHelper(const std::string& source, const std::string& destination,
+                                        ConflictPolicy policy, OperationContext& ctx)
+{
+    const std::string name = native(fileNameOf(source));
+    const std::string staging = applications_folder::release(name);
+    std::string result;
+    try {
+        result = LocalFileSystem::move(staging + '/' + name, destination, policy, ctx);
+    } catch (...) {
+        try {
+            applications_folder::publish(staging, name, false);
+        } catch (...) {
+        }
+        throw;
+    }
+    if (result.empty())
+        applications_folder::publish(staging, name, false);
+    else
+        applications_folder::discard(staging);
+    return result;
+}
+
 std::string LocalFileSystem::move(const std::string& source, const std::string& destination, ConflictPolicy policy,
                                   OperationContext& ctx)
 {
@@ -557,10 +670,16 @@ std::string LocalFileSystem::move(const std::string& source, const std::string& 
 
     if (::syscall(SYS_renameat2, input.fd.value, input.name.c_str(), output.fd.value, output.name.c_str(),
                   RENAME_NOREPLACE)
-        == 0)
+        == 0) {
+        shareWithFolder(output.fd.value, output.name, destination);
         return destination;
+    }
 
     const int code = errno;
+    if (code == EACCES && applications_folder::needsHelper(absolutePathOf(source)))
+        return moveOutThroughHelper(source, destination, policy, ctx);
+    // Into the Applications folder through the helper, as a copy.
+    const bool throughHelper = code == EACCES && applications_folder::needsHelper(absolutePathOf(destination));
     if (code == EEXIST && policy == ConflictPolicy::Ask) {
         policy = ctx.conflict ? ctx.conflict(source, destination) : ConflictPolicy::Fail;
         ctx.checkpoint(destination);
@@ -577,8 +696,10 @@ std::string LocalFileSystem::move(const std::string& source, const std::string& 
             const std::string name = keptName(destination, suffix);
             if (::syscall(SYS_renameat2, input.fd.value, input.name.c_str(), output.fd.value, name.c_str(),
                           RENAME_NOREPLACE)
-                == 0)
+                == 0) {
+                shareWithFolder(output.fd.value, name, destination);
                 return absolutePathOf(destination) + '/' + name;
+            }
             if (errno != EEXIST)
                 break;
         }
@@ -586,11 +707,14 @@ std::string LocalFileSystem::move(const std::string& source, const std::string& 
 
     if (code == EEXIST && policy == ConflictPolicy::Replace) {
         validateReplacement(source, destination);
-        if (::renameat(input.fd.value, input.name.c_str(), output.fd.value, output.name.c_str()) == 0)
+        if (::renameat(input.fd.value, input.name.c_str(), output.fd.value, output.name.c_str()) == 0) {
+            shareWithFolder(output.fd.value, output.name, destination);
             return destination;
-        if (errno != EXDEV && errno != ENOTEMPTY && errno != EEXIST)
+        }
+        if (errno != EXDEV && errno != ENOTEMPTY && errno != EEXIST
+            && !(errno == EACCES && applications_folder::needsHelper(absolutePathOf(destination))))
             throw Failure(errno, destination);
-    } else if (code != EXDEV && code != EEXIST) {
+    } else if (code != EXDEV && code != EEXIST && !throughHelper) {
         throw Failure(code, destination);
     }
 
@@ -609,8 +733,18 @@ std::string LocalFileSystem::move(const std::string& source, const std::string& 
 
 void LocalFileSystem::remove(const std::string& path, OperationContext& ctx)
 {
+    if (applications_folder::needsHelper(absolutePathOf(path))) {
+        ctx.checkpoint(path);
+        applications_folder::discard(applications_folder::release(native(fileNameOf(path))));
+        return;
+    }
     Parent parent(path);
     eraseAt(parent.fd.value, parent.name, path, ctx);
+}
+
+bool LocalFileSystem::canChange(const std::string& folder)
+{
+    return ::access(native(folder).c_str(), W_OK | X_OK) == 0 || applications_folder::needsHelper(folder);
 }
 
 void LocalFileSystem::mkdir(const std::string& path)

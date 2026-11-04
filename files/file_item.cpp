@@ -11,6 +11,8 @@
 #include "base/paths.h"
 #include "cutefish/files/error.h"
 #include "cutefish/files/file_system_url.h"
+#include "cutefish/files/local_file_system.h"
+#include "applications_folder_p.h"
 #include "cutefish/files/mime_types.h"
 #include "mime_sniffer_p.h"
 #include "path_utils_p.h"
@@ -153,7 +155,8 @@ void FileItem::readStat(Stat* result) const
     result->access = milliseconds(info.stx_atime);
     result->modified = milliseconds(info.stx_mtime);
     result->changed = milliseconds(info.stx_ctime);
-    result->writable = result->exists && ::access(path.c_str(), W_OK) == 0;
+    result->writable = result->exists
+            && (::access(path.c_str(), W_OK) == 0 || (result->dir && internal::applications_folder::needsHelper(path)));
 }
 
 const FileItem::Stat& FileItem::stat() const
@@ -358,7 +361,7 @@ bool FileItemListProperties::supportsMoving() const
         return false;
 
     for (const auto& item : m_items) {
-        if (item.isNull() || ::access(internal::absolutePathOf(item.localPath()).c_str(), W_OK) != 0)
+        if (item.isNull() || !LocalFileSystem::canChange(internal::absolutePathOf(item.localPath())))
             return false;
     }
 

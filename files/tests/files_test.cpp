@@ -386,6 +386,39 @@ TEST_F(FilesTest, ApplicationBundleConflictReplacesItWhole)
         EXPECT_EQ(entry.path().filename(), "Editor.app");
 }
 
+TEST_F(FilesTest, ASharedFolderGetsGroupWritableItems)
+{
+    TemporaryDirectory dir;
+    ASSERT_TRUE(makePath(dir.filePath("source/Editor.app/Contents")));
+    writeFile(dir.filePath("source/Editor.app/Contents/Info.plist"));
+    ASSERT_EQ(::chmod(dir.filePath("source/Editor.app/Contents/Info.plist").c_str(), 0444), 0);
+    ASSERT_EQ(::chmod(dir.filePath("source/Editor.app/Contents").c_str(), 0555), 0);
+    writeFile(dir.filePath("source/Moved"));
+    ASSERT_EQ(::chmod(dir.filePath("source/Moved").c_str(), 0644), 0);
+    ASSERT_TRUE(makePath(dir.filePath("shared")));
+    ASSERT_EQ(::chmod(dir.filePath("shared").c_str(), 02775), 0);
+    OperationContext ctx;
+
+    const auto mode = [](const std::string& path) {
+        struct stat st;
+        return ::lstat(path.c_str(), &st) == 0 ? st.st_mode & 0777 : 0;
+    };
+    LocalFileSystem::copy(dir.filePath("source/Editor.app"), dir.filePath("shared/Editor.app"), ConflictPolicy::Fail,
+                          ctx);
+    EXPECT_EQ(mode(dir.filePath("shared/Editor.app/Contents")), mode_t(0575));
+    EXPECT_EQ(mode(dir.filePath("shared/Editor.app/Contents/Info.plist")), mode_t(0464));
+    LocalFileSystem::move(dir.filePath("source/Moved"), dir.filePath("shared/Moved"), ConflictPolicy::Fail, ctx);
+    EXPECT_EQ(mode(dir.filePath("shared/Moved")), mode_t(0664));
+
+    // Elsewhere, items keep their own modes.
+    LocalFileSystem::copy(dir.filePath("source/Editor.app"), dir.filePath("Editor.app"), ConflictPolicy::Fail, ctx);
+    EXPECT_EQ(mode(dir.filePath("Editor.app/Contents/Info.plist")), mode_t(0444));
+
+    ASSERT_EQ(::chmod(dir.filePath("source/Editor.app/Contents").c_str(), 0755), 0);
+    ASSERT_EQ(::chmod(dir.filePath("shared/Editor.app/Contents").c_str(), 0775), 0);
+    ASSERT_EQ(::chmod(dir.filePath("Editor.app/Contents").c_str(), 0755), 0);
+}
+
 TEST_F(FilesTest, SelfAndDescendantProtection)
 {
     TemporaryDirectory dir;

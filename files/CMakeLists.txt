@@ -45,6 +45,8 @@ cutefish_framework_add_library(cutefish-files
     MODULE files
     EXPORT CutefishFilesTargets
     SOURCES
+        applications_folder.cpp
+        applications_folder_p.h
         async_p.cpp
         async_p.h
         directory_lister.cpp
