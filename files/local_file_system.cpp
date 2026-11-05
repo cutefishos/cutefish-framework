@@ -129,7 +129,7 @@ private:
 } // namespace
 
 static void copyAt(int sourceParent, const std::string& source, int targetParent, const std::string& target,
-                   const std::string& path, OperationContext& ctx, Writeback& writeback)
+                   const std::string& path, OperationContext& ctx, Writeback& writeback, struct stat* created = nullptr)
 {
     ctx.checkpoint(path);
 
@@ -178,6 +178,8 @@ static void copyAt(int sourceParent, const std::string& source, int targetParent
 
         Fd output(::openat(targetParent, target.c_str(), O_WRONLY | O_CREAT | O_EXCL | O_NOFOLLOW | O_CLOEXEC, 0600));
         check(output.value, path);
+        if (created)
+            check(::fstat(output.value, created), path);
 
         std::string buffer;
         off_t position = 0;
@@ -430,6 +432,78 @@ static void shareWithFolder(int folder, const std::string& name, const std::stri
         shareAt(folder, name, group, path);
 }
 
+// FUSE backends may support ordinary rename but reject its optional flags.
+static bool unsupportedRenameFlags(int code)
+{
+    return code == EINVAL || code == ENOSYS || code == EOPNOTSUPP;
+}
+
+// Remove only the entry reserved by this operation. A concurrent replacement
+// belongs to its creator, even if our copy is then cancelled or fails.
+static void removeReservation(int parent, const std::string& name, const struct stat& created, int flags)
+{
+    struct stat current;
+    if (created.st_ino && ::fstatat(parent, name.c_str(), &current, AT_SYMLINK_NOFOLLOW) == 0
+        && current.st_dev == created.st_dev && current.st_ino == created.st_ino)
+        ::unlinkat(parent, name.c_str(), flags);
+}
+
+static void publishNoReplace(int parent, const std::string& temporary, const std::string& name,
+                             const std::string& path, OperationContext& ctx)
+{
+    if (::syscall(SYS_renameat2, parent, temporary.c_str(), parent, name.c_str(), RENAME_NOREPLACE) == 0)
+        return;
+    if (!unsupportedRenameFlags(errno))
+        throw Failure(errno, path);
+
+    struct stat from;
+    check(::fstatat(parent, temporary.c_str(), &from, AT_SYMLINK_NOFOLLOW), path);
+    if (S_ISDIR(from.st_mode)) {
+        // mkdir reserves the name without replacing an existing entry. Ordinary
+        // rename can replace our empty reservation, but cannot erase a directory
+        // another writer has populated in the meantime.
+        check(::mkdirat(parent, name.c_str(), 0700), path);
+        struct stat created{};
+        try {
+            check(::fstatat(parent, name.c_str(), &created, AT_SYMLINK_NOFOLLOW), path);
+            ctx.checkpoint(path);
+            check(::renameat(parent, temporary.c_str(), parent, name.c_str()), path);
+        } catch (...) {
+            removeReservation(parent, name, created, AT_REMOVEDIR);
+            throw;
+        }
+        return;
+    }
+
+    // A hard link publishes files and symlinks without clobbering another name.
+    if (::linkat(parent, temporary.c_str(), parent, name.c_str(), 0) == 0) {
+        check(::unlinkat(parent, temporary.c_str(), 0), path);
+        return;
+    }
+    const int code = errno;
+    if (!unsupportedRenameFlags(code) && code != EPERM && code != EXDEV)
+        throw Failure(code, path);
+
+    // Cloud FUSE mounts commonly lack hard links too. Copy into an exclusively
+    // created final file instead of the racy exists-then-rename workaround.
+    // The staged bytes have already been counted; only relay cancellation and
+    // progress notifications during this additional local-cache copy.
+    OperationContext copying;
+    copying.cancelFlag = &ctx.canceled;
+    copying.currentItem = [&](const std::string& item) { ctx.checkpoint(item); };
+    copying.progress = [&](uint64_t, uint64_t) { ctx.advance(0); };
+    Writeback writeback;
+    struct stat created{};
+    try {
+        copyAt(parent, temporary, parent, name, path, copying, writeback, &created);
+        ctx.checkpoint(path);
+    } catch (...) {
+        removeReservation(parent, name, created, 0);
+        throw;
+    }
+    check(::unlinkat(parent, temporary.c_str(), 0), path);
+}
+
 static std::string publish(int parent, const std::string& temporary, const std::string& source,
                            const std::string& destination, ConflictPolicy policy, OperationContext& ctx)
 {
@@ -437,11 +511,13 @@ static std::string publish(int parent, const std::string& temporary, const std::
     int suffix = 1;
 
     for (;;) {
-        if (::syscall(SYS_renameat2, parent, temporary.c_str(), parent, name.c_str(), RENAME_NOREPLACE) == 0)
+        try {
+            publishNoReplace(parent, temporary, name, destination, ctx);
             return absolutePathOf(destination) + '/' + name;
-
-        if (errno != EEXIST)
-            throw Failure(errno, destination);
+        } catch (const Failure& failure) {
+            if (failure.error.code != EEXIST)
+                throw;
+        }
 
         if (policy == ConflictPolicy::Ask) {
             policy = ctx.conflict ? ctx.conflict(source, destination) : ConflictPolicy::Fail;
@@ -714,7 +790,7 @@ std::string LocalFileSystem::move(const std::string& source, const std::string& 
         if (errno != EXDEV && errno != ENOTEMPTY && errno != EEXIST
             && !(errno == EACCES && applications_folder::needsHelper(absolutePathOf(destination))))
             throw Failure(errno, destination);
-    } else if (code != EXDEV && code != EEXIST && !throughHelper) {
+    } else if (code != EXDEV && code != EEXIST && !throughHelper && !unsupportedRenameFlags(code)) {
         throw Failure(code, destination);
     }
 
