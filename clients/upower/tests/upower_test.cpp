@@ -4,6 +4,8 @@
 #include <gtest/gtest.h>
 
 #include <chrono>
+#include <cstdio>
+#include <cstdlib>
 #include <future>
 #include <memory>
 #include <thread>
@@ -25,6 +27,18 @@ namespace {
 constexpr const char* kDevicePath = "/org/freedesktop/UPower/devices/battery_BAT0";
 constexpr const char* kDeviceInterface = "org.freedesktop.UPower.Device";
 
+// A services thread that stops answering ends the case with a message rather
+// than leaving it waiting.
+template<typename T>
+T await(std::future<T> future, const char* what)
+{
+    if (future.wait_for(10s) != std::future_status::ready) {
+        std::fprintf(stderr, "The services' thread did not answer: %s\n", what);
+        std::abort();
+    }
+    return future.get();
+}
+
 // cutefish-services' battery and UPower on the session bus, on a thread of
 // their own as in other processes.
 class FakeServices
@@ -35,7 +49,7 @@ public:
     {
         std::promise<bool> ready;
         m_thread = std::thread([this, &ready] { run(ready); });
-        m_ready = ready.get_future().get();
+        m_ready = await(ready.get_future(), "start");
     }
     ~FakeServices()
     {
@@ -57,7 +71,7 @@ public:
                 result.set_value(f());
             }
         });
-        return result.get_future().get();
+        return await(result.get_future(), "inService");
     }
 
     // cutefish-services' battery.
@@ -203,7 +217,7 @@ protected:
 
 TEST_F(UPowerTest, ReadyWithoutABattery)
 {
-    startServices(false);
+    ASSERT_NO_FATAL_FAILURE(startServices(false));
     BatteryStatus status(bus(), bus());
     ASSERT_TRUE(waitFor([&] { return status.isReady(); }));
     EXPECT_FALSE(status.isAvailable());
@@ -212,7 +226,7 @@ TEST_F(UPowerTest, ReadyWithoutABattery)
 
 TEST_F(UPowerTest, BatteryStatusReadsAndFollowsTheService)
 {
-    startServices();
+    ASSERT_NO_FATAL_FAILURE(startServices());
     BatteryStatus status(bus(), bus());
     int available = 0;
     Subscription availableSubscription = status.availableChanged.connect([&] { ++available; });
@@ -252,7 +266,7 @@ TEST_F(UPowerTest, BatteryStatusReadsAndFollowsTheService)
 
 TEST_F(UPowerTest, ThePowerSourceFollowsUPower)
 {
-    startServices();
+    ASSERT_NO_FATAL_FAILURE(startServices());
     BatteryStatus status(bus(), bus());
     ASSERT_TRUE(waitFor([&] { return status.isReady(); }));
     EXPECT_FALSE(status.onBattery());
@@ -270,7 +284,7 @@ TEST_F(UPowerTest, ThePowerSourceFollowsUPower)
 
 TEST_F(UPowerTest, WithoutASessionBusTheDisplayDeviceIsRead)
 {
-    startServices();
+    ASSERT_NO_FATAL_FAILURE(startServices());
     BatteryStatus status(nullptr, bus());
     ASSERT_TRUE(waitFor([&] { return status.isReady(); }));
     EXPECT_TRUE(status.isAvailable());
@@ -294,7 +308,7 @@ TEST_F(UPowerTest, WithoutASessionBusTheDisplayDeviceIsRead)
 
 TEST_F(UPowerTest, WithoutASessionBusOrABatteryNothingIsAvailable)
 {
-    startServices(false);
+    ASSERT_NO_FATAL_FAILURE(startServices(false));
     BatteryStatus status(nullptr, bus());
     ASSERT_TRUE(waitFor([&] { return status.isReady(); }));
     EXPECT_FALSE(status.isAvailable());
@@ -314,7 +328,7 @@ TEST_F(UPowerTest, SharedStatusIsOneWhileHeld)
 
 TEST_F(UPowerTest, DeviceReadsItsChargeLimit)
 {
-    startServices();
+    ASSERT_NO_FATAL_FAILURE(startServices());
     Device device(kDevicePath, bus());
     int changes = 0;
     Subscription subscription = device.propertiesChanged.connect([&](const VariantMap&) { ++changes; });
@@ -329,7 +343,7 @@ TEST_F(UPowerTest, DeviceReadsItsChargeLimit)
 
 TEST_F(UPowerTest, EnablingTheChargeLimitMayAskAndAnnouncesIt)
 {
-    startServices();
+    ASSERT_NO_FATAL_FAILURE(startServices());
     Device device(kDevicePath, bus());
     ASSERT_TRUE(waitFor([&] { return device.isReady(); }));
     bool answered = false;
@@ -355,7 +369,7 @@ TEST_F(UPowerTest, EnablingTheChargeLimitMayAskAndAnnouncesIt)
 
 TEST_F(UPowerTest, HistoryComesBackAsSamples)
 {
-    startServices();
+    ASSERT_NO_FATAL_FAILURE(startServices());
     Device device(kDevicePath, bus());
     std::optional<std::vector<HistorySample>> samples;
     bool answered = false;
@@ -388,7 +402,7 @@ TEST_F(UPowerTest, HistoryComesBackAsSamples)
 
 TEST_F(UPowerTest, HistoryOfAMissingDeviceIsEmpty)
 {
-    startServices();
+    ASSERT_NO_FATAL_FAILURE(startServices());
     Device device("/org/freedesktop/UPower/devices/battery_BAT9", bus());
     bool answered = false;
     std::optional<std::vector<HistorySample>> samples = std::vector<HistorySample>{};
