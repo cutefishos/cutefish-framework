@@ -1,0 +1,1476 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-framework\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-10-19 23:15+0800\n"
+"PO-Revision-Date: 2026-10-19 23:15+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "The accounts service cannot be reached"
+msgstr "アカウントサービスに接続できません"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "Created user was removed"
+msgstr "作成したユーザは削除されました"
+
+#. TRANSLATORS: a sound setting that failed, then why, such as "Set device volume: Permission denied".
+#: clients/audio/backend.cpp
+#, python-brace-format
+msgid "{operation}: {error}"
+msgstr "{operation}: {error}"
+
+#: clients/audio/backend.cpp
+msgid "Set device volume"
+msgstr "デバイスの音量の設定"
+
+#: clients/audio/backend.cpp
+msgid "Set audio properties"
+msgstr "オーディオプロパティの設定"
+
+#: clients/audio/backend.cpp
+msgid "Set default device"
+msgstr "デフォルトデバイスの設定"
+
+#: clients/audio/backend.cpp
+msgid "Set device profile"
+msgstr "デバイスプロファイルの設定"
+
+#: clients/audio/backend.cpp
+msgid "Set device route"
+msgstr "デバイスのポートの設定"
+
+#: clients/audio/backend.cpp
+msgid "Move audio stream"
+msgstr "オーディオストリームの移動"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Cannot unblock Bluetooth: {error}"
+msgstr "Bluetooth のブロックを解除できません: {error}"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't finish pairing in time. Try again."
+msgstr "デバイスのペアリングが時間内に完了しませんでした。もう一度お試しください。"
+
+#: clients/bluez/manager.cpp
+msgid "The system D-Bus connection is unavailable."
+msgstr "システムの D-Bus 接続を利用できません。"
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is blocked by a hardware switch."
+msgstr "Bluetooth はハードウェアスイッチでブロックされています。"
+
+#: clients/bluez/manager.cpp
+msgid "The Bluetooth service is unavailable."
+msgstr "Bluetooth サービスを利用できません。"
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth couldn't complete the request."
+msgstr "Bluetooth は要求を完了できませんでした。"
+
+#: clients/bluez/manager.cpp
+msgid "This device is no longer available."
+msgstr "このデバイスはもう利用できません。"
+
+#: clients/bluez/manager.cpp
+msgid "The device is busy. Try again in a moment."
+msgstr "デバイスは使用中です。しばらくしてからもう一度お試しください。"
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth isn't ready yet. Try again in a moment."
+msgstr "Bluetooth はまだ準備ができていません。しばらくしてからもう一度お試しください。"
+
+#: clients/bluez/manager.cpp
+msgid "This device has no media player."
+msgstr "このデバイスにはメディアプレーヤがありません。"
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent: no system bus."
+msgstr "Bluetooth ペアリングエージェントをエクスポートできません: システムバスがありません。"
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent."
+msgstr "Bluetooth ペアリングエージェントをエクスポートできません。"
+
+#: clients/bluez/manager.cpp
+msgid "Enter a PIN containing 1–16 bytes."
+msgstr "1～16 バイトの PIN を入力してください。"
+
+#: clients/bluez/manager.cpp
+msgid "Enter a passkey containing 1–6 digits."
+msgstr "1～6 桁のパスキーを入力してください。"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't connect to {device}"
+msgstr "{device} に接続できませんでした"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't connect to the device"
+msgstr "デバイスに接続できませんでした"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't disconnect {device}"
+msgstr "{device} の接続を解除できませんでした"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't disconnect the device"
+msgstr "デバイスの接続を解除できませんでした"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't pair with {device}"
+msgstr "{device} とペアリングできませんでした"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't pair with the device"
+msgstr "デバイスとペアリングできませんでした"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't forget {device}"
+msgstr "{device} の登録を解除できませんでした"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't forget the device"
+msgstr "デバイスの登録を解除できませんでした"
+
+#: clients/bluez/manager.cpp
+msgid "Try again. If it keeps failing, turn the device off and on again."
+msgstr "もう一度お試しください。それでも失敗する場合は、デバイスの電源を入れ直してください。"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond in time. Make sure it is turned on and nearby."
+msgstr "デバイスが時間内に応答しませんでした。電源が入っていて近くにあることを確認してください。"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond. Make sure it is turned on, nearby, and not connected to another device."
+msgstr "デバイスが応答しませんでした。電源が入っていて近くにあり、ほかのデバイスに接続されていないことを確認してください。"
+
+#: clients/bluez/manager.cpp
+msgid "The device no longer recognizes this computer. Forget the device and pair it again."
+msgstr "デバイスがこのコンピュータを認識しなくなりました。デバイスの登録を解除してから、もう一度ペアリングしてください。"
+
+#: clients/bluez/manager.cpp
+msgid "Pairing failed. Make sure the code matches on both devices and try again."
+msgstr "ペアリングに失敗しました。両方のデバイスでコードが一致していることを確認して、もう一度お試しください。"
+
+#: clients/bluez/manager.cpp
+msgid "The device declined the request."
+msgstr "デバイスが要求を拒否しました。"
+
+#: clients/bluez/manager.cpp
+msgid "The device refused the connection."
+msgstr "デバイスが接続を拒否しました。"
+
+#: clients/bluez/manager.cpp
+msgid "The device has no features this computer can use."
+msgstr "このデバイスには、このコンピュータで使用できる機能がありません。"
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is turned off."
+msgstr "Bluetooth はオフになっています。"
+
+#: clients/bluez/manager.cpp
+msgid "Too many devices are connected. Disconnect one and try again."
+msgstr "接続されているデバイスが多すぎます。1 台の接続を解除してから、もう一度お試しください。"
+
+#: clients/bluez/manager.cpp
+msgid "The device ended the connection."
+msgstr "デバイスが接続を終了しました。"
+
+#: clients/bluez/manager.cpp
+msgid "The connection was interrupted. Try again."
+msgstr "接続が中断されました。もう一度お試しください。"
+
+#: clients/display/display_client.cpp
+msgid "The display operation timed out."
+msgstr "ディスプレイの操作がタイムアウトしました。"
+
+#: clients/display/display_client.cpp
+msgid "The display service restarted."
+msgstr "ディスプレイサービスが再起動しました。"
+
+#: clients/display/display_client.cpp
+msgid "Unexpected display state."
+msgstr "ディスプレイの状態が不正です。"
+
+#: clients/display/output_model.cpp
+msgid "Built-in Display"
+msgstr "内蔵ディスプレイ"
+
+#. TRANSLATORS: a monitor and the port it is plugged into, such as "DELL U2720Q (DP-1)".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{name} ({connector})"
+msgstr "{name}（{connector}）"
+
+#. TRANSLATORS: a screen resolution in pixels, such as "1920 × 1080".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{width} × {height}"
+msgstr "{width} × {height}"
+
+#. TRANSLATORS: a refresh rate, such as "60.00 Hz".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{rate} Hz"
+msgstr "{rate} Hz"
+
+#. TRANSLATORS: the choice that shows other content on this display instead of mirroring another one.
+#: clients/display/output_model.cpp
+msgid "Extend"
+msgstr "拡張"
+
+#: clients/display/screen.cpp
+msgid "The display service is unavailable."
+msgstr "ディスプレイサービスを利用できません。"
+
+#: clients/display/screen.cpp
+msgid "Displays changed. The previous draft was discarded."
+msgstr "ディスプレイ構成が変わりました。編集中の設定は破棄されました。"
+
+#: clients/networkmanager/handler.cpp
+msgid "The hotspot could not be started. The Wi-Fi adapter may not support it on this channel or with this password."
+msgstr "ホットスポットを開始できませんでした。Wi-Fi アダプタがこのチャンネルまたはこのパスワードでのホットスポットに対応していない可能性があります。"
+
+#: clients/networkmanager/handler.cpp
+msgid "No Wi-Fi adapter can run a hotspot."
+msgstr "ホットスポットを実行できる Wi-Fi アダプタがありません。"
+
+#: clients/networkmanager/handler.cpp
+msgid "No VPN plugin can read this file. Install the one for your VPN, for example network-manager-openvpn for OpenVPN."
+msgstr "このファイルを読み込める VPN プラグインがありません。お使いの VPN 用のプラグインをインストールしてください（例: OpenVPN 用の network-manager-openvpn）。"
+
+#: clients/networkmanager/handler.cpp
+msgid "This file isn't a VPN configuration this system can read."
+msgstr "このファイルは、このシステムで読み込める VPN 構成ではありません。"
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which reads VPN files, is not installed."
+msgstr "VPN ファイルを読み込む nmcli がインストールされていません。"
+
+#: clients/networkmanager/handler.cpp
+msgid "The private key can't be read, so the file would be incomplete."
+msgstr "秘密鍵を読み込めないため、ファイルが不完全になります。"
+
+#: clients/networkmanager/handler.cpp
+msgid "The file can't be written."
+msgstr "ファイルに書き込めません。"
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which writes VPN files, is not installed."
+msgstr "VPN ファイルを書き出す nmcli がインストールされていません。"
+
+#: clients/networkmanager/handler.cpp
+msgid "The VPN couldn't be written to a file."
+msgstr "VPN をファイルに書き出せませんでした。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Automatic (DHCP)"
+msgstr "自動（DHCP）"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Automatic"
+msgstr "自動"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Manual"
+msgstr "手動"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Off"
+msgstr "オフ"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "DHCP Only"
+msgstr "DHCP のみ"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Link-Local Only"
+msgstr "リンクローカルのみ"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Shared to Other Computers"
+msgstr "ほかのコンピュータと共有"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Left to the System"
+msgstr "システムに任せる"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv4 address."
+msgstr "{address} は IPv4 アドレスではありません。"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv6 address."
+msgstr "{address} は IPv6 アドレスではありません。"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{mask} isn't a subnet mask."
+msgstr "{mask} はサブネットマスクではありません。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "The prefix length must be a number from 1 to 128."
+msgstr "プレフィックス長は 1～128 の数値にしてください。"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a router address."
+msgstr "{address} はルータのアドレスではありません。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv4 name servers need IPv4 set to automatic or manual."
+msgstr "IPv4 のネームサーバを使うには、IPv4 を自動または手動に設定する必要があります。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv6 name servers need IPv6 set to automatic or manual."
+msgstr "IPv6 のネームサーバを使うには、IPv6 を自動または手動に設定する必要があります。"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a name server address."
+msgstr "{address} はネームサーバのアドレスではありません。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Fill in the address and subnet mask."
+msgstr "アドレスとサブネットマスクを入力してください。"
+
+#. TRANSLATORS: a network and the adapter it is on, such as "Home (wlan0)".
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "{name} ({device})"
+msgstr "{name}（{device}）"
+
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "Install {package} to use this VPN."
+msgstr "この VPN を使用するには {package} をインストールしてください。"
+
+#: clients/networkmanager/network_model.cpp
+msgid "Signing in to OpenConnect VPNs isn't supported yet."
+msgstr "OpenConnect VPN へのサインインにはまだ対応していません。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authentication methods"
+msgstr "認証方式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Encryption and compression"
+msgstr "暗号化と圧縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Point-to-point encryption"
+msgstr "ポイントツーポイント暗号化"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not required"
+msgstr "不要"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Any"
+msgstr "任意"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "128-bit"
+msgstr "128 ビット"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "40-bit"
+msgstr "40 ビット"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Stateful encryption"
+msgstr "ステートフル暗号化"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "BSD compression"
+msgstr "BSD 圧縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Deflate compression"
+msgstr "Deflate 圧縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TCP header compression"
+msgstr "TCP ヘッダ圧縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Link"
+msgstr "リンク"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send PPP echo packets"
+msgstr "PPP エコーパケットを送信"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Default"
+msgstr "デフォルト"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "DH group {number}"
+msgstr "DH グループ {number}"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server"
+msgstr "サーバ"
+
+#. TRANSLATORS: keep "host[:port[:proto]]" as it is; it is the syntax the field takes.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "host[:port[:proto]], several separated by commas"
+msgstr "host[:port[:proto]]、複数ある場合はコンマで区切る"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Sign in with"
+msgstr "サインイン方法"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password"
+msgstr "ユーザ名とパスワード"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificates"
+msgstr "証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name, password and certificates"
+msgstr "ユーザ名、パスワード、証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Static key"
+msgstr "静的鍵"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name"
+msgstr "ユーザ名"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Password"
+msgstr "パスワード"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "CA certificate"
+msgstr "CA 証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User certificate"
+msgstr "ユーザ証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key"
+msgstr "秘密鍵"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key password"
+msgstr "秘密鍵のパスワード"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key direction"
+msgstr "鍵の方向"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "None"
+msgstr "なし"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IP address"
+msgstr "リモート IP アドレス"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IP address"
+msgstr "ローカル IP アドレス"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "General"
+msgstr "一般"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Port"
+msgstr "ポート"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use TCP"
+msgstr "TCP を使用"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device type"
+msgstr "デバイスの種類"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device name"
+msgstr "デバイス名"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel MTU"
+msgstr "トンネル MTU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "UDP fragment size"
+msgstr "UDP フラグメントサイズ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restrict TCP maximum segment size"
+msgstr "TCP 最大セグメントサイズを制限"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Path MTU discovery"
+msgstr "経路 MTU 探索"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Never"
+msgstr "しない"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "When possible"
+msgstr "可能な場合"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Always"
+msgstr "常に"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Renegotiate every (seconds)"
+msgstr "再ネゴシエーションの間隔（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Compression"
+msgstr "圧縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow compression"
+msgstr "圧縮を許可"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Incoming only"
+msgstr "受信のみ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Both ways"
+msgstr "双方向"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No"
+msgstr "いいえ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pick servers at random"
+msgstr "サーバをランダムに選択"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Randomise server host names"
+msgstr "サーバのホスト名をランダム化"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow pulled host names"
+msgstr "プッシュされたホスト名を許可"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 inside the tunnel"
+msgstr "トンネル内の IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept the server from any address"
+msgstr "任意のアドレスからのサーバを受け入れる"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send client details to the server"
+msgstr "クライアントの情報をサーバに送信"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ping every (seconds)"
+msgstr "ping の間隔（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Exit without a ping after (seconds)"
+msgstr "ping がない場合に終了するまでの時間（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart without a ping after (seconds)"
+msgstr "ping がない場合に再起動するまでの時間（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Connection timeout (seconds)"
+msgstr "接続タイムアウト（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum routes"
+msgstr "最大ルート数"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Security"
+msgstr "セキュリティ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cipher"
+msgstr "暗号方式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data ciphers"
+msgstr "データ暗号方式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data cipher fallback"
+msgstr "データ暗号方式のフォールバック"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable cipher negotiation"
+msgstr "暗号方式のネゴシエーションを無効にする"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "HMAC authentication"
+msgstr "HMAC 認証"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key size (bits)"
+msgstr "鍵長（ビット）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list file"
+msgstr "失効リストファイル"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list directory"
+msgstr "失効リストディレクトリ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate name"
+msgstr "サーバ証明書の名前"
+
+#. TRANSLATORS: keep the "name:", "subject:" and "name-prefix:" prefixes as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "name:vpn.example.com, subject:… or name-prefix:…"
+msgstr "name:vpn.example.com、subject:… または name-prefix:…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate usage"
+msgstr "サーバ証明書の用途"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not checked"
+msgstr "確認しない"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client"
+msgstr "クライアント"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netscape certificate type"
+msgstr "Netscape 証明書の種類"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS authentication key"
+msgstr "TLS 認証鍵"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS key direction"
+msgstr "TLS 鍵の方向"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key"
+msgstr "TLS 暗号化鍵"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key (v2)"
+msgstr "TLS 暗号化鍵（v2）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra certificates"
+msgstr "追加の証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS cipher"
+msgstr "TLS 暗号方式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Minimum TLS version"
+msgstr "TLS の最小バージョン"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Or the highest the server supports"
+msgstr "またはサーバが対応する最も高いバージョン"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum TLS version"
+msgstr "TLS の最大バージョン"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy"
+msgstr "プロキシ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy server"
+msgstr "プロキシサーバ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy port"
+msgstr "プロキシのポート"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Retry indefinitely"
+msgstr "無期限に再試行"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy user name"
+msgstr "プロキシのユーザ名"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy password"
+msgstr "プロキシのパスワード"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group name"
+msgstr "グループ名"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password"
+msgstr "グループのパスワード"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hybrid authentication"
+msgstr "ハイブリッド認証"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Domain"
+msgstr "ドメイン"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Vendor"
+msgstr "ベンダ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Application version"
+msgstr "アプリケーションのバージョン"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Interface MTU"
+msgstr "インターフェイスの MTU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption (single DES)"
+msgstr "弱い暗号化（シングル DES）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No encryption"
+msgstr "暗号化なし"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak authentication"
+msgstr "弱い認証"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption"
+msgstr "弱い暗号化"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT traversal"
+msgstr "NAT トラバーサル"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T when detected"
+msgstr "検出時に NAT-T"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T always"
+msgstr "常に NAT-T"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE DH group"
+msgstr "IKE DH グループ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Perfect forward secrecy"
+msgstr "PFS（Perfect Forward Secrecy）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "As the server says"
+msgstr "サーバの指定に従う"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local port"
+msgstr "ローカルポート"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection (seconds, 0 is off)"
+msgstr "DPD（秒、0 でオフ）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NT domain"
+msgstr "NT ドメイン"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec tunnel to the server"
+msgstr "サーバへの IPsec トンネル"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server identity"
+msgstr "サーバの ID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine authentication"
+msgstr "マシン認証"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pre-shared key"
+msgstr "事前共有鍵"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine CA certificate"
+msgstr "マシンの CA 証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine certificate"
+msgstr "マシン証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine private key"
+msgstr "マシンの秘密鍵"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine key password"
+msgstr "マシンの鍵のパスワード"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 algorithms"
+msgstr "フェーズ 1 のアルゴリズム"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 algorithms"
+msgstr "フェーズ 2 のアルゴリズム"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime (seconds)"
+msgstr "フェーズ 1 の有効期間（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime (seconds)"
+msgstr "フェーズ 2 の有効期間（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Force UDP encapsulation"
+msgstr "UDP カプセル化を強制"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IP compression"
+msgstr "IP 圧縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use IKEv2"
+msgstr "IKEv2 を使用"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable perfect forward secrecy"
+msgstr "PFS を無効にする"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Multilink MRRU"
+msgstr "マルチリンク MRRU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use a random source port"
+msgstr "ランダムな送信元ポートを使用"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "PPP unit number"
+msgstr "PPP ユニット番号"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA certificate"
+msgstr "サーバの CA 証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list"
+msgstr "失効リスト"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ignore certificate warnings"
+msgstr "証明書の警告を無視"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS hostname extension"
+msgstr "TLS ホスト名拡張"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Identity"
+msgstr "ID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Verify the server name by"
+msgstr "サーバ名の検証方法"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Nothing"
+msgstr "なし"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Subject"
+msgstr "サブジェクト"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name"
+msgstr "名前"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name suffix"
+msgstr "名前のサフィックス"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Expected server name"
+msgstr "想定されるサーバ名"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Check key usage"
+msgstr "鍵の用途を確認"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password (EAP)"
+msgstr "ユーザ名とパスワード（EAP）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate"
+msgstr "証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (EAP-TLS)"
+msgstr "証明書（EAP-TLS）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and private key"
+msgstr "証明書と秘密鍵"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and SSH agent"
+msgstr "証明書と SSH エージェント"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Smart card"
+msgstr "スマートカード"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate from"
+msgstr "証明書の取得元"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A file"
+msgstr "ファイル"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "The SSH agent"
+msgstr "SSH エージェント"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A smart card"
+msgstr "スマートカード"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client identity"
+msgstr "クライアントの ID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Options"
+msgstr "オプション"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server port"
+msgstr "サーバのポート"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Request an inner IP address"
+msgstr "内部 IP アドレスを要求"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enforce UDP encapsulation"
+msgstr "UDP カプセル化を強制"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Custom algorithm proposals"
+msgstr "カスタムのアルゴリズム提案"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE proposal"
+msgstr "IKE 提案"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "ESP proposal"
+msgstr "ESP 提案"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local traffic selectors"
+msgstr "ローカルのトラフィックセレクタ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote traffic selectors"
+msgstr "リモートのトラフィックセレクタ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password and user name (IKEv1)"
+msgstr "グループパスワードとユーザ名（IKEv1）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (IKEv2)"
+msgstr "証明書（IKEv2）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate name"
+msgstr "証明書の名前"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime"
+msgstr "フェーズ 1 の有効期間"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime"
+msgstr "フェーズ 2 の有効期間"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable rekeying"
+msgstr "鍵の再生成を無効にする"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authenticate by"
+msgstr "認証方法"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA signature"
+msgstr "RSA 署名"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Networks"
+msgstr "ネットワーク"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local subnet"
+msgstr "ローカルサブネット"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote subnet"
+msgstr "リモートサブネット"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow narrowing"
+msgstr "ナローイングを許可"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Mobility (MOBIKE)"
+msgstr "モビリティ（MOBIKE）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Don't ask the server for an address"
+msgstr "サーバにアドレスを要求しない"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE fragmentation"
+msgstr "IKE フラグメンテーション"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Forced"
+msgstr "強制"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec interface"
+msgstr "IPsec インターフェイス"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection"
+msgstr "DPD（Dead Peer Detection）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Delay (seconds)"
+msgstr "遅延（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Timeout (seconds)"
+msgstr "タイムアウト（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Action"
+msgstr "動作"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hold"
+msgstr "保持"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Clear"
+msgstr "切断"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart"
+msgstr "再接続"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate"
+msgstr "サーバ証明書"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA"
+msgstr "サーバの CA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send the certificate"
+msgstr "証明書を送信"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "If asked"
+msgstr "要求された場合"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept certificates without the identity"
+msgstr "ID のない証明書を受け入れる"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trusted certificate fingerprint"
+msgstr "信頼する証明書のフィンガープリント"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Realm"
+msgstr "レルム"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ask for a one-time password"
+msgstr "ワンタイムパスワードを要求"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Two-factor authentication"
+msgstr "2 要素認証"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key file"
+msgstr "鍵ファイル"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netmask"
+msgstr "ネットマスク"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 addresses too"
+msgstr "IPv6 アドレスも"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IPv6 address"
+msgstr "リモート IPv6 アドレス"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IPv6 address"
+msgstr "ローカル IPv6 アドレス"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 prefix"
+msgstr "IPv6 プレフィックス"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote user name"
+msgstr "リモートのユーザ名"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote device number"
+msgstr "リモートのデバイス番号"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TAP device"
+msgstr "TAP デバイス"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No default route"
+msgstr "デフォルトルートなし"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra SSH options"
+msgstr "追加の SSH オプション"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel domain"
+msgstr "トンネルドメイン"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name server"
+msgstr "ネームサーバ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Fragment size"
+msgstr "フラグメントサイズ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Protocol"
+msgstr "プロトコル"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cisco AnyConnect or openconnect"
+msgstr "Cisco AnyConnect または openconnect"
+
+#. TRANSLATORS: keep "http://" and "socks://" as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "http://… or socks://…"
+msgstr "http://… または socks://…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User agent"
+msgstr "ユーザエージェント"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Reported operating system"
+msgstr "報告するオペレーティングシステム"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Linux 64-bit"
+msgstr "Linux 64 ビット"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable UDP (DTLS)"
+msgstr "UDP を無効にする（DTLS）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Refuse invalid server certificates"
+msgstr "無効なサーバ証明書を拒否"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key passphrase from the file system ID"
+msgstr "ファイルシステム ID から秘密鍵のパスフレーズを取得"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trojan"
+msgstr "Trojan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Run the server's compliance script"
+msgstr "サーバのコンプライアンススクリプトを実行"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Wrapper script"
+msgstr "ラッパースクリプト"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Software token"
+msgstr "ソフトウェアトークン"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token"
+msgstr "トークン"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA SecurID from ~/.stokenrc"
+msgstr "~/.stokenrc の RSA SecurID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token secret"
+msgstr "トークンのシークレット"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the server."
+msgstr "サーバを入力してください。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the group name."
+msgstr "グループ名を入力してください。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the remote IP address."
+msgstr "リモート IP アドレスを入力してください。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the local IP address."
+msgstr "ローカル IP アドレスを入力してください。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the netmask."
+msgstr "ネットマスクを入力してください。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the tunnel domain."
+msgstr "トンネルドメインを入力してください。"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "Fill in “{field}”."
+msgstr "「{field}」を入力してください。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "This kind of VPN can't be set up by hand."
+msgstr "この種類の VPN は手動で設定できません。"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "{field} must be a number from {minimum} to {maximum}."
+msgstr "{field} は {minimum}～{maximum} の数値にしてください。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The network connection was interrupted."
+msgstr "ネットワーク接続が中断されました。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service stopped unexpectedly."
+msgstr "VPN サービスが予期せず停止しました。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service returned invalid configuration."
+msgstr "VPN サービスが無効な構成を返しました。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The connection attempt timed out."
+msgstr "接続がタイムアウトしました。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service did not start in time."
+msgstr "VPN サービスが時間内に起動しませんでした。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service failed to start."
+msgstr "VPN サービスを起動できませんでした。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Sign-in failed. Check the user name and password."
+msgstr "サインインに失敗しました。ユーザ名とパスワードを確認してください。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service reported an error."
+msgstr "VPN サービスがエラーを報告しました。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "DNS tunnel (iodine)"
+msgstr "DNS トンネル（iodine）"
+
+#. TRANSLATORS: {key} is a WireGuard setting as written in the file, such as "PrivateKey".
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} has an invalid {key}."
+msgstr "{line} 行目の {key} が無効です。"
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} isn't part of a WireGuard configuration."
+msgstr "{line} 行目は WireGuard 構成の一部ではありません。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The configuration has no private key."
+msgstr "構成に秘密鍵がありません。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer has no public key."
+msgstr "公開鍵のないピアがあります。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the private key."
+msgstr "秘密鍵を入力してください。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The private key isn't a WireGuard key."
+msgstr "秘密鍵が WireGuard の鍵ではありません。"
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an address with a prefix, like 10.0.0.2/24."
+msgstr "{address} はプレフィックス付きのアドレス（例: 10.0.0.2/24）ではありません。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the address."
+msgstr "アドレスを入力してください。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The listen port must be a number up to 65535."
+msgstr "待ち受けポートは 65535 以下の数値にしてください。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The firewall mark must be a number."
+msgstr "ファイアウォールマークは数値にしてください。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The MTU must be a number."
+msgstr "MTU は数値にしてください。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Add the server as a peer."
+msgstr "サーバをピアとして追加してください。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's public key isn't a WireGuard key."
+msgstr "ピアの公開鍵が WireGuard の鍵ではありません。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's preshared key isn't a WireGuard key."
+msgstr "ピアの事前共有鍵が WireGuard の鍵ではありません。"
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a network, like 10.0.0.0/24."
+msgstr "{address} はネットワーク（例: 10.0.0.0/24）ではありません。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The keepalive must be a number of seconds up to 65535."
+msgstr "キープアライブは 65535 以下の秒数にしてください。"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Insecure"
+msgstr "保護なし"
+
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Dynamic WEP"
+msgstr "ダイナミック WEP"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Unknown"
+msgstr "不明"
+
+#. TRANSLATORS: why a folder can't be listed, then the folder, such as "Permission denied: /root".
+#: files/directory_lister.cpp
+#, python-brace-format
+msgid "{error}: {path}"
+msgstr "{error}: {path}"
+
+#: files/file_watcher.cpp
+#, python-brace-format
+msgid "Cannot watch {paths}; polling for changes"
+msgstr "{paths} を監視できません。変更をポーリングで確認します"
+
+#. TRANSLATORS: the file an operation failed on, then why, such as "/tmp/a.txt: Permission denied".
+#: files/task.cpp
+#, python-brace-format
+msgid "{path}: {error}"
+msgstr "{path}: {error}"
+
+#: files/trash.cpp
+msgid "The original location is not known"
+msgstr "元の場所が不明です"
+
+#: files/trash.cpp
+msgid "The original location is outside the volume it was deleted on"
+msgstr "元の場所が、削除されたボリュームの外にあります"
+
+#. TRANSLATORS: a disk without a label, named by its size, such as "16 GB Volume".
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Encrypted Volume"
+msgstr "{size} 暗号化ボリューム"
+
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Volume"
+msgstr "{size} ボリューム"
+
+#: files/volume_manager.cpp
+msgid "The device is locked."
+msgstr "デバイスはロックされています。"
+
+#: files/volume_manager.cpp
+msgid "The device does not support this operation."
+msgstr "デバイスはこの操作に対応していません。"
+
+#: files/volume_manager.cpp
+msgid "A device operation is already in progress."
+msgstr "デバイスの操作がすでに進行中です。"
+
+#: files/volume_manager.cpp
+msgid "The device is no longer available."
+msgstr "デバイスはもう利用できません。"

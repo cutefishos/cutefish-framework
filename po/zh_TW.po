@@ -1,0 +1,1476 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-framework\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-10-19 23:15+0800\n"
+"PO-Revision-Date: 2026-10-19 23:15+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "The accounts service cannot be reached"
+msgstr "無法連接帳號服務"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "Created user was removed"
+msgstr "已建立的使用者已被移除"
+
+#. TRANSLATORS: a sound setting that failed, then why, such as "Set device volume: Permission denied".
+#: clients/audio/backend.cpp
+#, python-brace-format
+msgid "{operation}: {error}"
+msgstr "{operation}：{error}"
+
+#: clients/audio/backend.cpp
+msgid "Set device volume"
+msgstr "設定裝置音量"
+
+#: clients/audio/backend.cpp
+msgid "Set audio properties"
+msgstr "設定音訊屬性"
+
+#: clients/audio/backend.cpp
+msgid "Set default device"
+msgstr "設定預設裝置"
+
+#: clients/audio/backend.cpp
+msgid "Set device profile"
+msgstr "設定裝置描述檔"
+
+#: clients/audio/backend.cpp
+msgid "Set device route"
+msgstr "設定裝置路由"
+
+#: clients/audio/backend.cpp
+msgid "Move audio stream"
+msgstr "移動音訊串流"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Cannot unblock Bluetooth: {error}"
+msgstr "無法解除封鎖藍牙：{error}"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't finish pairing in time. Try again."
+msgstr "裝置未能及時完成配對。請再試一次。"
+
+#: clients/bluez/manager.cpp
+msgid "The system D-Bus connection is unavailable."
+msgstr "無法使用系統 D-Bus 連線。"
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is blocked by a hardware switch."
+msgstr "藍牙已被硬體開關封鎖。"
+
+#: clients/bluez/manager.cpp
+msgid "The Bluetooth service is unavailable."
+msgstr "無法使用藍牙服務。"
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth couldn't complete the request."
+msgstr "藍牙無法完成要求。"
+
+#: clients/bluez/manager.cpp
+msgid "This device is no longer available."
+msgstr "此裝置已無法使用。"
+
+#: clients/bluez/manager.cpp
+msgid "The device is busy. Try again in a moment."
+msgstr "裝置忙碌中。請稍後再試。"
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth isn't ready yet. Try again in a moment."
+msgstr "藍牙尚未就緒。請稍後再試。"
+
+#: clients/bluez/manager.cpp
+msgid "This device has no media player."
+msgstr "此裝置沒有媒體播放器。"
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent: no system bus."
+msgstr "無法匯出藍牙配對代理程式：沒有系統匯流排。"
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent."
+msgstr "無法匯出藍牙配對代理程式。"
+
+#: clients/bluez/manager.cpp
+msgid "Enter a PIN containing 1–16 bytes."
+msgstr "請輸入 1–16 個位元組的 PIN 碼。"
+
+#: clients/bluez/manager.cpp
+msgid "Enter a passkey containing 1–6 digits."
+msgstr "請輸入 1–6 位數的密碼鑰。"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't connect to {device}"
+msgstr "無法連線到 {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't connect to the device"
+msgstr "無法連線到裝置"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't disconnect {device}"
+msgstr "無法中斷與 {device} 的連線"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't disconnect the device"
+msgstr "無法中斷與裝置的連線"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't pair with {device}"
+msgstr "無法與 {device} 配對"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't pair with the device"
+msgstr "無法與裝置配對"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't forget {device}"
+msgstr "無法忘記 {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't forget the device"
+msgstr "無法忘記裝置"
+
+#: clients/bluez/manager.cpp
+msgid "Try again. If it keeps failing, turn the device off and on again."
+msgstr "請再試一次。如果仍然失敗，請將裝置關閉後再重新開啟。"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond in time. Make sure it is turned on and nearby."
+msgstr "裝置未及時回應。請確定裝置已開啟且在附近。"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond. Make sure it is turned on, nearby, and not connected to another device."
+msgstr "裝置沒有回應。請確定裝置已開啟、在附近，且未連線到其他裝置。"
+
+#: clients/bluez/manager.cpp
+msgid "The device no longer recognizes this computer. Forget the device and pair it again."
+msgstr "裝置已無法辨識這部電腦。請忘記此裝置後再重新配對。"
+
+#: clients/bluez/manager.cpp
+msgid "Pairing failed. Make sure the code matches on both devices and try again."
+msgstr "配對失敗。請確定兩部裝置上的代碼相符，然後再試一次。"
+
+#: clients/bluez/manager.cpp
+msgid "The device declined the request."
+msgstr "裝置拒絕了要求。"
+
+#: clients/bluez/manager.cpp
+msgid "The device refused the connection."
+msgstr "裝置拒絕了連線。"
+
+#: clients/bluez/manager.cpp
+msgid "The device has no features this computer can use."
+msgstr "此裝置沒有這部電腦可使用的功能。"
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is turned off."
+msgstr "藍牙已關閉。"
+
+#: clients/bluez/manager.cpp
+msgid "Too many devices are connected. Disconnect one and try again."
+msgstr "連線的裝置過多。請中斷其中一個的連線後再試一次。"
+
+#: clients/bluez/manager.cpp
+msgid "The device ended the connection."
+msgstr "裝置結束了連線。"
+
+#: clients/bluez/manager.cpp
+msgid "The connection was interrupted. Try again."
+msgstr "連線已中斷。請再試一次。"
+
+#: clients/display/display_client.cpp
+msgid "The display operation timed out."
+msgstr "顯示器操作逾時。"
+
+#: clients/display/display_client.cpp
+msgid "The display service restarted."
+msgstr "顯示器服務已重新啟動。"
+
+#: clients/display/display_client.cpp
+msgid "Unexpected display state."
+msgstr "非預期的顯示器狀態。"
+
+#: clients/display/output_model.cpp
+msgid "Built-in Display"
+msgstr "內建顯示器"
+
+#. TRANSLATORS: a monitor and the port it is plugged into, such as "DELL U2720Q (DP-1)".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{name} ({connector})"
+msgstr "{name}（{connector}）"
+
+#. TRANSLATORS: a screen resolution in pixels, such as "1920 × 1080".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{width} × {height}"
+msgstr "{width} × {height}"
+
+#. TRANSLATORS: a refresh rate, such as "60.00 Hz".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{rate} Hz"
+msgstr "{rate} Hz"
+
+#. TRANSLATORS: the choice that shows other content on this display instead of mirroring another one.
+#: clients/display/output_model.cpp
+msgid "Extend"
+msgstr "延伸"
+
+#: clients/display/screen.cpp
+msgid "The display service is unavailable."
+msgstr "無法使用顯示器服務。"
+
+#: clients/display/screen.cpp
+msgid "Displays changed. The previous draft was discarded."
+msgstr "顯示器已變更。先前的草稿已捨棄。"
+
+#: clients/networkmanager/handler.cpp
+msgid "The hotspot could not be started. The Wi-Fi adapter may not support it on this channel or with this password."
+msgstr "無法啟動熱點。Wi-Fi 介面卡可能不支援在此頻道或使用此密碼執行熱點。"
+
+#: clients/networkmanager/handler.cpp
+msgid "No Wi-Fi adapter can run a hotspot."
+msgstr "沒有可執行熱點的 Wi-Fi 介面卡。"
+
+#: clients/networkmanager/handler.cpp
+msgid "No VPN plugin can read this file. Install the one for your VPN, for example network-manager-openvpn for OpenVPN."
+msgstr "沒有 VPN 外掛程式可讀取此檔案。請安裝適用於您 VPN 的外掛程式，例如適用於 OpenVPN 的 network-manager-openvpn。"
+
+#: clients/networkmanager/handler.cpp
+msgid "This file isn't a VPN configuration this system can read."
+msgstr "此檔案不是此系統可讀取的 VPN 設定。"
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which reads VPN files, is not installed."
+msgstr "未安裝用來讀取 VPN 檔案的 nmcli。"
+
+#: clients/networkmanager/handler.cpp
+msgid "The private key can't be read, so the file would be incomplete."
+msgstr "無法讀取私密金鑰，因此檔案會不完整。"
+
+#: clients/networkmanager/handler.cpp
+msgid "The file can't be written."
+msgstr "無法寫入檔案。"
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which writes VPN files, is not installed."
+msgstr "未安裝用來寫入 VPN 檔案的 nmcli。"
+
+#: clients/networkmanager/handler.cpp
+msgid "The VPN couldn't be written to a file."
+msgstr "無法將 VPN 寫入檔案。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Automatic (DHCP)"
+msgstr "自動（DHCP）"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Automatic"
+msgstr "自動"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Manual"
+msgstr "手動"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Off"
+msgstr "關閉"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "DHCP Only"
+msgstr "僅 DHCP"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Link-Local Only"
+msgstr "僅限本地連結"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Shared to Other Computers"
+msgstr "分享給其他電腦"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Left to the System"
+msgstr "交由系統處理"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv4 address."
+msgstr "{address} 不是 IPv4 位址。"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv6 address."
+msgstr "{address} 不是 IPv6 位址。"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{mask} isn't a subnet mask."
+msgstr "{mask} 不是子網路遮罩。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "The prefix length must be a number from 1 to 128."
+msgstr "首碼長度必須是 1 到 128 之間的數字。"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a router address."
+msgstr "{address} 不是路由器位址。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv4 name servers need IPv4 set to automatic or manual."
+msgstr "IPv4 名稱伺服器需要將 IPv4 設為自動或手動。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv6 name servers need IPv6 set to automatic or manual."
+msgstr "IPv6 名稱伺服器需要將 IPv6 設為自動或手動。"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a name server address."
+msgstr "{address} 不是名稱伺服器位址。"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Fill in the address and subnet mask."
+msgstr "請填寫位址與子網路遮罩。"
+
+#. TRANSLATORS: a network and the adapter it is on, such as "Home (wlan0)".
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "{name} ({device})"
+msgstr "{name}（{device}）"
+
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "Install {package} to use this VPN."
+msgstr "請安裝 {package} 以使用此 VPN。"
+
+#: clients/networkmanager/network_model.cpp
+msgid "Signing in to OpenConnect VPNs isn't supported yet."
+msgstr "尚不支援登入 OpenConnect VPN。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authentication methods"
+msgstr "認證方式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Encryption and compression"
+msgstr "加密與壓縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Point-to-point encryption"
+msgstr "點對點加密"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not required"
+msgstr "不需要"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Any"
+msgstr "任何"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "128-bit"
+msgstr "128 位元"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "40-bit"
+msgstr "40 位元"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Stateful encryption"
+msgstr "具狀態加密"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "BSD compression"
+msgstr "BSD 壓縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Deflate compression"
+msgstr "Deflate 壓縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TCP header compression"
+msgstr "TCP 標頭壓縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Link"
+msgstr "連結"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send PPP echo packets"
+msgstr "傳送 PPP 回應封包"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Default"
+msgstr "預設"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "DH group {number}"
+msgstr "DH 群組 {number}"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server"
+msgstr "伺服器"
+
+#. TRANSLATORS: keep "host[:port[:proto]]" as it is; it is the syntax the field takes.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "host[:port[:proto]], several separated by commas"
+msgstr "host[:port[:proto]]，多個時以逗號分隔"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Sign in with"
+msgstr "登入方式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password"
+msgstr "使用者名稱與密碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificates"
+msgstr "憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name, password and certificates"
+msgstr "使用者名稱、密碼與憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Static key"
+msgstr "靜態金鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name"
+msgstr "使用者名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Password"
+msgstr "密碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "CA certificate"
+msgstr "CA 憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User certificate"
+msgstr "使用者憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key"
+msgstr "私密金鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key password"
+msgstr "私密金鑰密碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key direction"
+msgstr "金鑰方向"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "None"
+msgstr "無"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IP address"
+msgstr "遠端 IP 位址"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IP address"
+msgstr "本機 IP 位址"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "General"
+msgstr "一般"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Port"
+msgstr "連接埠"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use TCP"
+msgstr "使用 TCP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device type"
+msgstr "裝置類型"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device name"
+msgstr "裝置名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel MTU"
+msgstr "通道 MTU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "UDP fragment size"
+msgstr "UDP 分段大小"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restrict TCP maximum segment size"
+msgstr "限制 TCP 最大區段大小"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Path MTU discovery"
+msgstr "路徑 MTU 探索"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Never"
+msgstr "永不"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "When possible"
+msgstr "可行時"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Always"
+msgstr "永遠"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Renegotiate every (seconds)"
+msgstr "重新協商間隔（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Compression"
+msgstr "壓縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow compression"
+msgstr "允許壓縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Incoming only"
+msgstr "僅限傳入"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Both ways"
+msgstr "雙向"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No"
+msgstr "否"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pick servers at random"
+msgstr "隨機選擇伺服器"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Randomise server host names"
+msgstr "隨機化伺服器主機名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow pulled host names"
+msgstr "允許推送的主機名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 inside the tunnel"
+msgstr "在通道內使用 IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept the server from any address"
+msgstr "接受來自任何位址的伺服器"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send client details to the server"
+msgstr "將用戶端詳細資訊傳送給伺服器"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ping every (seconds)"
+msgstr "Ping 間隔（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Exit without a ping after (seconds)"
+msgstr "無 Ping 回應時結束的等待時間（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart without a ping after (seconds)"
+msgstr "無 Ping 回應時重新啟動的等待時間（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Connection timeout (seconds)"
+msgstr "連線逾時（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum routes"
+msgstr "最大路由數"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Security"
+msgstr "安全性"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cipher"
+msgstr "加密演算法"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data ciphers"
+msgstr "資料加密演算法"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data cipher fallback"
+msgstr "備用資料加密演算法"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable cipher negotiation"
+msgstr "停用加密演算法協商"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "HMAC authentication"
+msgstr "HMAC 認證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key size (bits)"
+msgstr "金鑰大小（位元）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list file"
+msgstr "撤銷清單檔案"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list directory"
+msgstr "撤銷清單目錄"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate name"
+msgstr "伺服器憑證名稱"
+
+#. TRANSLATORS: keep the "name:", "subject:" and "name-prefix:" prefixes as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "name:vpn.example.com, subject:… or name-prefix:…"
+msgstr "name:vpn.example.com、subject:… 或 name-prefix:…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate usage"
+msgstr "伺服器憑證用途"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not checked"
+msgstr "不檢查"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client"
+msgstr "用戶端"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netscape certificate type"
+msgstr "Netscape 憑證類型"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS authentication key"
+msgstr "TLS 認證金鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS key direction"
+msgstr "TLS 金鑰方向"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key"
+msgstr "TLS 加密金鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key (v2)"
+msgstr "TLS 加密金鑰（v2）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra certificates"
+msgstr "額外憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS cipher"
+msgstr "TLS 加密演算法"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Minimum TLS version"
+msgstr "最低 TLS 版本"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Or the highest the server supports"
+msgstr "或伺服器支援的最高版本"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum TLS version"
+msgstr "最高 TLS 版本"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy"
+msgstr "代理伺服器"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy server"
+msgstr "代理伺服器位址"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy port"
+msgstr "代理伺服器連接埠"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Retry indefinitely"
+msgstr "無限次重試"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy user name"
+msgstr "代理伺服器使用者名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy password"
+msgstr "代理伺服器密碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group name"
+msgstr "群組名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password"
+msgstr "群組密碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hybrid authentication"
+msgstr "混合式認證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Domain"
+msgstr "網域"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Vendor"
+msgstr "廠商"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Application version"
+msgstr "應用程式版本"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Interface MTU"
+msgstr "介面 MTU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption (single DES)"
+msgstr "弱加密（單一 DES）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No encryption"
+msgstr "不加密"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak authentication"
+msgstr "弱認證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption"
+msgstr "弱加密"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT traversal"
+msgstr "NAT 穿透"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T when detected"
+msgstr "偵測到時使用 NAT-T"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T always"
+msgstr "永遠使用 NAT-T"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE DH group"
+msgstr "IKE DH 群組"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Perfect forward secrecy"
+msgstr "完整轉寄密鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "As the server says"
+msgstr "依伺服器設定"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local port"
+msgstr "本機連接埠"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection (seconds, 0 is off)"
+msgstr "失效對等端偵測（秒，0 為關閉）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NT domain"
+msgstr "NT 網域"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec tunnel to the server"
+msgstr "連往伺服器的 IPsec 通道"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server identity"
+msgstr "伺服器身分"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine authentication"
+msgstr "機器認證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pre-shared key"
+msgstr "預先共享金鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine CA certificate"
+msgstr "機器 CA 憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine certificate"
+msgstr "機器憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine private key"
+msgstr "機器私密金鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine key password"
+msgstr "機器金鑰密碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 algorithms"
+msgstr "第 1 階段演算法"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 algorithms"
+msgstr "第 2 階段演算法"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime (seconds)"
+msgstr "第 1 階段有效期（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime (seconds)"
+msgstr "第 2 階段有效期（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Force UDP encapsulation"
+msgstr "強制 UDP 封裝"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IP compression"
+msgstr "IP 壓縮"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use IKEv2"
+msgstr "使用 IKEv2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable perfect forward secrecy"
+msgstr "停用完整轉寄密鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Multilink MRRU"
+msgstr "多重連結 MRRU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use a random source port"
+msgstr "使用隨機來源連接埠"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "PPP unit number"
+msgstr "PPP 單元編號"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA certificate"
+msgstr "伺服器 CA 憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list"
+msgstr "撤銷清單"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ignore certificate warnings"
+msgstr "忽略憑證警告"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS hostname extension"
+msgstr "TLS 主機名稱延伸"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Identity"
+msgstr "身分"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Verify the server name by"
+msgstr "伺服器名稱驗證方式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Nothing"
+msgstr "不驗證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Subject"
+msgstr "主體"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name"
+msgstr "名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name suffix"
+msgstr "名稱字尾"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Expected server name"
+msgstr "預期的伺服器名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Check key usage"
+msgstr "檢查金鑰用途"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password (EAP)"
+msgstr "使用者名稱與密碼（EAP）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate"
+msgstr "憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (EAP-TLS)"
+msgstr "憑證（EAP-TLS）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and private key"
+msgstr "憑證與私密金鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and SSH agent"
+msgstr "憑證與 SSH 代理程式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Smart card"
+msgstr "智慧卡"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate from"
+msgstr "憑證來源"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A file"
+msgstr "檔案"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "The SSH agent"
+msgstr "SSH 代理程式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A smart card"
+msgstr "智慧卡"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client identity"
+msgstr "用戶端身分"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Options"
+msgstr "選項"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server port"
+msgstr "伺服器連接埠"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Request an inner IP address"
+msgstr "要求內部 IP 位址"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enforce UDP encapsulation"
+msgstr "強制 UDP 封裝"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Custom algorithm proposals"
+msgstr "自訂演算法提案"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE proposal"
+msgstr "IKE 提案"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "ESP proposal"
+msgstr "ESP 提案"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local traffic selectors"
+msgstr "本機流量選擇器"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote traffic selectors"
+msgstr "遠端流量選擇器"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password and user name (IKEv1)"
+msgstr "群組密碼與使用者名稱（IKEv1）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (IKEv2)"
+msgstr "憑證（IKEv2）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate name"
+msgstr "憑證名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime"
+msgstr "第 1 階段有效期"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime"
+msgstr "第 2 階段有效期"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable rekeying"
+msgstr "停用重新產生金鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authenticate by"
+msgstr "認證方式"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA signature"
+msgstr "RSA 簽章"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Networks"
+msgstr "網路"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local subnet"
+msgstr "本機子網路"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote subnet"
+msgstr "遠端子網路"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow narrowing"
+msgstr "允許縮小範圍"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Mobility (MOBIKE)"
+msgstr "行動性（MOBIKE）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Don't ask the server for an address"
+msgstr "不向伺服器要求位址"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE fragmentation"
+msgstr "IKE 分段"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Forced"
+msgstr "強制"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec interface"
+msgstr "IPsec 介面"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection"
+msgstr "失效對等端偵測"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Delay (seconds)"
+msgstr "延遲（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Timeout (seconds)"
+msgstr "逾時（秒）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Action"
+msgstr "動作"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hold"
+msgstr "保留通道"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Clear"
+msgstr "關閉通道"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart"
+msgstr "重新協商"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate"
+msgstr "伺服器憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA"
+msgstr "伺服器 CA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send the certificate"
+msgstr "傳送憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "If asked"
+msgstr "被要求時"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept certificates without the identity"
+msgstr "接受未含身分的憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trusted certificate fingerprint"
+msgstr "信任的憑證指紋"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Realm"
+msgstr "領域"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ask for a one-time password"
+msgstr "要求輸入一次性密碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Two-factor authentication"
+msgstr "雙重認證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key file"
+msgstr "金鑰檔案"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netmask"
+msgstr "網路遮罩"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 addresses too"
+msgstr "同時使用 IPv6 位址"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IPv6 address"
+msgstr "遠端 IPv6 位址"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IPv6 address"
+msgstr "本機 IPv6 位址"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 prefix"
+msgstr "IPv6 首碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote user name"
+msgstr "遠端使用者名稱"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote device number"
+msgstr "遠端裝置編號"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TAP device"
+msgstr "TAP 裝置"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No default route"
+msgstr "無預設路由"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra SSH options"
+msgstr "額外 SSH 選項"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel domain"
+msgstr "通道網域"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name server"
+msgstr "名稱伺服器"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Fragment size"
+msgstr "分段大小"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Protocol"
+msgstr "通訊協定"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cisco AnyConnect or openconnect"
+msgstr "Cisco AnyConnect 或 openconnect"
+
+#. TRANSLATORS: keep "http://" and "socks://" as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "http://… or socks://…"
+msgstr "http://… 或 socks://…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User agent"
+msgstr "使用者代理"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Reported operating system"
+msgstr "回報的作業系統"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Linux 64-bit"
+msgstr "Linux 64 位元"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable UDP (DTLS)"
+msgstr "停用 UDP（DTLS）"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Refuse invalid server certificates"
+msgstr "拒絕無效的伺服器憑證"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key passphrase from the file system ID"
+msgstr "以檔案系統 ID 作為私密金鑰密語"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trojan"
+msgstr "Trojan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Run the server's compliance script"
+msgstr "執行伺服器的合規檢查指令碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Wrapper script"
+msgstr "包裝指令碼"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Software token"
+msgstr "軟體權杖"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token"
+msgstr "權杖"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA SecurID from ~/.stokenrc"
+msgstr "來自 ~/.stokenrc 的 RSA SecurID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token secret"
+msgstr "權杖密鑰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the server."
+msgstr "請輸入伺服器。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the group name."
+msgstr "請輸入群組名稱。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the remote IP address."
+msgstr "請輸入遠端 IP 位址。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the local IP address."
+msgstr "請輸入本機 IP 位址。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the netmask."
+msgstr "請輸入網路遮罩。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the tunnel domain."
+msgstr "請輸入通道網域。"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "Fill in “{field}”."
+msgstr "請填寫「{field}」。"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "This kind of VPN can't be set up by hand."
+msgstr "無法手動設定這種 VPN。"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "{field} must be a number from {minimum} to {maximum}."
+msgstr "{field} 必須是 {minimum} 到 {maximum} 之間的數字。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The network connection was interrupted."
+msgstr "網路連線已中斷。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service stopped unexpectedly."
+msgstr "VPN 服務意外停止。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service returned invalid configuration."
+msgstr "VPN 服務傳回了無效的設定。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The connection attempt timed out."
+msgstr "連線嘗試逾時。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service did not start in time."
+msgstr "VPN 服務未能及時啟動。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service failed to start."
+msgstr "VPN 服務無法啟動。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Sign-in failed. Check the user name and password."
+msgstr "登入失敗。請檢查使用者名稱與密碼。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service reported an error."
+msgstr "VPN 服務回報了錯誤。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "DNS tunnel (iodine)"
+msgstr "DNS 通道（iodine）"
+
+#. TRANSLATORS: {key} is a WireGuard setting as written in the file, such as "PrivateKey".
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} has an invalid {key}."
+msgstr "第 {line} 行的 {key} 無效。"
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} isn't part of a WireGuard configuration."
+msgstr "第 {line} 行不屬於 WireGuard 設定。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The configuration has no private key."
+msgstr "設定中沒有私密金鑰。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer has no public key."
+msgstr "有對等端沒有公開金鑰。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the private key."
+msgstr "請輸入私密金鑰。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The private key isn't a WireGuard key."
+msgstr "私密金鑰不是 WireGuard 金鑰。"
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an address with a prefix, like 10.0.0.2/24."
+msgstr "{address} 不是含首碼的位址，例如 10.0.0.2/24。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the address."
+msgstr "請輸入位址。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The listen port must be a number up to 65535."
+msgstr "監聽連接埠必須是不超過 65535 的數字。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The firewall mark must be a number."
+msgstr "防火牆標記必須是數字。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The MTU must be a number."
+msgstr "MTU 必須是數字。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Add the server as a peer."
+msgstr "請將伺服器新增為對等端。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's public key isn't a WireGuard key."
+msgstr "對等端的公開金鑰不是 WireGuard 金鑰。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's preshared key isn't a WireGuard key."
+msgstr "對等端的預先共享金鑰不是 WireGuard 金鑰。"
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a network, like 10.0.0.0/24."
+msgstr "{address} 不是網路，例如 10.0.0.0/24。"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The keepalive must be a number of seconds up to 65535."
+msgstr "保持連線間隔必須是不超過 65535 的秒數。"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Insecure"
+msgstr "不安全"
+
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Dynamic WEP"
+msgstr "動態 WEP"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Unknown"
+msgstr "未知"
+
+#. TRANSLATORS: why a folder can't be listed, then the folder, such as "Permission denied: /root".
+#: files/directory_lister.cpp
+#, python-brace-format
+msgid "{error}: {path}"
+msgstr "{error}：{path}"
+
+#: files/file_watcher.cpp
+#, python-brace-format
+msgid "Cannot watch {paths}; polling for changes"
+msgstr "無法監看 {paths}；改為輪詢變更"
+
+#. TRANSLATORS: the file an operation failed on, then why, such as "/tmp/a.txt: Permission denied".
+#: files/task.cpp
+#, python-brace-format
+msgid "{path}: {error}"
+msgstr "{path}：{error}"
+
+#: files/trash.cpp
+msgid "The original location is not known"
+msgstr "原始位置不明"
+
+#: files/trash.cpp
+msgid "The original location is outside the volume it was deleted on"
+msgstr "原始位置不在刪除時所在的卷宗上"
+
+#. TRANSLATORS: a disk without a label, named by its size, such as "16 GB Volume".
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Encrypted Volume"
+msgstr "{size} 加密卷宗"
+
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Volume"
+msgstr "{size} 卷宗"
+
+#: files/volume_manager.cpp
+msgid "The device is locked."
+msgstr "裝置已鎖定。"
+
+#: files/volume_manager.cpp
+msgid "The device does not support this operation."
+msgstr "裝置不支援此操作。"
+
+#: files/volume_manager.cpp
+msgid "A device operation is already in progress."
+msgstr "已有裝置操作正在進行中。"
+
+#: files/volume_manager.cpp
+msgid "The device is no longer available."
+msgstr "裝置已無法使用。"

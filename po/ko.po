@@ -1,0 +1,1476 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-framework\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-10-19 23:15+0800\n"
+"PO-Revision-Date: 2026-10-19 23:15+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "The accounts service cannot be reached"
+msgstr "계정 서비스에 연결할 수 없습니다"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "Created user was removed"
+msgstr "생성된 사용자가 제거되었습니다"
+
+#. TRANSLATORS: a sound setting that failed, then why, such as "Set device volume: Permission denied".
+#: clients/audio/backend.cpp
+#, python-brace-format
+msgid "{operation}: {error}"
+msgstr "{operation}: {error}"
+
+#: clients/audio/backend.cpp
+msgid "Set device volume"
+msgstr "장치 음량 설정"
+
+#: clients/audio/backend.cpp
+msgid "Set audio properties"
+msgstr "오디오 속성 설정"
+
+#: clients/audio/backend.cpp
+msgid "Set default device"
+msgstr "기본 장치 설정"
+
+#: clients/audio/backend.cpp
+msgid "Set device profile"
+msgstr "장치 프로필 설정"
+
+#: clients/audio/backend.cpp
+msgid "Set device route"
+msgstr "장치 경로 설정"
+
+#: clients/audio/backend.cpp
+msgid "Move audio stream"
+msgstr "오디오 스트림 이동"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Cannot unblock Bluetooth: {error}"
+msgstr "Bluetooth 차단을 해제할 수 없습니다: {error}"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't finish pairing in time. Try again."
+msgstr "장치가 제시간에 페어링을 완료하지 못했습니다. 다시 시도하십시오."
+
+#: clients/bluez/manager.cpp
+msgid "The system D-Bus connection is unavailable."
+msgstr "시스템 D-Bus 연결을 사용할 수 없습니다."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is blocked by a hardware switch."
+msgstr "Bluetooth가 하드웨어 스위치로 차단되어 있습니다."
+
+#: clients/bluez/manager.cpp
+msgid "The Bluetooth service is unavailable."
+msgstr "Bluetooth 서비스를 사용할 수 없습니다."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth couldn't complete the request."
+msgstr "Bluetooth에서 요청을 완료하지 못했습니다."
+
+#: clients/bluez/manager.cpp
+msgid "This device is no longer available."
+msgstr "이 장치는 더 이상 사용할 수 없습니다."
+
+#: clients/bluez/manager.cpp
+msgid "The device is busy. Try again in a moment."
+msgstr "장치가 사용 중입니다. 잠시 후 다시 시도하십시오."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth isn't ready yet. Try again in a moment."
+msgstr "Bluetooth가 아직 준비되지 않았습니다. 잠시 후 다시 시도하십시오."
+
+#: clients/bluez/manager.cpp
+msgid "This device has no media player."
+msgstr "이 장치에는 미디어 플레이어가 없습니다."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent: no system bus."
+msgstr "Bluetooth 페어링 에이전트를 내보낼 수 없습니다: 시스템 버스가 없습니다."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent."
+msgstr "Bluetooth 페어링 에이전트를 내보낼 수 없습니다."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a PIN containing 1–16 bytes."
+msgstr "1–16바이트의 PIN을 입력하십시오."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a passkey containing 1–6 digits."
+msgstr "1–6자리 숫자의 패스키를 입력하십시오."
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't connect to {device}"
+msgstr "{device}에 연결할 수 없습니다"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't connect to the device"
+msgstr "장치에 연결할 수 없습니다"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't disconnect {device}"
+msgstr "{device}의 연결을 해제할 수 없습니다"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't disconnect the device"
+msgstr "장치의 연결을 해제할 수 없습니다"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't pair with {device}"
+msgstr "{device} 장치와 페어링할 수 없습니다"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't pair with the device"
+msgstr "장치와 페어링할 수 없습니다"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't forget {device}"
+msgstr "{device}의 등록을 해제할 수 없습니다"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't forget the device"
+msgstr "장치의 등록을 해제할 수 없습니다"
+
+#: clients/bluez/manager.cpp
+msgid "Try again. If it keeps failing, turn the device off and on again."
+msgstr "다시 시도하십시오. 계속 실패하면 장치를 껐다가 다시 켜십시오."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond in time. Make sure it is turned on and nearby."
+msgstr "장치가 제시간에 응답하지 않았습니다. 장치가 켜져 있고 가까이 있는지 확인하십시오."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond. Make sure it is turned on, nearby, and not connected to another device."
+msgstr "장치가 응답하지 않았습니다. 장치가 켜져 있고 가까이 있으며 다른 장치에 연결되어 있지 않은지 확인하십시오."
+
+#: clients/bluez/manager.cpp
+msgid "The device no longer recognizes this computer. Forget the device and pair it again."
+msgstr "장치가 더 이상 이 컴퓨터를 인식하지 못합니다. 장치 등록을 해제한 다음 다시 페어링하십시오."
+
+#: clients/bluez/manager.cpp
+msgid "Pairing failed. Make sure the code matches on both devices and try again."
+msgstr "페어링에 실패했습니다. 두 장치의 코드가 일치하는지 확인하고 다시 시도하십시오."
+
+#: clients/bluez/manager.cpp
+msgid "The device declined the request."
+msgstr "장치가 요청을 거부했습니다."
+
+#: clients/bluez/manager.cpp
+msgid "The device refused the connection."
+msgstr "장치가 연결을 거부했습니다."
+
+#: clients/bluez/manager.cpp
+msgid "The device has no features this computer can use."
+msgstr "이 장치에는 이 컴퓨터가 사용할 수 있는 기능이 없습니다."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is turned off."
+msgstr "Bluetooth가 꺼져 있습니다."
+
+#: clients/bluez/manager.cpp
+msgid "Too many devices are connected. Disconnect one and try again."
+msgstr "연결된 장치가 너무 많습니다. 하나의 연결을 해제하고 다시 시도하십시오."
+
+#: clients/bluez/manager.cpp
+msgid "The device ended the connection."
+msgstr "장치가 연결을 종료했습니다."
+
+#: clients/bluez/manager.cpp
+msgid "The connection was interrupted. Try again."
+msgstr "연결이 중단되었습니다. 다시 시도하십시오."
+
+#: clients/display/display_client.cpp
+msgid "The display operation timed out."
+msgstr "디스플레이 작업 시간이 초과되었습니다."
+
+#: clients/display/display_client.cpp
+msgid "The display service restarted."
+msgstr "디스플레이 서비스가 다시 시작되었습니다."
+
+#: clients/display/display_client.cpp
+msgid "Unexpected display state."
+msgstr "예상치 못한 디스플레이 상태입니다."
+
+#: clients/display/output_model.cpp
+msgid "Built-in Display"
+msgstr "내장 디스플레이"
+
+#. TRANSLATORS: a monitor and the port it is plugged into, such as "DELL U2720Q (DP-1)".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{name} ({connector})"
+msgstr "{name}({connector})"
+
+#. TRANSLATORS: a screen resolution in pixels, such as "1920 × 1080".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{width} × {height}"
+msgstr "{width} × {height}"
+
+#. TRANSLATORS: a refresh rate, such as "60.00 Hz".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{rate} Hz"
+msgstr "{rate}Hz"
+
+#. TRANSLATORS: the choice that shows other content on this display instead of mirroring another one.
+#: clients/display/output_model.cpp
+msgid "Extend"
+msgstr "확장"
+
+#: clients/display/screen.cpp
+msgid "The display service is unavailable."
+msgstr "디스플레이 서비스를 사용할 수 없습니다."
+
+#: clients/display/screen.cpp
+msgid "Displays changed. The previous draft was discarded."
+msgstr "디스플레이가 변경되었습니다. 이전 초안은 폐기되었습니다."
+
+#: clients/networkmanager/handler.cpp
+msgid "The hotspot could not be started. The Wi-Fi adapter may not support it on this channel or with this password."
+msgstr "핫스팟을 시작할 수 없습니다. Wi-Fi 어댑터가 이 채널이나 이 암호로는 핫스팟을 지원하지 않을 수 있습니다."
+
+#: clients/networkmanager/handler.cpp
+msgid "No Wi-Fi adapter can run a hotspot."
+msgstr "핫스팟을 실행할 수 있는 Wi-Fi 어댑터가 없습니다."
+
+#: clients/networkmanager/handler.cpp
+msgid "No VPN plugin can read this file. Install the one for your VPN, for example network-manager-openvpn for OpenVPN."
+msgstr "이 파일을 읽을 수 있는 VPN 플러그인이 없습니다. 사용하는 VPN용 플러그인을 설치하십시오(예: OpenVPN용 network-manager-openvpn)."
+
+#: clients/networkmanager/handler.cpp
+msgid "This file isn't a VPN configuration this system can read."
+msgstr "이 파일은 이 시스템에서 읽을 수 있는 VPN 구성이 아닙니다."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which reads VPN files, is not installed."
+msgstr "VPN 파일을 읽는 nmcli가 설치되어 있지 않습니다."
+
+#: clients/networkmanager/handler.cpp
+msgid "The private key can't be read, so the file would be incomplete."
+msgstr "개인 키를 읽을 수 없어 파일이 불완전해집니다."
+
+#: clients/networkmanager/handler.cpp
+msgid "The file can't be written."
+msgstr "파일을 쓸 수 없습니다."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which writes VPN files, is not installed."
+msgstr "VPN 파일을 쓰는 nmcli가 설치되어 있지 않습니다."
+
+#: clients/networkmanager/handler.cpp
+msgid "The VPN couldn't be written to a file."
+msgstr "VPN을 파일로 쓸 수 없습니다."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Automatic (DHCP)"
+msgstr "자동(DHCP)"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Automatic"
+msgstr "자동"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Manual"
+msgstr "수동"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Off"
+msgstr "사용 안 함"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "DHCP Only"
+msgstr "DHCP만"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Link-Local Only"
+msgstr "링크 로컬만"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Shared to Other Computers"
+msgstr "다른 컴퓨터와 공유"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Left to the System"
+msgstr "시스템에 맡김"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv4 address."
+msgstr "IPv4 주소가 아닙니다: {address}"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv6 address."
+msgstr "IPv6 주소가 아닙니다: {address}"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{mask} isn't a subnet mask."
+msgstr "서브넷 마스크가 아닙니다: {mask}"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "The prefix length must be a number from 1 to 128."
+msgstr "접두사 길이는 1에서 128 사이의 숫자여야 합니다."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a router address."
+msgstr "라우터 주소가 아닙니다: {address}"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv4 name servers need IPv4 set to automatic or manual."
+msgstr "IPv4 이름 서버를 사용하려면 IPv4를 자동 또는 수동으로 설정해야 합니다."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv6 name servers need IPv6 set to automatic or manual."
+msgstr "IPv6 이름 서버를 사용하려면 IPv6를 자동 또는 수동으로 설정해야 합니다."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a name server address."
+msgstr "이름 서버 주소가 아닙니다: {address}"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Fill in the address and subnet mask."
+msgstr "주소와 서브넷 마스크를 입력하십시오."
+
+#. TRANSLATORS: a network and the adapter it is on, such as "Home (wlan0)".
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "{name} ({device})"
+msgstr "{name}({device})"
+
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "Install {package} to use this VPN."
+msgstr "이 VPN을 사용하려면 {package} 패키지를 설치하십시오."
+
+#: clients/networkmanager/network_model.cpp
+msgid "Signing in to OpenConnect VPNs isn't supported yet."
+msgstr "OpenConnect VPN 로그인은 아직 지원되지 않습니다."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authentication methods"
+msgstr "인증 방법"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Encryption and compression"
+msgstr "암호화 및 압축"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Point-to-point encryption"
+msgstr "지점 간 암호화"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not required"
+msgstr "필요 없음"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Any"
+msgstr "모두"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "128-bit"
+msgstr "128비트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "40-bit"
+msgstr "40비트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Stateful encryption"
+msgstr "상태 저장 암호화"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "BSD compression"
+msgstr "BSD 압축"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Deflate compression"
+msgstr "Deflate 압축"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TCP header compression"
+msgstr "TCP 헤더 압축"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Link"
+msgstr "링크"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send PPP echo packets"
+msgstr "PPP 에코 패킷 보내기"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Default"
+msgstr "기본값"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "DH group {number}"
+msgstr "DH 그룹 {number}"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server"
+msgstr "서버"
+
+#. TRANSLATORS: keep "host[:port[:proto]]" as it is; it is the syntax the field takes.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "host[:port[:proto]], several separated by commas"
+msgstr "host[:port[:proto]], 여러 개는 쉼표로 구분"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Sign in with"
+msgstr "로그인 방법"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password"
+msgstr "사용자 이름 및 암호"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificates"
+msgstr "인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name, password and certificates"
+msgstr "사용자 이름, 암호 및 인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Static key"
+msgstr "정적 키"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name"
+msgstr "사용자 이름"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Password"
+msgstr "암호"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "CA certificate"
+msgstr "CA 인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User certificate"
+msgstr "사용자 인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key"
+msgstr "개인 키"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key password"
+msgstr "개인 키 암호"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key direction"
+msgstr "키 방향"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "None"
+msgstr "없음"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IP address"
+msgstr "원격 IP 주소"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IP address"
+msgstr "로컬 IP 주소"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "General"
+msgstr "일반"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Port"
+msgstr "포트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use TCP"
+msgstr "TCP 사용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device type"
+msgstr "장치 유형"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device name"
+msgstr "장치 이름"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel MTU"
+msgstr "터널 MTU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "UDP fragment size"
+msgstr "UDP 조각 크기"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restrict TCP maximum segment size"
+msgstr "TCP 최대 세그먼트 크기 제한"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Path MTU discovery"
+msgstr "경로 MTU 탐색"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Never"
+msgstr "안 함"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "When possible"
+msgstr "가능한 경우"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Always"
+msgstr "항상"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Renegotiate every (seconds)"
+msgstr "재협상 간격(초)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Compression"
+msgstr "압축"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow compression"
+msgstr "압축 허용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Incoming only"
+msgstr "수신만"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Both ways"
+msgstr "양방향"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No"
+msgstr "아니요"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pick servers at random"
+msgstr "무작위로 서버 선택"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Randomise server host names"
+msgstr "서버 호스트 이름 무작위화"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow pulled host names"
+msgstr "서버가 보낸 호스트 이름 허용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 inside the tunnel"
+msgstr "터널 내부 IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept the server from any address"
+msgstr "모든 주소의 서버 허용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send client details to the server"
+msgstr "서버에 클라이언트 정보 보내기"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ping every (seconds)"
+msgstr "핑 간격(초)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Exit without a ping after (seconds)"
+msgstr "핑 없이 종료하기까지(초)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart without a ping after (seconds)"
+msgstr "핑 없이 다시 시작하기까지(초)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Connection timeout (seconds)"
+msgstr "연결 시간 제한(초)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum routes"
+msgstr "최대 경로 수"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Security"
+msgstr "보안"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cipher"
+msgstr "암호 알고리즘"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data ciphers"
+msgstr "데이터 암호 알고리즘"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data cipher fallback"
+msgstr "데이터 암호 알고리즘 대체"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable cipher negotiation"
+msgstr "암호 알고리즘 협상 비활성화"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "HMAC authentication"
+msgstr "HMAC 인증"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key size (bits)"
+msgstr "키 크기(비트)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list file"
+msgstr "인증서 해지 목록 파일"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list directory"
+msgstr "인증서 해지 목록 디렉토리"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate name"
+msgstr "서버 인증서 이름"
+
+#. TRANSLATORS: keep the "name:", "subject:" and "name-prefix:" prefixes as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "name:vpn.example.com, subject:… or name-prefix:…"
+msgstr "name:vpn.example.com, subject:… 또는 name-prefix:…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate usage"
+msgstr "서버 인증서 용도"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not checked"
+msgstr "확인 안 함"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client"
+msgstr "클라이언트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netscape certificate type"
+msgstr "Netscape 인증서 유형"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS authentication key"
+msgstr "TLS 인증 키"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS key direction"
+msgstr "TLS 키 방향"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key"
+msgstr "TLS 암호화 키"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key (v2)"
+msgstr "TLS 암호화 키(v2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra certificates"
+msgstr "추가 인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS cipher"
+msgstr "TLS 암호 알고리즘"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Minimum TLS version"
+msgstr "최소 TLS 버전"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Or the highest the server supports"
+msgstr "또는 서버가 지원하는 최고 버전"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum TLS version"
+msgstr "최대 TLS 버전"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy"
+msgstr "프록시"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy server"
+msgstr "프록시 서버"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy port"
+msgstr "프록시 포트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Retry indefinitely"
+msgstr "무한 재시도"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy user name"
+msgstr "프록시 사용자 이름"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy password"
+msgstr "프록시 암호"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group name"
+msgstr "그룹 이름"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password"
+msgstr "그룹 암호"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hybrid authentication"
+msgstr "하이브리드 인증"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Domain"
+msgstr "도메인"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Vendor"
+msgstr "공급업체"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Application version"
+msgstr "애플리케이션 버전"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Interface MTU"
+msgstr "인터페이스 MTU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption (single DES)"
+msgstr "약한 암호화(단일 DES)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No encryption"
+msgstr "암호화 안 함"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak authentication"
+msgstr "약한 인증"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption"
+msgstr "약한 암호화"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT traversal"
+msgstr "NAT 통과"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T when detected"
+msgstr "감지 시 NAT-T"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T always"
+msgstr "항상 NAT-T"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE DH group"
+msgstr "IKE DH 그룹"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Perfect forward secrecy"
+msgstr "완전 순방향 비밀성"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "As the server says"
+msgstr "서버 설정에 따름"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local port"
+msgstr "로컬 포트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection (seconds, 0 is off)"
+msgstr "데드 피어 감지(초, 0은 끔)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NT domain"
+msgstr "NT 도메인"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec tunnel to the server"
+msgstr "서버로의 IPsec 터널"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server identity"
+msgstr "서버 ID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine authentication"
+msgstr "머신 인증"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pre-shared key"
+msgstr "사전 공유 키"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine CA certificate"
+msgstr "머신 CA 인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine certificate"
+msgstr "머신 인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine private key"
+msgstr "머신 개인 키"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine key password"
+msgstr "머신 키 암호"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 algorithms"
+msgstr "1단계 알고리즘"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 algorithms"
+msgstr "2단계 알고리즘"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime (seconds)"
+msgstr "1단계 수명(초)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime (seconds)"
+msgstr "2단계 수명(초)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Force UDP encapsulation"
+msgstr "UDP 캡슐화 강제"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IP compression"
+msgstr "IP 압축"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use IKEv2"
+msgstr "IKEv2 사용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable perfect forward secrecy"
+msgstr "완전 순방향 비밀성 비활성화"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Multilink MRRU"
+msgstr "멀티링크 MRRU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use a random source port"
+msgstr "무작위 소스 포트 사용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "PPP unit number"
+msgstr "PPP 장치 번호"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA certificate"
+msgstr "서버 CA 인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list"
+msgstr "인증서 해지 목록"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ignore certificate warnings"
+msgstr "인증서 경고 무시"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS hostname extension"
+msgstr "TLS 호스트 이름 확장"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Identity"
+msgstr "ID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Verify the server name by"
+msgstr "서버 이름 확인 기준"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Nothing"
+msgstr "확인 안 함"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Subject"
+msgstr "주체"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name"
+msgstr "이름"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name suffix"
+msgstr "이름 접미사"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Expected server name"
+msgstr "예상 서버 이름"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Check key usage"
+msgstr "키 용도 확인"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password (EAP)"
+msgstr "사용자 이름 및 암호(EAP)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate"
+msgstr "인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (EAP-TLS)"
+msgstr "인증서(EAP-TLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and private key"
+msgstr "인증서 및 개인 키"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and SSH agent"
+msgstr "인증서 및 SSH 에이전트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Smart card"
+msgstr "스마트 카드"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate from"
+msgstr "인증서 위치"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A file"
+msgstr "파일"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "The SSH agent"
+msgstr "SSH 에이전트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A smart card"
+msgstr "스마트 카드"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client identity"
+msgstr "클라이언트 ID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Options"
+msgstr "옵션"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server port"
+msgstr "서버 포트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Request an inner IP address"
+msgstr "내부 IP 주소 요청"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enforce UDP encapsulation"
+msgstr "UDP 캡슐화 강제"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Custom algorithm proposals"
+msgstr "사용자 지정 알고리즘 제안"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE proposal"
+msgstr "IKE 제안"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "ESP proposal"
+msgstr "ESP 제안"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local traffic selectors"
+msgstr "로컬 트래픽 선택기"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote traffic selectors"
+msgstr "원격 트래픽 선택기"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password and user name (IKEv1)"
+msgstr "그룹 암호 및 사용자 이름(IKEv1)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (IKEv2)"
+msgstr "인증서(IKEv2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate name"
+msgstr "인증서 이름"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime"
+msgstr "1단계 수명"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime"
+msgstr "2단계 수명"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable rekeying"
+msgstr "키 재설정 비활성화"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authenticate by"
+msgstr "인증 방식"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA signature"
+msgstr "RSA 서명"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Networks"
+msgstr "네트워크"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local subnet"
+msgstr "로컬 서브넷"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote subnet"
+msgstr "원격 서브넷"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow narrowing"
+msgstr "범위 축소 허용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Mobility (MOBIKE)"
+msgstr "이동성(MOBIKE)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Don't ask the server for an address"
+msgstr "서버에 주소 요청 안 함"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE fragmentation"
+msgstr "IKE 조각화"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Forced"
+msgstr "강제"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec interface"
+msgstr "IPsec 인터페이스"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection"
+msgstr "데드 피어 감지"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Delay (seconds)"
+msgstr "지연(초)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Timeout (seconds)"
+msgstr "시간 제한(초)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Action"
+msgstr "동작"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hold"
+msgstr "대기"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Clear"
+msgstr "연결 끊기"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart"
+msgstr "재연결"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate"
+msgstr "서버 인증서"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA"
+msgstr "서버 CA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send the certificate"
+msgstr "인증서 보내기"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "If asked"
+msgstr "요청 시"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept certificates without the identity"
+msgstr "ID 없는 인증서 허용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trusted certificate fingerprint"
+msgstr "신뢰할 수 있는 인증서 지문"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Realm"
+msgstr "영역"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ask for a one-time password"
+msgstr "일회용 암호 요청"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Two-factor authentication"
+msgstr "2단계 인증"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key file"
+msgstr "키 파일"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netmask"
+msgstr "넷마스크"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 addresses too"
+msgstr "IPv6 주소도 사용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IPv6 address"
+msgstr "원격 IPv6 주소"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IPv6 address"
+msgstr "로컬 IPv6 주소"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 prefix"
+msgstr "IPv6 접두사"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote user name"
+msgstr "원격 사용자 이름"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote device number"
+msgstr "원격 장치 번호"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TAP device"
+msgstr "TAP 장치"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No default route"
+msgstr "기본 경로 없음"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra SSH options"
+msgstr "추가 SSH 옵션"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel domain"
+msgstr "터널 도메인"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name server"
+msgstr "이름 서버"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Fragment size"
+msgstr "조각 크기"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Protocol"
+msgstr "프로토콜"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cisco AnyConnect or openconnect"
+msgstr "Cisco AnyConnect 또는 openconnect"
+
+#. TRANSLATORS: keep "http://" and "socks://" as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "http://… or socks://…"
+msgstr "http://… 또는 socks://…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User agent"
+msgstr "사용자 에이전트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Reported operating system"
+msgstr "보고할 운영 체제"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Linux 64-bit"
+msgstr "Linux 64비트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable UDP (DTLS)"
+msgstr "UDP 비활성화(DTLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Refuse invalid server certificates"
+msgstr "유효하지 않은 서버 인증서 거부"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key passphrase from the file system ID"
+msgstr "파일 시스템 ID에서 개인 키 암호 문구 사용"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trojan"
+msgstr "Trojan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Run the server's compliance script"
+msgstr "서버의 규정 준수 스크립트 실행"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Wrapper script"
+msgstr "래퍼 스크립트"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Software token"
+msgstr "소프트웨어 토큰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token"
+msgstr "토큰"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA SecurID from ~/.stokenrc"
+msgstr "~/.stokenrc의 RSA SecurID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token secret"
+msgstr "토큰 비밀"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the server."
+msgstr "서버를 입력하십시오."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the group name."
+msgstr "그룹 이름을 입력하십시오."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the remote IP address."
+msgstr "원격 IP 주소를 입력하십시오."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the local IP address."
+msgstr "로컬 IP 주소를 입력하십시오."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the netmask."
+msgstr "넷마스크를 입력하십시오."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the tunnel domain."
+msgstr "터널 도메인을 입력하십시오."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "Fill in “{field}”."
+msgstr "“{field}” 항목을 입력하십시오."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "This kind of VPN can't be set up by hand."
+msgstr "이 종류의 VPN은 수동으로 설정할 수 없습니다."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "{field} must be a number from {minimum} to {maximum}."
+msgstr "{field} 값은 {minimum}에서 {maximum} 사이의 숫자여야 합니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The network connection was interrupted."
+msgstr "네트워크 연결이 중단되었습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service stopped unexpectedly."
+msgstr "VPN 서비스가 예기치 않게 중단되었습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service returned invalid configuration."
+msgstr "VPN 서비스가 잘못된 구성을 반환했습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The connection attempt timed out."
+msgstr "연결 시도 시간이 초과되었습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service did not start in time."
+msgstr "VPN 서비스가 제시간에 시작되지 않았습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service failed to start."
+msgstr "VPN 서비스를 시작하지 못했습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Sign-in failed. Check the user name and password."
+msgstr "로그인에 실패했습니다. 사용자 이름과 암호를 확인하십시오."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service reported an error."
+msgstr "VPN 서비스에서 오류를 보고했습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "DNS tunnel (iodine)"
+msgstr "DNS 터널(iodine)"
+
+#. TRANSLATORS: {key} is a WireGuard setting as written in the file, such as "PrivateKey".
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} has an invalid {key}."
+msgstr "{line}번째 줄의 {key} 값이 올바르지 않습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} isn't part of a WireGuard configuration."
+msgstr "{line}번째 줄은 WireGuard 구성의 일부가 아닙니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The configuration has no private key."
+msgstr "구성에 개인 키가 없습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer has no public key."
+msgstr "공개 키가 없는 피어가 있습니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the private key."
+msgstr "개인 키를 입력하십시오."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The private key isn't a WireGuard key."
+msgstr "개인 키가 WireGuard 키가 아닙니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an address with a prefix, like 10.0.0.2/24."
+msgstr "접두사가 포함된 주소(예: 10.0.0.2/24)가 아닙니다: {address}"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the address."
+msgstr "주소를 입력하십시오."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The listen port must be a number up to 65535."
+msgstr "수신 포트는 65535 이하의 숫자여야 합니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The firewall mark must be a number."
+msgstr "방화벽 표시는 숫자여야 합니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The MTU must be a number."
+msgstr "MTU는 숫자여야 합니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Add the server as a peer."
+msgstr "서버를 피어로 추가하십시오."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's public key isn't a WireGuard key."
+msgstr "피어의 공개 키가 WireGuard 키가 아닙니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's preshared key isn't a WireGuard key."
+msgstr "피어의 사전 공유 키가 WireGuard 키가 아닙니다."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a network, like 10.0.0.0/24."
+msgstr "네트워크(예: 10.0.0.0/24)가 아닙니다: {address}"
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The keepalive must be a number of seconds up to 65535."
+msgstr "연결 유지 간격은 65535초 이하의 숫자여야 합니다."
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Insecure"
+msgstr "보안되지 않음"
+
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Dynamic WEP"
+msgstr "동적 WEP"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#. TRANSLATORS: why a folder can't be listed, then the folder, such as "Permission denied: /root".
+#: files/directory_lister.cpp
+#, python-brace-format
+msgid "{error}: {path}"
+msgstr "{error}: {path}"
+
+#: files/file_watcher.cpp
+#, python-brace-format
+msgid "Cannot watch {paths}; polling for changes"
+msgstr "감시할 수 없어 주기적으로 변경 사항을 확인합니다: {paths}"
+
+#. TRANSLATORS: the file an operation failed on, then why, such as "/tmp/a.txt: Permission denied".
+#: files/task.cpp
+#, python-brace-format
+msgid "{path}: {error}"
+msgstr "{path}: {error}"
+
+#: files/trash.cpp
+msgid "The original location is not known"
+msgstr "원래 위치를 알 수 없습니다"
+
+#: files/trash.cpp
+msgid "The original location is outside the volume it was deleted on"
+msgstr "원래 위치가 삭제된 볼륨의 바깥에 있습니다"
+
+#. TRANSLATORS: a disk without a label, named by its size, such as "16 GB Volume".
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Encrypted Volume"
+msgstr "{size} 암호화된 볼륨"
+
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Volume"
+msgstr "{size} 볼륨"
+
+#: files/volume_manager.cpp
+msgid "The device is locked."
+msgstr "장치가 잠겨 있습니다."
+
+#: files/volume_manager.cpp
+msgid "The device does not support this operation."
+msgstr "장치가 이 작업을 지원하지 않습니다."
+
+#: files/volume_manager.cpp
+msgid "A device operation is already in progress."
+msgstr "장치 작업이 이미 진행 중입니다."
+
+#: files/volume_manager.cpp
+msgid "The device is no longer available."
+msgstr "장치를 더 이상 사용할 수 없습니다."

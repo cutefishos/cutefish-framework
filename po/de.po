@@ -1,0 +1,1476 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-framework\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-10-19 23:15+0800\n"
+"PO-Revision-Date: 2026-10-19 23:15+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "The accounts service cannot be reached"
+msgstr "Der Kontendienst ist nicht erreichbar"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "Created user was removed"
+msgstr "Der erstellte Benutzer wurde entfernt"
+
+#. TRANSLATORS: a sound setting that failed, then why, such as "Set device volume: Permission denied".
+#: clients/audio/backend.cpp
+#, python-brace-format
+msgid "{operation}: {error}"
+msgstr "{operation}: {error}"
+
+#: clients/audio/backend.cpp
+msgid "Set device volume"
+msgstr "Gerätelautstärke festlegen"
+
+#: clients/audio/backend.cpp
+msgid "Set audio properties"
+msgstr "Audioeigenschaften festlegen"
+
+#: clients/audio/backend.cpp
+msgid "Set default device"
+msgstr "Standardgerät festlegen"
+
+#: clients/audio/backend.cpp
+msgid "Set device profile"
+msgstr "Geräteprofil festlegen"
+
+#: clients/audio/backend.cpp
+msgid "Set device route"
+msgstr "Geräteausgang festlegen"
+
+#: clients/audio/backend.cpp
+msgid "Move audio stream"
+msgstr "Audiostream verschieben"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Cannot unblock Bluetooth: {error}"
+msgstr "Bluetooth kann nicht entsperrt werden: {error}"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't finish pairing in time. Try again."
+msgstr "Das Gerät hat das Koppeln nicht rechtzeitig abgeschlossen. Versuchen Sie es erneut."
+
+#: clients/bluez/manager.cpp
+msgid "The system D-Bus connection is unavailable."
+msgstr "Die System-D-Bus-Verbindung ist nicht verfügbar."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is blocked by a hardware switch."
+msgstr "Bluetooth ist durch einen Hardwareschalter blockiert."
+
+#: clients/bluez/manager.cpp
+msgid "The Bluetooth service is unavailable."
+msgstr "Der Bluetooth-Dienst ist nicht verfügbar."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth couldn't complete the request."
+msgstr "Bluetooth konnte die Anfrage nicht ausführen."
+
+#: clients/bluez/manager.cpp
+msgid "This device is no longer available."
+msgstr "Dieses Gerät ist nicht mehr verfügbar."
+
+#: clients/bluez/manager.cpp
+msgid "The device is busy. Try again in a moment."
+msgstr "Das Gerät ist belegt. Versuchen Sie es gleich noch einmal."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth isn't ready yet. Try again in a moment."
+msgstr "Bluetooth ist noch nicht bereit. Versuchen Sie es gleich noch einmal."
+
+#: clients/bluez/manager.cpp
+msgid "This device has no media player."
+msgstr "Dieses Gerät hat keinen Medienplayer."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent: no system bus."
+msgstr "Der Bluetooth-Kopplungsagent kann nicht bereitgestellt werden: kein Systembus."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent."
+msgstr "Der Bluetooth-Kopplungsagent kann nicht bereitgestellt werden."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a PIN containing 1–16 bytes."
+msgstr "Geben Sie eine PIN mit 1–16 Byte ein."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a passkey containing 1–6 digits."
+msgstr "Geben Sie einen Code mit 1–6 Ziffern ein."
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't connect to {device}"
+msgstr "Verbindung mit {device} fehlgeschlagen"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't connect to the device"
+msgstr "Verbindung mit dem Gerät fehlgeschlagen"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't disconnect {device}"
+msgstr "{device} konnte nicht getrennt werden"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't disconnect the device"
+msgstr "Das Gerät konnte nicht getrennt werden"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't pair with {device}"
+msgstr "Koppeln mit {device} fehlgeschlagen"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't pair with the device"
+msgstr "Koppeln mit dem Gerät fehlgeschlagen"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't forget {device}"
+msgstr "{device} konnte nicht entfernt werden"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't forget the device"
+msgstr "Das Gerät konnte nicht entfernt werden"
+
+#: clients/bluez/manager.cpp
+msgid "Try again. If it keeps failing, turn the device off and on again."
+msgstr "Versuchen Sie es erneut. Wenn es weiterhin fehlschlägt, schalten Sie das Gerät aus und wieder ein."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond in time. Make sure it is turned on and nearby."
+msgstr "Das Gerät hat nicht rechtzeitig geantwortet. Stellen Sie sicher, dass es eingeschaltet und in der Nähe ist."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond. Make sure it is turned on, nearby, and not connected to another device."
+msgstr "Das Gerät antwortet nicht. Stellen Sie sicher, dass es eingeschaltet, in der Nähe und nicht mit einem anderen Gerät verbunden ist."
+
+#: clients/bluez/manager.cpp
+msgid "The device no longer recognizes this computer. Forget the device and pair it again."
+msgstr "Das Gerät erkennt diesen Computer nicht mehr. Entfernen Sie das Gerät und koppeln Sie es erneut."
+
+#: clients/bluez/manager.cpp
+msgid "Pairing failed. Make sure the code matches on both devices and try again."
+msgstr "Koppeln fehlgeschlagen. Stellen Sie sicher, dass der Code auf beiden Geräten übereinstimmt, und versuchen Sie es erneut."
+
+#: clients/bluez/manager.cpp
+msgid "The device declined the request."
+msgstr "Das Gerät hat die Anfrage abgelehnt."
+
+#: clients/bluez/manager.cpp
+msgid "The device refused the connection."
+msgstr "Das Gerät hat die Verbindung verweigert."
+
+#: clients/bluez/manager.cpp
+msgid "The device has no features this computer can use."
+msgstr "Das Gerät hat keine Funktionen, die dieser Computer nutzen kann."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is turned off."
+msgstr "Bluetooth ist ausgeschaltet."
+
+#: clients/bluez/manager.cpp
+msgid "Too many devices are connected. Disconnect one and try again."
+msgstr "Zu viele Geräte sind verbunden. Trennen Sie eines und versuchen Sie es erneut."
+
+#: clients/bluez/manager.cpp
+msgid "The device ended the connection."
+msgstr "Das Gerät hat die Verbindung beendet."
+
+#: clients/bluez/manager.cpp
+msgid "The connection was interrupted. Try again."
+msgstr "Die Verbindung wurde unterbrochen. Versuchen Sie es erneut."
+
+#: clients/display/display_client.cpp
+msgid "The display operation timed out."
+msgstr "Zeitüberschreitung beim Bildschirmvorgang."
+
+#: clients/display/display_client.cpp
+msgid "The display service restarted."
+msgstr "Der Bildschirmdienst wurde neu gestartet."
+
+#: clients/display/display_client.cpp
+msgid "Unexpected display state."
+msgstr "Unerwarteter Bildschirmzustand."
+
+#: clients/display/output_model.cpp
+msgid "Built-in Display"
+msgstr "Integrierter Bildschirm"
+
+#. TRANSLATORS: a monitor and the port it is plugged into, such as "DELL U2720Q (DP-1)".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{name} ({connector})"
+msgstr "{name} ({connector})"
+
+#. TRANSLATORS: a screen resolution in pixels, such as "1920 × 1080".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{width} × {height}"
+msgstr "{width} × {height}"
+
+#. TRANSLATORS: a refresh rate, such as "60.00 Hz".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{rate} Hz"
+msgstr "{rate} Hz"
+
+#. TRANSLATORS: the choice that shows other content on this display instead of mirroring another one.
+#: clients/display/output_model.cpp
+msgid "Extend"
+msgstr "Erweitern"
+
+#: clients/display/screen.cpp
+msgid "The display service is unavailable."
+msgstr "Der Bildschirmdienst ist nicht verfügbar."
+
+#: clients/display/screen.cpp
+msgid "Displays changed. The previous draft was discarded."
+msgstr "Die Bildschirme haben sich geändert. Der vorherige Entwurf wurde verworfen."
+
+#: clients/networkmanager/handler.cpp
+msgid "The hotspot could not be started. The Wi-Fi adapter may not support it on this channel or with this password."
+msgstr "Der Hotspot konnte nicht gestartet werden. Der WLAN-Adapter unterstützt ihn möglicherweise nicht auf diesem Kanal oder mit diesem Passwort."
+
+#: clients/networkmanager/handler.cpp
+msgid "No Wi-Fi adapter can run a hotspot."
+msgstr "Kein WLAN-Adapter kann einen Hotspot betreiben."
+
+#: clients/networkmanager/handler.cpp
+msgid "No VPN plugin can read this file. Install the one for your VPN, for example network-manager-openvpn for OpenVPN."
+msgstr "Kein VPN-Plug-in kann diese Datei lesen. Installieren Sie das für Ihr VPN, zum Beispiel network-manager-openvpn für OpenVPN."
+
+#: clients/networkmanager/handler.cpp
+msgid "This file isn't a VPN configuration this system can read."
+msgstr "Diese Datei ist keine VPN-Konfiguration, die dieses System lesen kann."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which reads VPN files, is not installed."
+msgstr "nmcli, das VPN-Dateien liest, ist nicht installiert."
+
+#: clients/networkmanager/handler.cpp
+msgid "The private key can't be read, so the file would be incomplete."
+msgstr "Der private Schlüssel kann nicht gelesen werden, daher wäre die Datei unvollständig."
+
+#: clients/networkmanager/handler.cpp
+msgid "The file can't be written."
+msgstr "Die Datei kann nicht geschrieben werden."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which writes VPN files, is not installed."
+msgstr "nmcli, das VPN-Dateien schreibt, ist nicht installiert."
+
+#: clients/networkmanager/handler.cpp
+msgid "The VPN couldn't be written to a file."
+msgstr "Das VPN konnte nicht in eine Datei geschrieben werden."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Automatic (DHCP)"
+msgstr "Automatisch (DHCP)"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Automatic"
+msgstr "Automatisch"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Manual"
+msgstr "Manuell"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Off"
+msgstr "Aus"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "DHCP Only"
+msgstr "Nur DHCP"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Link-Local Only"
+msgstr "Nur Link-Local"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Shared to Other Computers"
+msgstr "Für andere Computer freigegeben"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Left to the System"
+msgstr "Dem System überlassen"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv4 address."
+msgstr "{address} ist keine IPv4-Adresse."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv6 address."
+msgstr "{address} ist keine IPv6-Adresse."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{mask} isn't a subnet mask."
+msgstr "{mask} ist keine Subnetzmaske."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "The prefix length must be a number from 1 to 128."
+msgstr "Die Präfixlänge muss eine Zahl von 1 bis 128 sein."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a router address."
+msgstr "{address} ist keine Routeradresse."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv4 name servers need IPv4 set to automatic or manual."
+msgstr "IPv4-Nameserver erfordern IPv4 auf „Automatisch“ oder „Manuell“."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv6 name servers need IPv6 set to automatic or manual."
+msgstr "IPv6-Nameserver erfordern IPv6 auf „Automatisch“ oder „Manuell“."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a name server address."
+msgstr "{address} ist keine Nameserveradresse."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Fill in the address and subnet mask."
+msgstr "Geben Sie Adresse und Subnetzmaske ein."
+
+#. TRANSLATORS: a network and the adapter it is on, such as "Home (wlan0)".
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "{name} ({device})"
+msgstr "{name} ({device})"
+
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "Install {package} to use this VPN."
+msgstr "Installieren Sie {package}, um dieses VPN zu verwenden."
+
+#: clients/networkmanager/network_model.cpp
+msgid "Signing in to OpenConnect VPNs isn't supported yet."
+msgstr "Die Anmeldung bei OpenConnect-VPNs wird noch nicht unterstützt."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authentication methods"
+msgstr "Authentifizierungsmethoden"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Encryption and compression"
+msgstr "Verschlüsselung und Komprimierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Point-to-point encryption"
+msgstr "Punkt-zu-Punkt-Verschlüsselung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not required"
+msgstr "Nicht erforderlich"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Any"
+msgstr "Beliebig"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "128-bit"
+msgstr "128 Bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "40-bit"
+msgstr "40 Bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Stateful encryption"
+msgstr "Zustandsbehaftete Verschlüsselung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "BSD compression"
+msgstr "BSD-Komprimierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Deflate compression"
+msgstr "Deflate-Komprimierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TCP header compression"
+msgstr "TCP-Header-Komprimierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Link"
+msgstr "Verbindung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send PPP echo packets"
+msgstr "PPP-Echopakete senden"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Default"
+msgstr "Standard"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "DH group {number}"
+msgstr "DH-Gruppe {number}"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server"
+msgstr "Server"
+
+#. TRANSLATORS: keep "host[:port[:proto]]" as it is; it is the syntax the field takes.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "host[:port[:proto]], several separated by commas"
+msgstr "host[:port[:proto]], mehrere durch Kommas getrennt"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Sign in with"
+msgstr "Anmelden mit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password"
+msgstr "Benutzername und Passwort"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificates"
+msgstr "Zertifikate"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name, password and certificates"
+msgstr "Benutzername, Passwort und Zertifikate"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Static key"
+msgstr "Statischer Schlüssel"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name"
+msgstr "Benutzername"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Password"
+msgstr "Passwort"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "CA certificate"
+msgstr "CA-Zertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User certificate"
+msgstr "Benutzerzertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key"
+msgstr "Privater Schlüssel"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key password"
+msgstr "Passwort des privaten Schlüssels"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key direction"
+msgstr "Schlüsselrichtung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "None"
+msgstr "Keine"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IP address"
+msgstr "Entfernte IP-Adresse"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IP address"
+msgstr "Lokale IP-Adresse"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "General"
+msgstr "Allgemein"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Port"
+msgstr "Port"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use TCP"
+msgstr "TCP verwenden"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device type"
+msgstr "Gerätetyp"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device name"
+msgstr "Gerätename"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel MTU"
+msgstr "Tunnel-MTU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "UDP fragment size"
+msgstr "UDP-Fragmentgröße"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restrict TCP maximum segment size"
+msgstr "Maximale TCP-Segmentgröße begrenzen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Path MTU discovery"
+msgstr "Path-MTU-Erkennung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Never"
+msgstr "Nie"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "When possible"
+msgstr "Wenn möglich"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Always"
+msgstr "Immer"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Renegotiate every (seconds)"
+msgstr "Neu aushandeln alle (Sekunden)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Compression"
+msgstr "Komprimierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow compression"
+msgstr "Komprimierung erlauben"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Incoming only"
+msgstr "Nur eingehend"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Both ways"
+msgstr "Beide Richtungen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No"
+msgstr "Nein"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pick servers at random"
+msgstr "Server zufällig wählen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Randomise server host names"
+msgstr "Server-Hostnamen zufällig variieren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow pulled host names"
+msgstr "Übermittelte Hostnamen erlauben"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 inside the tunnel"
+msgstr "IPv6 im Tunnel"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept the server from any address"
+msgstr "Server von jeder Adresse akzeptieren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send client details to the server"
+msgstr "Clientdetails an den Server senden"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ping every (seconds)"
+msgstr "Ping alle (Sekunden)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Exit without a ping after (seconds)"
+msgstr "Beenden ohne Ping nach (Sekunden)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart without a ping after (seconds)"
+msgstr "Neustart ohne Ping nach (Sekunden)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Connection timeout (seconds)"
+msgstr "Verbindungs-Timeout (Sekunden)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum routes"
+msgstr "Maximale Routen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Security"
+msgstr "Sicherheit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cipher"
+msgstr "Chiffre"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data ciphers"
+msgstr "Datenchiffren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data cipher fallback"
+msgstr "Ersatzchiffre für Daten"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable cipher negotiation"
+msgstr "Chiffre-Aushandlung deaktivieren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "HMAC authentication"
+msgstr "HMAC-Authentifizierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key size (bits)"
+msgstr "Schlüssellänge (Bit)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list file"
+msgstr "Sperrlistendatei"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list directory"
+msgstr "Sperrlistenordner"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate name"
+msgstr "Name im Serverzertifikat"
+
+#. TRANSLATORS: keep the "name:", "subject:" and "name-prefix:" prefixes as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "name:vpn.example.com, subject:… or name-prefix:…"
+msgstr "name:vpn.example.com, subject:… oder name-prefix:…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate usage"
+msgstr "Verwendung des Serverzertifikats"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not checked"
+msgstr "Nicht geprüft"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client"
+msgstr "Client"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netscape certificate type"
+msgstr "Netscape-Zertifikatstyp"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS authentication key"
+msgstr "TLS-Authentifizierungsschlüssel"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS key direction"
+msgstr "TLS-Schlüsselrichtung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key"
+msgstr "TLS-Verschlüsselungsschlüssel"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key (v2)"
+msgstr "TLS-Verschlüsselungsschlüssel (v2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra certificates"
+msgstr "Zusätzliche Zertifikate"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS cipher"
+msgstr "TLS-Chiffre"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Minimum TLS version"
+msgstr "Minimale TLS-Version"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Or the highest the server supports"
+msgstr "Oder die höchste, die der Server unterstützt"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum TLS version"
+msgstr "Maximale TLS-Version"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy"
+msgstr "Proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy server"
+msgstr "Proxyserver"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy port"
+msgstr "Proxyport"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Retry indefinitely"
+msgstr "Unbegrenzt wiederholen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy user name"
+msgstr "Proxy-Benutzername"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy password"
+msgstr "Proxy-Passwort"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group name"
+msgstr "Gruppenname"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password"
+msgstr "Gruppenpasswort"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hybrid authentication"
+msgstr "Hybride Authentifizierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Domain"
+msgstr "Domäne"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Vendor"
+msgstr "Hersteller"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Application version"
+msgstr "Anwendungsversion"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Interface MTU"
+msgstr "Schnittstellen-MTU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption (single DES)"
+msgstr "Schwache Verschlüsselung (einfaches DES)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No encryption"
+msgstr "Keine Verschlüsselung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak authentication"
+msgstr "Schwache Authentifizierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption"
+msgstr "Schwache Verschlüsselung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT traversal"
+msgstr "NAT-Traversal"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T when detected"
+msgstr "NAT-T bei Erkennung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T always"
+msgstr "NAT-T immer"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE DH group"
+msgstr "IKE-DH-Gruppe"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Perfect forward secrecy"
+msgstr "Perfect Forward Secrecy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "As the server says"
+msgstr "Wie vom Server vorgegeben"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local port"
+msgstr "Lokaler Port"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection (seconds, 0 is off)"
+msgstr "Dead Peer Detection (Sekunden, 0 = aus)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NT domain"
+msgstr "NT-Domäne"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec tunnel to the server"
+msgstr "IPsec-Tunnel zum Server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server identity"
+msgstr "Serveridentität"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine authentication"
+msgstr "Geräteauthentifizierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pre-shared key"
+msgstr "Pre-Shared Key"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine CA certificate"
+msgstr "CA-Zertifikat des Geräts"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine certificate"
+msgstr "Gerätezertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine private key"
+msgstr "Privater Schlüssel des Geräts"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine key password"
+msgstr "Passwort des Geräteschlüssels"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 algorithms"
+msgstr "Algorithmen für Phase 1"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 algorithms"
+msgstr "Algorithmen für Phase 2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime (seconds)"
+msgstr "Lebensdauer Phase 1 (Sekunden)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime (seconds)"
+msgstr "Lebensdauer Phase 2 (Sekunden)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Force UDP encapsulation"
+msgstr "UDP-Kapselung erzwingen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IP compression"
+msgstr "IP-Komprimierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use IKEv2"
+msgstr "IKEv2 verwenden"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable perfect forward secrecy"
+msgstr "Perfect Forward Secrecy deaktivieren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Multilink MRRU"
+msgstr "Multilink-MRRU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use a random source port"
+msgstr "Zufälligen Quellport verwenden"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "PPP unit number"
+msgstr "PPP-Einheitennummer"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA certificate"
+msgstr "CA-Zertifikat des Servers"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list"
+msgstr "Sperrliste"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ignore certificate warnings"
+msgstr "Zertifikatswarnungen ignorieren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS hostname extension"
+msgstr "TLS-Hostnamenerweiterung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Identity"
+msgstr "Identität"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Verify the server name by"
+msgstr "Servernamen prüfen anhand"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Nothing"
+msgstr "Keine Prüfung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Subject"
+msgstr "Antragsteller"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name"
+msgstr "Name"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name suffix"
+msgstr "Namenssuffix"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Expected server name"
+msgstr "Erwarteter Servername"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Check key usage"
+msgstr "Schlüsselverwendung prüfen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password (EAP)"
+msgstr "Benutzername und Passwort (EAP)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate"
+msgstr "Zertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (EAP-TLS)"
+msgstr "Zertifikat (EAP-TLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and private key"
+msgstr "Zertifikat und privater Schlüssel"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and SSH agent"
+msgstr "Zertifikat und SSH-Agent"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Smart card"
+msgstr "Smartcard"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate from"
+msgstr "Zertifikat aus"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A file"
+msgstr "Einer Datei"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "The SSH agent"
+msgstr "Dem SSH-Agenten"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A smart card"
+msgstr "Einer Smartcard"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client identity"
+msgstr "Clientidentität"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Options"
+msgstr "Optionen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server port"
+msgstr "Serverport"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Request an inner IP address"
+msgstr "Innere IP-Adresse anfordern"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enforce UDP encapsulation"
+msgstr "UDP-Kapselung erzwingen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Custom algorithm proposals"
+msgstr "Eigene Algorithmusvorschläge"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE proposal"
+msgstr "IKE-Vorschlag"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "ESP proposal"
+msgstr "ESP-Vorschlag"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local traffic selectors"
+msgstr "Lokale Traffic-Selektoren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote traffic selectors"
+msgstr "Entfernte Traffic-Selektoren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password and user name (IKEv1)"
+msgstr "Gruppenpasswort und Benutzername (IKEv1)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (IKEv2)"
+msgstr "Zertifikat (IKEv2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate name"
+msgstr "Zertifikatsname"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime"
+msgstr "Lebensdauer Phase 1"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime"
+msgstr "Lebensdauer Phase 2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable rekeying"
+msgstr "Neuverschlüsselung deaktivieren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authenticate by"
+msgstr "Authentifizieren mit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA signature"
+msgstr "RSA-Signatur"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Networks"
+msgstr "Netzwerke"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local subnet"
+msgstr "Lokales Subnetz"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote subnet"
+msgstr "Entferntes Subnetz"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow narrowing"
+msgstr "Eingrenzung erlauben"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Mobility (MOBIKE)"
+msgstr "Mobilität (MOBIKE)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Don't ask the server for an address"
+msgstr "Keine Adresse vom Server anfordern"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE fragmentation"
+msgstr "IKE-Fragmentierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Forced"
+msgstr "Erzwungen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec interface"
+msgstr "IPsec-Schnittstelle"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection"
+msgstr "Dead Peer Detection"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Delay (seconds)"
+msgstr "Verzögerung (Sekunden)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Timeout (seconds)"
+msgstr "Timeout (Sekunden)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Action"
+msgstr "Aktion"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hold"
+msgstr "Halten"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Clear"
+msgstr "Trennen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart"
+msgstr "Neu starten"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate"
+msgstr "Serverzertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA"
+msgstr "Server-CA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send the certificate"
+msgstr "Zertifikat senden"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "If asked"
+msgstr "Auf Anfrage"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept certificates without the identity"
+msgstr "Zertifikate ohne die Identität akzeptieren"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trusted certificate fingerprint"
+msgstr "Vertrauenswürdiger Zertifikatsfingerabdruck"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Realm"
+msgstr "Realm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ask for a one-time password"
+msgstr "Nach Einmalpasswort fragen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Two-factor authentication"
+msgstr "Zwei-Faktor-Authentifizierung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key file"
+msgstr "Schlüsseldatei"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netmask"
+msgstr "Netzmaske"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 addresses too"
+msgstr "Auch IPv6-Adressen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IPv6 address"
+msgstr "Entfernte IPv6-Adresse"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IPv6 address"
+msgstr "Lokale IPv6-Adresse"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 prefix"
+msgstr "IPv6-Präfix"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote user name"
+msgstr "Entfernter Benutzername"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote device number"
+msgstr "Entfernte Gerätenummer"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TAP device"
+msgstr "TAP-Gerät"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No default route"
+msgstr "Keine Standardroute"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra SSH options"
+msgstr "Zusätzliche SSH-Optionen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel domain"
+msgstr "Tunneldomäne"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name server"
+msgstr "Nameserver"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Fragment size"
+msgstr "Fragmentgröße"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cisco AnyConnect or openconnect"
+msgstr "Cisco AnyConnect oder openconnect"
+
+#. TRANSLATORS: keep "http://" and "socks://" as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "http://… or socks://…"
+msgstr "http://… oder socks://…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User agent"
+msgstr "User-Agent"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Reported operating system"
+msgstr "Gemeldetes Betriebssystem"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Linux 64-bit"
+msgstr "Linux 64-Bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable UDP (DTLS)"
+msgstr "UDP deaktivieren (DTLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Refuse invalid server certificates"
+msgstr "Ungültige Serverzertifikate ablehnen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key passphrase from the file system ID"
+msgstr "Passphrase des privaten Schlüssels aus der Dateisystem-ID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trojan"
+msgstr "Trojaner"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Run the server's compliance script"
+msgstr "Compliance-Skript des Servers ausführen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Wrapper script"
+msgstr "Wrapper-Skript"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Software token"
+msgstr "Software-Token"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token"
+msgstr "Token"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA SecurID from ~/.stokenrc"
+msgstr "RSA SecurID aus ~/.stokenrc"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token secret"
+msgstr "Token-Geheimnis"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the server."
+msgstr "Geben Sie den Server ein."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the group name."
+msgstr "Geben Sie den Gruppennamen ein."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the remote IP address."
+msgstr "Geben Sie die entfernte IP-Adresse ein."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the local IP address."
+msgstr "Geben Sie die lokale IP-Adresse ein."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the netmask."
+msgstr "Geben Sie die Netzmaske ein."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the tunnel domain."
+msgstr "Geben Sie die Tunneldomäne ein."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "Fill in “{field}”."
+msgstr "Füllen Sie „{field}“ aus."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "This kind of VPN can't be set up by hand."
+msgstr "Diese Art von VPN kann nicht manuell eingerichtet werden."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "{field} must be a number from {minimum} to {maximum}."
+msgstr "{field} muss eine Zahl von {minimum} bis {maximum} sein."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The network connection was interrupted."
+msgstr "Die Netzwerkverbindung wurde unterbrochen."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service stopped unexpectedly."
+msgstr "Der VPN-Dienst wurde unerwartet beendet."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service returned invalid configuration."
+msgstr "Der VPN-Dienst hat eine ungültige Konfiguration geliefert."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The connection attempt timed out."
+msgstr "Zeitüberschreitung beim Verbindungsversuch."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service did not start in time."
+msgstr "Der VPN-Dienst ist nicht rechtzeitig gestartet."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service failed to start."
+msgstr "Der VPN-Dienst konnte nicht gestartet werden."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Sign-in failed. Check the user name and password."
+msgstr "Anmeldung fehlgeschlagen. Prüfen Sie Benutzername und Passwort."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service reported an error."
+msgstr "Der VPN-Dienst hat einen Fehler gemeldet."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "DNS tunnel (iodine)"
+msgstr "DNS-Tunnel (iodine)"
+
+#. TRANSLATORS: {key} is a WireGuard setting as written in the file, such as "PrivateKey".
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} has an invalid {key}."
+msgstr "Zeile {line} enthält einen ungültigen Wert für {key}."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} isn't part of a WireGuard configuration."
+msgstr "Zeile {line} gehört nicht zu einer WireGuard-Konfiguration."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The configuration has no private key."
+msgstr "Die Konfiguration enthält keinen privaten Schlüssel."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer has no public key."
+msgstr "Ein Peer hat keinen öffentlichen Schlüssel."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the private key."
+msgstr "Geben Sie den privaten Schlüssel ein."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The private key isn't a WireGuard key."
+msgstr "Der private Schlüssel ist kein WireGuard-Schlüssel."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an address with a prefix, like 10.0.0.2/24."
+msgstr "{address} ist keine Adresse mit Präfix wie 10.0.0.2/24."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the address."
+msgstr "Geben Sie die Adresse ein."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The listen port must be a number up to 65535."
+msgstr "Der Listen-Port muss eine Zahl bis 65535 sein."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The firewall mark must be a number."
+msgstr "Die Firewall-Markierung muss eine Zahl sein."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The MTU must be a number."
+msgstr "Die MTU muss eine Zahl sein."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Add the server as a peer."
+msgstr "Fügen Sie den Server als Peer hinzu."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's public key isn't a WireGuard key."
+msgstr "Der öffentliche Schlüssel eines Peers ist kein WireGuard-Schlüssel."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's preshared key isn't a WireGuard key."
+msgstr "Der Preshared Key eines Peers ist kein WireGuard-Schlüssel."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a network, like 10.0.0.0/24."
+msgstr "{address} ist kein Netzwerk wie 10.0.0.0/24."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The keepalive must be a number of seconds up to 65535."
+msgstr "Das Keepalive muss eine Sekundenzahl bis 65535 sein."
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Insecure"
+msgstr "Unsicher"
+
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Dynamic WEP"
+msgstr "Dynamisches WEP"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Unknown"
+msgstr "Unbekannt"
+
+#. TRANSLATORS: why a folder can't be listed, then the folder, such as "Permission denied: /root".
+#: files/directory_lister.cpp
+#, python-brace-format
+msgid "{error}: {path}"
+msgstr "{error}: {path}"
+
+#: files/file_watcher.cpp
+#, python-brace-format
+msgid "Cannot watch {paths}; polling for changes"
+msgstr "{paths} kann nicht überwacht werden; Änderungen werden abgefragt"
+
+#. TRANSLATORS: the file an operation failed on, then why, such as "/tmp/a.txt: Permission denied".
+#: files/task.cpp
+#, python-brace-format
+msgid "{path}: {error}"
+msgstr "{path}: {error}"
+
+#: files/trash.cpp
+msgid "The original location is not known"
+msgstr "Der ursprüngliche Ort ist nicht bekannt"
+
+#: files/trash.cpp
+msgid "The original location is outside the volume it was deleted on"
+msgstr "Der ursprüngliche Ort liegt außerhalb des Volumes, auf dem gelöscht wurde"
+
+#. TRANSLATORS: a disk without a label, named by its size, such as "16 GB Volume".
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Encrypted Volume"
+msgstr "Verschlüsseltes Volume ({size})"
+
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Volume"
+msgstr "Volume ({size})"
+
+#: files/volume_manager.cpp
+msgid "The device is locked."
+msgstr "Das Gerät ist gesperrt."
+
+#: files/volume_manager.cpp
+msgid "The device does not support this operation."
+msgstr "Das Gerät unterstützt diesen Vorgang nicht."
+
+#: files/volume_manager.cpp
+msgid "A device operation is already in progress."
+msgstr "Es läuft bereits ein Gerätevorgang."
+
+#: files/volume_manager.cpp
+msgid "The device is no longer available."
+msgstr "Das Gerät ist nicht mehr verfügbar."
