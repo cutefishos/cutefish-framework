@@ -1,0 +1,7 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+find_dependency(CutefishToolkit)
+
+include("${CMAKE_CURRENT_LIST_DIR}/CutefishPdfTargets.cmake")
+check_required_components(CutefishPdf)

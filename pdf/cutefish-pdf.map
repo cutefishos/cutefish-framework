@@ -1,0 +1,8 @@
+{
+    global:
+        extern "C++" {
+            cutefish::pdf::*;
+        };
+    local:
+        *;
+};
