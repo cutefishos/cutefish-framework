@@ -162,7 +162,7 @@ TEST_F(PdfTest, LinksGoToAPageOrAnAddress)
     ASSERT_EQ(links.size(), 2u);
     EXPECT_EQ(links[0].uri, "https://cutefish.org");
     EXPECT_EQ(links[0].area, base::RectF(100, 70, 100, 30));
-    EXPECT_EQ(links[1].page, 1);
+    EXPECT_EQ(links[1].destination.page, 1);
     EXPECT_EQ(links[1].area, base::RectF(100, 0, 100, 30));
 }
 
@@ -173,11 +173,96 @@ TEST_F(PdfTest, TheOutlineIsATree)
     const std::vector<pdf::OutlineItem> outline = document->outline();
     ASSERT_EQ(outline.size(), 2u);
     EXPECT_EQ(outline[0].title, "First");
-    EXPECT_EQ(outline[0].page, 0);
+    EXPECT_EQ(outline[0].destination.page, 0);
     EXPECT_EQ(outline[1].title, "Second");
-    EXPECT_EQ(outline[1].page, 1);
+    EXPECT_EQ(outline[1].destination.page, 1);
     ASSERT_EQ(outline[1].children.size(), 1u);
     EXPECT_EQ(outline[1].children[0].title, "Child");
+    EXPECT_EQ(document->pageSizes(), (std::vector<base::SizeF> {{200, 100}, {400, 300}}));
+}
+
+TEST_F(PdfTest, StandardFontsDrawWhateverFontsTheSystemHas)
+{
+    const auto document = openSample();
+    ASSERT_TRUE(document);
+    // "Hello Cutefish" in Helvetica, not embedded: PDFium's own copy of the
+    // standard fonts draws it.
+    const pdf::Bitmap page = document->render(0, 2, base::Rect(0, 0, 400, 200));
+    int ink = 0;
+    for (int y = 70; y < 105; ++y)
+        for (int x = 60; x < 250; ++x)
+            ink += (pixel(page, x, y) & 0xff) < 128;
+    EXPECT_GT(ink, 200);
+}
+
+// The text "Turn" at (130, 250), a link over (150, 220)-(250, 240) to a point
+// of the page, on a page whose crop box is (100, 200)-(300, 300) of a larger
+// media box, turned by `rotation`.
+static std::string turnedPdf(int rotation)
+{
+    return pdfOf({
+        "<< /Type /Catalog /Pages 2 0 R >>",
+        "<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+        "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 400 400] /CropBox [100 200 300 300] /Rotate "
+                + std::to_string(rotation)
+                + " /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> /Annots [6 0 R] >>",
+        stream("BT /F1 12 Tf 130 250 Td (Turn) Tj ET"),
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+        "<< /Type /Annot /Subtype /Link /Rect [150 220 250 240] /Border [0 0 0] /Dest [3 0 R /XYZ 120 280 0] >>",
+    });
+}
+
+TEST_F(PdfTest, TurnedAndCroppedPagesShowTheirPositions)
+{
+    struct Expected
+    {
+        int rotation;
+        base::SizeF size;
+        // The baseline's start of "T", its link, and the destination's point.
+        base::PointF baseline;
+        base::RectF link;
+        base::PointF destination;
+    };
+    for (const Expected& expected : {
+             Expected {0, {200, 100}, {30, 50}, {50, 60, 100, 20}, {20, 20}},
+             Expected {90, {100, 200}, {50, 30}, {20, 50, 20, 100}, {80, 20}},
+             Expected {270, {100, 200}, {50, 170}, {60, 50, 20, 100}, {20, 180}},
+         }) {
+        SCOPED_TRACE(expected.rotation);
+        Document::Opening opening = Document::open(write("turned.pdf", turnedPdf(expected.rotation)));
+        ASSERT_EQ(opening.status, Document::Status::Opened);
+        const Document& document = *opening.document;
+        EXPECT_EQ(document.pageSize(0), expected.size);
+
+        const pdf::PageText text = document.text(0);
+        ASSERT_EQ(text.text(0, 4), "Turn");
+        const base::RectF t = text.characters[0].box;
+        // The glyph's box starts at the baseline's start and grows up from it,
+        // which turns with the page.
+        const double along = expected.rotation == 0 ? t.left() : expected.rotation == 90 ? t.top() : t.bottom();
+        const double across = expected.rotation == 0 ? t.bottom() : expected.rotation == 90 ? t.left() : t.right();
+        EXPECT_NEAR(along, expected.rotation == 0 ? expected.baseline.x() : expected.baseline.y(), 1.5);
+        EXPECT_NEAR(across, expected.rotation == 0 ? expected.baseline.y() : expected.baseline.x(), 1.5);
+
+        const std::vector<pdf::Match> matches = document.find(0, "turn");
+        ASSERT_EQ(matches.size(), 1u);
+        ASSERT_EQ(matches[0].rects.size(), 1u);
+        const base::RectF match = matches[0].rects[0];
+        for (size_t i = 0; i < 4; ++i) {
+            const base::RectF box = text.characters[i].box;
+            EXPECT_GE(box.left(), match.left() - 0.5);
+            EXPECT_LE(box.right(), match.right() + 0.5);
+            EXPECT_GE(box.top(), match.top() - 0.5);
+            EXPECT_LE(box.bottom(), match.bottom() + 0.5);
+        }
+
+        const std::vector<pdf::Link> links = document.links(0);
+        ASSERT_EQ(links.size(), 1u);
+        EXPECT_EQ(links[0].area, expected.link);
+        const base::PointF point = document.position(links[0].destination);
+        EXPECT_NEAR(point.x(), expected.destination.x(), 0.01);
+        EXPECT_NEAR(point.y(), expected.destination.y(), 0.01);
+    }
 }
 
 // protected.pdf: "Secret page", user password "secret", from Ghostscript's

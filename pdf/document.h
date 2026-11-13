@@ -52,30 +52,40 @@ struct Match
     std::vector<base::RectF> rects;
 };
 
+// A place in the document: a page, and where on it as the file gives it,
+// which Document::position() turns into a point on the page as shown.
+struct Destination
+{
+    // -1 for none.
+    int page = -1;
+    bool hasX = false;
+    bool hasY = false;
+    // In the page's own PDF coordinates.
+    double x = 0;
+    double y = 0;
+};
+
 struct Link
 {
     base::RectF area;
-    // A destination in the document: its page, and the point on it when the
-    // link names one.
-    int page = -1;
-    std::optional<base::PointF> point;
-    // Else a web address, or another URI.
+    // In the document, or else a web address or another URI.
+    Destination destination;
     std::string uri;
 };
 
 struct OutlineItem
 {
     std::string title;
-    // -1 when the item goes nowhere in the document.
-    int page = -1;
+    Destination destination;
     std::vector<OutlineItem> children;
 };
 
 // A PDF file, read with PDFium. PDFium keeps state for the whole process and
 // is not thread-safe, so every call into it, from any Document on any thread,
 // takes one process-wide lock: calls are safe from anywhere and run one at a
-// time. A caller wanting a page drawn without the others waiting renders on
-// a thread of its own.
+// time, and may wait behind a long render; a UI calls from a worker. The
+// last few pages used stay parsed. Fonts a file does not embed come from
+// fontconfig's matching.
 class Document
 {
 public:
@@ -103,6 +113,8 @@ public:
 
     int pageCount() const;
     base::SizeF pageSize(int page) const;
+    // Every page's, in one go.
+    std::vector<base::SizeF> pageSizes() const;
 
     // The part `region` of the page drawn `scale` pixels to a point, on
     // white, with its annotations and filled form fields; `region` is in
@@ -115,8 +127,12 @@ public:
     PageText text(int page) const;
     // Every occurrence on the page, in reading order.
     std::vector<Match> find(int page, const std::string& query, bool matchCase = false) const;
+    // Neither reads any page but the one asked for.
     std::vector<Link> links(int page) const;
     std::vector<OutlineItem> outline() const;
+    // The destination's point on its page as shown: its top left where the
+    // destination does not say.
+    base::PointF position(const Destination& destination) const;
 
 private:
     struct Private;

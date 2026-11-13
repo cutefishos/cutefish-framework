@@ -16,7 +16,7 @@ if(NOT EXISTS ${PDFIUM_SOURCE_DIR}/public/fpdfview.h OR NOT EXISTS ${PDFIUM_DEPS
 endif()
 
 pkg_check_modules(PdfiumSystem REQUIRED IMPORTED_TARGET
-    freetype2 harfbuzz-subset lcms2 libopenjp2 libjpeg zlib icu-uc libhwy
+    fontconfig freetype2 harfbuzz-subset lcms2 libopenjp2 libjpeg zlib icu-uc libhwy
     absl_flat_hash_set absl_inlined_vector absl_cleanup)
 
 # PDFium includes its dependencies by their Chromium checkout paths; these
@@ -70,6 +70,8 @@ cutefish_framework_add_library(cutefish-pdf
     EXPORT CutefishPdfTargets
     SOURCES
         document.cpp
+        system_fonts.cpp
+        system_fonts_p.h
         $<TARGET_OBJECTS:pdfium-objects>
     HEADERS document.h
     PUBLIC_LIBRARIES Cutefish::ToolkitBase
