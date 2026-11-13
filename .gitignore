@@ -52,3 +52,6 @@ compile_commands.json
 *creator.user*
 
 build/*
+# Fetched by scripts/fetch-pdfium.sh.
+/third_party/pdfium/
+/third_party/pdfium-deps/
