@@ -3,6 +3,7 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <chrono>
 #include <map>
 #include <memory>
@@ -26,135 +27,177 @@ constexpr const char* kService = "org.freedesktop.PackageKit";
 constexpr const char* kPath = "/org/freedesktop/PackageKit";
 constexpr const char* kTransactionInterface = "org.freedesktop.PackageKit.Transaction";
 
+// PK_STATUS_ENUM_DOWNLOAD and PK_STATUS_ENUM_INSTALL.
+constexpr uint32_t kStatusDownload = 8;
+constexpr uint32_t kStatusInstall = 9;
+
 using PackageEntry = std::tuple<uint32_t, std::string, std::string>;
 
 // PackageKit on a connection of its own on the test's loop, so every call
-// crosses the bus: the daemon, its offline interface and the transactions
-// it creates.
+// crosses the bus: the daemon and the transactions it creates.
 class FakePackageKit
 {
 public:
     explicit FakePackageKit(EventLoop& loop)
-        : m_bus(Connection::open(Connection::Bus::Session, &loop))
+        : m_loop(loop)
+        , m_bus(Connection::open(Connection::Bus::Session, &loop))
     {
         m_daemon = std::make_unique<Object>(m_bus.get(), kPath, kService);
-        m_daemon->addMethod("CreateTransaction", [this] { return createTransaction(); });
-        EXPECT_TRUE(m_daemon->publish());
-
-        m_offline = std::make_unique<Object>(m_bus.get(), kPath, "org.freedesktop.PackageKit.Offline");
-        m_offline->addMethod("GetPrepared", [this] { return prepared; });
-        m_offline->addMethod("Trigger", [this](const std::string& action) { triggered.push_back(action); });
-        m_offline->addMethod("ClearResults", [this] {
-            ++clears;
-            result.reset();
-        });
-        m_offline->addMethod("GetResults", "", "basutus", [this](MethodCall& call) {
-            if (!result) {
-                call.replyError("org.freedesktop.PackageKit.Offline.Error.NoData", "no update results available");
-                return;
+        m_daemon->addMethod("CreateTransaction", [this] { return createTransaction(0); });
+        m_daemon->addMethod("GetTransactionList", [this] {
+            std::vector<ObjectPath> paths;
+            for (const auto& [path, transaction] : m_transactions) {
+                if (!transaction.finished)
+                    paths.push_back({path});
             }
-            call.reply(result->success, result->packageIds, uint32_t(22), result->timeFinished,
-                       uint32_t(result->success ? 0 : 4), result->error);
+            return paths;
         });
-        EXPECT_TRUE(m_offline->publish());
+        EXPECT_TRUE(m_daemon->publish());
     }
 
     bool registerService() { return m_bus->requestName(kService); }
     void unregisterService() { m_bus->releaseName(kService); }
 
-    // The download held by holdDownload.
-    void downloadProgress(uint32_t percentage)
+    // An update another process started, already downloading.
+    std::string startForeignUpdate()
     {
-        m_percentage = percentage;
-        m_held->emitPropertiesChanged({"Percentage"});
+        const std::string path = createTransaction(22).path;
+        m_held = path;
+        set(path, kStatusDownload, 10, true);
+        return path;
     }
-    void finishDownload()
+
+    // An update that ends, its object gone, right after its first look.
+    void startVanishingUpdate()
     {
-        prepared = m_heldIds;
-        m_held->emitSignal("Finished", uint32_t(1), uint32_t(100));
+        const std::string path = createTransaction(22).path;
+        m_transactions[path].vanishes = true;
+        set(path, kStatusDownload, 10, true);
+    }
+
+    // The update held by holdUpdate, or started by startForeignUpdate.
+    void progress(uint32_t status, uint32_t percentage, bool allowCancel)
+    {
+        set(m_held, status, percentage, allowCancel);
+    }
+    void finishUpdate()
+    {
+        finish(m_held, 1);
+        m_held.clear();
     }
 
     std::vector<PackageEntry> updates;
-    std::vector<std::string> prepared;
     // ErrorCode's details for a refresh that fails.
     std::optional<std::string> refreshError;
-    // Refuses UpdatePackages, as polkit does for a caller it does not let through.
-    bool refuseDownload = false;
-    // Leaves a download running until finishDownload().
-    bool holdDownload = false;
-    std::optional<Updates::OfflineResult> result;
+    // Turns the update down as polkit does when the prompt is dismissed.
+    bool refuseAuthorization = false;
+    // Leaves an update running until finishUpdate() or Cancel.
+    bool holdUpdate = false;
 
     // Every transaction method called, with its arguments.
     std::vector<std::string> calls;
     std::vector<std::vector<std::string>> hints;
-    std::vector<std::string> triggered;
-    int clears = 0;
-    int cancels = 0;
 
 private:
-    ObjectPath createTransaction()
+    struct Fake
     {
-        const std::string path = "/" + std::to_string(++m_transactions) + "_test";
-        auto object = std::make_unique<Object>(m_bus.get(), path, kTransactionInterface);
-        Object* transaction = object.get();
-        object->addProperty("Percentage", [this] { return m_percentage; });
+        std::unique_ptr<Object> object;
+        uint32_t role = 0;
+        uint32_t status = 0;
+        uint32_t percentage = 101;
+        bool allowCancel = false;
+        bool finished = false;
+        bool vanishes = false;
+    };
+
+    ObjectPath createTransaction(uint32_t role)
+    {
+        const std::string path = "/" + std::to_string(++m_count) + "_test";
+        Fake& fake = m_transactions[path];
+        fake.role = role;
+        fake.object = std::make_unique<Object>(m_bus.get(), path, kTransactionInterface);
+        Object* object = fake.object.get();
+        object->addProperty("Role", [this, path] {
+            Fake& fake = m_transactions[path];
+            if (fake.vanishes) {
+                m_loop.startTimer(0ms, false, [this, path] {
+                    Fake& gone = m_transactions[path];
+                    gone.finished = true;
+                    gone.object.reset();
+                });
+            }
+            return fake.role;
+        });
+        object->addProperty("Status", [this, path] { return m_transactions[path].status; });
+        object->addProperty("Percentage", [this, path] { return m_transactions[path].percentage; });
+        object->addProperty("AllowCancel", [this, path] { return m_transactions[path].allowCancel; });
+        object->addProperty("TransactionFlags", [] { return uint64_t(1) << 1; });
         object->addSignal("Packages", "a(uss)");
         object->addSignal("ErrorCode", "us");
         object->addSignal("Finished", "uu");
         object->addMethod("SetHints", [this](const std::vector<std::string>& list) { hints.push_back(list); });
-        object->addMethod("Cancel", [this, transaction] {
-            ++cancels;
-            if (transaction != m_held)
+        object->addMethod("Cancel", [this, path] {
+            calls.push_back("Cancel");
+            if (path != m_held)
                 return;
-            m_held = nullptr;
-            transaction->emitSignal("ErrorCode", uint32_t(17), std::string("The task was stopped successfully"));
-            transaction->emitSignal("Finished", uint32_t(3), uint32_t(100));
+            m_held.clear();
+            finish(path, 3);
         });
-        object->addMethod("RefreshCache", [this, transaction](bool force) {
+        object->addMethod("RefreshCache", [this, path, object](bool force) {
             calls.push_back(std::string("RefreshCache ") + (force ? "true" : "false"));
-            if (refreshError) {
-                transaction->emitSignal("ErrorCode", uint32_t(2), *refreshError);
-                transaction->emitSignal("Finished", uint32_t(2), uint32_t(10));
-                return;
-            }
-            transaction->emitSignal("Finished", uint32_t(1), uint32_t(10));
+            if (refreshError)
+                object->emitSignal("ErrorCode", uint32_t(2), *refreshError);
+            finish(path, refreshError ? 2 : 1);
         });
-        object->addMethod("GetUpdates", [this, transaction](uint64_t filter) {
+        object->addMethod("GetUpdates", [this, path, object](uint64_t filter) {
             calls.push_back("GetUpdates " + std::to_string(filter));
-            transaction->emitSignal("Packages", updates);
-            transaction->emitSignal("Finished", uint32_t(1), uint32_t(10));
+            object->emitSignal("Packages", updates);
+            finish(path, 1);
         });
-        object->addMethod("UpdatePackages", "tas", "", [this, transaction](MethodCall& call) {
-            uint64_t flags = 0;
-            std::vector<std::string> ids;
-            call.read(flags, ids);
+        object->addMethod("UpdatePackages", [this, path, object](uint64_t flags, const std::vector<std::string>& ids) {
             std::string entry = "UpdatePackages " + std::to_string(flags);
             for (const std::string& id : ids)
                 entry += " " + id;
             calls.push_back(entry);
-            if (refuseDownload) {
-                call.replyError("org.freedesktop.PackageKit.Transaction.RefusedByPolicy", "Not authorized");
+            m_transactions[path].role = 22;
+            if (refuseAuthorization) {
+                object->emitSignal("ErrorCode", uint32_t(48), std::string("Failed to obtain authentication."));
+                finish(path, 2);
                 return;
             }
-            call.reply();
-            m_held = transaction;
-            m_heldIds = ids;
-            if (!holdDownload)
-                finishDownload();
+            m_held = path;
+            set(path, kStatusDownload, 0, true);
+            if (!holdUpdate) {
+                set(path, kStatusInstall, 50, false);
+                finishUpdate();
+            }
         });
         EXPECT_TRUE(object->publish());
-        m_transactionObjects[path] = std::move(object);
         return {path};
     }
 
+    void set(const std::string& path, uint32_t status, uint32_t percentage, bool allowCancel)
+    {
+        Fake& fake = m_transactions[path];
+        fake.status = status;
+        fake.percentage = percentage;
+        fake.allowCancel = allowCancel;
+        fake.object->emitPropertiesChanged({"Status", "Percentage", "AllowCancel"});
+    }
+
+    void finish(const std::string& path, uint32_t exit)
+    {
+        Fake& fake = m_transactions[path];
+        fake.finished = true;
+        fake.object->emitSignal("Finished", exit, uint32_t(10));
+    }
+
+    EventLoop& m_loop;
     std::unique_ptr<Connection> m_bus;
     std::unique_ptr<Object> m_daemon;
-    std::unique_ptr<Object> m_offline;
-    std::map<std::string, std::unique_ptr<Object>> m_transactionObjects;
-    int m_transactions = 0;
-    uint32_t m_percentage = 101;
-    Object* m_held = nullptr;
-    std::vector<std::string> m_heldIds;
+    std::map<std::string, Fake> m_transactions;
+    int m_count = 0;
+    std::string m_held;
 };
 
 class UpdatesTest : public testing::Test
@@ -257,104 +300,126 @@ TEST_F(UpdatesTest, AFailedRefreshIsAnError)
     EXPECT_EQ(updates.error(), "");
 }
 
-TEST_F(UpdatesTest, DownloadsForTheNextBoot)
+TEST_F(UpdatesTest, InstallsDownloadingThenInstalling)
 {
-    m_fake->holdDownload = true;
+    m_fake->holdUpdate = true;
     Updates updates(bus());
     updates.load();
     ASSERT_TRUE(settlesIn(updates, Updates::State::Available));
+    int installed = 0;
+    Subscription subscription = updates.installed.connect([&] { ++installed; });
 
-    updates.download(true);
-    EXPECT_EQ(updates.state(), Updates::State::Downloading);
-    EXPECT_EQ(updates.progress(), -1);
+    updates.update(true);
+    EXPECT_EQ(updates.state(), Updates::State::Updating);
+    EXPECT_EQ(updates.phase(), Updates::Phase::Downloading);
     ASSERT_TRUE(waitFor([&] { return m_fake->calls.size() == 2; }));
-    // Only trusted packages, only downloaded.
-    EXPECT_EQ(m_fake->calls[1], "UpdatePackages 10 openssl;3.5.4-1~deb13u2;amd64;debian-security "
+    // Only trusted packages, installed now.
+    EXPECT_EQ(m_fake->calls[1], "UpdatePackages 2 openssl;3.5.4-1~deb13u2;amd64;debian-security "
                                 "tzdata;2026f-0+deb13u1;all;debian-stable-updates");
+    ASSERT_TRUE(waitFor([&] { return updates.canCancel(); }));
 
-    m_fake->downloadProgress(42);
+    m_fake->progress(kStatusDownload, 42, true);
     ASSERT_TRUE(waitFor([&] { return updates.progress() == 42; }));
-    m_fake->downloadProgress(101);
-    ASSERT_TRUE(waitFor([&] { return updates.progress() == -1; }));
-    EXPECT_EQ(updates.state(), Updates::State::Downloading);
+    EXPECT_EQ(updates.phase(), Updates::Phase::Downloading);
+    EXPECT_TRUE(updates.canCancel());
 
-    m_fake->finishDownload();
-    ASSERT_TRUE(settlesIn(updates, Updates::State::Ready));
+    // Once it installs, it can no longer be stopped.
+    m_fake->progress(kStatusInstall, 80, false);
+    ASSERT_TRUE(waitFor([&] { return updates.progress() == 80; }));
+    EXPECT_EQ(updates.phase(), Updates::Phase::Installing);
+    EXPECT_FALSE(updates.canCancel());
+    EXPECT_EQ(installed, 0);
+
+    m_fake->updates.clear();
+    m_fake->finishUpdate();
+    ASSERT_TRUE(settlesIn(updates, Updates::State::UpToDate));
+    EXPECT_EQ(installed, 1);
+    EXPECT_EQ(m_fake->calls.back(), "GetUpdates 2");
+}
+
+TEST_F(UpdatesTest, ADismissedPasswordPromptLeavesTheUpdatesAvailable)
+{
+    m_fake->refuseAuthorization = true;
+    Updates updates(bus());
+    updates.load();
+    ASSERT_TRUE(settlesIn(updates, Updates::State::Available));
+    std::vector<Updates::State> states;
+    Subscription subscription = updates.changed.connect([&] { states.push_back(updates.state()); });
+    updates.update(true);
+    ASSERT_TRUE(waitFor([&] { return states.size() >= 2; }));
+    EXPECT_EQ(states.back(), Updates::State::Available);
+    EXPECT_EQ(updates.error(), "");
     EXPECT_EQ(updates.packages().size(), 2u);
 }
 
-TEST_F(UpdatesTest, AStoppedDownloadIsAvailableAgain)
+TEST_F(UpdatesTest, AStoppedUpdateIsAvailableAgain)
 {
-    m_fake->holdDownload = true;
+    m_fake->holdUpdate = true;
     Updates updates(bus());
     updates.load();
     ASSERT_TRUE(settlesIn(updates, Updates::State::Available));
-    updates.download(true);
-    ASSERT_TRUE(waitFor([&] { return m_fake->calls.size() == 2; }));
-    m_fake->downloadProgress(42);
-    ASSERT_TRUE(waitFor([&] { return updates.progress() == 42; }));
+    updates.update(true);
+    ASSERT_TRUE(waitFor([&] { return updates.canCancel(); }));
 
     std::vector<Updates::State> states;
     Subscription changed = updates.changed.connect([&] { states.push_back(updates.state()); });
-    updates.cancelDownload();
+    updates.cancel();
     ASSERT_TRUE(settlesIn(updates, Updates::State::Available));
-    EXPECT_EQ(m_fake->cancels, 1);
+    EXPECT_EQ(m_fake->calls.back(), "Cancel");
     EXPECT_EQ(states, std::vector<Updates::State>{Updates::State::Available});
     EXPECT_EQ(updates.error(), "");
     EXPECT_EQ(updates.packages().size(), 2u);
-    EXPECT_TRUE(m_fake->prepared.empty());
 
     // Stopped before PackageKit had it, nothing runs.
     m_fake->calls.clear();
-    updates.download(true);
-    updates.cancelDownload();
+    updates.update(true);
+    updates.cancel();
     ASSERT_TRUE(settlesIn(updates, Updates::State::Available));
     runFor(50ms);
     EXPECT_TRUE(m_fake->calls.empty());
-    EXPECT_EQ(m_fake->cancels, 1);
 }
 
-TEST_F(UpdatesTest, ARefusedDownloadIsAnError)
+TEST_F(UpdatesTest, FollowsAnUpdateAlreadyRunning)
 {
-    m_fake->refuseDownload = true;
+    m_fake->startForeignUpdate();
     Updates updates(bus());
+    int installed = 0;
+    Subscription subscription = updates.installed.connect([&] { ++installed; });
     updates.load();
-    ASSERT_TRUE(settlesIn(updates, Updates::State::Available));
-    updates.download(true);
-    ASSERT_TRUE(settlesIn(updates, Updates::State::Error));
-    EXPECT_EQ(updates.error(), "Not authorized");
+    ASSERT_TRUE(settlesIn(updates, Updates::State::Updating));
+    ASSERT_TRUE(waitFor([&] { return updates.progress() == 10; }));
+    EXPECT_TRUE(updates.canCancel());
+    EXPECT_TRUE(std::find(m_fake->calls.begin(), m_fake->calls.end(), "GetUpdates 2") == m_fake->calls.end());
+
+    m_fake->progress(kStatusInstall, 70, false);
+    ASSERT_TRUE(waitFor([&] { return updates.phase() == Updates::Phase::Installing; }));
+    m_fake->updates.clear();
+    m_fake->finishUpdate();
+    ASSERT_TRUE(settlesIn(updates, Updates::State::UpToDate));
+    EXPECT_EQ(installed, 1);
 }
 
-TEST_F(UpdatesTest, DownloadedUpdatesAreReady)
+TEST_F(UpdatesTest, AnUpdateGoneBeforeItIsFollowedIsNoInstall)
 {
-    m_fake->prepared = {"openssl;3.5.4-1~deb13u2;amd64;debian-security",
-                        "tzdata;2026f-0+deb13u1;all;debian-stable-updates"};
+    m_fake->startVanishingUpdate();
     Updates updates(bus());
+    int installed = 0;
+    std::vector<Updates::State> states;
+    Subscription installs = updates.installed.connect([&] { ++installed; });
+    Subscription changed = updates.changed.connect([&] { states.push_back(updates.state()); });
     updates.load();
-    ASSERT_TRUE(settlesIn(updates, Updates::State::Ready));
-
-    // A new update since the download needs another one.
-    m_fake->updates.push_back({5, "zstd;1.5.7+dfsg-1;amd64;debian-stable", "fast lossless compression"});
-    updates.check(false);
     ASSERT_TRUE(settlesIn(updates, Updates::State::Available));
-    EXPECT_EQ(updates.packages().size(), 3u);
-
-    // Downloads are only started from the list.
-    m_fake->calls.clear();
-    updates.download(true);
-    ASSERT_TRUE(settlesIn(updates, Updates::State::Ready));
-    updates.download(true);
-    runFor(50ms);
-    EXPECT_EQ(m_fake->calls.size(), 1u);
+    EXPECT_TRUE(std::find(states.begin(), states.end(), Updates::State::Updating) != states.end());
+    EXPECT_EQ(installed, 0);
+    EXPECT_EQ(updates.error(), "");
+    EXPECT_EQ(m_fake->calls.back(), "GetUpdates 2");
 }
 
 TEST_F(UpdatesTest, AFailedBackgroundCheckChangesNothing)
 {
-    m_fake->prepared = {"openssl;3.5.4-1~deb13u2;amd64;debian-security",
-                        "tzdata;2026f-0+deb13u1;all;debian-stable-updates"};
     Updates updates(bus());
     updates.load();
-    ASSERT_TRUE(settlesIn(updates, Updates::State::Ready));
+    ASSERT_TRUE(settlesIn(updates, Updates::State::Available));
     const std::vector<Package> listed = updates.packages();
 
     std::vector<bool> finished;
@@ -365,12 +430,12 @@ TEST_F(UpdatesTest, AFailedBackgroundCheckChangesNothing)
     m_fake->hints.clear();
     updates.checkInBackground();
     EXPECT_TRUE(updates.isCheckingInBackground());
-    EXPECT_EQ(updates.state(), Updates::State::Ready);
+    EXPECT_EQ(updates.state(), Updates::State::Available);
     ASSERT_TRUE(waitFor([&] { return !finished.empty(); }));
     EXPECT_EQ(finished, std::vector<bool>{false});
     EXPECT_FALSE(updates.isCheckingInBackground());
     EXPECT_TRUE(states.empty());
-    EXPECT_EQ(updates.state(), Updates::State::Ready);
+    EXPECT_EQ(updates.state(), Updates::State::Available);
     EXPECT_EQ(updates.error(), "");
     ASSERT_EQ(updates.packages().size(), listed.size());
     EXPECT_EQ(updates.packages()[0].id, listed[0].id);
@@ -398,51 +463,6 @@ TEST_F(UpdatesTest, ACheckTakesOverFromABackgroundOne)
     // A check from the user shows its failure.
     ASSERT_TRUE(settlesIn(updates, Updates::State::Error));
     EXPECT_EQ(updates.error(), "Cannot download the package lists");
-}
-
-TEST_F(UpdatesTest, TriggersARebootInstall)
-{
-    Updates updates(bus());
-    std::optional<bool> succeeded;
-    PendingCall call = updates.trigger([&](bool success, const std::string&) { succeeded = success; });
-    ASSERT_TRUE(waitFor([&] { return succeeded.has_value(); }));
-    EXPECT_TRUE(*succeeded);
-    EXPECT_EQ(m_fake->triggered, (std::vector<std::string>{"reboot"}));
-}
-
-TEST_F(UpdatesTest, ReadsTheOfflineResult)
-{
-    Updates updates(bus());
-    std::optional<std::optional<Updates::OfflineResult>> read;
-    const auto readResult = [&] {
-        read.reset();
-        PendingCall call = updates.readOfflineResult([&](const std::optional<Updates::OfflineResult>& result) {
-            read = result;
-        });
-        return waitFor([&] { return read.has_value(); });
-    };
-
-    ASSERT_TRUE(readResult());
-    EXPECT_FALSE(read->has_value());
-
-    m_fake->result = Updates::OfflineResult{true, {"tzdata;2026f-0+deb13u1;all;installed"}, 1794000000, {}};
-    ASSERT_TRUE(readResult());
-    ASSERT_TRUE(read->has_value());
-    EXPECT_TRUE((*read)->success);
-    EXPECT_EQ((*read)->packageIds, (std::vector<std::string>{"tzdata;2026f-0+deb13u1;all;installed"}));
-    EXPECT_EQ((*read)->timeFinished, 1794000000u);
-    EXPECT_EQ((*read)->error, "");
-
-    m_fake->result = Updates::OfflineResult{false, {}, 1794000000, "dpkg returned an error code (1)"};
-    ASSERT_TRUE(readResult());
-    ASSERT_TRUE(read->has_value());
-    EXPECT_FALSE((*read)->success);
-    EXPECT_EQ((*read)->error, "dpkg returned an error code (1)");
-
-    updates.clearOfflineResult();
-    ASSERT_TRUE(waitFor([&] { return m_fake->clears == 1; }));
-    ASSERT_TRUE(readResult());
-    EXPECT_FALSE(read->has_value());
 }
 
 TEST_F(UpdatesTest, AvailabilityFollowsTheDaemon)

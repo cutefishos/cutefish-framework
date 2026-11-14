@@ -4,6 +4,7 @@
 #include "cutefish/packagekit/transaction.h"
 
 #include <tuple>
+#include <utility>
 
 using namespace cutefish::base::dbus;
 
@@ -62,10 +63,29 @@ void Transaction::run(std::string method, Variant::Items arguments)
     m_createCall = m_bus->callAsync(create, [this](const Reply& reply) {
         const std::optional<ObjectPath> path = reply.value<ObjectPath>();
         if (!path) {
-            finish({false, false, reply.error().message});
+            finish({false, false, reply.error().message, 0});
             return;
         }
         start(path->path);
+    });
+}
+
+void Transaction::attach(const std::string& path)
+{
+    m_attached = true;
+    if (!m_bus) {
+        finish({});
+        return;
+    }
+    start(path);
+    m_propertiesCall = m_transaction.getAllAsync([this](const Reply& reply) {
+        // Gone already: it finished before we listened, and how is unknown.
+        if (reply.isError()) {
+            finish({false, true, {}, 0});
+            return;
+        }
+        if (const auto properties = reply.value<VariantMap>())
+            update(*properties);
     });
 }
 
@@ -92,36 +112,34 @@ void Transaction::start(const std::string& path)
     m_matches.push_back(m_transaction.onSignal("ErrorCode", [this](const Message& message) {
         uint32_t code = 0;
         std::string details;
-        if (message.read(code, details))
+        if (message.read(code, details)) {
+            m_errorCode = code;
             m_error = details;
+        }
     }));
     m_matches.push_back(m_transaction.onSignal("Finished", [this](const Message& message) {
         uint32_t exit = 0;
         message.read(exit);
         const bool success = exit == kExitSuccess;
         const bool cancelled = exit == kExitCancelled;
-        finish({success, cancelled, success || cancelled ? std::string() : m_error});
+        if (success || cancelled)
+            finish({success, cancelled, {}, 0});
+        else
+            finish({false, false, m_error, m_errorCode});
     }));
     m_matches.push_back(m_transaction.onPropertiesChanged([this](const VariantMap& changed,
                                                                  const std::vector<std::string>&) {
-        const auto it = changed.find("Percentage");
-        if (it == changed.end())
-            return;
-        const uint32_t value = it->second.value<uint32_t>();
-        const int percentage = value >= kPercentageUnknown ? -1 : int(value);
-        if (percentage == m_percentage)
-            return;
-        m_percentage = percentage;
-        if (onPercentageChanged)
-            onPercentageChanged();
+        update(changed);
     }));
+    if (m_attached)
+        return;
 
     const std::vector<std::string> hints = m_interactive
             ? std::vector<std::string>{"interactive=true"}
             : std::vector<std::string>{"interactive=false", "background=true"};
     m_hintsCall = m_transaction.callAsync("SetHints", [this, path](const Reply&) {
         if (m_cancelled) {
-            finish({false, true, {}});
+            finish({false, true, {}, 0});
             return;
         }
         Message call = m_bus->newMethodCall(kService, path, kTransactionInterface, m_method);
@@ -130,9 +148,29 @@ void Transaction::start(const std::string& path)
         call.setAllowInteractiveAuthorization(m_interactive);
         m_runCall = m_bus->callAsync(call, [this](const Reply& reply) {
             if (reply.isError())
-                finish({false, false, reply.error().message});
+                finish({false, false, reply.error().message, 0});
         });
     }, hints);
+}
+
+void Transaction::update(const VariantMap& properties)
+{
+    bool changed = false;
+    if (const auto it = properties.find("Percentage"); it != properties.end()) {
+        const uint32_t value = it->second.value<uint32_t>();
+        const int percentage = value >= kPercentageUnknown ? -1 : int(value);
+        changed |= std::exchange(m_percentage, percentage) != percentage;
+    }
+    if (const auto it = properties.find("Status"); it != properties.end()) {
+        const uint32_t status = it->second.value<uint32_t>();
+        changed |= std::exchange(m_status, status) != status;
+    }
+    if (const auto it = properties.find("AllowCancel"); it != properties.end()) {
+        const bool canCancel = it->second.value<bool>();
+        changed |= std::exchange(m_canCancel, canCancel) != canCancel;
+    }
+    if (changed && onChanged)
+        onChanged();
 }
 
 void Transaction::cancel()
@@ -141,7 +179,7 @@ void Transaction::cancel()
         return;
     m_cancelled = true;
     // Until the method runs there is nothing on the daemon to stop.
-    if (m_runCall.isNull())
+    if (!m_attached && m_runCall.isNull())
         return;
     m_cancelCall = m_transaction.callAsync("Cancel", [this](const Reply& reply) {
         if (reply.isError())
