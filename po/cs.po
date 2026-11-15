@@ -1,0 +1,1476 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-framework\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-10-19 23:15+0800\n"
+"PO-Revision-Date: 2026-10-19 23:15+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "The accounts service cannot be reached"
+msgstr "Služba účtů není dostupná"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "Created user was removed"
+msgstr "Vytvořený uživatel byl odebrán"
+
+#. TRANSLATORS: a sound setting that failed, then why, such as "Set device volume: Permission denied".
+#: clients/audio/backend.cpp
+#, python-brace-format
+msgid "{operation}: {error}"
+msgstr "{operation}: {error}"
+
+#: clients/audio/backend.cpp
+msgid "Set device volume"
+msgstr "Nastavení hlasitosti zařízení"
+
+#: clients/audio/backend.cpp
+msgid "Set audio properties"
+msgstr "Nastavení vlastností zvuku"
+
+#: clients/audio/backend.cpp
+msgid "Set default device"
+msgstr "Nastavení výchozího zařízení"
+
+#: clients/audio/backend.cpp
+msgid "Set device profile"
+msgstr "Nastavení profilu zařízení"
+
+#: clients/audio/backend.cpp
+msgid "Set device route"
+msgstr "Nastavení cesty zařízení"
+
+#: clients/audio/backend.cpp
+msgid "Move audio stream"
+msgstr "Přesun zvukového proudu"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Cannot unblock Bluetooth: {error}"
+msgstr "Bluetooth nelze odblokovat: {error}"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't finish pairing in time. Try again."
+msgstr "Zařízení nedokončilo párování včas. Zkuste to znovu."
+
+#: clients/bluez/manager.cpp
+msgid "The system D-Bus connection is unavailable."
+msgstr "Připojení k systémové sběrnici D-Bus není dostupné."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is blocked by a hardware switch."
+msgstr "Bluetooth je zablokováno hardwarovým přepínačem."
+
+#: clients/bluez/manager.cpp
+msgid "The Bluetooth service is unavailable."
+msgstr "Služba Bluetooth není dostupná."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth couldn't complete the request."
+msgstr "Bluetooth nemohlo dokončit požadavek."
+
+#: clients/bluez/manager.cpp
+msgid "This device is no longer available."
+msgstr "Toto zařízení již není dostupné."
+
+#: clients/bluez/manager.cpp
+msgid "The device is busy. Try again in a moment."
+msgstr "Zařízení je zaneprázdněno. Zkuste to za chvíli znovu."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth isn't ready yet. Try again in a moment."
+msgstr "Bluetooth ještě není připraveno. Zkuste to za chvíli znovu."
+
+#: clients/bluez/manager.cpp
+msgid "This device has no media player."
+msgstr "Toto zařízení nemá žádný přehrávač médií."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent: no system bus."
+msgstr "Agenta párování Bluetooth nelze zpřístupnit: chybí systémová sběrnice."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent."
+msgstr "Agenta párování Bluetooth nelze zpřístupnit."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a PIN containing 1–16 bytes."
+msgstr "Zadejte PIN o délce 1–16 bajtů."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a passkey containing 1–6 digits."
+msgstr "Zadejte přístupový klíč o délce 1–6 číslic."
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't connect to {device}"
+msgstr "K zařízení {device} se nelze připojit"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't connect to the device"
+msgstr "K zařízení se nelze připojit"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't disconnect {device}"
+msgstr "Zařízení {device} nelze odpojit"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't disconnect the device"
+msgstr "Zařízení nelze odpojit"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't pair with {device}"
+msgstr "Se zařízením {device} nelze spárovat"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't pair with the device"
+msgstr "Se zařízením nelze spárovat"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't forget {device}"
+msgstr "Zařízení {device} nelze zapomenout"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't forget the device"
+msgstr "Zařízení nelze zapomenout"
+
+#: clients/bluez/manager.cpp
+msgid "Try again. If it keeps failing, turn the device off and on again."
+msgstr "Zkuste to znovu. Pokud se to bude opakovat, zařízení vypněte a znovu zapněte."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond in time. Make sure it is turned on and nearby."
+msgstr "Zařízení neodpovědělo včas. Ujistěte se, že je zapnuté a v blízkosti."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond. Make sure it is turned on, nearby, and not connected to another device."
+msgstr "Zařízení neodpovědělo. Ujistěte se, že je zapnuté, v blízkosti a není připojené k jinému zařízení."
+
+#: clients/bluez/manager.cpp
+msgid "The device no longer recognizes this computer. Forget the device and pair it again."
+msgstr "Zařízení již tento počítač nerozpoznává. Zapomeňte zařízení a spárujte ho znovu."
+
+#: clients/bluez/manager.cpp
+msgid "Pairing failed. Make sure the code matches on both devices and try again."
+msgstr "Párování selhalo. Ujistěte se, že se kód na obou zařízeních shoduje, a zkuste to znovu."
+
+#: clients/bluez/manager.cpp
+msgid "The device declined the request."
+msgstr "Zařízení žádost odmítlo."
+
+#: clients/bluez/manager.cpp
+msgid "The device refused the connection."
+msgstr "Zařízení odmítlo připojení."
+
+#: clients/bluez/manager.cpp
+msgid "The device has no features this computer can use."
+msgstr "Zařízení nemá žádné funkce, které by tento počítač mohl použít."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is turned off."
+msgstr "Bluetooth je vypnuto."
+
+#: clients/bluez/manager.cpp
+msgid "Too many devices are connected. Disconnect one and try again."
+msgstr "Je připojeno příliš mnoho zařízení. Jedno odpojte a zkuste to znovu."
+
+#: clients/bluez/manager.cpp
+msgid "The device ended the connection."
+msgstr "Zařízení ukončilo připojení."
+
+#: clients/bluez/manager.cpp
+msgid "The connection was interrupted. Try again."
+msgstr "Připojení bylo přerušeno. Zkuste to znovu."
+
+#: clients/display/display_client.cpp
+msgid "The display operation timed out."
+msgstr "Vypršel časový limit operace s obrazovkou."
+
+#: clients/display/display_client.cpp
+msgid "The display service restarted."
+msgstr "Služba obrazovek se restartovala."
+
+#: clients/display/display_client.cpp
+msgid "Unexpected display state."
+msgstr "Neočekávaný stav obrazovky."
+
+#: clients/display/output_model.cpp
+msgid "Built-in Display"
+msgstr "Vestavěná obrazovka"
+
+#. TRANSLATORS: a monitor and the port it is plugged into, such as "DELL U2720Q (DP-1)".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{name} ({connector})"
+msgstr "{name} ({connector})"
+
+#. TRANSLATORS: a screen resolution in pixels, such as "1920 × 1080".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{width} × {height}"
+msgstr "{width} × {height}"
+
+#. TRANSLATORS: a refresh rate, such as "60.00 Hz".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{rate} Hz"
+msgstr "{rate} Hz"
+
+#. TRANSLATORS: the choice that shows other content on this display instead of mirroring another one.
+#: clients/display/output_model.cpp
+msgid "Extend"
+msgstr "Rozšířit"
+
+#: clients/display/screen.cpp
+msgid "The display service is unavailable."
+msgstr "Služba obrazovek není dostupná."
+
+#: clients/display/screen.cpp
+msgid "Displays changed. The previous draft was discarded."
+msgstr "Obrazovky se změnily. Předchozí koncept byl zahozen."
+
+#: clients/networkmanager/handler.cpp
+msgid "The hotspot could not be started. The Wi-Fi adapter may not support it on this channel or with this password."
+msgstr "Hotspot nelze spustit. Adaptér Wi-Fi ho na tomto kanálu nebo s tímto heslem možná nepodporuje."
+
+#: clients/networkmanager/handler.cpp
+msgid "No Wi-Fi adapter can run a hotspot."
+msgstr "Žádný adaptér Wi-Fi nedokáže provozovat hotspot."
+
+#: clients/networkmanager/handler.cpp
+msgid "No VPN plugin can read this file. Install the one for your VPN, for example network-manager-openvpn for OpenVPN."
+msgstr "Tento soubor neumí načíst žádný zásuvný modul VPN. Nainstalujte modul pro svou VPN, například network-manager-openvpn pro OpenVPN."
+
+#: clients/networkmanager/handler.cpp
+msgid "This file isn't a VPN configuration this system can read."
+msgstr "Tento soubor není konfigurace VPN, kterou tento systém umí načíst."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which reads VPN files, is not installed."
+msgstr "Program nmcli, který načítá soubory VPN, není nainstalován."
+
+#: clients/networkmanager/handler.cpp
+msgid "The private key can't be read, so the file would be incomplete."
+msgstr "Soukromý klíč nelze přečíst, takže by soubor byl neúplný."
+
+#: clients/networkmanager/handler.cpp
+msgid "The file can't be written."
+msgstr "Soubor nelze zapsat."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which writes VPN files, is not installed."
+msgstr "Program nmcli, který zapisuje soubory VPN, není nainstalován."
+
+#: clients/networkmanager/handler.cpp
+msgid "The VPN couldn't be written to a file."
+msgstr "VPN nelze zapsat do souboru."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Automatic (DHCP)"
+msgstr "Automaticky (DHCP)"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Automatic"
+msgstr "Automaticky"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Manual"
+msgstr "Ručně"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Off"
+msgstr "Vypnuto"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "DHCP Only"
+msgstr "Pouze DHCP"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Link-Local Only"
+msgstr "Pouze místní linka"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Shared to Other Computers"
+msgstr "Sdíleno s ostatními počítači"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Left to the System"
+msgstr "Ponecháno na systému"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv4 address."
+msgstr "{address} není adresa IPv4."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv6 address."
+msgstr "{address} není adresa IPv6."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{mask} isn't a subnet mask."
+msgstr "{mask} není maska podsítě."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "The prefix length must be a number from 1 to 128."
+msgstr "Délka prefixu musí být číslo od 1 do 128."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a router address."
+msgstr "{address} není adresa směrovače."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv4 name servers need IPv4 set to automatic or manual."
+msgstr "Jmenné servery IPv4 vyžadují nastavení IPv4 na automaticky nebo ručně."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv6 name servers need IPv6 set to automatic or manual."
+msgstr "Jmenné servery IPv6 vyžadují nastavení IPv6 na automaticky nebo ručně."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a name server address."
+msgstr "{address} není adresa jmenného serveru."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Fill in the address and subnet mask."
+msgstr "Vyplňte adresu a masku podsítě."
+
+#. TRANSLATORS: a network and the adapter it is on, such as "Home (wlan0)".
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "{name} ({device})"
+msgstr "{name} ({device})"
+
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "Install {package} to use this VPN."
+msgstr "Pro použití této VPN nainstalujte {package}."
+
+#: clients/networkmanager/network_model.cpp
+msgid "Signing in to OpenConnect VPNs isn't supported yet."
+msgstr "Přihlašování k sítím VPN OpenConnect zatím není podporováno."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authentication methods"
+msgstr "Metody ověření"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Encryption and compression"
+msgstr "Šifrování a komprese"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Point-to-point encryption"
+msgstr "Šifrování point-to-point"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not required"
+msgstr "Nevyžadováno"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Any"
+msgstr "Libovolné"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "128-bit"
+msgstr "128bitové"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "40-bit"
+msgstr "40bitové"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Stateful encryption"
+msgstr "Stavové šifrování"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "BSD compression"
+msgstr "Komprese BSD"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Deflate compression"
+msgstr "Komprese Deflate"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TCP header compression"
+msgstr "Komprese hlaviček TCP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Link"
+msgstr "Linka"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send PPP echo packets"
+msgstr "Odesílat pakety PPP echo"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Default"
+msgstr "Výchozí"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "DH group {number}"
+msgstr "Skupina DH {number}"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server"
+msgstr "Server"
+
+#. TRANSLATORS: keep "host[:port[:proto]]" as it is; it is the syntax the field takes.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "host[:port[:proto]], several separated by commas"
+msgstr "host[:port[:proto]], více oddělených čárkami"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Sign in with"
+msgstr "Přihlásit se pomocí"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password"
+msgstr "Uživatelské jméno a heslo"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificates"
+msgstr "Certifikáty"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name, password and certificates"
+msgstr "Uživatelské jméno, heslo a certifikáty"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Static key"
+msgstr "Statický klíč"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name"
+msgstr "Uživatelské jméno"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Password"
+msgstr "Heslo"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "CA certificate"
+msgstr "Certifikát CA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User certificate"
+msgstr "Certifikát uživatele"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key"
+msgstr "Soukromý klíč"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key password"
+msgstr "Heslo soukromého klíče"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key direction"
+msgstr "Směr klíče"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "None"
+msgstr "Žádný"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IP address"
+msgstr "Vzdálená adresa IP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IP address"
+msgstr "Místní adresa IP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "General"
+msgstr "Obecné"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Port"
+msgstr "Port"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use TCP"
+msgstr "Použít TCP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device type"
+msgstr "Typ zařízení"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device name"
+msgstr "Název zařízení"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel MTU"
+msgstr "MTU tunelu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "UDP fragment size"
+msgstr "Velikost fragmentu UDP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restrict TCP maximum segment size"
+msgstr "Omezit maximální velikost segmentu TCP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Path MTU discovery"
+msgstr "Zjišťování MTU cesty"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Never"
+msgstr "Nikdy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "When possible"
+msgstr "Pokud je to možné"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Always"
+msgstr "Vždy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Renegotiate every (seconds)"
+msgstr "Znovu vyjednat každých (sekund)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Compression"
+msgstr "Komprese"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow compression"
+msgstr "Povolit kompresi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Incoming only"
+msgstr "Pouze příchozí"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Both ways"
+msgstr "Oběma směry"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No"
+msgstr "Ne"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pick servers at random"
+msgstr "Vybírat servery náhodně"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Randomise server host names"
+msgstr "Náhodně měnit názvy hostitelů serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow pulled host names"
+msgstr "Povolit názvy hostitelů od serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 inside the tunnel"
+msgstr "IPv6 uvnitř tunelu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept the server from any address"
+msgstr "Přijímat server z libovolné adresy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send client details to the server"
+msgstr "Posílat serveru údaje o klientovi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ping every (seconds)"
+msgstr "Ping každých (sekund)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Exit without a ping after (seconds)"
+msgstr "Ukončit bez pingu po (sekundách)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart without a ping after (seconds)"
+msgstr "Restartovat bez pingu po (sekundách)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Connection timeout (seconds)"
+msgstr "Časový limit připojení (sekundy)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum routes"
+msgstr "Maximum tras"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Security"
+msgstr "Zabezpečení"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cipher"
+msgstr "Šifra"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data ciphers"
+msgstr "Šifry dat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data cipher fallback"
+msgstr "Záložní šifra dat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable cipher negotiation"
+msgstr "Zakázat vyjednávání šifry"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "HMAC authentication"
+msgstr "Ověřování HMAC"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key size (bits)"
+msgstr "Velikost klíče (bity)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list file"
+msgstr "Soubor seznamu odvolaných certifikátů"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list directory"
+msgstr "Adresář seznamu odvolaných certifikátů"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate name"
+msgstr "Název certifikátu serveru"
+
+#. TRANSLATORS: keep the "name:", "subject:" and "name-prefix:" prefixes as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "name:vpn.example.com, subject:… or name-prefix:…"
+msgstr "name:vpn.example.com, subject:… nebo name-prefix:…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate usage"
+msgstr "Použití certifikátu serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not checked"
+msgstr "Nekontroluje se"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client"
+msgstr "Klient"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netscape certificate type"
+msgstr "Typ certifikátu Netscape"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS authentication key"
+msgstr "Ověřovací klíč TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS key direction"
+msgstr "Směr klíče TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key"
+msgstr "Šifrovací klíč TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key (v2)"
+msgstr "Šifrovací klíč TLS (v2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra certificates"
+msgstr "Další certifikáty"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS cipher"
+msgstr "Šifra TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Minimum TLS version"
+msgstr "Minimální verze TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Or the highest the server supports"
+msgstr "Nebo nejvyšší, kterou server podporuje"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum TLS version"
+msgstr "Maximální verze TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy"
+msgstr "Proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy server"
+msgstr "Proxy server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy port"
+msgstr "Port proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Retry indefinitely"
+msgstr "Opakovat donekonečna"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy user name"
+msgstr "Uživatelské jméno proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy password"
+msgstr "Heslo proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group name"
+msgstr "Název skupiny"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password"
+msgstr "Heslo skupiny"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hybrid authentication"
+msgstr "Hybridní ověřování"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Domain"
+msgstr "Doména"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Vendor"
+msgstr "Výrobce"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Application version"
+msgstr "Verze aplikace"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Interface MTU"
+msgstr "MTU rozhraní"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption (single DES)"
+msgstr "Slabé šifrování (jednoduché DES)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No encryption"
+msgstr "Bez šifrování"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak authentication"
+msgstr "Slabé ověřování"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption"
+msgstr "Slabé šifrování"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT traversal"
+msgstr "Průchod NAT"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T when detected"
+msgstr "NAT-T při zjištění"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T always"
+msgstr "NAT-T vždy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE DH group"
+msgstr "Skupina IKE DH"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Perfect forward secrecy"
+msgstr "Perfect forward secrecy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "As the server says"
+msgstr "Podle serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local port"
+msgstr "Místní port"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection (seconds, 0 is off)"
+msgstr "Detekce mrtvého protějšku (sekundy, 0 = vypnuto)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NT domain"
+msgstr "Doména NT"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec tunnel to the server"
+msgstr "Tunel IPsec k serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server identity"
+msgstr "Identita serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine authentication"
+msgstr "Ověřování počítače"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pre-shared key"
+msgstr "Předsdílený klíč"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine CA certificate"
+msgstr "Certifikát CA počítače"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine certificate"
+msgstr "Certifikát počítače"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine private key"
+msgstr "Soukromý klíč počítače"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine key password"
+msgstr "Heslo klíče počítače"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 algorithms"
+msgstr "Algoritmy fáze 1"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 algorithms"
+msgstr "Algoritmy fáze 2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime (seconds)"
+msgstr "Životnost fáze 1 (sekundy)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime (seconds)"
+msgstr "Životnost fáze 2 (sekundy)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Force UDP encapsulation"
+msgstr "Vynutit zapouzdření UDP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IP compression"
+msgstr "Komprese IP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use IKEv2"
+msgstr "Použít IKEv2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable perfect forward secrecy"
+msgstr "Zakázat perfect forward secrecy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Multilink MRRU"
+msgstr "Multilink MRRU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use a random source port"
+msgstr "Použít náhodný zdrojový port"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "PPP unit number"
+msgstr "Číslo jednotky PPP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA certificate"
+msgstr "Certifikát CA serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list"
+msgstr "Seznam odvolaných certifikátů"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ignore certificate warnings"
+msgstr "Ignorovat varování certifikátu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS hostname extension"
+msgstr "Rozšíření TLS pro název hostitele"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Identity"
+msgstr "Identita"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Verify the server name by"
+msgstr "Ověřit název serveru podle"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Nothing"
+msgstr "Nic"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Subject"
+msgstr "Předmět"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name"
+msgstr "Název"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name suffix"
+msgstr "Přípona názvu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Expected server name"
+msgstr "Očekávaný název serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Check key usage"
+msgstr "Kontrolovat použití klíče"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password (EAP)"
+msgstr "Uživatelské jméno a heslo (EAP)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate"
+msgstr "Certifikát"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (EAP-TLS)"
+msgstr "Certifikát (EAP-TLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and private key"
+msgstr "Certifikát a soukromý klíč"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and SSH agent"
+msgstr "Certifikát a agent SSH"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Smart card"
+msgstr "Čipová karta"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate from"
+msgstr "Certifikát z"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A file"
+msgstr "Soubor"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "The SSH agent"
+msgstr "Agent SSH"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A smart card"
+msgstr "Čipová karta"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client identity"
+msgstr "Identita klienta"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Options"
+msgstr "Možnosti"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server port"
+msgstr "Port serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Request an inner IP address"
+msgstr "Požádat o vnitřní adresu IP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enforce UDP encapsulation"
+msgstr "Vynutit zapouzdření UDP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Custom algorithm proposals"
+msgstr "Vlastní návrhy algoritmů"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE proposal"
+msgstr "Návrh IKE"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "ESP proposal"
+msgstr "Návrh ESP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local traffic selectors"
+msgstr "Místní selektory provozu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote traffic selectors"
+msgstr "Vzdálené selektory provozu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password and user name (IKEv1)"
+msgstr "Heslo skupiny a uživatelské jméno (IKEv1)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (IKEv2)"
+msgstr "Certifikát (IKEv2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate name"
+msgstr "Název certifikátu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime"
+msgstr "Životnost fáze 1"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime"
+msgstr "Životnost fáze 2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable rekeying"
+msgstr "Zakázat obnovu klíčů"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authenticate by"
+msgstr "Ověřit pomocí"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA signature"
+msgstr "Podpis RSA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Networks"
+msgstr "Sítě"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local subnet"
+msgstr "Místní podsíť"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote subnet"
+msgstr "Vzdálená podsíť"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow narrowing"
+msgstr "Povolit zúžení"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Mobility (MOBIKE)"
+msgstr "Mobilita (MOBIKE)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Don't ask the server for an address"
+msgstr "Nežádat server o adresu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE fragmentation"
+msgstr "Fragmentace IKE"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Forced"
+msgstr "Vynuceno"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec interface"
+msgstr "Rozhraní IPsec"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection"
+msgstr "Detekce mrtvého protějšku"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Delay (seconds)"
+msgstr "Prodleva (sekundy)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Timeout (seconds)"
+msgstr "Časový limit (sekundy)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Action"
+msgstr "Akce"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hold"
+msgstr "Podržet"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Clear"
+msgstr "Zrušit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart"
+msgstr "Restartovat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate"
+msgstr "Certifikát serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA"
+msgstr "CA serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send the certificate"
+msgstr "Odeslat certifikát"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "If asked"
+msgstr "Na vyžádání"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept certificates without the identity"
+msgstr "Přijímat certifikáty bez identity"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trusted certificate fingerprint"
+msgstr "Otisk důvěryhodného certifikátu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Realm"
+msgstr "Realm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ask for a one-time password"
+msgstr "Žádat o jednorázové heslo"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Two-factor authentication"
+msgstr "Dvoufázové ověření"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key file"
+msgstr "Soubor klíče"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netmask"
+msgstr "Maska sítě"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 addresses too"
+msgstr "Také adresy IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IPv6 address"
+msgstr "Vzdálená adresa IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IPv6 address"
+msgstr "Místní adresa IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 prefix"
+msgstr "Prefix IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote user name"
+msgstr "Vzdálené uživatelské jméno"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote device number"
+msgstr "Číslo vzdáleného zařízení"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TAP device"
+msgstr "Zařízení TAP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No default route"
+msgstr "Bez výchozí trasy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra SSH options"
+msgstr "Další možnosti SSH"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel domain"
+msgstr "Doména tunelu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name server"
+msgstr "Jmenný server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Fragment size"
+msgstr "Velikost fragmentu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Protocol"
+msgstr "Protokol"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cisco AnyConnect or openconnect"
+msgstr "Cisco AnyConnect nebo openconnect"
+
+#. TRANSLATORS: keep "http://" and "socks://" as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "http://… or socks://…"
+msgstr "http://… nebo socks://…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User agent"
+msgstr "User agent"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Reported operating system"
+msgstr "Hlášený operační systém"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Linux 64-bit"
+msgstr "Linux 64bitový"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable UDP (DTLS)"
+msgstr "Zakázat UDP (DTLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Refuse invalid server certificates"
+msgstr "Odmítat neplatné certifikáty serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key passphrase from the file system ID"
+msgstr "Heslo soukromého klíče z ID souborového systému"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trojan"
+msgstr "Trojan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Run the server's compliance script"
+msgstr "Spustit skript kontroly souladu serveru"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Wrapper script"
+msgstr "Obalový skript"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Software token"
+msgstr "Softwarový token"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token"
+msgstr "Token"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA SecurID from ~/.stokenrc"
+msgstr "RSA SecurID z ~/.stokenrc"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token secret"
+msgstr "Tajný klíč tokenu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the server."
+msgstr "Zadejte server."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the group name."
+msgstr "Zadejte název skupiny."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the remote IP address."
+msgstr "Zadejte vzdálenou adresu IP."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the local IP address."
+msgstr "Zadejte místní adresu IP."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the netmask."
+msgstr "Zadejte masku sítě."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the tunnel domain."
+msgstr "Zadejte doménu tunelu."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "Fill in “{field}”."
+msgstr "Vyplňte pole „{field}“."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "This kind of VPN can't be set up by hand."
+msgstr "Tento druh VPN nelze nastavit ručně."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "{field} must be a number from {minimum} to {maximum}."
+msgstr "{field} musí být číslo od {minimum} do {maximum}."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The network connection was interrupted."
+msgstr "Síťové připojení bylo přerušeno."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service stopped unexpectedly."
+msgstr "Služba VPN se neočekávaně zastavila."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service returned invalid configuration."
+msgstr "Služba VPN vrátila neplatnou konfiguraci."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The connection attempt timed out."
+msgstr "Vypršel časový limit pokusu o připojení."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service did not start in time."
+msgstr "Služba VPN se nespustila včas."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service failed to start."
+msgstr "Službu VPN se nepodařilo spustit."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Sign-in failed. Check the user name and password."
+msgstr "Přihlášení selhalo. Zkontrolujte uživatelské jméno a heslo."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service reported an error."
+msgstr "Služba VPN nahlásila chybu."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "DNS tunnel (iodine)"
+msgstr "Tunel DNS (iodine)"
+
+#. TRANSLATORS: {key} is a WireGuard setting as written in the file, such as "PrivateKey".
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} has an invalid {key}."
+msgstr "Řádek {line} má neplatnou hodnotu {key}."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} isn't part of a WireGuard configuration."
+msgstr "Řádek {line} není součástí konfigurace WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The configuration has no private key."
+msgstr "Konfigurace nemá soukromý klíč."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer has no public key."
+msgstr "Jeden z protějšků nemá veřejný klíč."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the private key."
+msgstr "Zadejte soukromý klíč."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The private key isn't a WireGuard key."
+msgstr "Soukromý klíč není klíč WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an address with a prefix, like 10.0.0.2/24."
+msgstr "{address} není adresa s prefixem, například 10.0.0.2/24."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the address."
+msgstr "Zadejte adresu."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The listen port must be a number up to 65535."
+msgstr "Port pro naslouchání musí být číslo do 65535."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The firewall mark must be a number."
+msgstr "Značka firewallu musí být číslo."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The MTU must be a number."
+msgstr "MTU musí být číslo."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Add the server as a peer."
+msgstr "Přidejte server jako protějšek."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's public key isn't a WireGuard key."
+msgstr "Veřejný klíč protějšku není klíč WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's preshared key isn't a WireGuard key."
+msgstr "Předsdílený klíč protějšku není klíč WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a network, like 10.0.0.0/24."
+msgstr "{address} není síť, například 10.0.0.0/24."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The keepalive must be a number of seconds up to 65535."
+msgstr "Udržování spojení musí být počet sekund do 65535."
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Insecure"
+msgstr "Nezabezpečená"
+
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Dynamic WEP"
+msgstr "Dynamický WEP"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Unknown"
+msgstr "Neznámé"
+
+#. TRANSLATORS: why a folder can't be listed, then the folder, such as "Permission denied: /root".
+#: files/directory_lister.cpp
+#, python-brace-format
+msgid "{error}: {path}"
+msgstr "{error}: {path}"
+
+#: files/file_watcher.cpp
+#, python-brace-format
+msgid "Cannot watch {paths}; polling for changes"
+msgstr "{paths} nelze sledovat; změny se zjišťují dotazováním"
+
+#. TRANSLATORS: the file an operation failed on, then why, such as "/tmp/a.txt: Permission denied".
+#: files/task.cpp
+#, python-brace-format
+msgid "{path}: {error}"
+msgstr "{path}: {error}"
+
+#: files/trash.cpp
+msgid "The original location is not known"
+msgstr "Původní umístění není známo"
+
+#: files/trash.cpp
+msgid "The original location is outside the volume it was deleted on"
+msgstr "Původní umístění je mimo svazek, na kterém byla položka smazána"
+
+#. TRANSLATORS: a disk without a label, named by its size, such as "16 GB Volume".
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Encrypted Volume"
+msgstr "Šifrovaný svazek {size}"
+
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Volume"
+msgstr "Svazek {size}"
+
+#: files/volume_manager.cpp
+msgid "The device is locked."
+msgstr "Zařízení je uzamčeno."
+
+#: files/volume_manager.cpp
+msgid "The device does not support this operation."
+msgstr "Zařízení tuto operaci nepodporuje."
+
+#: files/volume_manager.cpp
+msgid "A device operation is already in progress."
+msgstr "Již probíhá jiná operace se zařízením."
+
+#: files/volume_manager.cpp
+msgid "The device is no longer available."
+msgstr "Zařízení již není dostupné."

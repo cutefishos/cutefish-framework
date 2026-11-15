@@ -1,0 +1,1476 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-framework\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-10-19 23:15+0800\n"
+"PO-Revision-Date: 2026-10-19 23:15+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "The accounts service cannot be reached"
+msgstr "Không thể kết nối tới dịch vụ tài khoản"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "Created user was removed"
+msgstr "Người dùng vừa tạo đã bị xóa"
+
+#. TRANSLATORS: a sound setting that failed, then why, such as "Set device volume: Permission denied".
+#: clients/audio/backend.cpp
+#, python-brace-format
+msgid "{operation}: {error}"
+msgstr "{operation}: {error}"
+
+#: clients/audio/backend.cpp
+msgid "Set device volume"
+msgstr "Đặt âm lượng thiết bị"
+
+#: clients/audio/backend.cpp
+msgid "Set audio properties"
+msgstr "Đặt thuộc tính âm thanh"
+
+#: clients/audio/backend.cpp
+msgid "Set default device"
+msgstr "Đặt thiết bị mặc định"
+
+#: clients/audio/backend.cpp
+msgid "Set device profile"
+msgstr "Đặt cấu hình thiết bị"
+
+#: clients/audio/backend.cpp
+msgid "Set device route"
+msgstr "Đặt đường ra của thiết bị"
+
+#: clients/audio/backend.cpp
+msgid "Move audio stream"
+msgstr "Chuyển luồng âm thanh"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Cannot unblock Bluetooth: {error}"
+msgstr "Không thể bỏ chặn Bluetooth: {error}"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't finish pairing in time. Try again."
+msgstr "Thiết bị không hoàn tất ghép nối kịp thời. Hãy thử lại."
+
+#: clients/bluez/manager.cpp
+msgid "The system D-Bus connection is unavailable."
+msgstr "Kết nối D-Bus hệ thống không khả dụng."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is blocked by a hardware switch."
+msgstr "Bluetooth bị chặn bởi công tắc phần cứng."
+
+#: clients/bluez/manager.cpp
+msgid "The Bluetooth service is unavailable."
+msgstr "Dịch vụ Bluetooth không khả dụng."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth couldn't complete the request."
+msgstr "Bluetooth không thể hoàn tất yêu cầu."
+
+#: clients/bluez/manager.cpp
+msgid "This device is no longer available."
+msgstr "Thiết bị này không còn khả dụng."
+
+#: clients/bluez/manager.cpp
+msgid "The device is busy. Try again in a moment."
+msgstr "Thiết bị đang bận. Hãy thử lại sau giây lát."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth isn't ready yet. Try again in a moment."
+msgstr "Bluetooth chưa sẵn sàng. Hãy thử lại sau giây lát."
+
+#: clients/bluez/manager.cpp
+msgid "This device has no media player."
+msgstr "Thiết bị này không có trình phát đa phương tiện."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent: no system bus."
+msgstr "Không thể xuất tác nhân ghép nối Bluetooth: không có bus hệ thống."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent."
+msgstr "Không thể xuất tác nhân ghép nối Bluetooth."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a PIN containing 1–16 bytes."
+msgstr "Hãy nhập mã PIN gồm 1–16 byte."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a passkey containing 1–6 digits."
+msgstr "Hãy nhập mã khóa gồm 1–6 chữ số."
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't connect to {device}"
+msgstr "Không thể kết nối với {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't connect to the device"
+msgstr "Không thể kết nối với thiết bị"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't disconnect {device}"
+msgstr "Không thể ngắt kết nối {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't disconnect the device"
+msgstr "Không thể ngắt kết nối thiết bị"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't pair with {device}"
+msgstr "Không thể ghép nối với {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't pair with the device"
+msgstr "Không thể ghép nối với thiết bị"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't forget {device}"
+msgstr "Không thể quên {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't forget the device"
+msgstr "Không thể quên thiết bị"
+
+#: clients/bluez/manager.cpp
+msgid "Try again. If it keeps failing, turn the device off and on again."
+msgstr "Hãy thử lại. Nếu vẫn không được, hãy tắt thiết bị rồi bật lại."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond in time. Make sure it is turned on and nearby."
+msgstr "Thiết bị không phản hồi kịp thời. Hãy đảm bảo thiết bị đang bật và ở gần."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond. Make sure it is turned on, nearby, and not connected to another device."
+msgstr "Thiết bị không phản hồi. Hãy đảm bảo thiết bị đang bật, ở gần và không kết nối với thiết bị khác."
+
+#: clients/bluez/manager.cpp
+msgid "The device no longer recognizes this computer. Forget the device and pair it again."
+msgstr "Thiết bị không còn nhận ra máy tính này. Hãy quên thiết bị và ghép nối lại."
+
+#: clients/bluez/manager.cpp
+msgid "Pairing failed. Make sure the code matches on both devices and try again."
+msgstr "Ghép nối không thành công. Hãy đảm bảo mã trên hai thiết bị khớp nhau và thử lại."
+
+#: clients/bluez/manager.cpp
+msgid "The device declined the request."
+msgstr "Thiết bị đã từ chối yêu cầu."
+
+#: clients/bluez/manager.cpp
+msgid "The device refused the connection."
+msgstr "Thiết bị đã từ chối kết nối."
+
+#: clients/bluez/manager.cpp
+msgid "The device has no features this computer can use."
+msgstr "Thiết bị không có tính năng nào mà máy tính này có thể dùng."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is turned off."
+msgstr "Bluetooth đang tắt."
+
+#: clients/bluez/manager.cpp
+msgid "Too many devices are connected. Disconnect one and try again."
+msgstr "Có quá nhiều thiết bị đang kết nối. Hãy ngắt kết nối một thiết bị và thử lại."
+
+#: clients/bluez/manager.cpp
+msgid "The device ended the connection."
+msgstr "Thiết bị đã kết thúc kết nối."
+
+#: clients/bluez/manager.cpp
+msgid "The connection was interrupted. Try again."
+msgstr "Kết nối bị gián đoạn. Hãy thử lại."
+
+#: clients/display/display_client.cpp
+msgid "The display operation timed out."
+msgstr "Thao tác màn hình đã hết thời gian chờ."
+
+#: clients/display/display_client.cpp
+msgid "The display service restarted."
+msgstr "Dịch vụ màn hình đã khởi động lại."
+
+#: clients/display/display_client.cpp
+msgid "Unexpected display state."
+msgstr "Trạng thái màn hình không mong đợi."
+
+#: clients/display/output_model.cpp
+msgid "Built-in Display"
+msgstr "Màn hình tích hợp"
+
+#. TRANSLATORS: a monitor and the port it is plugged into, such as "DELL U2720Q (DP-1)".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{name} ({connector})"
+msgstr "{name} ({connector})"
+
+#. TRANSLATORS: a screen resolution in pixels, such as "1920 × 1080".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{width} × {height}"
+msgstr "{width} × {height}"
+
+#. TRANSLATORS: a refresh rate, such as "60.00 Hz".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{rate} Hz"
+msgstr "{rate} Hz"
+
+#. TRANSLATORS: the choice that shows other content on this display instead of mirroring another one.
+#: clients/display/output_model.cpp
+msgid "Extend"
+msgstr "Mở rộng"
+
+#: clients/display/screen.cpp
+msgid "The display service is unavailable."
+msgstr "Dịch vụ màn hình không khả dụng."
+
+#: clients/display/screen.cpp
+msgid "Displays changed. The previous draft was discarded."
+msgstr "Các màn hình đã thay đổi. Bản nháp trước đó đã bị hủy."
+
+#: clients/networkmanager/handler.cpp
+msgid "The hotspot could not be started. The Wi-Fi adapter may not support it on this channel or with this password."
+msgstr "Không thể bật điểm phát sóng. Bộ điều hợp Wi-Fi có thể không hỗ trợ trên kênh này hoặc với mật khẩu này."
+
+#: clients/networkmanager/handler.cpp
+msgid "No Wi-Fi adapter can run a hotspot."
+msgstr "Không có bộ điều hợp Wi-Fi nào có thể phát điểm phát sóng."
+
+#: clients/networkmanager/handler.cpp
+msgid "No VPN plugin can read this file. Install the one for your VPN, for example network-manager-openvpn for OpenVPN."
+msgstr "Không có plugin VPN nào đọc được tệp này. Hãy cài plugin cho VPN của bạn, ví dụ network-manager-openvpn cho OpenVPN."
+
+#: clients/networkmanager/handler.cpp
+msgid "This file isn't a VPN configuration this system can read."
+msgstr "Tệp này không phải là cấu hình VPN mà hệ thống có thể đọc."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which reads VPN files, is not installed."
+msgstr "Chưa cài đặt nmcli, công cụ dùng để đọc tệp VPN."
+
+#: clients/networkmanager/handler.cpp
+msgid "The private key can't be read, so the file would be incomplete."
+msgstr "Không đọc được khóa riêng tư, nên tệp sẽ không đầy đủ."
+
+#: clients/networkmanager/handler.cpp
+msgid "The file can't be written."
+msgstr "Không thể ghi tệp."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which writes VPN files, is not installed."
+msgstr "Chưa cài đặt nmcli, công cụ dùng để ghi tệp VPN."
+
+#: clients/networkmanager/handler.cpp
+msgid "The VPN couldn't be written to a file."
+msgstr "Không thể ghi VPN ra tệp."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Automatic (DHCP)"
+msgstr "Tự động (DHCP)"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Automatic"
+msgstr "Tự động"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Manual"
+msgstr "Thủ công"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Off"
+msgstr "Tắt"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "DHCP Only"
+msgstr "Chỉ DHCP"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Link-Local Only"
+msgstr "Chỉ link-local"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Shared to Other Computers"
+msgstr "Chia sẻ cho máy tính khác"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Left to the System"
+msgstr "Để hệ thống quyết định"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv4 address."
+msgstr "{address} không phải là địa chỉ IPv4."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv6 address."
+msgstr "{address} không phải là địa chỉ IPv6."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{mask} isn't a subnet mask."
+msgstr "{mask} không phải là mặt nạ mạng con."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "The prefix length must be a number from 1 to 128."
+msgstr "Độ dài tiền tố phải là số từ 1 đến 128."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a router address."
+msgstr "{address} không phải là địa chỉ bộ định tuyến."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv4 name servers need IPv4 set to automatic or manual."
+msgstr "Máy chủ tên IPv4 cần đặt IPv4 ở chế độ tự động hoặc thủ công."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv6 name servers need IPv6 set to automatic or manual."
+msgstr "Máy chủ tên IPv6 cần đặt IPv6 ở chế độ tự động hoặc thủ công."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a name server address."
+msgstr "{address} không phải là địa chỉ máy chủ tên."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Fill in the address and subnet mask."
+msgstr "Hãy điền địa chỉ và mặt nạ mạng con."
+
+#. TRANSLATORS: a network and the adapter it is on, such as "Home (wlan0)".
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "{name} ({device})"
+msgstr "{name} ({device})"
+
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "Install {package} to use this VPN."
+msgstr "Hãy cài đặt {package} để dùng VPN này."
+
+#: clients/networkmanager/network_model.cpp
+msgid "Signing in to OpenConnect VPNs isn't supported yet."
+msgstr "Chưa hỗ trợ đăng nhập vào VPN OpenConnect."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authentication methods"
+msgstr "Phương thức xác thực"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Encryption and compression"
+msgstr "Mã hóa và nén"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Point-to-point encryption"
+msgstr "Mã hóa điểm-điểm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not required"
+msgstr "Không bắt buộc"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Any"
+msgstr "Bất kỳ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "128-bit"
+msgstr "128 bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "40-bit"
+msgstr "40 bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Stateful encryption"
+msgstr "Mã hóa có trạng thái"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "BSD compression"
+msgstr "Nén BSD"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Deflate compression"
+msgstr "Nén Deflate"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TCP header compression"
+msgstr "Nén tiêu đề TCP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Link"
+msgstr "Liên kết"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send PPP echo packets"
+msgstr "Gửi gói PPP echo"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Default"
+msgstr "Mặc định"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "DH group {number}"
+msgstr "Nhóm DH {number}"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server"
+msgstr "Máy chủ"
+
+#. TRANSLATORS: keep "host[:port[:proto]]" as it is; it is the syntax the field takes.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "host[:port[:proto]], several separated by commas"
+msgstr "host[:port[:proto]], nhiều mục cách nhau bằng dấu phẩy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Sign in with"
+msgstr "Đăng nhập bằng"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password"
+msgstr "Tên người dùng và mật khẩu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificates"
+msgstr "Chứng chỉ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name, password and certificates"
+msgstr "Tên người dùng, mật khẩu và chứng chỉ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Static key"
+msgstr "Khóa tĩnh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name"
+msgstr "Tên người dùng"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "CA certificate"
+msgstr "Chứng chỉ CA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User certificate"
+msgstr "Chứng chỉ người dùng"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key"
+msgstr "Khóa riêng tư"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key password"
+msgstr "Mật khẩu khóa riêng tư"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key direction"
+msgstr "Hướng khóa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "None"
+msgstr "Không có"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IP address"
+msgstr "Địa chỉ IP từ xa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IP address"
+msgstr "Địa chỉ IP cục bộ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "General"
+msgstr "Chung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Port"
+msgstr "Cổng"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use TCP"
+msgstr "Dùng TCP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device type"
+msgstr "Loại thiết bị"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device name"
+msgstr "Tên thiết bị"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel MTU"
+msgstr "MTU đường hầm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "UDP fragment size"
+msgstr "Kích thước phân mảnh UDP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restrict TCP maximum segment size"
+msgstr "Giới hạn kích thước phân đoạn TCP tối đa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Path MTU discovery"
+msgstr "Dò tìm MTU đường truyền"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Never"
+msgstr "Không bao giờ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "When possible"
+msgstr "Khi có thể"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Always"
+msgstr "Luôn luôn"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Renegotiate every (seconds)"
+msgstr "Thương lượng lại sau mỗi (giây)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Compression"
+msgstr "Nén"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow compression"
+msgstr "Cho phép nén"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Incoming only"
+msgstr "Chỉ chiều đến"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Both ways"
+msgstr "Cả hai chiều"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No"
+msgstr "Không"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pick servers at random"
+msgstr "Chọn máy chủ ngẫu nhiên"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Randomise server host names"
+msgstr "Ngẫu nhiên hóa tên máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow pulled host names"
+msgstr "Cho phép tên máy chủ được đẩy xuống"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 inside the tunnel"
+msgstr "IPv6 bên trong đường hầm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept the server from any address"
+msgstr "Chấp nhận máy chủ từ mọi địa chỉ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send client details to the server"
+msgstr "Gửi thông tin máy khách tới máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ping every (seconds)"
+msgstr "Ping mỗi (giây)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Exit without a ping after (seconds)"
+msgstr "Thoát nếu không có ping sau (giây)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart without a ping after (seconds)"
+msgstr "Khởi động lại nếu không có ping sau (giây)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Connection timeout (seconds)"
+msgstr "Thời gian chờ kết nối (giây)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum routes"
+msgstr "Số tuyến tối đa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Security"
+msgstr "Bảo mật"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cipher"
+msgstr "Thuật toán mã hóa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data ciphers"
+msgstr "Thuật toán mã hóa dữ liệu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data cipher fallback"
+msgstr "Thuật toán mã hóa dữ liệu dự phòng"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable cipher negotiation"
+msgstr "Tắt thương lượng thuật toán mã hóa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "HMAC authentication"
+msgstr "Xác thực HMAC"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key size (bits)"
+msgstr "Kích thước khóa (bit)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list file"
+msgstr "Tệp danh sách thu hồi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list directory"
+msgstr "Thư mục danh sách thu hồi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate name"
+msgstr "Tên chứng chỉ máy chủ"
+
+#. TRANSLATORS: keep the "name:", "subject:" and "name-prefix:" prefixes as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "name:vpn.example.com, subject:… or name-prefix:…"
+msgstr "name:vpn.example.com, subject:… hoặc name-prefix:…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate usage"
+msgstr "Mục đích sử dụng chứng chỉ máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not checked"
+msgstr "Không kiểm tra"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client"
+msgstr "Máy khách"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netscape certificate type"
+msgstr "Loại chứng chỉ Netscape"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS authentication key"
+msgstr "Khóa xác thực TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS key direction"
+msgstr "Hướng khóa TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key"
+msgstr "Khóa mã hóa TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key (v2)"
+msgstr "Khóa mã hóa TLS (v2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra certificates"
+msgstr "Chứng chỉ bổ sung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS cipher"
+msgstr "Thuật toán mã hóa TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Minimum TLS version"
+msgstr "Phiên bản TLS tối thiểu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Or the highest the server supports"
+msgstr "Hoặc phiên bản cao nhất máy chủ hỗ trợ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum TLS version"
+msgstr "Phiên bản TLS tối đa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy"
+msgstr "Proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy server"
+msgstr "Máy chủ proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy port"
+msgstr "Cổng proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Retry indefinitely"
+msgstr "Thử lại không giới hạn"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy user name"
+msgstr "Tên người dùng proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy password"
+msgstr "Mật khẩu proxy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group name"
+msgstr "Tên nhóm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password"
+msgstr "Mật khẩu nhóm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hybrid authentication"
+msgstr "Xác thực lai"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Domain"
+msgstr "Miền"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Vendor"
+msgstr "Nhà cung cấp"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Application version"
+msgstr "Phiên bản ứng dụng"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Interface MTU"
+msgstr "MTU giao diện"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption (single DES)"
+msgstr "Mã hóa yếu (DES đơn)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No encryption"
+msgstr "Không mã hóa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak authentication"
+msgstr "Xác thực yếu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption"
+msgstr "Mã hóa yếu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT traversal"
+msgstr "Vượt NAT (NAT traversal)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T when detected"
+msgstr "NAT-T khi phát hiện"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T always"
+msgstr "Luôn dùng NAT-T"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE DH group"
+msgstr "Nhóm DH của IKE"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Perfect forward secrecy"
+msgstr "Bảo mật chuyển tiếp hoàn hảo (PFS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "As the server says"
+msgstr "Theo máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local port"
+msgstr "Cổng cục bộ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection (seconds, 0 is off)"
+msgstr "Phát hiện peer chết (giây, 0 là tắt)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NT domain"
+msgstr "Miền NT"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec tunnel to the server"
+msgstr "Đường hầm IPsec tới máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server identity"
+msgstr "Danh tính máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine authentication"
+msgstr "Xác thực máy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pre-shared key"
+msgstr "Khóa chia sẻ trước"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine CA certificate"
+msgstr "Chứng chỉ CA của máy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine certificate"
+msgstr "Chứng chỉ máy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine private key"
+msgstr "Khóa riêng tư của máy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine key password"
+msgstr "Mật khẩu khóa của máy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 algorithms"
+msgstr "Thuật toán giai đoạn 1"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 algorithms"
+msgstr "Thuật toán giai đoạn 2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime (seconds)"
+msgstr "Thời gian tồn tại giai đoạn 1 (giây)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime (seconds)"
+msgstr "Thời gian tồn tại giai đoạn 2 (giây)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Force UDP encapsulation"
+msgstr "Buộc đóng gói UDP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IP compression"
+msgstr "Nén IP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use IKEv2"
+msgstr "Dùng IKEv2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable perfect forward secrecy"
+msgstr "Tắt bảo mật chuyển tiếp hoàn hảo"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Multilink MRRU"
+msgstr "MRRU đa liên kết"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use a random source port"
+msgstr "Dùng cổng nguồn ngẫu nhiên"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "PPP unit number"
+msgstr "Số hiệu đơn vị PPP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA certificate"
+msgstr "Chứng chỉ CA của máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list"
+msgstr "Danh sách thu hồi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ignore certificate warnings"
+msgstr "Bỏ qua cảnh báo chứng chỉ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS hostname extension"
+msgstr "Phần mở rộng tên máy chủ TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Identity"
+msgstr "Danh tính"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Verify the server name by"
+msgstr "Xác minh tên máy chủ theo"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Nothing"
+msgstr "Không xác minh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Subject"
+msgstr "Chủ thể"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name"
+msgstr "Tên"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name suffix"
+msgstr "Hậu tố tên"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Expected server name"
+msgstr "Tên máy chủ mong đợi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Check key usage"
+msgstr "Kiểm tra mục đích sử dụng khóa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password (EAP)"
+msgstr "Tên người dùng và mật khẩu (EAP)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate"
+msgstr "Chứng chỉ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (EAP-TLS)"
+msgstr "Chứng chỉ (EAP-TLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and private key"
+msgstr "Chứng chỉ và khóa riêng tư"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and SSH agent"
+msgstr "Chứng chỉ và SSH agent"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Smart card"
+msgstr "Thẻ thông minh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate from"
+msgstr "Chứng chỉ từ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A file"
+msgstr "Một tệp"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "The SSH agent"
+msgstr "SSH agent"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A smart card"
+msgstr "Một thẻ thông minh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client identity"
+msgstr "Danh tính máy khách"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Options"
+msgstr "Tùy chọn"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server port"
+msgstr "Cổng máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Request an inner IP address"
+msgstr "Yêu cầu địa chỉ IP bên trong"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enforce UDP encapsulation"
+msgstr "Buộc đóng gói UDP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Custom algorithm proposals"
+msgstr "Đề xuất thuật toán tùy chỉnh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE proposal"
+msgstr "Đề xuất IKE"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "ESP proposal"
+msgstr "Đề xuất ESP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local traffic selectors"
+msgstr "Bộ chọn lưu lượng cục bộ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote traffic selectors"
+msgstr "Bộ chọn lưu lượng từ xa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password and user name (IKEv1)"
+msgstr "Mật khẩu nhóm và tên người dùng (IKEv1)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (IKEv2)"
+msgstr "Chứng chỉ (IKEv2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate name"
+msgstr "Tên chứng chỉ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime"
+msgstr "Thời gian tồn tại giai đoạn 1"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime"
+msgstr "Thời gian tồn tại giai đoạn 2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable rekeying"
+msgstr "Tắt tạo lại khóa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authenticate by"
+msgstr "Xác thực bằng"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA signature"
+msgstr "Chữ ký RSA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Networks"
+msgstr "Mạng"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local subnet"
+msgstr "Mạng con cục bộ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote subnet"
+msgstr "Mạng con từ xa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow narrowing"
+msgstr "Cho phép thu hẹp"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Mobility (MOBIKE)"
+msgstr "Di động (MOBIKE)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Don't ask the server for an address"
+msgstr "Không yêu cầu địa chỉ từ máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE fragmentation"
+msgstr "Phân mảnh IKE"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Forced"
+msgstr "Bắt buộc"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec interface"
+msgstr "Giao diện IPsec"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection"
+msgstr "Phát hiện peer chết"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Delay (seconds)"
+msgstr "Độ trễ (giây)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Timeout (seconds)"
+msgstr "Thời gian chờ (giây)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Action"
+msgstr "Hành động"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hold"
+msgstr "Giữ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Clear"
+msgstr "Xóa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart"
+msgstr "Khởi động lại"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate"
+msgstr "Chứng chỉ máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA"
+msgstr "CA máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send the certificate"
+msgstr "Gửi chứng chỉ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "If asked"
+msgstr "Khi được yêu cầu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept certificates without the identity"
+msgstr "Chấp nhận chứng chỉ không có danh tính"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trusted certificate fingerprint"
+msgstr "Dấu vân tay chứng chỉ tin cậy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Realm"
+msgstr "Realm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ask for a one-time password"
+msgstr "Hỏi mật khẩu dùng một lần"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Two-factor authentication"
+msgstr "Xác thực hai yếu tố"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key file"
+msgstr "Tệp khóa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netmask"
+msgstr "Mặt nạ mạng"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 addresses too"
+msgstr "Cả địa chỉ IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IPv6 address"
+msgstr "Địa chỉ IPv6 từ xa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IPv6 address"
+msgstr "Địa chỉ IPv6 cục bộ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 prefix"
+msgstr "Tiền tố IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote user name"
+msgstr "Tên người dùng từ xa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote device number"
+msgstr "Số thiết bị từ xa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TAP device"
+msgstr "Thiết bị TAP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No default route"
+msgstr "Không có tuyến mặc định"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra SSH options"
+msgstr "Tùy chọn SSH bổ sung"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel domain"
+msgstr "Miền đường hầm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name server"
+msgstr "Máy chủ tên"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Fragment size"
+msgstr "Kích thước phân mảnh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Protocol"
+msgstr "Giao thức"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cisco AnyConnect or openconnect"
+msgstr "Cisco AnyConnect hoặc openconnect"
+
+#. TRANSLATORS: keep "http://" and "socks://" as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "http://… or socks://…"
+msgstr "http://… hoặc socks://…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User agent"
+msgstr "User agent"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Reported operating system"
+msgstr "Hệ điều hành được báo cáo"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Linux 64-bit"
+msgstr "Linux 64 bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable UDP (DTLS)"
+msgstr "Tắt UDP (DTLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Refuse invalid server certificates"
+msgstr "Từ chối chứng chỉ máy chủ không hợp lệ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key passphrase from the file system ID"
+msgstr "Cụm mật khẩu khóa riêng tư lấy từ ID hệ thống tệp"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trojan"
+msgstr "Trojan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Run the server's compliance script"
+msgstr "Chạy tập lệnh tuân thủ của máy chủ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Wrapper script"
+msgstr "Tập lệnh bao bọc"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Software token"
+msgstr "Token phần mềm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token"
+msgstr "Token"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA SecurID from ~/.stokenrc"
+msgstr "RSA SecurID từ ~/.stokenrc"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token secret"
+msgstr "Bí mật token"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the server."
+msgstr "Hãy nhập máy chủ."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the group name."
+msgstr "Hãy nhập tên nhóm."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the remote IP address."
+msgstr "Hãy nhập địa chỉ IP từ xa."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the local IP address."
+msgstr "Hãy nhập địa chỉ IP cục bộ."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the netmask."
+msgstr "Hãy nhập mặt nạ mạng."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the tunnel domain."
+msgstr "Hãy nhập miền đường hầm."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "Fill in “{field}”."
+msgstr "Hãy điền “{field}”."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "This kind of VPN can't be set up by hand."
+msgstr "Không thể thiết lập thủ công loại VPN này."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "{field} must be a number from {minimum} to {maximum}."
+msgstr "{field} phải là số từ {minimum} đến {maximum}."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The network connection was interrupted."
+msgstr "Kết nối mạng bị gián đoạn."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service stopped unexpectedly."
+msgstr "Dịch vụ VPN đã dừng đột ngột."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service returned invalid configuration."
+msgstr "Dịch vụ VPN trả về cấu hình không hợp lệ."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The connection attempt timed out."
+msgstr "Hết thời gian chờ kết nối."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service did not start in time."
+msgstr "Dịch vụ VPN không khởi động kịp thời."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service failed to start."
+msgstr "Dịch vụ VPN không khởi động được."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Sign-in failed. Check the user name and password."
+msgstr "Đăng nhập không thành công. Hãy kiểm tra tên người dùng và mật khẩu."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service reported an error."
+msgstr "Dịch vụ VPN đã báo lỗi."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "DNS tunnel (iodine)"
+msgstr "Đường hầm DNS (iodine)"
+
+#. TRANSLATORS: {key} is a WireGuard setting as written in the file, such as "PrivateKey".
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} has an invalid {key}."
+msgstr "Dòng {line} có {key} không hợp lệ."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} isn't part of a WireGuard configuration."
+msgstr "Dòng {line} không thuộc cấu hình WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The configuration has no private key."
+msgstr "Cấu hình không có khóa riêng tư."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer has no public key."
+msgstr "Một peer không có khóa công khai."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the private key."
+msgstr "Hãy nhập khóa riêng tư."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The private key isn't a WireGuard key."
+msgstr "Khóa riêng tư không phải là khóa WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an address with a prefix, like 10.0.0.2/24."
+msgstr "{address} không phải là địa chỉ có tiền tố, ví dụ 10.0.0.2/24."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the address."
+msgstr "Hãy nhập địa chỉ."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The listen port must be a number up to 65535."
+msgstr "Cổng lắng nghe phải là số không quá 65535."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The firewall mark must be a number."
+msgstr "Dấu tường lửa phải là một số."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The MTU must be a number."
+msgstr "MTU phải là một số."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Add the server as a peer."
+msgstr "Hãy thêm máy chủ làm peer."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's public key isn't a WireGuard key."
+msgstr "Khóa công khai của một peer không phải là khóa WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's preshared key isn't a WireGuard key."
+msgstr "Khóa chia sẻ trước của một peer không phải là khóa WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a network, like 10.0.0.0/24."
+msgstr "{address} không phải là một mạng, ví dụ 10.0.0.0/24."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The keepalive must be a number of seconds up to 65535."
+msgstr "Keepalive phải là số giây không quá 65535."
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Insecure"
+msgstr "Không bảo mật"
+
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Dynamic WEP"
+msgstr "WEP động"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Unknown"
+msgstr "Không xác định"
+
+#. TRANSLATORS: why a folder can't be listed, then the folder, such as "Permission denied: /root".
+#: files/directory_lister.cpp
+#, python-brace-format
+msgid "{error}: {path}"
+msgstr "{error}: {path}"
+
+#: files/file_watcher.cpp
+#, python-brace-format
+msgid "Cannot watch {paths}; polling for changes"
+msgstr "Không thể theo dõi {paths}; đang dò thay đổi định kỳ"
+
+#. TRANSLATORS: the file an operation failed on, then why, such as "/tmp/a.txt: Permission denied".
+#: files/task.cpp
+#, python-brace-format
+msgid "{path}: {error}"
+msgstr "{path}: {error}"
+
+#: files/trash.cpp
+msgid "The original location is not known"
+msgstr "Không rõ vị trí ban đầu"
+
+#: files/trash.cpp
+msgid "The original location is outside the volume it was deleted on"
+msgstr "Vị trí ban đầu nằm ngoài ổ đĩa mà mục đã bị xóa trên đó"
+
+#. TRANSLATORS: a disk without a label, named by its size, such as "16 GB Volume".
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Encrypted Volume"
+msgstr "Ổ đĩa mã hóa {size}"
+
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Volume"
+msgstr "Ổ đĩa {size}"
+
+#: files/volume_manager.cpp
+msgid "The device is locked."
+msgstr "Thiết bị đang bị khóa."
+
+#: files/volume_manager.cpp
+msgid "The device does not support this operation."
+msgstr "Thiết bị không hỗ trợ thao tác này."
+
+#: files/volume_manager.cpp
+msgid "A device operation is already in progress."
+msgstr "Một thao tác thiết bị đang được thực hiện."
+
+#: files/volume_manager.cpp
+msgid "The device is no longer available."
+msgstr "Thiết bị không còn khả dụng."

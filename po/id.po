@@ -1,0 +1,1475 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-framework\n"
+"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"POT-Creation-Date: 2026-10-19 23:15+0800\n"
+"PO-Revision-Date: 2026-10-19 23:15+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "The accounts service cannot be reached"
+msgstr "Layanan akun tidak dapat dijangkau"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "Created user was removed"
+msgstr "Pengguna yang dibuat telah dihapus"
+
+#. TRANSLATORS: a sound setting that failed, then why, such as "Set device volume: Permission denied".
+#: clients/audio/backend.cpp
+#, python-brace-format
+msgid "{operation}: {error}"
+msgstr "{operation}: {error}"
+
+#: clients/audio/backend.cpp
+msgid "Set device volume"
+msgstr "Atur volume perangkat"
+
+#: clients/audio/backend.cpp
+msgid "Set audio properties"
+msgstr "Atur properti audio"
+
+#: clients/audio/backend.cpp
+msgid "Set default device"
+msgstr "Atur perangkat bawaan"
+
+#: clients/audio/backend.cpp
+msgid "Set device profile"
+msgstr "Atur profil perangkat"
+
+#: clients/audio/backend.cpp
+msgid "Set device route"
+msgstr "Atur rute perangkat"
+
+#: clients/audio/backend.cpp
+msgid "Move audio stream"
+msgstr "Pindahkan aliran audio"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Cannot unblock Bluetooth: {error}"
+msgstr "Tidak dapat membuka blokir Bluetooth: {error}"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't finish pairing in time. Try again."
+msgstr "Perangkat tidak selesai disandingkan tepat waktu. Coba lagi."
+
+#: clients/bluez/manager.cpp
+msgid "The system D-Bus connection is unavailable."
+msgstr "Koneksi D-Bus sistem tidak tersedia."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is blocked by a hardware switch."
+msgstr "Bluetooth diblokir oleh sakelar perangkat keras."
+
+#: clients/bluez/manager.cpp
+msgid "The Bluetooth service is unavailable."
+msgstr "Layanan Bluetooth tidak tersedia."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth couldn't complete the request."
+msgstr "Bluetooth tidak dapat menyelesaikan permintaan."
+
+#: clients/bluez/manager.cpp
+msgid "This device is no longer available."
+msgstr "Perangkat ini sudah tidak tersedia."
+
+#: clients/bluez/manager.cpp
+msgid "The device is busy. Try again in a moment."
+msgstr "Perangkat sedang sibuk. Coba lagi sebentar lagi."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth isn't ready yet. Try again in a moment."
+msgstr "Bluetooth belum siap. Coba lagi sebentar lagi."
+
+#: clients/bluez/manager.cpp
+msgid "This device has no media player."
+msgstr "Perangkat ini tidak memiliki pemutar media."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent: no system bus."
+msgstr "Tidak dapat mengekspor agen penyandingan Bluetooth: tidak ada bus sistem."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent."
+msgstr "Tidak dapat mengekspor agen penyandingan Bluetooth."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a PIN containing 1–16 bytes."
+msgstr "Masukkan PIN berisi 1–16 bita."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a passkey containing 1–6 digits."
+msgstr "Masukkan kunci sandi berisi 1–6 digit."
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't connect to {device}"
+msgstr "Tidak dapat terhubung ke {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't connect to the device"
+msgstr "Tidak dapat terhubung ke perangkat"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't disconnect {device}"
+msgstr "Tidak dapat memutuskan {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't disconnect the device"
+msgstr "Tidak dapat memutuskan perangkat"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't pair with {device}"
+msgstr "Tidak dapat menyandingkan dengan {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't pair with the device"
+msgstr "Tidak dapat menyandingkan dengan perangkat"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't forget {device}"
+msgstr "Tidak dapat melupakan {device}"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't forget the device"
+msgstr "Tidak dapat melupakan perangkat"
+
+#: clients/bluez/manager.cpp
+msgid "Try again. If it keeps failing, turn the device off and on again."
+msgstr "Coba lagi. Jika terus gagal, matikan lalu nyalakan kembali perangkat."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond in time. Make sure it is turned on and nearby."
+msgstr "Perangkat tidak merespons tepat waktu. Pastikan perangkat menyala dan berada di dekat Anda."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond. Make sure it is turned on, nearby, and not connected to another device."
+msgstr "Perangkat tidak merespons. Pastikan perangkat menyala, berada di dekat Anda, dan tidak terhubung ke perangkat lain."
+
+#: clients/bluez/manager.cpp
+msgid "The device no longer recognizes this computer. Forget the device and pair it again."
+msgstr "Perangkat tidak lagi mengenali komputer ini. Lupakan perangkat lalu sandingkan kembali."
+
+#: clients/bluez/manager.cpp
+msgid "Pairing failed. Make sure the code matches on both devices and try again."
+msgstr "Penyandingan gagal. Pastikan kode di kedua perangkat cocok, lalu coba lagi."
+
+#: clients/bluez/manager.cpp
+msgid "The device declined the request."
+msgstr "Perangkat menolak permintaan."
+
+#: clients/bluez/manager.cpp
+msgid "The device refused the connection."
+msgstr "Perangkat menolak koneksi."
+
+#: clients/bluez/manager.cpp
+msgid "The device has no features this computer can use."
+msgstr "Perangkat tidak memiliki fitur yang dapat digunakan komputer ini."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is turned off."
+msgstr "Bluetooth dimatikan."
+
+#: clients/bluez/manager.cpp
+msgid "Too many devices are connected. Disconnect one and try again."
+msgstr "Terlalu banyak perangkat yang terhubung. Putuskan salah satu lalu coba lagi."
+
+#: clients/bluez/manager.cpp
+msgid "The device ended the connection."
+msgstr "Perangkat mengakhiri koneksi."
+
+#: clients/bluez/manager.cpp
+msgid "The connection was interrupted. Try again."
+msgstr "Koneksi terputus. Coba lagi."
+
+#: clients/display/display_client.cpp
+msgid "The display operation timed out."
+msgstr "Waktu operasi layar habis."
+
+#: clients/display/display_client.cpp
+msgid "The display service restarted."
+msgstr "Layanan layar dimulai ulang."
+
+#: clients/display/display_client.cpp
+msgid "Unexpected display state."
+msgstr "Status layar tidak terduga."
+
+#: clients/display/output_model.cpp
+msgid "Built-in Display"
+msgstr "Layar Bawaan"
+
+#. TRANSLATORS: a monitor and the port it is plugged into, such as "DELL U2720Q (DP-1)".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{name} ({connector})"
+msgstr "{name} ({connector})"
+
+#. TRANSLATORS: a screen resolution in pixels, such as "1920 × 1080".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{width} × {height}"
+msgstr "{width} × {height}"
+
+#. TRANSLATORS: a refresh rate, such as "60.00 Hz".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{rate} Hz"
+msgstr "{rate} Hz"
+
+#. TRANSLATORS: the choice that shows other content on this display instead of mirroring another one.
+#: clients/display/output_model.cpp
+msgid "Extend"
+msgstr "Perluas"
+
+#: clients/display/screen.cpp
+msgid "The display service is unavailable."
+msgstr "Layanan layar tidak tersedia."
+
+#: clients/display/screen.cpp
+msgid "Displays changed. The previous draft was discarded."
+msgstr "Layar berubah. Draf sebelumnya dibuang."
+
+#: clients/networkmanager/handler.cpp
+msgid "The hotspot could not be started. The Wi-Fi adapter may not support it on this channel or with this password."
+msgstr "Hotspot tidak dapat dimulai. Adaptor Wi-Fi mungkin tidak mendukungnya pada kanal ini atau dengan kata sandi ini."
+
+#: clients/networkmanager/handler.cpp
+msgid "No Wi-Fi adapter can run a hotspot."
+msgstr "Tidak ada adaptor Wi-Fi yang dapat menjalankan hotspot."
+
+#: clients/networkmanager/handler.cpp
+msgid "No VPN plugin can read this file. Install the one for your VPN, for example network-manager-openvpn for OpenVPN."
+msgstr "Tidak ada plugin VPN yang dapat membaca file ini. Instal plugin untuk VPN Anda, misalnya network-manager-openvpn untuk OpenVPN."
+
+#: clients/networkmanager/handler.cpp
+msgid "This file isn't a VPN configuration this system can read."
+msgstr "File ini bukan konfigurasi VPN yang dapat dibaca sistem ini."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which reads VPN files, is not installed."
+msgstr "nmcli, yang membaca file VPN, tidak terinstal."
+
+#: clients/networkmanager/handler.cpp
+msgid "The private key can't be read, so the file would be incomplete."
+msgstr "Kunci privat tidak dapat dibaca, sehingga file akan tidak lengkap."
+
+#: clients/networkmanager/handler.cpp
+msgid "The file can't be written."
+msgstr "File tidak dapat ditulis."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which writes VPN files, is not installed."
+msgstr "nmcli, yang menulis file VPN, tidak terinstal."
+
+#: clients/networkmanager/handler.cpp
+msgid "The VPN couldn't be written to a file."
+msgstr "VPN tidak dapat ditulis ke file."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Automatic (DHCP)"
+msgstr "Otomatis (DHCP)"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Automatic"
+msgstr "Otomatis"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Manual"
+msgstr "Manual"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Off"
+msgstr "Mati"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "DHCP Only"
+msgstr "Hanya DHCP"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Link-Local Only"
+msgstr "Hanya Link-Local"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Shared to Other Computers"
+msgstr "Dibagikan ke Komputer Lain"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Left to the System"
+msgstr "Diserahkan ke Sistem"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv4 address."
+msgstr "{address} bukan alamat IPv4."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv6 address."
+msgstr "{address} bukan alamat IPv6."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{mask} isn't a subnet mask."
+msgstr "{mask} bukan subnet mask."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "The prefix length must be a number from 1 to 128."
+msgstr "Panjang prefiks harus berupa angka dari 1 hingga 128."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a router address."
+msgstr "{address} bukan alamat router."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv4 name servers need IPv4 set to automatic or manual."
+msgstr "Server nama IPv4 memerlukan IPv4 diatur ke otomatis atau manual."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv6 name servers need IPv6 set to automatic or manual."
+msgstr "Server nama IPv6 memerlukan IPv6 diatur ke otomatis atau manual."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a name server address."
+msgstr "{address} bukan alamat server nama."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Fill in the address and subnet mask."
+msgstr "Isi alamat dan subnet mask."
+
+#. TRANSLATORS: a network and the adapter it is on, such as "Home (wlan0)".
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "{name} ({device})"
+msgstr "{name} ({device})"
+
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "Install {package} to use this VPN."
+msgstr "Instal {package} untuk menggunakan VPN ini."
+
+#: clients/networkmanager/network_model.cpp
+msgid "Signing in to OpenConnect VPNs isn't supported yet."
+msgstr "Masuk ke VPN OpenConnect belum didukung."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authentication methods"
+msgstr "Metode autentikasi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Encryption and compression"
+msgstr "Enkripsi dan kompresi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Point-to-point encryption"
+msgstr "Enkripsi point-to-point"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not required"
+msgstr "Tidak diperlukan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Any"
+msgstr "Apa saja"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "128-bit"
+msgstr "128-bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "40-bit"
+msgstr "40-bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Stateful encryption"
+msgstr "Enkripsi stateful"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "BSD compression"
+msgstr "Kompresi BSD"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Deflate compression"
+msgstr "Kompresi Deflate"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TCP header compression"
+msgstr "Kompresi header TCP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Link"
+msgstr "Tautan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send PPP echo packets"
+msgstr "Kirim paket echo PPP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Default"
+msgstr "Bawaan"
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "DH group {number}"
+msgstr "Grup DH {number}"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server"
+msgstr "Server"
+
+#. TRANSLATORS: keep "host[:port[:proto]]" as it is; it is the syntax the field takes.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "host[:port[:proto]], several separated by commas"
+msgstr "host[:port[:proto]], beberapa dipisahkan koma"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Sign in with"
+msgstr "Masuk dengan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password"
+msgstr "Nama pengguna dan kata sandi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificates"
+msgstr "Sertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name, password and certificates"
+msgstr "Nama pengguna, kata sandi, dan sertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Static key"
+msgstr "Kunci statis"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name"
+msgstr "Nama pengguna"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Password"
+msgstr "Kata sandi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "CA certificate"
+msgstr "Sertifikat CA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User certificate"
+msgstr "Sertifikat pengguna"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key"
+msgstr "Kunci privat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key password"
+msgstr "Kata sandi kunci privat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key direction"
+msgstr "Arah kunci"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "None"
+msgstr "Tidak ada"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IP address"
+msgstr "Alamat IP jarak jauh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IP address"
+msgstr "Alamat IP lokal"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "General"
+msgstr "Umum"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Port"
+msgstr "Port"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use TCP"
+msgstr "Gunakan TCP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device type"
+msgstr "Jenis perangkat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Device name"
+msgstr "Nama perangkat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel MTU"
+msgstr "MTU terowongan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "UDP fragment size"
+msgstr "Ukuran fragmen UDP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restrict TCP maximum segment size"
+msgstr "Batasi ukuran segmen maksimum TCP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Path MTU discovery"
+msgstr "Penemuan Path MTU"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Never"
+msgstr "Tidak pernah"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "When possible"
+msgstr "Jika memungkinkan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Always"
+msgstr "Selalu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Renegotiate every (seconds)"
+msgstr "Negosiasi ulang setiap (detik)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Compression"
+msgstr "Kompresi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow compression"
+msgstr "Izinkan kompresi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Incoming only"
+msgstr "Hanya masuk"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Both ways"
+msgstr "Dua arah"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No"
+msgstr "Tidak"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pick servers at random"
+msgstr "Pilih server secara acak"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Randomise server host names"
+msgstr "Acak nama host server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow pulled host names"
+msgstr "Izinkan nama host yang ditarik"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 inside the tunnel"
+msgstr "IPv6 di dalam terowongan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept the server from any address"
+msgstr "Terima server dari alamat mana pun"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send client details to the server"
+msgstr "Kirim detail klien ke server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ping every (seconds)"
+msgstr "Ping setiap (detik)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Exit without a ping after (seconds)"
+msgstr "Keluar tanpa ping setelah (detik)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart without a ping after (seconds)"
+msgstr "Mulai ulang tanpa ping setelah (detik)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Connection timeout (seconds)"
+msgstr "Batas waktu koneksi (detik)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum routes"
+msgstr "Rute maksimum"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Security"
+msgstr "Keamanan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cipher"
+msgstr "Cipher"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data ciphers"
+msgstr "Cipher data"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Data cipher fallback"
+msgstr "Cipher data cadangan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable cipher negotiation"
+msgstr "Nonaktifkan negosiasi cipher"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "HMAC authentication"
+msgstr "Autentikasi HMAC"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key size (bits)"
+msgstr "Ukuran kunci (bit)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list file"
+msgstr "File daftar pencabutan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list directory"
+msgstr "Direktori daftar pencabutan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate name"
+msgstr "Nama sertifikat server"
+
+#. TRANSLATORS: keep the "name:", "subject:" and "name-prefix:" prefixes as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "name:vpn.example.com, subject:… or name-prefix:…"
+msgstr "name:vpn.example.com, subject:… atau name-prefix:…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate usage"
+msgstr "Penggunaan sertifikat server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not checked"
+msgstr "Tidak diperiksa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client"
+msgstr "Klien"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netscape certificate type"
+msgstr "Jenis sertifikat Netscape"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS authentication key"
+msgstr "Kunci autentikasi TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS key direction"
+msgstr "Arah kunci TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key"
+msgstr "Kunci enkripsi TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS encryption key (v2)"
+msgstr "Kunci enkripsi TLS (v2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra certificates"
+msgstr "Sertifikat tambahan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS cipher"
+msgstr "Cipher TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Minimum TLS version"
+msgstr "Versi TLS minimum"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Or the highest the server supports"
+msgstr "Atau versi tertinggi yang didukung server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Maximum TLS version"
+msgstr "Versi TLS maksimum"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy"
+msgstr "Proksi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy server"
+msgstr "Server proksi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy port"
+msgstr "Port proksi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Retry indefinitely"
+msgstr "Coba ulang tanpa batas"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy user name"
+msgstr "Nama pengguna proksi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Proxy password"
+msgstr "Kata sandi proksi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group name"
+msgstr "Nama grup"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password"
+msgstr "Kata sandi grup"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hybrid authentication"
+msgstr "Autentikasi hibrida"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Domain"
+msgstr "Domain"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Vendor"
+msgstr "Vendor"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Application version"
+msgstr "Versi aplikasi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Interface MTU"
+msgstr "MTU antarmuka"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption (single DES)"
+msgstr "Enkripsi lemah (DES tunggal)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No encryption"
+msgstr "Tanpa enkripsi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak authentication"
+msgstr "Autentikasi lemah"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Weak encryption"
+msgstr "Enkripsi lemah"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT traversal"
+msgstr "NAT traversal"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T when detected"
+msgstr "NAT-T jika terdeteksi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NAT-T always"
+msgstr "NAT-T selalu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE DH group"
+msgstr "Grup DH IKE"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Perfect forward secrecy"
+msgstr "Perfect forward secrecy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "As the server says"
+msgstr "Sesuai server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local port"
+msgstr "Port lokal"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection (seconds, 0 is off)"
+msgstr "Deteksi peer mati (detik, 0 berarti mati)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "NT domain"
+msgstr "Domain NT"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec tunnel to the server"
+msgstr "Terowongan IPsec ke server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server identity"
+msgstr "Identitas server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine authentication"
+msgstr "Autentikasi mesin"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Pre-shared key"
+msgstr "Kunci pra-bagi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine CA certificate"
+msgstr "Sertifikat CA mesin"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine certificate"
+msgstr "Sertifikat mesin"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine private key"
+msgstr "Kunci privat mesin"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Machine key password"
+msgstr "Kata sandi kunci mesin"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 algorithms"
+msgstr "Algoritme fase 1"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 algorithms"
+msgstr "Algoritme fase 2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime (seconds)"
+msgstr "Masa berlaku fase 1 (detik)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime (seconds)"
+msgstr "Masa berlaku fase 2 (detik)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Force UDP encapsulation"
+msgstr "Paksa enkapsulasi UDP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IP compression"
+msgstr "Kompresi IP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use IKEv2"
+msgstr "Gunakan IKEv2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable perfect forward secrecy"
+msgstr "Nonaktifkan perfect forward secrecy"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Multilink MRRU"
+msgstr "MRRU multilink"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Use a random source port"
+msgstr "Gunakan port sumber acak"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "PPP unit number"
+msgstr "Nomor unit PPP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA certificate"
+msgstr "Sertifikat CA server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Revocation list"
+msgstr "Daftar pencabutan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ignore certificate warnings"
+msgstr "Abaikan peringatan sertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS hostname extension"
+msgstr "Ekstensi nama host TLS"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Identity"
+msgstr "Identitas"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Verify the server name by"
+msgstr "Verifikasi nama server berdasarkan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Nothing"
+msgstr "Tidak ada"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Subject"
+msgstr "Subjek"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name"
+msgstr "Nama"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name suffix"
+msgstr "Akhiran nama"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Expected server name"
+msgstr "Nama server yang diharapkan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Check key usage"
+msgstr "Periksa penggunaan kunci"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password (EAP)"
+msgstr "Nama pengguna dan kata sandi (EAP)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate"
+msgstr "Sertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (EAP-TLS)"
+msgstr "Sertifikat (EAP-TLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and private key"
+msgstr "Sertifikat dan kunci privat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and SSH agent"
+msgstr "Sertifikat dan agen SSH"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Smart card"
+msgstr "Kartu pintar"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate from"
+msgstr "Sertifikat dari"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A file"
+msgstr "File"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "The SSH agent"
+msgstr "Agen SSH"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A smart card"
+msgstr "Kartu pintar"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client identity"
+msgstr "Identitas klien"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Options"
+msgstr "Opsi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server port"
+msgstr "Port server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Request an inner IP address"
+msgstr "Minta alamat IP internal"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enforce UDP encapsulation"
+msgstr "Paksakan enkapsulasi UDP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Custom algorithm proposals"
+msgstr "Proposal algoritme khusus"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE proposal"
+msgstr "Proposal IKE"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "ESP proposal"
+msgstr "Proposal ESP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local traffic selectors"
+msgstr "Pemilih lalu lintas lokal"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote traffic selectors"
+msgstr "Pemilih lalu lintas jarak jauh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password and user name (IKEv1)"
+msgstr "Kata sandi grup dan nama pengguna (IKEv1)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (IKEv2)"
+msgstr "Sertifikat (IKEv2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate name"
+msgstr "Nama sertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime"
+msgstr "Masa berlaku fase 1"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime"
+msgstr "Masa berlaku fase 2"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable rekeying"
+msgstr "Nonaktifkan rekeying"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authenticate by"
+msgstr "Autentikasi dengan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA signature"
+msgstr "Tanda tangan RSA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Networks"
+msgstr "Jaringan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local subnet"
+msgstr "Subnet lokal"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote subnet"
+msgstr "Subnet jarak jauh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow narrowing"
+msgstr "Izinkan penyempitan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Mobility (MOBIKE)"
+msgstr "Mobilitas (MOBIKE)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Don't ask the server for an address"
+msgstr "Jangan minta alamat dari server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE fragmentation"
+msgstr "Fragmentasi IKE"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Forced"
+msgstr "Dipaksa"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec interface"
+msgstr "Antarmuka IPsec"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection"
+msgstr "Deteksi peer mati"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Delay (seconds)"
+msgstr "Jeda (detik)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Timeout (seconds)"
+msgstr "Batas waktu (detik)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Action"
+msgstr "Tindakan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hold"
+msgstr "Tahan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Clear"
+msgstr "Hapus"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart"
+msgstr "Mulai ulang"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate"
+msgstr "Sertifikat server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA"
+msgstr "CA server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send the certificate"
+msgstr "Kirim sertifikat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "If asked"
+msgstr "Jika diminta"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept certificates without the identity"
+msgstr "Terima sertifikat tanpa identitas"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trusted certificate fingerprint"
+msgstr "Sidik jari sertifikat tepercaya"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Realm"
+msgstr "Realm"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ask for a one-time password"
+msgstr "Minta kata sandi sekali pakai"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Two-factor authentication"
+msgstr "Autentikasi dua faktor"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key file"
+msgstr "File kunci"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netmask"
+msgstr "Netmask"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 addresses too"
+msgstr "Juga alamat IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IPv6 address"
+msgstr "Alamat IPv6 jarak jauh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IPv6 address"
+msgstr "Alamat IPv6 lokal"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 prefix"
+msgstr "Prefiks IPv6"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote user name"
+msgstr "Nama pengguna jarak jauh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote device number"
+msgstr "Nomor perangkat jarak jauh"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TAP device"
+msgstr "Perangkat TAP"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No default route"
+msgstr "Tanpa rute bawaan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra SSH options"
+msgstr "Opsi SSH tambahan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel domain"
+msgstr "Domain terowongan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name server"
+msgstr "Server nama"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Fragment size"
+msgstr "Ukuran fragmen"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Protocol"
+msgstr "Protokol"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cisco AnyConnect or openconnect"
+msgstr "Cisco AnyConnect atau openconnect"
+
+#. TRANSLATORS: keep "http://" and "socks://" as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "http://… or socks://…"
+msgstr "http://… atau socks://…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User agent"
+msgstr "User agent"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Reported operating system"
+msgstr "Sistem operasi yang dilaporkan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Linux 64-bit"
+msgstr "Linux 64-bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable UDP (DTLS)"
+msgstr "Nonaktifkan UDP (DTLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Refuse invalid server certificates"
+msgstr "Tolak sertifikat server yang tidak valid"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key passphrase from the file system ID"
+msgstr "Frasa sandi kunci privat dari ID sistem file"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trojan"
+msgstr "Trojan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Run the server's compliance script"
+msgstr "Jalankan skrip kepatuhan server"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Wrapper script"
+msgstr "Skrip pembungkus"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Software token"
+msgstr "Token perangkat lunak"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token"
+msgstr "Token"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA SecurID from ~/.stokenrc"
+msgstr "RSA SecurID dari ~/.stokenrc"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token secret"
+msgstr "Rahasia token"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the server."
+msgstr "Masukkan server."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the group name."
+msgstr "Masukkan nama grup."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the remote IP address."
+msgstr "Masukkan alamat IP jarak jauh."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the local IP address."
+msgstr "Masukkan alamat IP lokal."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the netmask."
+msgstr "Masukkan netmask."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the tunnel domain."
+msgstr "Masukkan domain terowongan."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "Fill in “{field}”."
+msgstr "Isi “{field}”."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "This kind of VPN can't be set up by hand."
+msgstr "Jenis VPN ini tidak dapat diatur secara manual."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "{field} must be a number from {minimum} to {maximum}."
+msgstr "{field} harus berupa angka dari {minimum} hingga {maximum}."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The network connection was interrupted."
+msgstr "Koneksi jaringan terputus."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service stopped unexpectedly."
+msgstr "Layanan VPN berhenti secara tak terduga."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service returned invalid configuration."
+msgstr "Layanan VPN mengembalikan konfigurasi yang tidak valid."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The connection attempt timed out."
+msgstr "Waktu upaya koneksi habis."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service did not start in time."
+msgstr "Layanan VPN tidak dimulai tepat waktu."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service failed to start."
+msgstr "Layanan VPN gagal dimulai."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Sign-in failed. Check the user name and password."
+msgstr "Gagal masuk. Periksa nama pengguna dan kata sandi."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service reported an error."
+msgstr "Layanan VPN melaporkan kesalahan."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "DNS tunnel (iodine)"
+msgstr "Terowongan DNS (iodine)"
+
+#. TRANSLATORS: {key} is a WireGuard setting as written in the file, such as "PrivateKey".
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} has an invalid {key}."
+msgstr "Baris {line} memiliki {key} yang tidak valid."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} isn't part of a WireGuard configuration."
+msgstr "Baris {line} bukan bagian dari konfigurasi WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The configuration has no private key."
+msgstr "Konfigurasi tidak memiliki kunci privat."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer has no public key."
+msgstr "Sebuah peer tidak memiliki kunci publik."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the private key."
+msgstr "Masukkan kunci privat."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The private key isn't a WireGuard key."
+msgstr "Kunci privat bukan kunci WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an address with a prefix, like 10.0.0.2/24."
+msgstr "{address} bukan alamat dengan prefiks, seperti 10.0.0.2/24."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the address."
+msgstr "Masukkan alamat."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The listen port must be a number up to 65535."
+msgstr "Port dengar harus berupa angka hingga 65535."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The firewall mark must be a number."
+msgstr "Tanda firewall harus berupa angka."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The MTU must be a number."
+msgstr "MTU harus berupa angka."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Add the server as a peer."
+msgstr "Tambahkan server sebagai peer."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's public key isn't a WireGuard key."
+msgstr "Kunci publik sebuah peer bukan kunci WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's preshared key isn't a WireGuard key."
+msgstr "Kunci pra-bagi sebuah peer bukan kunci WireGuard."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a network, like 10.0.0.0/24."
+msgstr "{address} bukan jaringan, seperti 10.0.0.0/24."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The keepalive must be a number of seconds up to 65535."
+msgstr "Keepalive harus berupa jumlah detik hingga 65535."
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Insecure"
+msgstr "Tidak aman"
+
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Dynamic WEP"
+msgstr "WEP Dinamis"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Unknown"
+msgstr "Tidak diketahui"
+
+#. TRANSLATORS: why a folder can't be listed, then the folder, such as "Permission denied: /root".
+#: files/directory_lister.cpp
+#, python-brace-format
+msgid "{error}: {path}"
+msgstr "{error}: {path}"
+
+#: files/file_watcher.cpp
+#, python-brace-format
+msgid "Cannot watch {paths}; polling for changes"
+msgstr "Tidak dapat memantau {paths}; memeriksa perubahan secara berkala"
+
+#. TRANSLATORS: the file an operation failed on, then why, such as "/tmp/a.txt: Permission denied".
+#: files/task.cpp
+#, python-brace-format
+msgid "{path}: {error}"
+msgstr "{path}: {error}"
+
+#: files/trash.cpp
+msgid "The original location is not known"
+msgstr "Lokasi asal tidak diketahui"
+
+#: files/trash.cpp
+msgid "The original location is outside the volume it was deleted on"
+msgstr "Lokasi asal berada di luar volume tempat item dihapus"
+
+#. TRANSLATORS: a disk without a label, named by its size, such as "16 GB Volume".
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Encrypted Volume"
+msgstr "Volume Terenkripsi {size}"
+
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Volume"
+msgstr "Volume {size}"
+
+#: files/volume_manager.cpp
+msgid "The device is locked."
+msgstr "Perangkat terkunci."
+
+#: files/volume_manager.cpp
+msgid "The device does not support this operation."
+msgstr "Perangkat tidak mendukung operasi ini."
+
+#: files/volume_manager.cpp
+msgid "A device operation is already in progress."
+msgstr "Operasi perangkat sedang berlangsung."
+
+#: files/volume_manager.cpp
+msgid "The device is no longer available."
+msgstr "Perangkat sudah tidak tersedia."
