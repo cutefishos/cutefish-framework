@@ -41,6 +41,9 @@ public:
     // Without the service there is nothing to read, so the default applies.
     bool continuousCorners() const;
     void setContinuousCorners(bool continuous);
+    // Blurs and glass over an opaque colour instead of what is behind them.
+    bool reduceTransparency() const;
+    void setReduceTransparency(bool reduce);
     // An index into the accent colours: blue, red, green, purple, pink,
     // orange, grey.
     int accentColor() const;

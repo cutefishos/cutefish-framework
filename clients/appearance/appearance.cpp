@@ -26,7 +26,7 @@ Appearance::Appearance()
     }
     for (const char* member : {"darkModeChanged", "darkModeScheduleChanged", "wallpaperChanged",
                                "userWallpapersChanged", "wallpaperFoldersChanged", "continuousCornersChanged",
-                               "accentColorChanged", "backgroundTypeChanged",
+                               "reduceTransparencyChanged", "accentColorChanged", "backgroundTypeChanged",
                                "backgroundColorChanged", "cursorThemeChanged", "cursorSizeChanged",
                                "iconThemeChanged", "systemFontPointSizeChanged", "systemFontChanged"}) {
         m_matches.push_back(m_service.onSignal(member, [this](const dbus::Message&) { reload(); }));
@@ -101,6 +101,16 @@ bool Appearance::continuousCorners() const
 void Appearance::setContinuousCorners(bool continuous)
 {
     m_service.send("setContinuousCorners", continuous);
+}
+
+bool Appearance::reduceTransparency() const
+{
+    return value<bool>("reduceTransparency", false);
+}
+
+void Appearance::setReduceTransparency(bool reduce)
+{
+    m_service.send("setReduceTransparency", reduce);
 }
 
 int Appearance::accentColor() const
