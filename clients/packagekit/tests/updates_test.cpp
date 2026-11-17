@@ -28,7 +28,8 @@ constexpr const char* kService = "org.freedesktop.PackageKit";
 constexpr const char* kPath = "/org/freedesktop/PackageKit";
 constexpr const char* kTransactionInterface = "org.freedesktop.PackageKit.Transaction";
 
-// PK_STATUS_ENUM_DOWNLOAD and PK_STATUS_ENUM_INSTALL.
+// PK_STATUS_ENUM_RUNNING, PK_STATUS_ENUM_DOWNLOAD and PK_STATUS_ENUM_INSTALL.
+constexpr uint32_t kStatusRunning = 3;
 constexpr uint32_t kStatusDownload = 8;
 constexpr uint32_t kStatusInstall = 9;
 
@@ -512,13 +513,23 @@ TEST_F(InstallerTest, InstallsAPackageTheListsKnow)
     ASSERT_FALSE(m_fake->hints.empty());
     EXPECT_EQ(m_fake->hints.back(), (std::vector<std::string>{"interactive=true"}));
 
+    // The download is the first half and the installation the second.
     m_fake->progress(kStatusDownload, 42, true);
-    ASSERT_TRUE(waitFor([&] { return installer.progress() == 42; }));
+    ASSERT_TRUE(waitFor([&] { return installer.progress() == 21; }));
     EXPECT_EQ(installer.state(), Installer::State::Downloading);
 
-    m_fake->progress(kStatusInstall, 80, false);
+    // A step in between reports a percentage of its own.
+    m_fake->progress(kStatusRunning, 5, true);
+    m_fake->progress(kStatusInstall, 20, false);
     ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installing; }));
+    EXPECT_EQ(installer.progress(), 60);
     EXPECT_FALSE(installer.canCancel());
+
+    // Neither the state nor the progress goes back.
+    m_fake->progress(kStatusDownload, 10, false);
+    m_fake->progress(kStatusInstall, 80, false);
+    ASSERT_TRUE(waitFor([&] { return installer.progress() == 90; }));
+    EXPECT_EQ(installer.state(), Installer::State::Installing);
 
     m_fake->finishUpdate();
     ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installed; }));

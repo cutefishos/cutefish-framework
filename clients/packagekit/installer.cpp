@@ -3,6 +3,7 @@
 
 #include "cutefish/packagekit/installer.h"
 
+#include <algorithm>
 #include <vector>
 
 using namespace cutefish::base::dbus;
@@ -13,6 +14,8 @@ namespace cutefish::packagekit {
 // PK_TRANSACTION_FLAG_ENUM_ONLY_TRUSTED.
 static constexpr uint64_t kFilterNone = uint64_t(1) << 1;
 static constexpr uint64_t kOnlyTrusted = uint64_t(1) << 1;
+// PK_STATUS_ENUM_DOWNLOAD.
+static constexpr uint32_t kStatusDownload = 8;
 // PK_INFO_ENUM_INSTALLED.
 static constexpr uint32_t kInfoInstalled = 1;
 
@@ -35,13 +38,14 @@ void Installer::install(const std::string& name)
     m_error.clear();
     m_progress = -1;
     m_canCancel = false;
+    m_installing = false;
     setState(State::Looking);
     resolve(false);
 }
 
 void Installer::cancel()
 {
-    if (m_state == State::Looking) {
+    if (!m_installing) {
         m_transaction.reset();
         setState(State::Idle);
         return;
@@ -97,16 +101,28 @@ void Installer::refresh()
 void Installer::installPackage(const std::string& id)
 {
     m_transaction = std::make_unique<Transaction>(m_bus, true);
+    // The transaction's status and percentage go back and forth between its
+    // steps, so the state only moves forward and each half of the progress
+    // only counts the percentages of its own step.
     m_transaction->onChanged = [this] {
-        m_progress = m_transaction->percentage();
         m_canCancel = m_transaction->canCancel();
+        const bool downloading = m_transaction->status() == kStatusDownload;
         if (m_transaction->changesTheSystem())
             m_state = State::Installing;
+        else if (downloading && m_state == State::Looking)
+            m_state = State::Downloading;
+
+        const int percentage = m_transaction->percentage();
+        if (percentage >= 0 && m_state == State::Installing)
+            m_progress = std::max(m_progress, 50 + percentage / 2);
+        else if (percentage >= 0 && downloading && m_state == State::Downloading)
+            m_progress = std::max(m_progress, percentage / 2);
         changed.emit();
     };
     m_transaction->onFinished = [this](const Transaction::Result& result) {
         const std::unique_ptr<Transaction> finished = std::move(m_transaction);
         m_canCancel = false;
+        m_installing = false;
         if (result.success)
             setState(State::Installed);
         else if (result.cancelled || result.errorCode == Transaction::kErrorNotAuthorized)
@@ -114,7 +130,8 @@ void Installer::installPackage(const std::string& id)
         else
             fail(result.error);
     };
-    setState(State::Downloading);
+    m_installing = true;
+    changed.emit();
     m_transaction->run("InstallPackages", {Variant(kOnlyTrusted), Variant(std::vector<std::string>{id})});
 }
 
