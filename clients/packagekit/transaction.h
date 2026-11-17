@@ -68,6 +68,8 @@ public:
     int percentage() const { return m_percentage; }
     // PK_STATUS_ENUM.
     uint32_t status() const { return m_status; }
+    // Whether it has started changing the system, past its downloads.
+    bool changesTheSystem() const;
     // Whether PackageKit can still stop the transaction.
     bool canCancel() const { return m_canCancel; }
 

@@ -1,6 +1,6 @@
 cutefish_add_client(packagekit TARGET PackageKitClient
-    SOURCES transaction.cpp updates.cpp
-    HEADERS transaction.h updates.h
+    SOURCES installer.cpp transaction.cpp updates.cpp
+    HEADERS installer.h transaction.h updates.h
 )
 
 if(BUILD_TESTING)

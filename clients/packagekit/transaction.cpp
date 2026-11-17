@@ -173,6 +173,24 @@ void Transaction::update(const VariantMap& properties)
         onChanged();
 }
 
+// PK_STATUS_ENUM values: remove, install, update, cleanup, obsolete,
+// test-commit, commit.
+bool Transaction::changesTheSystem() const
+{
+    switch (m_status) {
+    case 6:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 15:
+    case 16:
+        return true;
+    default:
+        return false;
+    }
+}
+
 void Transaction::cancel()
 {
     if (m_finished || m_cancelled)

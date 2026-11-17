@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "base/event_loop.h"
+#include "cutefish/packagekit/installer.h"
 #include "cutefish/packagekit/updates.h"
 
 using namespace cutefish;
@@ -87,6 +88,9 @@ public:
     }
 
     std::vector<PackageEntry> updates;
+    // What Resolve knows; `afterRefresh` joins it once the lists are fetched.
+    std::vector<PackageEntry> known;
+    std::vector<PackageEntry> afterRefresh;
     // ErrorCode's details for a refresh that fails.
     std::optional<std::string> refreshError;
     // Turns the update down as polkit does when the prompt is dismissed.
@@ -147,7 +151,33 @@ private:
             calls.push_back(std::string("RefreshCache ") + (force ? "true" : "false"));
             if (refreshError)
                 object->emitSignal("ErrorCode", uint32_t(2), *refreshError);
+            else
+                known.insert(known.end(), afterRefresh.begin(), afterRefresh.end());
             finish(path, refreshError ? 2 : 1);
+        });
+        object->addMethod("Resolve", [this, path, object](uint64_t filter, const std::vector<std::string>& names) {
+            calls.push_back("Resolve " + std::to_string(filter) + " " + names.front());
+            std::vector<PackageEntry> found;
+            for (const PackageEntry& entry : known) {
+                if (std::get<1>(entry).rfind(names.front() + ";", 0) == 0)
+                    found.push_back(entry);
+            }
+            object->emitSignal("Packages", found);
+            finish(path, 1);
+        });
+        object->addMethod("InstallPackages", [this, path, object](uint64_t flags, const std::vector<std::string>& ids) {
+            calls.push_back("InstallPackages " + std::to_string(flags) + " " + ids.front());
+            if (refuseAuthorization) {
+                object->emitSignal("ErrorCode", uint32_t(48), std::string("Failed to obtain authentication."));
+                finish(path, 2);
+                return;
+            }
+            m_held = path;
+            set(path, kStatusDownload, 0, true);
+            if (!holdUpdate) {
+                set(path, kStatusInstall, 50, false);
+                finishUpdate();
+            }
         });
         object->addMethod("GetUpdates", [this, path, object](uint64_t filter) {
             calls.push_back("GetUpdates " + std::to_string(filter));
@@ -463,6 +493,96 @@ TEST_F(UpdatesTest, ACheckTakesOverFromABackgroundOne)
     // A check from the user shows its failure.
     ASSERT_TRUE(settlesIn(updates, Updates::State::Error));
     EXPECT_EQ(updates.error(), "Cannot download the package lists");
+}
+
+using InstallerTest = UpdatesTest;
+
+TEST_F(InstallerTest, InstallsAPackageTheListsKnow)
+{
+    m_fake->known = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    m_fake->holdUpdate = true;
+    Installer installer(bus());
+    installer.install("zsh");
+    EXPECT_EQ(installer.state(), Installer::State::Looking);
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Downloading; }));
+    ASSERT_TRUE(waitFor([&] { return installer.canCancel(); }));
+    // Only trusted packages, and no fetch of lists that know the name.
+    EXPECT_EQ(m_fake->calls,
+              (std::vector<std::string>{"Resolve 2 zsh", "InstallPackages 2 zsh;5.9-8;amd64;debian-stable-main"}));
+    ASSERT_FALSE(m_fake->hints.empty());
+    EXPECT_EQ(m_fake->hints.back(), (std::vector<std::string>{"interactive=true"}));
+
+    m_fake->progress(kStatusDownload, 42, true);
+    ASSERT_TRUE(waitFor([&] { return installer.progress() == 42; }));
+    EXPECT_EQ(installer.state(), Installer::State::Downloading);
+
+    m_fake->progress(kStatusInstall, 80, false);
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installing; }));
+    EXPECT_FALSE(installer.canCancel());
+
+    m_fake->finishUpdate();
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installed; }));
+}
+
+TEST_F(InstallerTest, AnInstalledPackageIsInstalledAtOnce)
+{
+    m_fake->known = {{1, "zsh;5.9-8;amd64;installed:debian-stable-main", "shell with lots of features"}};
+    Installer installer(bus());
+    installer.install("zsh");
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installed; }));
+    EXPECT_EQ(m_fake->calls, (std::vector<std::string>{"Resolve 2 zsh"}));
+}
+
+TEST_F(InstallerTest, FetchesTheListsOnceForAnUnknownName)
+{
+    m_fake->afterRefresh = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    Installer installer(bus());
+    installer.install("zsh");
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installed; }));
+    EXPECT_EQ(m_fake->calls, (std::vector<std::string>{"Resolve 2 zsh", "RefreshCache false", "Resolve 2 zsh",
+                                                       "InstallPackages 2 zsh;5.9-8;amd64;debian-stable-main"}));
+}
+
+TEST_F(InstallerTest, ANameNoSourceHasIsUnavailable)
+{
+    Installer installer(bus());
+    installer.install("zsh");
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Unavailable; }));
+    EXPECT_EQ(m_fake->calls, (std::vector<std::string>{"Resolve 2 zsh", "RefreshCache false", "Resolve 2 zsh"}));
+
+    // A later install starts over.
+    m_fake->calls.clear();
+    m_fake->known = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    installer.install("zsh");
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installed; }));
+}
+
+TEST_F(InstallerTest, AFailedFetchIsAnError)
+{
+    m_fake->refreshError = "Cannot download the package lists";
+    Installer installer(bus());
+    installer.install("zsh");
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Error; }));
+    EXPECT_EQ(installer.error(), "Cannot download the package lists");
+}
+
+TEST_F(InstallerTest, ADismissedPasswordPromptOrAStopIsIdleAgain)
+{
+    m_fake->known = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    m_fake->refuseAuthorization = true;
+    Installer installer(bus());
+    installer.install("zsh");
+    ASSERT_TRUE(waitFor([&] { return m_fake->calls.size() == 2; }));
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Idle; }));
+    EXPECT_EQ(installer.error(), "");
+
+    m_fake->refuseAuthorization = false;
+    m_fake->holdUpdate = true;
+    installer.install("zsh");
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Downloading && installer.canCancel(); }));
+    installer.cancel();
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Idle; }));
+    EXPECT_EQ(m_fake->calls.back(), "Cancel");
 }
 
 TEST_F(UpdatesTest, AvailabilityFollowsTheDaemon)

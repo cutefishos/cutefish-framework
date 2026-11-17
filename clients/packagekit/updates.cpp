@@ -45,24 +45,6 @@ Availability::Availability(Connection* bus, std::function<void(bool)> done)
     }, std::string(kService));
 }
 
-// PK_STATUS_ENUM values of a transaction that has started changing the
-// system: remove, install, update, cleanup, obsolete, test-commit, commit.
-static bool changesTheSystem(uint32_t status)
-{
-    switch (status) {
-    case 6:
-    case 9:
-    case 10:
-    case 11:
-    case 12:
-    case 15:
-    case 16:
-        return true;
-    default:
-        return false;
-    }
-}
-
 Updates::Updates(Connection* bus)
     : m_bus(bus)
     , m_daemon(bus, kService, kPath, kService)
@@ -150,7 +132,7 @@ void Updates::follow(std::unique_ptr<Transaction> transaction)
     m_transaction->onChanged = [this] {
         m_progress = m_transaction->percentage();
         m_canCancel = m_transaction->canCancel();
-        if (changesTheSystem(m_transaction->status()))
+        if (m_transaction->changesTheSystem())
             m_phase = Phase::Installing;
         changed.emit();
     };
