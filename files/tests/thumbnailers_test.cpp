@@ -3,8 +3,10 @@
 
 #include <gtest/gtest.h>
 
+#include <algorithm>
 #include <chrono>
 #include <cstdlib>
+#include <filesystem>
 #include <sys/stat.h>
 #include <thread>
 
@@ -135,6 +137,69 @@ TEST_F(ThumbnailersTest, ImagesStayInProcess)
     EXPECT_EQ(thumbnail.image.width(), 128);
     EXPECT_EQ(thumbnail.image.height(), 64);
     EXPECT_FALSE(exists(s_tools->filePath("arguments")));
+}
+
+TEST_F(ThumbnailersTest, FontsGetAPageWithTheirLetters)
+{
+    const std::string font = "/usr/share/fonts/opentype/inter/Inter-Regular.otf";
+    if (!exists(font))
+        GTEST_SKIP() << font << " is not installed";
+    EXPECT_TRUE(ThumbnailCache::self()->canThumbnail("font/otf"));
+    EXPECT_TRUE(ThumbnailCache::self()->canThumbnail("font/ttf"));
+    EXPECT_TRUE(ThumbnailCache::self()->canThumbnail("font/collection"));
+
+    const std::string copy = s_files->filePath("Sample.otf");
+    ASSERT_TRUE(std::filesystem::copy_file(font, copy, std::filesystem::copy_options::overwrite_existing));
+    const Thumbnail thumbnail = ThumbnailCache::self()->requestThumbnail(localUrl(copy), {256, 256});
+    const ui::Bitmap& page = thumbnail.image;
+    ASSERT_EQ(page.height(), 256);
+    ASSERT_EQ(page.width(), 205);
+    EXPECT_FALSE(thumbnail.path.empty());
+    EXPECT_EQ(page.pixel(0, 0), 0xfff4f4f6u);
+    EXPECT_EQ(page.pixel(204, 255), 0xfff4f4f6u);
+
+    int left = page.width(), top = page.height(), right = -1, bottom = -1;
+    bool solid = false;
+    for (int y = 0; y < page.height(); ++y) {
+        for (int x = 0; x < page.width(); ++x) {
+            if (page.pixel(x, y) == 0xfff4f4f6u)
+                continue;
+            solid = solid || page.pixel(x, y) == 0xff1d1d1fu;
+            left = std::min(left, x);
+            top = std::min(top, y);
+            right = std::max(right, x);
+            bottom = std::max(bottom, y);
+        }
+    }
+    EXPECT_TRUE(solid);
+    // The ink is centred, and as large as its box of 64% by 36% of the page allows.
+    EXPECT_NEAR(left, page.width() - 1 - right, 2);
+    EXPECT_NEAR(top, page.height() - 1 - bottom, 2);
+    const int inkWidth = right - left + 1;
+    const int inkHeight = bottom - top + 1;
+    EXPECT_LE(inkWidth, 132);
+    EXPECT_LE(inkHeight, 93);
+    EXPECT_TRUE(inkWidth >= 124 || inkHeight >= 86) << inkWidth << " x " << inkHeight;
+
+    // A font without Latin letters shows its own.
+    const std::string arabic = "/usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf";
+    if (exists(arabic)) {
+        const std::string arabicCopy = s_files->filePath("Arabic.ttf");
+        ASSERT_TRUE(std::filesystem::copy_file(arabic, arabicCopy, std::filesystem::copy_options::overwrite_existing));
+        const ui::Bitmap letters = ThumbnailCache::self()->requestThumbnail(localUrl(arabicCopy), {256, 256}).image;
+        ASSERT_EQ(letters.height(), 256);
+        int inked = 0;
+        for (int y = 0; y < letters.height(); ++y) {
+            for (int x = 0; x < letters.width(); ++x)
+                inked += letters.pixel(x, y) == 0xff1d1d1fu;
+        }
+        EXPECT_GT(inked, 400);
+    }
+
+    // A text file with a font's name has no faces.
+    const std::string fake = s_files->filePath("Fake.ttf");
+    writeFile(fake, "Not a font.\n");
+    EXPECT_TRUE(ThumbnailCache::self()->requestThumbnail(localUrl(fake), {256, 256}).image.isNull());
 }
 
 TEST_F(ThumbnailersTest, CachedThumbnailsAreReadWithoutGenerating)

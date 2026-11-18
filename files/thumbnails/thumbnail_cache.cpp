@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <array>
 #include <cerrno>
+#include <cmath>
 #include <csetjmp>
 #include <cstdio>
 #include <cstdlib>
@@ -16,6 +17,7 @@
 #include <png.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <utility>
 #include <vector>
 
 #include "base/paths.h"
@@ -24,6 +26,8 @@
 #include "cutefish/files/url.h"
 #include "md5_p.h"
 #include "thumbnailers_p.h"
+#include "ui/bitmap_painter.h"
+#include "ui/font_file.h"
 #include "../path_utils_p.h"
 
 namespace cutefish::files {
@@ -82,6 +86,32 @@ static constexpr std::string_view readableTypes[] = {
     "image/webp",   "image/tiff", "image/heif", "image/avif",               "image/jxl",
     "image/svg+xml",
 };
+
+// The font types thumbnailed with the toolkit's font reader.
+static constexpr std::string_view fontTypes[] = {"font/ttf", "font/otf", "font/collection"};
+
+// A font's thumbnail: a page as wide as this share of its height, two letters
+// on it as tall as the letter share at most and no wider than the width share.
+static constexpr double fontPageAspect = 0.8;
+static constexpr double fontLetterHeightShare = 0.36;
+static constexpr double fontLetterWidthShare = 0.64;
+static constexpr uint32_t fontPageColor = 0xfff4f4f6;
+// Where the letters of a font without Latin ones are looked for: the scripts
+// a font is most likely made for first, then symbols, then anything.
+static constexpr std::pair<char32_t, char32_t> fontLetterRanges[] = {
+    {0x4e00, 0x9fff}, // Han
+    {0x3042, 0x3093}, // Hiragana
+    {0xac00, 0xd7a3}, // Hangul
+    {0x0621, 0x064a}, // Arabic
+    {0x05d0, 0x05ea}, // Hebrew
+    {0x0905, 0x0939}, // Devanagari
+    {0x0e01, 0x0e2e}, // Thai
+    {0x0410, 0x044f}, // Cyrillic
+    {0x0391, 0x03c9}, // Greek
+    {0x2190, 0x10ffff},
+    {0x21, 0x10ffff},
+};
+static constexpr uint32_t fontInkColor = 0xff1d1d1f;
 
 static std::mutex s_rootMutex;
 static std::string s_cacheRoot;
@@ -372,6 +402,54 @@ static bool locate(const std::string& filePath, base::Size requestedSize, Entry*
     return true;
 }
 
+static bool isFontType(std::string_view mimeType)
+{
+    return std::find(std::begin(fontTypes), std::end(fontTypes), mimeType) != std::end(fontTypes);
+}
+
+// The letters "Ag" in the font's regular face, or two letters of its own
+// script when it lacks them, centred by their ink on a page.
+static ui::Bitmap fontThumbnail(const std::string& path, base::Size size)
+{
+    const std::vector<ui::FontFace> faces = ui::readFontFaces(path);
+    if (faces.empty())
+        return {};
+    const ui::FontFace& face = faces[size_t(ui::defaultFontFace(faces))];
+    std::string text = "Ag";
+    if (!face.covers(text)) {
+        text.clear();
+        for (const auto& [first, last] : fontLetterRanges) {
+            text = face.characters(first, last, 2);
+            if (!text.empty())
+                break;
+        }
+    }
+
+    const int height = size.height();
+    const int width = std::min(size.width(), int(std::round(height * fontPageAspect)));
+    const double maximumWidth = width * fontLetterWidthShare;
+    const double maximumHeight = height * fontLetterHeightShare;
+    const ui::Color ink = ui::Color::fromArgb(fontInkColor);
+
+    // The ink of a size is measured by drawing it, then drawn at the size that fits.
+    const double trial = maximumHeight;
+    ui::Bitmap letters = ui::renderFontGlyphs(path, face.index, text, trial, ink);
+    if (letters.isNull())
+        return {};
+    const double fit = std::min(maximumWidth / letters.width(), maximumHeight / letters.height());
+    letters = ui::renderFontGlyphs(path, face.index, text, std::floor(trial * fit), ink);
+    if (letters.isNull())
+        return {};
+
+    ui::Bitmap page(width, height, ui::Bitmap::Format::Argb32Premultiplied);
+    if (page.isNull())
+        return {};
+    page.fill(fontPageColor);
+    ui::BitmapPainter painter(page);
+    painter.drawBitmap(base::PointF((width - letters.width()) / 2, (height - letters.height()) / 2), letters);
+    return page;
+}
+
 ThumbnailCache* ThumbnailCache::self()
 {
     static ThumbnailCache* cache = new ThumbnailCache;
@@ -386,7 +464,7 @@ bool ThumbnailCache::canThumbnail(const std::string& mimeType)
             return true;
     }
 
-    return internal::Thumbnailers::self()->contains(name);
+    return isFontType(name) || internal::Thumbnailers::self()->contains(name);
 }
 
 Thumbnail ThumbnailCache::requestThumbnail(const std::string& filePath, base::Size requestedSize)
@@ -454,8 +532,13 @@ ui::Bitmap ThumbnailCache::generateThumbnail(const std::string& source, base::Si
         return {};
 
     ui::Bitmap image = ui::Bitmap::decodeFile(source, requestedSize, ui::Bitmap::Scaling::Fit, true);
-    if (image.isNull())
-        return internal::Thumbnailers::self()->generate(source, mime::typeForFile(source), requestedSize);
+    if (image.isNull()) {
+        const std::string type = mime::typeForFile(source);
+        if (isFontType(type))
+            return fontThumbnail(source, requestedSize);
+
+        return internal::Thumbnailers::self()->generate(source, type, requestedSize);
+    }
 
     if (image.width() > requestedSize.width() || image.height() > requestedSize.height())
         image = image.scaled(ui::scaledSize(image.size(), requestedSize, ui::Bitmap::Scaling::Fit));
