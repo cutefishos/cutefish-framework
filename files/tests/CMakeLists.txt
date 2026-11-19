@@ -19,3 +19,7 @@ add_executable(files-volumemanager-tests volume_manager_test.cpp testing.h)
 pkg_check_modules(FilesTestSystemd REQUIRED IMPORTED_TARGET libsystemd)
 target_link_libraries(files-volumemanager-tests PRIVATE Cutefish::Files GTest::gtest_main PkgConfig::FilesTestSystemd)
 add_test(NAME files-volumemanager COMMAND ${DBUS_RUN_SESSION} -- $<TARGET_FILE:files-volumemanager-tests>)
+
+add_executable(files-fuse-compat-tests fuse_compat_test.cpp testing.h)
+target_link_libraries(files-fuse-compat-tests PRIVATE Cutefish::Files GTest::gtest_main)
+gtest_discover_tests(files-fuse-compat-tests)
