@@ -16,10 +16,24 @@
 
 namespace cutefish::files::internal::applications_folder {
 
-static constexpr char kFolder[] = "/Applications";
-
 // An administrator may take a while to answer.
 static constexpr std::chrono::minutes kTimeout(10);
+
+static std::string& folderPath()
+{
+    static std::string path = "/Applications";
+    return path;
+}
+
+const std::string& folder()
+{
+    return folderPath();
+}
+
+void setFolder(std::string path)
+{
+    folderPath() = std::move(path);
+}
 
 static base::dbus::Reply call(const std::string& method, const std::string& subject,
                               const std::function<void(base::dbus::Message&)>& arguments)
@@ -34,6 +48,9 @@ static base::dbus::Reply call(const std::string& method, const std::string& subj
                                                      "org.cutefish.ApplicationsFolder", method);
     arguments(message);
     base::dbus::Reply reply = bus->call(message, kTimeout);
+    // A refused administrator cancels quietly, as no answer would.
+    if (reply.isError() && reply.error().name == "org.freedesktop.DBus.Error.AccessDenied")
+        throw Failure(ECANCELED, subject);
     if (reply.isError())
         throw Failure(EACCES, subject, reply.error().message);
     return reply;
@@ -47,19 +64,28 @@ static std::string answer(const base::dbus::Reply& reply, const std::string& sub
     return path;
 }
 
-bool needsHelper(const std::string& folder)
+void authorize(OperationContext& ctx)
 {
-    return canonicalPath(folder) == kFolder && ::access(kFolder, W_OK) != 0 && errno == EACCES;
+    if (ctx.authorized)
+        return;
+    if (ctx.authorize && !ctx.authorize(folder()))
+        throw Failure(ECANCELED, folder());
+    ctx.authorized = true;
+}
+
+bool needsHelper(const std::string& path)
+{
+    return canonicalPath(path) == folder() && ::access(folder().c_str(), W_OK) != 0 && errno == EACCES;
 }
 
 std::string prepare()
 {
-    return answer(call("prepare", kFolder, [](base::dbus::Message&) {}), kFolder);
+    return answer(call("prepare", folder(), [](base::dbus::Message&) {}), folder());
 }
 
 std::string publish(const std::string& staging, const std::string& name, bool replace)
 {
-    const std::string subject = std::string(kFolder) + '/' + name;
+    const std::string subject = folder() + '/' + name;
     return answer(call("publish", subject,
                        [&](base::dbus::Message& message) { message.append(staging, name, replace); }),
                   subject);
@@ -67,7 +93,7 @@ std::string publish(const std::string& staging, const std::string& name, bool re
 
 std::string release(const std::string& name)
 {
-    const std::string subject = std::string(kFolder) + '/' + name;
+    const std::string subject = folder() + '/' + name;
     return answer(call("release", subject, [&](base::dbus::Message& message) { message.append(name); }), subject);
 }
 

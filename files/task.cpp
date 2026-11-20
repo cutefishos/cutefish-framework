@@ -79,6 +79,17 @@ static TaskResult execute(const TaskRequest& request, OperationContext& ctx,
         return policy;
     };
 
+    const auto authorizer = ctx.authorize;
+    if (authorizer) {
+        ctx.authorize = [&](const std::string& folder) {
+            const int64_t before = elapsed.isValid() ? elapsed.elapsedMs() : 0;
+            const bool allowed = authorizer(folder);
+            if (elapsed.isValid())
+                pausedMs += elapsed.elapsedMs() - before;
+            return allowed;
+        };
+    }
+
     ctx.currentItem = [&](const std::string& path) {
         info.currentPath = path;
         update();
@@ -256,6 +267,7 @@ static TaskResult execute(const TaskRequest& request, OperationContext& ctx,
     ctx.currentItem = {};
     ctx.progress = legacyProgress;
     ctx.conflict = conflictResolver;
+    ctx.authorize = authorizer;
     return result;
 }
 
@@ -298,6 +310,22 @@ bool Task::resolveConflict(uint32_t conflict, int policy, bool applyToAll)
         m_resolved = true;
         if (applyToAll)
             m_resolutionForAll = m_resolution;
+    }
+
+    m_conflictCondition.notify_all();
+    return true;
+}
+
+bool Task::answerAuthorization(uint32_t request, bool allowed)
+{
+    {
+        const std::lock_guard lock(m_conflictMutex);
+        if (request == 0 || request != m_pendingAuthorization)
+            return false;
+
+        m_pendingAuthorization = 0;
+        m_allowed = allowed;
+        m_resolved = true;
     }
 
     m_conflictCondition.notify_all();
@@ -377,6 +405,31 @@ void Task::start()
 
         m_context->checkpoint(destination);
         return m_resolution;
+    };
+
+    m_context->authorize = [this, self, loop](const std::string& folder) {
+        std::unique_lock lock(m_conflictMutex);
+        m_resolved = false;
+        const uint32_t request = ++m_lastConflict;
+        m_pendingAuthorization = request;
+        loop.post([self, request, folder] {
+            Task* task = self.get();
+            if (!task)
+                return;
+
+            if (!task->authorizationRequested.isEmpty())
+                task->authorizationRequested.emit(request, folder);
+            else
+                task->answerAuthorization(request, true);
+        });
+
+        m_conflictCondition.wait(lock, [this] {
+            return m_resolved || m_context->canceled.load();
+        });
+
+        m_pendingAuthorization = 0;
+        m_context->checkpoint(folder);
+        return m_allowed;
     };
 
     m_thread = std::thread([self, loop, request = m_request, ctx = m_context] {

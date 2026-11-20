@@ -33,6 +33,7 @@
 #include "cutefish/files/file_path.h"
 #include "cutefish/files/file_watcher.h"
 #include "cutefish/files/local_file_system.h"
+#include "cutefish/files/applications_folder_p.h"
 #include "cutefish/files/mime_sniffer_p.h"
 #include "cutefish/files/mime_types.h"
 #include "cutefish/files/path_utils_p.h"
@@ -1983,6 +1984,36 @@ TEST_F(FilesTest, AsynchronousConflictAndCancel)
 
     EXPECT_EQ(canceled.state(), Task::State::Canceled);
     EXPECT_EQ(readFile(dir.filePath("target/source")), "old");
+}
+
+// Changing a folder only an administrator may change asks the task's owner
+// first; a no cancels before the system is asked.
+TEST_F(FilesTest, AdministratorFolderAsksBeforeTheHelper)
+{
+    TemporaryDirectory dir;
+    ASSERT_TRUE(makePath(dir.filePath("Shared")));
+    writeFile(dir.filePath("source"), "new");
+    ASSERT_EQ(::chmod(dir.filePath("Shared").c_str(), 0555), 0);
+    cutefish::files::internal::applications_folder::setFolder(
+            std::filesystem::canonical(dir.filePath("Shared")).string());
+
+    Task task({Operation::Copy, {local(dir.filePath("source"))}, local(dir.filePath("Shared")), ConflictPolicy::Ask});
+    Spy asked(task.authorizationRequested);
+    Spy finished(task.result);
+    task.start();
+    EXPECT_TRUE(waitFor(loop, [&] { return asked.count() == 1; }));
+    const uint32_t request = std::get<0>(asked.calls.front());
+    EXPECT_EQ(std::get<1>(asked.calls.front()), std::filesystem::canonical(dir.filePath("Shared")).string());
+    EXPECT_FALSE(task.answerAuthorization(request + 1, true));
+    EXPECT_FALSE(task.resolveConflict(request, int(ConflictPolicy::Replace)));
+    EXPECT_TRUE(task.answerAuthorization(request, false));
+    EXPECT_FALSE(task.answerAuthorization(request, true));
+    EXPECT_TRUE(waitFor(loop, [&] { return finished.count() == 1; }));
+    EXPECT_EQ(task.state(), Task::State::Canceled);
+    EXPECT_FALSE(std::filesystem::exists(dir.filePath("Shared/source")));
+
+    ::chmod(dir.filePath("Shared").c_str(), 0755);
+    cutefish::files::internal::applications_folder::setFolder("/Applications");
 }
 
 TEST_F(FilesTest, ControllerTrashUndo)

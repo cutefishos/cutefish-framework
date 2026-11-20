@@ -31,6 +31,11 @@ struct OperationContext
     uint64_t allocated = 0;
     std::function<void(uint64_t, uint64_t)> progress;
     std::function<ConflictPolicy(const std::string& source, const std::string& destination)> conflict;
+    // Asked once, before the operation first changes a folder only an
+    // administrator may change; false cancels it. Unset goes on, and the
+    // system asks for the administrator.
+    std::function<bool(const std::string& folder)> authorize;
+    bool authorized = false;
     // Set once a Replace merges into an existing folder, which then holds more than was copied.
     bool merged = false;
 

@@ -95,6 +95,10 @@ public:
     // of this task the same way. False, and nothing changes, when that conflict
     // is not the one waiting: already answered, or never asked.
     bool resolveConflict(uint32_t conflict, int policy, bool applyToAll = false);
+    // Answers the question authorizationRequested asked with this id: true
+    // goes on to the administrator's password, false cancels the task. False,
+    // and nothing changes, when that question is not the one waiting.
+    bool answerAuthorization(uint32_t request, bool allowed);
 
     State state() const { return m_state; }
     const TaskProgress& progressInfo() const { return m_progressInfo; }
@@ -122,6 +126,10 @@ public:
     // The conflict's id, source and destination. Answer with resolveConflict();
     // without a listener every conflict fails.
     base::Signal<uint32_t, const std::string&, const std::string&> conflictRequested;
+    // The question's id and the folder, before the task first changes a
+    // folder only an administrator may change. Answer with
+    // answerAuthorization(); without a listener the task goes on.
+    base::Signal<uint32_t, const std::string&> authorizationRequested;
     base::Signal<State> stateChanged;
     base::Signal<Task*> result;
 
@@ -144,6 +152,8 @@ private:
     bool m_resolved = false;
     uint32_t m_lastConflict = 0;
     uint32_t m_pendingConflict = 0;
+    uint32_t m_pendingAuthorization = 0;
+    bool m_allowed = false;
     std::vector<base::Subscription> m_finishedCallbacks;
     base::WeakPtrFactory<Task> m_weakFactory{this};
 };

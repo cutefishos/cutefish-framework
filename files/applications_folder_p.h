@@ -5,6 +5,8 @@
 
 #include <string>
 
+#include "cutefish/files/operation_context.h"
+
 namespace cutefish::files::internal {
 
 // The shared Applications folder, which only its group may change; others
@@ -12,6 +14,14 @@ namespace cutefish::files::internal {
 // agreed. Each call blocks while the administrator is asked, and throws a
 // Failure when refused.
 namespace applications_folder {
+
+// "/Applications"; tests point it at a folder of their own.
+const std::string& folder();
+void setFolder(std::string path);
+
+// Asks the operation once whether to go on to the administrator; throws
+// ECANCELED when it says no.
+void authorize(OperationContext& ctx);
 
 // Whether `folder` is the shared Applications folder and the caller may not
 // change it themselves.

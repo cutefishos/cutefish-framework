@@ -499,6 +499,7 @@ static std::string publish(int parent, const std::string& temporary, const std::
 static std::string copyThroughHelper(const std::string& source, const std::string& destination,
                                      ConflictPolicy policy, OperationContext& ctx)
 {
+    applications_folder::authorize(ctx);
     const std::string staging = applications_folder::prepare();
     try {
         const std::string name = native(fileNameOf(destination));
@@ -620,6 +621,7 @@ static bool isNewCase(const std::string& source, const std::string& destination)
 static std::string moveOutThroughHelper(const std::string& source, const std::string& destination,
                                         ConflictPolicy policy, OperationContext& ctx)
 {
+    applications_folder::authorize(ctx);
     const std::string name = native(fileNameOf(source));
     const std::string staging = applications_folder::release(name);
     std::string result;
@@ -735,6 +737,7 @@ void LocalFileSystem::remove(const std::string& path, OperationContext& ctx)
 {
     if (applications_folder::needsHelper(absolutePathOf(path))) {
         ctx.checkpoint(path);
+        applications_folder::authorize(ctx);
         applications_folder::discard(applications_folder::release(native(fileNameOf(path))));
         return;
     }
