@@ -59,6 +59,7 @@ protected:
 
         installThumbnailer("record.thumbnailer",
                            "TryExec=" + script + "\nExec=" + script + " -s %s %u literal%% %o\nMimeType=text/plain;\n");
+        installThumbnailer("bundle.thumbnailer", "Exec=" + script + " %i %o\nMimeType=application/x-apple-app;\n");
         installThumbnailer("fail.thumbnailer", "Exec=false %i %o\nMimeType=text/csv;\n");
         installThumbnailer("hang.thumbnailer", "Exec=sh -c \"sleep 63\" sh %i %o\nMimeType=text/x-csrc;\n");
         installThumbnailer("missing.thumbnailer",
@@ -123,6 +124,27 @@ TEST_F(ThumbnailersTest, RunsInstalledThumbnailer)
     EXPECT_EQ(cached.path, thumbnail.path);
     EXPECT_EQ(cached.image.width(), 128);
     EXPECT_FALSE(exists(s_tools->filePath("arguments")));
+}
+
+TEST_F(ThumbnailersTest, ApplicationBundlesGoToTheirThumbnailer)
+{
+    EXPECT_TRUE(ThumbnailCache::self()->canThumbnail("application/x-apple-app"));
+
+    const std::string bundle = s_files->filePath("Editor.app");
+    ASSERT_TRUE(makePath(bundle + "/Contents"));
+    writeFile(bundle + "/Contents/Info.plist", "<plist><dict/></plist>");
+    const Thumbnail thumbnail = ThumbnailCache::self()->requestThumbnail(localUrl(bundle), {256, 256});
+    EXPECT_EQ(thumbnail.image.width(), 256);
+    EXPECT_TRUE(thumbnail.path.starts_with(s_cache + "/large/"));
+    const std::vector<std::string> arguments =
+        base::strings::split(readFile(s_tools->filePath("arguments")), '\n', base::strings::SplitBehavior::SkipEmptyParts);
+    ASSERT_EQ(arguments.size(), 2u);
+    EXPECT_EQ(arguments[0], bundle);
+
+    // Any other folder has none.
+    const std::string folder = s_files->filePath("Folder");
+    ASSERT_TRUE(makePath(folder));
+    EXPECT_TRUE(ThumbnailCache::self()->requestThumbnail(localUrl(folder), {256, 256}).image.isNull());
 }
 
 TEST_F(ThumbnailersTest, ImagesStayInProcess)

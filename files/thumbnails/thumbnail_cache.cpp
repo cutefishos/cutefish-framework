@@ -20,6 +20,7 @@
 #include <utility>
 #include <vector>
 
+#include "base/application_bundle.h"
 #include "base/paths.h"
 #include "base/strings.h"
 #include "cutefish/files/mime_types.h"
@@ -372,6 +373,11 @@ static std::map<std::string, std::string> metadata(const Entry& entry)
             {sizeKey, strings::number((long long)entry.size)}};
 }
 
+static bool isBundle(const std::string& absolutePath)
+{
+    return !absolutePath.empty() && base::bundle::bundlePath(absolutePath) == absolutePath;
+}
+
 static bool locate(const std::string& filePath, base::Size requestedSize, Entry* entry)
 {
     if (requestedSize.width() <= 0 || requestedSize.height() <= 0)
@@ -382,7 +388,7 @@ static bool locate(const std::string& filePath, base::Size requestedSize, Entry*
     const std::string absolute = internal::absoluteFilePath(entry->path);
 
     struct stat st;
-    if (::stat(entry->path.c_str(), &st) != 0 || !S_ISREG(st.st_mode))
+    if (::stat(entry->path.c_str(), &st) != 0 || !(S_ISREG(st.st_mode) || (S_ISDIR(st.st_mode) && isBundle(absolute))))
         return false;
 
     const Flavor& flavor = flavorFor(requestedSize);
@@ -530,6 +536,10 @@ ui::Bitmap ThumbnailCache::generateThumbnail(const std::string& source, base::Si
 {
     if (requestedSize.width() <= 0 || requestedSize.height() <= 0)
         return {};
+
+    // An application bundle is a folder, which only its thumbnailer reads.
+    if (isBundle(internal::absoluteFilePath(source)))
+        return internal::Thumbnailers::self()->generate(source, base::bundle::kType, requestedSize);
 
     ui::Bitmap image = ui::Bitmap::decodeFile(source, requestedSize, ui::Bitmap::Scaling::Fit, true);
     if (image.isNull()) {
