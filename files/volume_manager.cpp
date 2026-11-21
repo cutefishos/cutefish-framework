@@ -361,9 +361,13 @@ void VolumeManager::perform(const std::string& id, const std::string& operation,
 
         if (reply.isError()) {
             m_pending.erase(id);
-            // libblockdev reports cryptsetup's EPERM for a passphrase that opens no key slot.
+            // libblockdev's wording for a passphrase that opens no key slot,
+            // old (cryptsetup's EPERM) and new.
+            const std::string& message = reply.error().message;
             const bool rejected = step.method == "Unlock"
-                    && reply.error().message.find("Operation not permitted") != std::string::npos;
+                    && (message.find("Incorrect passphrase") != std::string::npos
+                        || message.find("Operation not permitted") != std::string::npos
+                        || message.find("No key available") != std::string::npos);
             if (rejected)
                 passphraseRejected.emit(id);
             else

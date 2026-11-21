@@ -163,8 +163,11 @@ private:
             interactive = interactive && call.message().allowsInteractiveAuthorization();
             std::string passphrase;
             if (!call.read(passphrase) || passphrase != "secret") {
+                // libblockdev's wording, older and newer.
                 call.replyError("org.freedesktop.UDisks2.Error.Failed",
-                                "Error unlocking /dev/sdc1: Failed to activate device: Operation not permitted");
+                                passphrase == "wrong"
+                                        ? "Error unlocking /dev/sdc1: Failed to activate device: Operation not permitted"
+                                        : "Error unlocking /dev/sdc1: Failed to activate device: Incorrect passphrase.");
                 return;
             }
             Interfaces cleartext;
@@ -372,6 +375,9 @@ TEST(VolumeManagerTest, EncryptedVolumeUnlocksMountsAndLocks)
 
     manager.unlock(encryptedDisk, "wrong");
     ASSERT_TRUE(waitFor(loop, [&] { return rejected.size() == 1; }));
+    EXPECT_EQ(errors.size(), 1u);
+    manager.unlock(encryptedDisk, "mistyped");
+    ASSERT_TRUE(waitFor(loop, [&] { return rejected.size() == 2; }));
     EXPECT_EQ(errors.size(), 1u);
     EXPECT_TRUE(manager.volume(encryptedDisk).locked());
 
