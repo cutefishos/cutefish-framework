@@ -44,9 +44,6 @@ public:
     // Blurs and glass over an opaque colour instead of what is behind them.
     bool reduceTransparency() const;
     void setReduceTransparency(bool reduce);
-    // The title bar controls as red, yellow and green dots instead of plates.
-    bool coloredWindowControls() const;
-    void setColoredWindowControls(bool colored);
     // An index into the accent colours: blue, red, green, purple, pink,
     // orange, grey.
     int accentColor() const;
