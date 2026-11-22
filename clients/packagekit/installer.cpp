@@ -19,6 +19,31 @@ static constexpr uint32_t kStatusDownload = 8;
 // PK_INFO_ENUM_INSTALLED.
 static constexpr uint32_t kInfoInstalled = 1;
 
+#if defined(__x86_64__)
+static constexpr const char* kNativeArch = "amd64";
+#elif defined(__aarch64__)
+static constexpr const char* kNativeArch = "arm64";
+#else
+static constexpr const char* kNativeArch = "";
+#endif
+
+// The id is "name;version;arch;repository"; architecture-independent
+// packages say "all". An unknown host architecture accepts everything.
+static bool isNativeId(const std::string& id)
+{
+    if (!*kNativeArch)
+        return true;
+    const size_t first = id.find(';');
+    if (first == std::string::npos)
+        return true;
+    const size_t second = id.find(';', first + 1);
+    if (second == std::string::npos)
+        return true;
+    const size_t end = id.find(';', second + 1);
+    const std::string arch = id.substr(second + 1, end == std::string::npos ? end : end - second - 1);
+    return arch == kNativeArch || arch == "all";
+}
+
 Installer::Installer(Connection* bus)
     : m_bus(bus)
 {
@@ -73,14 +98,21 @@ void Installer::resolve(bool refreshed)
             fail(result.error);
             return;
         }
+        // A source lists every architecture it carries, whichever this
+        // system runs.
+        std::vector<Package> native;
         for (const Package& package : *found) {
+            if (isNativeId(package.id))
+                native.push_back(package);
+        }
+        for (const Package& package : native) {
             if ((package.info & 0xffff) == kInfoInstalled) {
                 setState(State::Installed);
                 return;
             }
         }
-        if (!found->empty())
-            installPackage(found->front().id);
+        if (!native.empty())
+            installPackage(native.front().id);
         else if (refreshed)
             setState(State::Unavailable);
         else
