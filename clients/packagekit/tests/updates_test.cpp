@@ -512,7 +512,7 @@ using InstallerTest = UpdatesTest;
 
 TEST_F(InstallerTest, InstallsAPackageTheListsKnow)
 {
-    m_fake->known = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    m_fake->known = {{2, "zsh;5.9-8;all;debian-stable-main", "shell with lots of features"}};
     m_fake->holdUpdate = true;
     Installer installer(bus());
     installer.install("zsh");
@@ -521,7 +521,7 @@ TEST_F(InstallerTest, InstallsAPackageTheListsKnow)
     ASSERT_TRUE(waitFor([&] { return installer.canCancel(); }));
     // Only trusted packages, and no fetch of lists that know the name.
     EXPECT_EQ(m_fake->calls,
-              (std::vector<std::string>{"Resolve 2 zsh", "InstallPackages 2 zsh;5.9-8;amd64;debian-stable-main"}));
+              (std::vector<std::string>{"Resolve 2 zsh", "InstallPackages 2 zsh;5.9-8;all;debian-stable-main"}));
     ASSERT_FALSE(m_fake->hints.empty());
     EXPECT_EQ(m_fake->hints.back(), (std::vector<std::string>{"interactive=true"}));
 
@@ -547,9 +547,29 @@ TEST_F(InstallerTest, InstallsAPackageTheListsKnow)
     ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installed; }));
 }
 
+TEST_F(InstallerTest, InstallsOnlyThePackageOfThisArchitecture)
+{
+#if defined(__x86_64__)
+    const std::string native = "amd64";
+    const std::string foreign = "arm64";
+#elif defined(__aarch64__)
+    const std::string native = "arm64";
+    const std::string foreign = "amd64";
+#else
+    GTEST_SKIP();
+#endif
+    m_fake->known = {{2, "zsh;5.9-8;" + foreign + ";debian-stable-main", "shell with lots of features"},
+                     {2, "zsh;5.9-8;" + native + ";debian-stable-main", "shell with lots of features"}};
+    m_fake->holdUpdate = true;
+    Installer installer(bus());
+    installer.install("zsh");
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Downloading; }));
+    EXPECT_EQ(m_fake->calls.back(), "InstallPackages 2 zsh;5.9-8;" + native + ";debian-stable-main");
+}
+
 TEST_F(InstallerTest, AnInstalledPackageIsInstalledAtOnce)
 {
-    m_fake->known = {{1, "zsh;5.9-8;amd64;installed:debian-stable-main", "shell with lots of features"}};
+    m_fake->known = {{1, "zsh;5.9-8;all;installed:debian-stable-main", "shell with lots of features"}};
     Installer installer(bus());
     installer.install("zsh");
     ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installed; }));
@@ -558,12 +578,12 @@ TEST_F(InstallerTest, AnInstalledPackageIsInstalledAtOnce)
 
 TEST_F(InstallerTest, FetchesTheListsOnceForAnUnknownName)
 {
-    m_fake->afterRefresh = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    m_fake->afterRefresh = {{2, "zsh;5.9-8;all;debian-stable-main", "shell with lots of features"}};
     Installer installer(bus());
     installer.install("zsh");
     ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installed; }));
     EXPECT_EQ(m_fake->calls, (std::vector<std::string>{"Resolve 2 zsh", "RefreshCache false", "Resolve 2 zsh",
-                                                       "InstallPackages 2 zsh;5.9-8;amd64;debian-stable-main"}));
+                                                       "InstallPackages 2 zsh;5.9-8;all;debian-stable-main"}));
 }
 
 TEST_F(InstallerTest, ANameNoSourceHasIsUnavailable)
@@ -575,7 +595,7 @@ TEST_F(InstallerTest, ANameNoSourceHasIsUnavailable)
 
     // A later install starts over.
     m_fake->calls.clear();
-    m_fake->known = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    m_fake->known = {{2, "zsh;5.9-8;all;debian-stable-main", "shell with lots of features"}};
     installer.install("zsh");
     ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Installed; }));
 }
@@ -591,7 +611,7 @@ TEST_F(InstallerTest, AFailedFetchIsAnError)
 
 TEST_F(InstallerTest, ADismissedPasswordPromptOrAStopIsIdleAgain)
 {
-    m_fake->known = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    m_fake->known = {{2, "zsh;5.9-8;all;debian-stable-main", "shell with lots of features"}};
     m_fake->refuseAuthorization = true;
     Installer installer(bus());
     installer.install("zsh");
@@ -610,7 +630,7 @@ TEST_F(InstallerTest, ADismissedPasswordPromptOrAStopIsIdleAgain)
 
 TEST_F(InstallerTest, NothingStopsItWhileThePasswordIsAskedFor)
 {
-    m_fake->known = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    m_fake->known = {{2, "zsh;5.9-8;all;debian-stable-main", "shell with lots of features"}};
     m_fake->holdAuthorization = true;
     m_fake->holdUpdate = true;
     Installer installer(bus());
@@ -620,7 +640,7 @@ TEST_F(InstallerTest, NothingStopsItWhileThePasswordIsAskedFor)
     EXPECT_FALSE(installer.canCancel());
     installer.cancel();
     runFor(50ms);
-    EXPECT_EQ(m_fake->calls.back(), "InstallPackages 2 zsh;5.9-8;amd64;debian-stable-main");
+    EXPECT_EQ(m_fake->calls.back(), "InstallPackages 2 zsh;5.9-8;all;debian-stable-main");
 
     m_fake->progress(kStatusDownload, 0, true);
     ASSERT_TRUE(waitFor([&] { return installer.canCancel(); }));
