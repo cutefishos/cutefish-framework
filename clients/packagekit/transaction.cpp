@@ -17,6 +17,9 @@ static constexpr const char* kTransactionInterface = "org.freedesktop.PackageKit
 // PK_EXIT_ENUM_SUCCESS and PK_EXIT_ENUM_CANCELLED.
 static constexpr uint32_t kExitSuccess = 1;
 static constexpr uint32_t kExitCancelled = 3;
+// PK_STATUS_ENUM_UNKNOWN and PK_STATUS_ENUM_WAITING_FOR_AUTH.
+static constexpr uint32_t kStatusUnknown = 0;
+static constexpr uint32_t kStatusWaitingForAuth = 28;
 // The Percentage property's value while the progress is unknown.
 static constexpr uint32_t kPercentageUnknown = 101;
 
@@ -191,14 +194,28 @@ bool Transaction::changesTheSystem() const
     }
 }
 
+// PackageKit 1.3.1 aborts on a cancel while polkit asks for the password.
+bool Transaction::canCancel() const
+{
+    if (m_status == kStatusWaitingForAuth)
+        return false;
+    if (m_status == kStatusUnknown && !m_runCall.isNull())
+        return false;
+    return m_canCancel;
+}
+
 void Transaction::cancel()
 {
     if (m_finished || m_cancelled)
         return;
-    m_cancelled = true;
     // Until the method runs there is nothing on the daemon to stop.
-    if (!m_attached && m_runCall.isNull())
+    if (!m_attached && m_runCall.isNull()) {
+        m_cancelled = true;
         return;
+    }
+    if (!canCancel())
+        return;
+    m_cancelled = true;
     m_cancelCall = m_transaction.callAsync("Cancel", [this](const Reply& reply) {
         if (reply.isError())
             m_cancelled = false;

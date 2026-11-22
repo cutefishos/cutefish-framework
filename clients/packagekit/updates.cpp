@@ -127,8 +127,8 @@ void Updates::follow(std::unique_ptr<Transaction> transaction)
 {
     m_phase = Phase::Downloading;
     m_progress = -1;
-    m_canCancel = false;
     m_transaction = std::move(transaction);
+    m_canCancel = m_transaction->canCancel();
     m_transaction->onChanged = [this] {
         m_progress = m_transaction->percentage();
         m_canCancel = m_transaction->canCancel();

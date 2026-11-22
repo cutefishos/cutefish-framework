@@ -44,7 +44,7 @@ public:
     // to 100, -1 before the download starts.
     int progress() const { return m_progress; }
     // Whether cancel() can still stop it.
-    bool canCancel() const { return m_installing ? m_canCancel : m_state == State::Looking; }
+    bool canCancel() const;
     // In the Error state: PackageKit's own text, which may be empty.
     const std::string& error() const { return m_error; }
 
@@ -71,7 +71,6 @@ private:
     State m_state = State::Idle;
     int m_progress = -1;
     bool m_installing = false;
-    bool m_canCancel = false;
     std::string m_error;
 };
 

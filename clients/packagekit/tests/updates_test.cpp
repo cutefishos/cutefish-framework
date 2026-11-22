@@ -10,6 +10,7 @@
 #include <optional>
 #include <string>
 #include <tuple>
+#include <utility>
 #include <vector>
 
 #include "base/event_loop.h"
@@ -28,10 +29,12 @@ constexpr const char* kService = "org.freedesktop.PackageKit";
 constexpr const char* kPath = "/org/freedesktop/PackageKit";
 constexpr const char* kTransactionInterface = "org.freedesktop.PackageKit.Transaction";
 
-// PK_STATUS_ENUM_RUNNING, PK_STATUS_ENUM_DOWNLOAD and PK_STATUS_ENUM_INSTALL.
+// PK_STATUS_ENUM_RUNNING, PK_STATUS_ENUM_DOWNLOAD, PK_STATUS_ENUM_INSTALL and
+// PK_STATUS_ENUM_WAITING_FOR_AUTH.
 constexpr uint32_t kStatusRunning = 3;
 constexpr uint32_t kStatusDownload = 8;
 constexpr uint32_t kStatusInstall = 9;
+constexpr uint32_t kStatusWaitingForAuth = 28;
 
 using PackageEntry = std::tuple<uint32_t, std::string, std::string>;
 
@@ -98,6 +101,8 @@ public:
     bool refuseAuthorization = false;
     // Leaves an update running until finishUpdate() or Cancel.
     bool holdUpdate = false;
+    // Leaves an installation waiting for the password, as polkit does.
+    bool holdAuthorization = false;
 
     // Every transaction method called, with its arguments.
     std::vector<std::string> calls;
@@ -110,7 +115,7 @@ private:
         uint32_t role = 0;
         uint32_t status = 0;
         uint32_t percentage = 101;
-        bool allowCancel = false;
+        bool allowCancel = true;
         bool finished = false;
         bool vanishes = false;
     };
@@ -174,6 +179,10 @@ private:
                 return;
             }
             m_held = path;
+            if (holdAuthorization) {
+                set(path, kStatusWaitingForAuth, 101, true);
+                return;
+            }
             set(path, kStatusDownload, 0, true);
             if (!holdUpdate) {
                 set(path, kStatusInstall, 50, false);
@@ -212,8 +221,10 @@ private:
         Fake& fake = m_transactions[path];
         fake.status = status;
         fake.percentage = percentage;
-        fake.allowCancel = allowCancel;
-        fake.object->emitPropertiesChanged({"Status", "Percentage", "AllowCancel"});
+        std::vector<std::string> changed {"Status", "Percentage"};
+        if (std::exchange(fake.allowCancel, allowCancel) != allowCancel)
+            changed.push_back("AllowCancel");
+        fake.object->emitPropertiesChanged(changed);
     }
 
     void finish(const std::string& path, uint32_t exit)
@@ -390,7 +401,8 @@ TEST_F(UpdatesTest, AStoppedUpdateIsAvailableAgain)
     updates.load();
     ASSERT_TRUE(settlesIn(updates, Updates::State::Available));
     updates.update(true);
-    ASSERT_TRUE(waitFor([&] { return updates.canCancel(); }));
+    ASSERT_TRUE(waitFor([&] { return m_fake->calls.size() == 2; }));
+    EXPECT_TRUE(updates.canCancel());
 
     std::vector<Updates::State> states;
     Subscription changed = updates.changed.connect([&] { states.push_back(updates.state()); });
@@ -591,6 +603,27 @@ TEST_F(InstallerTest, ADismissedPasswordPromptOrAStopIsIdleAgain)
     m_fake->holdUpdate = true;
     installer.install("zsh");
     ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Downloading && installer.canCancel(); }));
+    installer.cancel();
+    ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Idle; }));
+    EXPECT_EQ(m_fake->calls.back(), "Cancel");
+}
+
+TEST_F(InstallerTest, NothingStopsItWhileThePasswordIsAskedFor)
+{
+    m_fake->known = {{2, "zsh;5.9-8;amd64;debian-stable-main", "shell with lots of features"}};
+    m_fake->holdAuthorization = true;
+    m_fake->holdUpdate = true;
+    Installer installer(bus());
+    installer.install("zsh");
+    ASSERT_TRUE(waitFor([&] { return m_fake->calls.size() == 2; }));
+    runFor(50ms);
+    EXPECT_FALSE(installer.canCancel());
+    installer.cancel();
+    runFor(50ms);
+    EXPECT_EQ(m_fake->calls.back(), "InstallPackages 2 zsh;5.9-8;amd64;debian-stable-main");
+
+    m_fake->progress(kStatusDownload, 0, true);
+    ASSERT_TRUE(waitFor([&] { return installer.canCancel(); }));
     installer.cancel();
     ASSERT_TRUE(waitFor([&] { return installer.state() == Installer::State::Idle; }));
     EXPECT_EQ(m_fake->calls.back(), "Cancel");

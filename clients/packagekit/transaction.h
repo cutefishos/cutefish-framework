@@ -71,7 +71,7 @@ public:
     // Whether it has started changing the system, past its downloads.
     bool changesTheSystem() const;
     // Whether PackageKit can still stop the transaction.
-    bool canCancel() const { return m_canCancel; }
+    bool canCancel() const;
 
     std::function<void(const std::vector<Package>&)> onPackages;
     // The percentage, the status or whether it can be cancelled changed.
@@ -99,7 +99,8 @@ private:
     uint32_t m_errorCode = 0;
     int m_percentage = -1;
     uint32_t m_status = 0;
-    bool m_canCancel = false;
+    // PackageKit announces AllowCancel only when it changes.
+    bool m_canCancel = true;
     bool m_finished = false;
     bool m_cancelled = false;
     bool m_attached = false;

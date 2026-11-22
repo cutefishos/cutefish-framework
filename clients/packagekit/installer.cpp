@@ -37,10 +37,16 @@ void Installer::install(const std::string& name)
     m_name = name;
     m_error.clear();
     m_progress = -1;
-    m_canCancel = false;
     m_installing = false;
     setState(State::Looking);
     resolve(false);
+}
+
+bool Installer::canCancel() const
+{
+    if (!m_installing)
+        return m_state == State::Looking;
+    return m_transaction && m_transaction->canCancel();
 }
 
 void Installer::cancel()
@@ -50,7 +56,7 @@ void Installer::cancel()
         setState(State::Idle);
         return;
     }
-    if (m_canCancel && m_transaction)
+    if (m_transaction)
         m_transaction->cancel();
 }
 
@@ -105,7 +111,6 @@ void Installer::installPackage(const std::string& id)
     // steps, so the state only moves forward and each half of the progress
     // only counts the percentages of its own step.
     m_transaction->onChanged = [this] {
-        m_canCancel = m_transaction->canCancel();
         const bool downloading = m_transaction->status() == kStatusDownload;
         if (m_transaction->changesTheSystem())
             m_state = State::Installing;
@@ -121,7 +126,6 @@ void Installer::installPackage(const std::string& id)
     };
     m_transaction->onFinished = [this](const Transaction::Result& result) {
         const std::unique_ptr<Transaction> finished = std::move(m_transaction);
-        m_canCancel = false;
         m_installing = false;
         if (result.success)
             setState(State::Installed);
