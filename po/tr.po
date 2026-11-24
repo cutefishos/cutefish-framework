@@ -1,0 +1,980 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cutefish-framework\n"
+"Report-Msgid-Bugs-To: https://github.com\n"
+"POT-Creation-Date: 2026-10-19 23:15+0800\n"
+"PO-Revision-Date: 2026-11-24 15:00+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "The accounts service cannot be reached"
+msgstr "Hesaplar hizmetine ulaşılamıyor"
+
+#: clients/accounts/accounts_manager.cpp
+msgid "Created user was removed"
+msgstr "Oluşturulan kullanıcı kaldırıldı"
+
+#. TRANSLATORS: a sound setting that failed, then why, such as "Set device volume: Permission denied".
+#: clients/audio/backend.cpp
+#, python-brace-format
+msgid "{operation}: {error}"
+msgstr "{operation}: {error}"
+
+#: clients/audio/backend.cpp
+msgid "Set device volume"
+msgstr "Aygıt ses düzeyini ayarla"
+
+#: clients/audio/backend.cpp
+msgid "Set audio properties"
+msgstr "Ses özelliklerini ayarla"
+
+#: clients/audio/backend.cpp
+msgid "Set default device"
+msgstr "Varsayılan aygıtı ayarla"
+
+#: clients/audio/backend.cpp
+msgid "Set device profile"
+msgstr "Aygıt profilini ayarla"
+
+#: clients/audio/backend.cpp
+msgid "Set device route"
+msgstr "Aygıt yönlendirmesini ayarla"
+
+#: clients/audio/backend.cpp
+msgid "Move audio stream"
+msgstr "Ses akışını taşı"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Cannot unblock Bluetooth: {error}"
+msgstr "Bluetooth engeli kaldırılamıyor: {error}"
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't finish pairing in time. Try again."
+msgstr "Aygıt eşleştirmeyi zamanında tamamlayamadı. Yeniden deneyin."
+
+#: clients/bluez/manager.cpp
+msgid "The system D-Bus connection is unavailable."
+msgstr "Sistem D-Bus bağlantısı kullanılamıyor."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is blocked by a hardware switch."
+msgstr "Bluetooth bir donanım anahtarıyla engellenmiş."
+
+#: clients/bluez/manager.cpp
+msgid "The Bluetooth service is unavailable."
+msgstr "Bluetooth hizmeti kullanılamıyor."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth couldn't complete the request."
+msgstr "Bluetooth isteği tamamlayamadı."
+
+#: clients/bluez/manager.cpp
+msgid "This device is no longer available."
+msgstr "Bu aygıt artık kullanılamıyor."
+
+#: clients/bluez/manager.cpp
+msgid "The device is busy. Try again in a moment."
+msgstr "Aygıt meşgul. Biraz sonra yeniden deneyin."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth isn't ready yet. Try again in a moment."
+msgstr "Bluetooth henüz hazır değil. Biraz sonra yeniden deneyin."
+
+#: clients/bluez/manager.cpp
+msgid "This device has no media player."
+msgstr "Bu aygıtta ortam oynatıcı yok."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent: no system bus."
+msgstr "Bluetooth eşleştirme aracısı dışa aktarılamıyor: sistem veri yolu yok."
+
+#: clients/bluez/manager.cpp
+msgid "Cannot export the Bluetooth pairing agent."
+msgstr "Bluetooth eşleştirme aracısı dışa aktarılamıyor."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a PIN containing 1–16 bytes."
+msgstr "1–16 bayt içeren bir PIN girin."
+
+#: clients/bluez/manager.cpp
+msgid "Enter a passkey containing 1–6 digits."
+msgstr "1–6 basamak içeren bir geçiş anahtarı girin."
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't connect to {device}"
+msgstr "{device} aygıtına bağlanılamadı"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't connect to the device"
+msgstr "Aygıta bağlanılamadı"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't disconnect {device}"
+msgstr "{device} aygıtının bağlantısı kesilemedi"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't disconnect the device"
+msgstr "Aygıtın bağlantısı kesilemedi"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't pair with {device}"
+msgstr "{device} ile eşleştirilemedi"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't pair with the device"
+msgstr "Aygıt ile eşleştirilemedi"
+
+#: clients/bluez/manager.cpp
+#, python-brace-format
+msgid "Couldn't forget {device}"
+msgstr "{device} unutulamadı"
+
+#: clients/bluez/manager.cpp
+msgid "Couldn't forget the device"
+msgstr "Aygıt unutulamadı"
+
+#: clients/bluez/manager.cpp
+msgid "Try again. If it keeps failing, turn the device off and on again."
+msgstr "Yeniden deneyin. Başarısız olmaya devam ederse aygıtı kapatıp tekrar açın."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond in time. Make sure it is turned on and nearby."
+msgstr "Aygıt zamanında yanıt vermedi. Açık ve yakında olduğundan emin olun."
+
+#: clients/bluez/manager.cpp
+msgid "The device didn't respond. Make sure it is turned on, nearby, and not connected to another device."
+msgstr "Aygıt yanıt vermedi. Açık, yakında ve başka bir aygıta bağlı olmadığından emin olun."
+
+#: clients/bluez/manager.cpp
+msgid "The device no longer recognizes this computer. Forget the device and pair it again."
+msgstr "Aygıt artık bu bilgisayarı tanımıyor. Aygıtı unutun ve yeniden eşleştirin."
+
+#: clients/bluez/manager.cpp
+msgid "Pairing failed. Make sure the code matches on both devices and try again."
+msgstr "Eşleştirme başarısız oldu. Kodun her iki aygıtta da eşleştiğinden emin olun ve yeniden deneyin."
+
+#: clients/bluez/manager.cpp
+msgid "The device declined the request."
+msgstr "Aygıt isteği reddetti."
+
+#: clients/bluez/manager.cpp
+msgid "The device refused the connection."
+msgstr "Aygıt bağlantıyı reddetti."
+
+#: clients/bluez/manager.cpp
+msgid "The device has no features this computer can use."
+msgstr "Aygıtta bu bilgisayarın kullanabileceği herhangi bir özellik yok."
+
+#: clients/bluez/manager.cpp
+msgid "Bluetooth is turned off."
+msgstr "Bluetooth kapalı."
+
+#: clients/bluez/manager.cpp
+msgid "Too many devices are connected. Disconnect one and try again."
+msgstr "Çok fazla aygıt bağlı. Birinin bağlantısını kesin ve yeniden deneyin."
+
+#: clients/bluez/manager.cpp
+msgid "The device ended the connection."
+msgstr "Aygıt bağlantıyı sonlandırdı."
+
+#: clients/bluez/manager.cpp
+msgid "The connection was interrupted. Try again."
+msgstr "Bağlantı kesintiye uğradı. Yeniden deneyin."
+
+#: clients/display/display_client.cpp
+msgid "The display operation timed out."
+msgstr "Ekran işlemi zaman aşımına uğradı."
+
+#: clients/display/display_client.cpp
+msgid "The display service restarted."
+msgstr "Ekran hizmeti yeniden başlatıldı."
+
+#: clients/display/display_client.cpp
+msgid "Unexpected display state."
+msgstr "Beklenmeyen ekran durumu."
+
+#: clients/display/output_model.cpp
+msgid "Built-in Display"
+msgstr "Dahili Ekran"
+
+#. TRANSLATORS: a monitor and the port it is plugged into, such as "DELL U2720Q (DP-1)".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{name} ({connector})"
+msgstr "{name} ({connector})"
+
+#. TRANSLATORS: a screen resolution in pixels, such as "1920 × 1080".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{width} × {height}"
+msgstr "{width} × {height}"
+
+#. TRANSLATORS: a refresh rate, such as "60.00 Hz".
+#: clients/display/output_model.cpp
+#, python-brace-format
+msgid "{rate} Hz"
+msgstr "{rate} Hz"
+
+#. TRANSLATORS: the choice that shows other content on this display instead of mirroring another one.
+#: clients/display/output_model.cpp
+msgid "Extend"
+msgstr "Genişlet"
+
+#: clients/display/screen.cpp
+msgid "The display service is unavailable."
+msgstr "Ekran hizmeti kullanılamıyor."
+
+#: clients/display/screen.cpp
+msgid "Displays changed. The previous draft was discarded."
+msgstr "Ekranlar değişti. Önceki taslak iptal edildi."
+
+#: clients/networkmanager/handler.cpp
+msgid "The hotspot could not be started. The Wi-Fi adapter may not support it on this channel or with this password."
+msgstr "Erişim noktası başlatılamadı. Wi-Fi bağdaştırıcısı bu kanalda veya bu parolayla desteklemiyor olabilir."
+
+#: clients/networkmanager/handler.cpp
+msgid "No Wi-Fi adapter can run a hotspot."
+msgstr "Erişim noktası çalıştırabilecek bir Wi-Fi bağdaştırıcısı yok."
+
+#: clients/networkmanager/handler.cpp
+msgid "No VPN plugin can read this file. Install the one for your VPN, for example network-manager-openvpn for OpenVPN."
+msgstr "Hiçbir VPN eklentisi bu dosyayı okuyamıyor. VPN'iniz için uygun olanı yükleyin (örneğin OpenVPN için network-manager-openvpn)."
+
+#: clients/networkmanager/handler.cpp
+msgid "This file isn't a VPN configuration this system can read."
+msgstr "Bu dosya, sistemin okuyabileceği bir VPN yapılandırması değil."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which reads VPN files, is not installed."
+msgstr "VPN dosyalarını okuyan nmcli yüklü değil."
+
+#: clients/networkmanager/handler.cpp
+msgid "The private key can't be read, so the file would be incomplete."
+msgstr "Özel anahtar okunamıyor, bu nedenle dosya eksik kalacaktır."
+
+#: clients/networkmanager/handler.cpp
+msgid "The file can't be written."
+msgstr "Dosya yazılamıyor."
+
+#: clients/networkmanager/handler.cpp
+msgid "nmcli, which writes VPN files, is not installed."
+msgstr "VPN dosyalarını yazan nmcli yüklü değil."
+
+#: clients/networkmanager/handler.cpp
+msgid "The VPN couldn't be written to a file."
+msgstr "VPN bir dosyaya yazılamadı."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Automatic (DHCP)"
+msgstr "Otomatik (DHCP)"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Automatic"
+msgstr "Otomatik"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Manual"
+msgstr "El ile"
+
+#: clients/networkmanager/ip_utils.cpp clients/networkmanager/vpn_schema.cpp
+msgid "Off"
+msgstr "Kapalı"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "DHCP Only"
+msgstr "Yalnızca DHCP"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Link-Local Only"
+msgstr "Yalnızca Yerel Bağlantı"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Shared to Other Computers"
+msgstr "Diğer Bilgisayarlarla Paylaşılan"
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Left to the System"
+msgstr "Sisteme Bırakılmış"
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv4 address."
+msgstr "{address} geçerli bir IPv4 adresi değil."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an IPv6 address."
+msgstr "{address} geçerli bir IPv6 adresi değil."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{mask} isn't a subnet mask."
+msgstr "{mask} geçerli bir alt ağ maskesi değil."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "The prefix length must be a number from 1 to 128."
+msgstr "Ön ek uzunluğu 1 ile 128 arasında bir sayı olmalıdır."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a router address."
+msgstr "{address} geçerli bir yönlendirici adresi değil."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv4 name servers need IPv4 set to automatic or manual."
+msgstr "IPv4 ad sunucuları için IPv4 ayarının otomatik veya el ile olarak belirlenmesi gerekir."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "IPv6 name servers need IPv6 set to automatic or manual."
+msgstr "IPv6 ad sunucuları için IPv6 ayarının otomatik veya el ile olarak belirlenmesi gerekir."
+
+#: clients/networkmanager/ip_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a name server address."
+msgstr "{address} geçerli bir ad sunucusu adresi değil."
+
+#: clients/networkmanager/ip_utils.cpp
+msgid "Fill in the address and subnet mask."
+msgstr "Adresi ve alt ağ maskesini doldurun."
+
+#. TRANSLATORS: a network and the adapter it is on, such as "Home (wlan0)".
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "{name} ({device})"
+msgstr "{name} ({device})"
+
+#: clients/networkmanager/network_model.cpp
+#, python-brace-format
+msgid "Install {package} to use this VPN."
+msgstr "Bu VPN'i kullanmak için {package} paketini yükleyin."
+
+#: clients/networkmanager/network_model.cpp
+msgid "Signing in to OpenConnect VPNs isn't supported yet."
+msgstr "OpenConnect VPN'lerine oturum açma henüz desteklenmiyor."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authentication methods"
+msgstr "Kimlik doğrulama yöntemleri"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Encryption and compression"
+msgstr "Şifreleme ve sıkıştırma"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Point-to-point encryption"
+msgstr "Noktadan noktaya şifreleme"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Not required"
+msgstr "Gerekli değil"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Any"
+msgstr "Herhangi biri"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "128-bit"
+msgstr "128 bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "40-bit"
+msgstr "40 bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Stateful encryption"
+msgstr "Durum bilgili şifreleme"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "BSD compression"
+msgstr "BSD sıkıştırması"
+
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TLS hostname extension"
+msgstr "TLS ana bilgisayar adı uzantısı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Identity"
+msgstr "Kimlik"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Verify the server name by"
+msgstr "Sunucu adını şununla doğrula"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Nothing"
+msgstr "Hiçbiri"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Subject"
+msgstr "Konu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name"
+msgstr "Ad"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name suffix"
+msgstr "Ad son eki"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Expected server name"
+msgstr "Beklenen sunucu adı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Check key usage"
+msgstr "Anahtar kullanımını denetle"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User name and password (EAP)"
+msgstr "Kullanıcı adı ve parola (EAP)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate"
+msgstr "Sertifika"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (EAP-TLS)"
+msgstr "Sertifika (EAP-TLS)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and private key"
+msgstr "Sertifika ve özel anahtar"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate and SSH agent"
+msgstr "Sertifika ve SSH aracısı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Smart card"
+msgstr "Akıllı kart"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate from"
+msgstr "Sertifika kaynağı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A file"
+msgstr "Bir dosya"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "The SSH agent"
+msgstr "SSH aracısı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "A smart card"
+msgstr "Bir akıllı kart"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Client identity"
+msgstr "İstemci kimliği"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Options"
+msgstr "Seçenekler"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server port"
+msgstr "Sunucu bağlantı noktası"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Request an inner IP address"
+msgstr "İç IP adresi iste"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enforce UDP encapsulation"
+msgstr "UDP kapsüllemeyi zorunlu kıl"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Custom algorithm proposals"
+msgstr "Özel algoritma önerileri"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE proposal"
+msgstr "IKE önerisi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "ESP proposal"
+msgstr "ESP önerisi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local traffic selectors"
+msgstr "Yerel trafik seçicileri"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote traffic selectors"
+msgstr "Uzak trafik seçicileri"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Group password and user name (IKEv1)"
+msgstr "Grup parolası ve kullanıcı adı (IKEv1)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate (IKEv2)"
+msgstr "Sertifika (IKEv2)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Certificate name"
+msgstr "Sertifika adı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 1 lifetime"
+msgstr "Aşama 1 yaşam süresi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Phase 2 lifetime"
+msgstr "Aşama 2 yaşam süresi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable rekeying"
+msgstr "Yeniden anahtarlamayı devre dışı bırak"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Authenticate by"
+msgstr "Kimlik doğrulama yöntemi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA signature"
+msgstr "RSA imzası"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Networks"
+msgstr "Ağlar"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local subnet"
+msgstr "Yerel alt ağ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote subnet"
+msgstr "Uzak alt ağ"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Allow narrowing"
+msgstr "Daraltmaya izin ver"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Mobility (MOBIKE)"
+msgstr "Taşınabilirlik (MOBIKE)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Don't ask the server for an address"
+msgstr "Sunucudan adres isteme"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IKE fragmentation"
+msgstr "IKE parçalama"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Forced"
+msgstr "Zorunlu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPsec interface"
+msgstr "IPsec arayüzü"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Dead peer detection"
+msgstr "Ölü eş algılama"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Delay (seconds)"
+msgstr "Gecikme (saniye)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Timeout (seconds)"
+msgstr "Zaman aşımı (saniye)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Action"
+msgstr "Eylem"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Hold"
+msgstr "Beklet"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Clear"
+msgstr "Temizle"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Restart"
+msgstr "Yeniden başlat"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server certificate"
+msgstr "Sunucu sertifikası"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Server CA"
+msgstr "Sunucu CA"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Send the certificate"
+msgstr "Sertifikayı gönder"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "If asked"
+msgstr "İstenirse"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Accept certificates without the identity"
+msgstr "Kimlik bilgisi olmayan sertifikaları kabul et"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trusted certificate fingerprint"
+msgstr "Güvenilir sertifika parmak izi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Realm"
+msgstr "Etki alanı (Realm)"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Ask for a one-time password"
+msgstr "Tek kullanımlık parola sor"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Two-factor authentication"
+msgstr "İki adımlı kimlik doğrulama"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Key file"
+msgstr "Anahtar dosyası"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Netmask"
+msgstr "Ağ maskesi"
+
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 addresses too"
+msgstr "IPv6 adresleri de dahil"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote IPv6 address"
+msgstr "Uzak IPv6 adresi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Local IPv6 address"
+msgstr "Yerel IPv6 adresi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "IPv6 prefix"
+msgstr "IPv6 ön eki"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote user name"
+msgstr "Uzak kullanıcı adı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Remote device number"
+msgstr "Uzak aygıt numarası"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "TAP device"
+msgstr "TAP aygıtı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "No default route"
+msgstr "Varsayılan yönlendirme yok"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Extra SSH options"
+msgstr "Ek SSH seçenekleri"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Tunnel domain"
+msgstr "Tünel etki alanı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Name server"
+msgstr "Ad sunucusu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Fragment size"
+msgstr "Parça boyutu"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Protocol"
+msgstr "İletişim kuralı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Cisco AnyConnect or openconnect"
+msgstr "Cisco AnyConnect veya openconnect"
+
+#. TRANSLATORS: keep "http://" and "socks://" as they are.
+#: clients/networkmanager/vpn_schema.cpp
+msgid "http://… or socks://…"
+msgstr "http://… veya socks://…"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "User agent"
+msgstr "Kullanıcı aracısı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Reported operating system"
+msgstr "Bildirilen işletim sistemi"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Linux 64-bit"
+msgstr "Linux 64-bit"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Disable UDP (DTLS)"
+msgstr "UDP'yi (DTLS) devre dışı bırak"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Refuse invalid server certificates"
+msgstr "Geçersiz sunucu sertifikalarını reddet"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Private key passphrase from the file system ID"
+msgstr "Dosya sistemi kimliğinden özel anahtar parolası"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Trojan"
+msgstr "Trojan"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Run the server's compliance script"
+msgstr "Sunucunun uyumluluk betiğini çalıştır"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Wrapper script"
+msgstr "Sarmalayıcı betik"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Software token"
+msgstr "Yazılım belirteci"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token"
+msgstr "Belirteç"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "RSA SecurID from ~/.stokenrc"
+msgstr "~/.stokenrc dosyasından RSA SecurID"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Token secret"
+msgstr "Belirteç gizli anahtarı"
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the server."
+msgstr "Sunucuyu girin."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the group name."
+msgstr "Grup adını girin."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the remote IP address."
+msgstr "Uzak IP adresini girin."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the local IP address."
+msgstr "Yerel IP adresini girin."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the netmask."
+msgstr "Ağ maskesini girin."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "Enter the tunnel domain."
+msgstr "Tünel etki alanını girin."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "Fill in “{field}”."
+msgstr "“{field}” alanını doldurun."
+
+#: clients/networkmanager/vpn_schema.cpp
+msgid "This kind of VPN can't be set up by hand."
+msgstr "Bu tür bir VPN el ile kurulamaz."
+
+#: clients/networkmanager/vpn_schema.cpp
+#, python-brace-format
+msgid "{field} must be a number from {minimum} to {maximum}."
+msgstr "{field} değeri {minimum} ile {maximum} arasında bir sayı olmalıdır."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The network connection was interrupted."
+msgstr "Ağ bağlantısı kesintiye uğradı."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service stopped unexpectedly."
+msgstr "VPN hizmeti beklenmedik şekilde durdu."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service returned invalid configuration."
+msgstr "VPN hizmeti geçersiz yapılandırma döndürdü."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The connection attempt timed out."
+msgstr "Bağlantı girişimi zaman aşımına uğradı."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service did not start in time."
+msgstr "VPN hizmeti zamanında başlamadı."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service failed to start."
+msgstr "VPN hizmeti başlatılamadı."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Sign-in failed. Check the user name and password."
+msgstr "Oturum açılamadı. Kullanıcı adını ve parolayı denetleyin."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The VPN service reported an error."
+msgstr "VPN hizmeti bir hata bildirdi."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "DNS tunnel (iodine)"
+msgstr "DNS tüneli (iodine)"
+
+#. TRANSLATORS: {key} is a WireGuard setting as written in the file, such as "PrivateKey".
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} has an invalid {key}."
+msgstr "{line}. satırda geçersiz bir {key} değeri var."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "Line {line} isn't part of a WireGuard configuration."
+msgstr "{line}. satır bir WireGuard yapılandırmasının parçası değil."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The configuration has no private key."
+msgstr "Yapılandırmada özel anahtar yok."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer has no public key."
+msgstr "Bir eşin genel anahtarı yok."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the private key."
+msgstr "Özel anahtarı girin."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The private key isn't a WireGuard key."
+msgstr "Özel anahtar geçerli bir WireGuard anahtarı değil."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't an address with a prefix, like 10.0.0.2/24."
+msgstr "{address}, 10.0.0.2/24 gibi ön ekli bir adres değil."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Enter the address."
+msgstr "Adresi girin."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The listen port must be a number up to 65535."
+msgstr "Dinleme bağlantı noktası en fazla 65535 olan bir sayı olmalıdır."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The firewall mark must be a number."
+msgstr "Güvenlik duvarı işareti bir sayı olmalıdır."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The MTU must be a number."
+msgstr "MTU değeri bir sayı olmalıdır."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "Add the server as a peer."
+msgstr "Sunucuyu eş olarak ekleyin."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's public key isn't a WireGuard key."
+msgstr "Bir eşin genel anahtarı geçerli bir WireGuard anahtarı değil."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "A peer's preshared key isn't a WireGuard key."
+msgstr "Bir eşin önceden paylaşılan anahtarı geçerli bir WireGuard anahtarı değil."
+
+#: clients/networkmanager/vpn_utils.cpp
+#, python-brace-format
+msgid "{address} isn't a network, like 10.0.0.0/24."
+msgstr "{address}, 10.0.0.0/24 gibi bir ağ adresi değil."
+
+#: clients/networkmanager/vpn_utils.cpp
+msgid "The keepalive must be a number of seconds up to 65535."
+msgstr "Canlı tutma süresi en fazla 65535 saniye olmalıdır."
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Insecure"
+msgstr "Güvensiz"
+
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Dynamic WEP"
+msgstr "Dinamik WEP"
+
+#. TRANSLATORS: a Wi-Fi network's security type.
+#: clients/networkmanager/wifi_utils.cpp
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+#. TRANSLATORS: why a folder can't be listed, then the folder, such as "Permission denied: /root".
+#: files/directory_lister.cpp
+#, python-brace-format
+msgid "{error}: {path}"
+msgstr "{error}: {path}"
+
+#: files/file_watcher.cpp
+#, python-brace-format
+msgid "Cannot watch {paths}; polling for changes"
+msgstr "{paths} izlenemiyor; değişiklikler yoklanıyor"
+
+#. TRANSLATORS: the file an operation failed on, then why, such as "/tmp/a.txt: Permission denied".
+#: files/task.cpp
+#, python-brace-format
+msgid "{path}: {error}"
+msgstr "{path}: {error}"
+
+#: files/trash.cpp
+msgid "The original location is not known"
+msgstr "Özgün konum bilinmiyor"
+
+#: files/trash.cpp
+msgid "The original location is outside the volume it was deleted on"
+msgstr "Özgün konum, silindiği birimin dışında"
+
+#. TRANSLATORS: a disk without a label, named by its size, such as "16 GB Volume".
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Encrypted Volume"
+msgstr "{size} Şifreli Birim"
+
+#: files/volume_manager.cpp
+#, python-brace-format
+msgid "{size} Volume"
+msgstr "{size} Birim"
+
+#: files/volume_manager.cpp
+msgid "The device is locked."
+msgstr "Aygıt kilitli."
+
+#: files/volume_manager.cpp
+msgid "The device does not support this operation."
+msgstr "Aygıt bu işlemi desteklemiyor."
+
+#: files/volume_manager.cpp
+msgid "A device operation is already in progress."
+msgstr "Bir aygıt işlemi zaten sürüyor."
+
+#: files/volume_manager.cpp
+msgid "The device is no longer available."
+msgstr "Aygıt artık kullanılamıyor."
+
