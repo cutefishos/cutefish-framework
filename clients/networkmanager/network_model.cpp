@@ -10,6 +10,7 @@
 #include "cutefish/networkmanager/wifi_utils.h"
 
 #include <algorithm>
+#include <cctype>
 #include <cstdio>
 #include <endian.h>
 #include <iterator>
@@ -223,6 +224,7 @@ void NetworkModel::rebuild()
                               ? format(tr("{name} ({device})"), {{"name", item.name}, {"device", item.deviceName}})
                               : item.name;
         item.securityTypeString = wifi::securityLabel(item.securityType);
+        item.wifiType = wifi::standardLabel(item.wifiStandard);
         fillDetails(item);
     }
 
@@ -292,6 +294,7 @@ void NetworkModel::addWireless(const std::string& device, std::vector<NetworkIte
     };
 
     const std::string deviceName = toString(m_client->property(device, deviceInterface, "Interface"));
+    const std::map<std::string, WifiStandard> standards = wifi::scanStandards(deviceName);
     const std::string hwAddress = toString(m_client->property(device, deviceInterface, "HwAddress"));
     const uint32_t capabilities = toUInt(m_client->property(device, wirelessInterface, "WirelessCapabilities"));
     const std::string activeAp = objectPath(m_client->property(device, wirelessInterface, "ActiveAccessPoint"));
@@ -405,6 +408,14 @@ void NetworkModel::addWireless(const std::string& device, std::vector<NetworkIte
         item.deviceState = m_client->deviceState(device);
         item.specificPath = network.accessPoint;
         item.securityType = network.security;
+        if (!network.accessPoint.empty() && !standards.empty()) {
+            std::string bssid = toString(ap(network.accessPoint, "HwAddress"));
+            std::transform(bssid.begin(), bssid.end(), bssid.begin(),
+                           [](unsigned char c) { return char(std::tolower(c)); });
+            const auto found = standards.find(bssid);
+            if (found != standards.end())
+                item.wifiStandard = found->second;
+        }
         item.signal = std::max(network.strength, 0);
         item.icon = wifi::strengthIcon(item.signal);
         if (network.profile.empty()) {

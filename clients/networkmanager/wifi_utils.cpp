@@ -5,9 +5,18 @@
 
 #include <algorithm>
 #include <cctype>
+#include <cstdio>
+#include <cstring>
 #include <iconv.h>
+#include <linux/genetlink.h>
+#include <linux/netlink.h>
+#include <linux/nl80211.h>
+#include <net/if.h>
 #include <span>
 #include <sys/random.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <unistd.h>
 #include <vector>
 
 #include "base/locale.h"
@@ -405,6 +414,296 @@ std::string generatedPassword()
         }
     }
     return password;
+}
+
+WifiStandard standardFromInformationElements(std::span<const uint8_t> ies, uint32_t frequencyMHz)
+{
+    bool hasEht = false;
+    bool hasHe = false;
+    bool hasVht = false;
+    bool hasHt = false;
+    bool hasErp = false;
+    bool hasOfdmRate = false;
+    bool hasAnyRate = false;
+
+    size_t i = 0;
+    while (i + 2 <= ies.size()) {
+        const uint8_t id = ies[i];
+        const uint8_t len = ies[i + 1];
+        if (i + 2 + len > ies.size())
+            break;
+        const std::span<const uint8_t> data = ies.subspan(i + 2, len);
+        i += 2 + len;
+
+        switch (id) {
+        case 255: // Extension element
+            if (!data.empty()) {
+                if (data[0] == 106 || data[0] == 108)
+                    hasEht = true;
+                else if (data[0] == 35 || data[0] == 36)
+                    hasHe = true;
+            }
+            break;
+        case 191: // VHT Capabilities
+        case 192: // VHT Operation
+            hasVht = true;
+            break;
+        case 45: // HT Capabilities
+        case 61: // HT Operation
+            hasHt = true;
+            break;
+        case 42: // ERP Information
+            hasErp = true;
+            break;
+        case 1:  // Supported Rates
+        case 50: // Extended Supported Rates
+            for (const uint8_t entry : data) {
+                const uint8_t rate = entry & 0x7f;
+                // Values above 54 Mbps (108 * 500 kbps) are BSS membership selectors.
+                if (rate == 0 || rate > 108)
+                    continue;
+                hasAnyRate = true;
+                if (rate == 12 || rate == 18 || rate == 24 || rate == 36 || rate == 48 || rate == 72 || rate == 96
+                    || rate == 108)
+                    hasOfdmRate = true;
+            }
+            break;
+        default:
+            break;
+        }
+    }
+
+    if (hasEht)
+        return WifiStandard::Wifi7;
+    if (hasHe)
+        return frequencyMHz >= 5925 && frequencyMHz <= 7125 ? WifiStandard::Wifi6E : WifiStandard::Wifi6;
+    if (hasVht)
+        return WifiStandard::Wifi5;
+    if (hasHt)
+        return WifiStandard::Wifi4;
+    if (frequencyMHz >= 4900 && frequencyMHz < 5925)
+        return hasAnyRate ? WifiStandard::Ieee80211a : WifiStandard::Unknown;
+    if (frequencyMHz >= 2400 && frequencyMHz < 2500) {
+        if (hasErp || hasOfdmRate)
+            return WifiStandard::Ieee80211g;
+        if (hasAnyRate)
+            return WifiStandard::Ieee80211b;
+    }
+    return WifiStandard::Unknown;
+}
+
+std::string standardLabel(WifiStandard standard)
+{
+    switch (standard) {
+    case WifiStandard::Wifi7:
+        return "Wi-Fi 7 (802.11be)";
+    case WifiStandard::Wifi6E:
+        return "Wi-Fi 6E (802.11ax)";
+    case WifiStandard::Wifi6:
+        return "Wi-Fi 6 (802.11ax)";
+    case WifiStandard::Wifi5:
+        return "Wi-Fi 5 (802.11ac)";
+    case WifiStandard::Wifi4:
+        return "Wi-Fi 4 (802.11n)";
+    case WifiStandard::Ieee80211g:
+        return "802.11g";
+    case WifiStandard::Ieee80211a:
+        return "802.11a";
+    case WifiStandard::Ieee80211b:
+        return "802.11b";
+    default:
+        return {};
+    }
+}
+
+namespace {
+
+class UniqueFd
+{
+public:
+    explicit UniqueFd(int fd)
+        : m_fd(fd)
+    {
+    }
+    ~UniqueFd()
+    {
+        if (m_fd >= 0)
+            close(m_fd);
+    }
+    int get() const { return m_fd; }
+
+private:
+    int m_fd;
+};
+
+template<typename Fn>
+void forEachAttr(const uint8_t* data, size_t len, Fn&& fn)
+{
+    while (len >= sizeof(nlattr)) {
+        nlattr attr{};
+        std::memcpy(&attr, data, sizeof(attr));
+        if (attr.nla_len < sizeof(nlattr) || attr.nla_len > len)
+            break;
+        const size_t payloadLen = attr.nla_len - NLA_HDRLEN;
+        fn(uint16_t(attr.nla_type & NLA_TYPE_MASK), std::span<const uint8_t>(data + NLA_HDRLEN, payloadLen));
+        const size_t step = NLA_ALIGN(attr.nla_len);
+        if (step > len)
+            break;
+        data += step;
+        len -= step;
+    }
+}
+
+uint16_t resolveNl80211Family(int fd)
+{
+    static constexpr char name[] = "nl80211";
+    const size_t attrLen = NLA_HDRLEN + sizeof(name);
+    const size_t msgLen = NLMSG_HDRLEN + GENL_HDRLEN + NLA_ALIGN(attrLen);
+    std::vector<uint8_t> request(msgLen, 0);
+
+    auto* nl = reinterpret_cast<nlmsghdr*>(request.data());
+    nl->nlmsg_len = uint32_t(msgLen);
+    nl->nlmsg_type = GENL_ID_CTRL;
+    nl->nlmsg_flags = NLM_F_REQUEST;
+    nl->nlmsg_seq = 1;
+
+    auto* genl = reinterpret_cast<genlmsghdr*>(request.data() + NLMSG_HDRLEN);
+    genl->cmd = CTRL_CMD_GETFAMILY;
+    genl->version = 1;
+
+    auto* attr = reinterpret_cast<nlattr*>(request.data() + NLMSG_HDRLEN + GENL_HDRLEN);
+    attr->nla_len = uint16_t(attrLen);
+    attr->nla_type = CTRL_ATTR_FAMILY_NAME;
+    std::memcpy(request.data() + NLMSG_HDRLEN + GENL_HDRLEN + NLA_HDRLEN, name, sizeof(name));
+
+    if (send(fd, request.data(), request.size(), 0) < 0)
+        return 0;
+
+    std::vector<uint8_t> reply(8192);
+    const ssize_t received = recv(fd, reply.data(), reply.size(), 0);
+    if (received < ssize_t(NLMSG_HDRLEN + GENL_HDRLEN))
+        return 0;
+
+    uint16_t familyId = 0;
+    int remaining = int(received);
+    const auto* header = reinterpret_cast<const nlmsghdr*>(reply.data());
+    while (NLMSG_OK(header, remaining)) {
+        if (header->nlmsg_type == NLMSG_ERROR || header->nlmsg_type == NLMSG_DONE)
+            break;
+        if (header->nlmsg_len > NLMSG_HDRLEN + GENL_HDRLEN) {
+            const uint8_t* attrs = reinterpret_cast<const uint8_t*>(header) + NLMSG_HDRLEN + GENL_HDRLEN;
+            const size_t attrsLen = header->nlmsg_len - NLMSG_HDRLEN - GENL_HDRLEN;
+            forEachAttr(attrs, attrsLen, [&](uint16_t type, std::span<const uint8_t> payload) {
+                if (type == CTRL_ATTR_FAMILY_ID && payload.size() >= sizeof(uint16_t))
+                    std::memcpy(&familyId, payload.data(), sizeof(familyId));
+            });
+        }
+        header = NLMSG_NEXT(header, remaining);
+    }
+    return familyId;
+}
+
+} // namespace
+
+std::map<std::string, WifiStandard> scanStandards(const std::string& interfaceName)
+{
+    std::map<std::string, WifiStandard> result;
+    if (interfaceName.empty())
+        return result;
+
+    const uint32_t ifindex = if_nametoindex(interfaceName.c_str());
+    if (ifindex == 0)
+        return result;
+
+    UniqueFd fd(socket(AF_NETLINK, SOCK_RAW | SOCK_CLOEXEC, NETLINK_GENERIC));
+    if (fd.get() < 0)
+        return result;
+
+    const timeval timeout{.tv_sec = 0, .tv_usec = 200000};
+    setsockopt(fd.get(), SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
+
+    sockaddr_nl local{};
+    local.nl_family = AF_NETLINK;
+    if (bind(fd.get(), reinterpret_cast<const sockaddr*>(&local), sizeof(local)) < 0)
+        return result;
+
+    const uint16_t familyId = resolveNl80211Family(fd.get());
+    if (familyId == 0)
+        return result;
+
+    const size_t attrLen = NLA_HDRLEN + sizeof(ifindex);
+    const size_t msgLen = NLMSG_HDRLEN + GENL_HDRLEN + NLA_ALIGN(attrLen);
+    std::vector<uint8_t> request(msgLen, 0);
+
+    auto* nl = reinterpret_cast<nlmsghdr*>(request.data());
+    nl->nlmsg_len = uint32_t(msgLen);
+    nl->nlmsg_type = familyId;
+    nl->nlmsg_flags = NLM_F_REQUEST | NLM_F_DUMP;
+    nl->nlmsg_seq = 2;
+
+    auto* genl = reinterpret_cast<genlmsghdr*>(request.data() + NLMSG_HDRLEN);
+    genl->cmd = NL80211_CMD_GET_SCAN;
+    genl->version = 0;
+
+    auto* attr = reinterpret_cast<nlattr*>(request.data() + NLMSG_HDRLEN + GENL_HDRLEN);
+    attr->nla_len = uint16_t(attrLen);
+    attr->nla_type = NL80211_ATTR_IFINDEX;
+    std::memcpy(request.data() + NLMSG_HDRLEN + GENL_HDRLEN + NLA_HDRLEN, &ifindex, sizeof(ifindex));
+
+    if (send(fd.get(), request.data(), request.size(), 0) < 0)
+        return result;
+
+    std::vector<uint8_t> buffer(65536);
+    bool done = false;
+    while (!done) {
+        const ssize_t received = recv(fd.get(), buffer.data(), buffer.size(), 0);
+        if (received <= 0)
+            break;
+        int remaining = int(received);
+        const auto* header = reinterpret_cast<const nlmsghdr*>(buffer.data());
+        while (NLMSG_OK(header, remaining)) {
+            if (header->nlmsg_type == NLMSG_DONE || header->nlmsg_type == NLMSG_ERROR) {
+                done = true;
+                break;
+            }
+            if (header->nlmsg_type == familyId && header->nlmsg_len > NLMSG_HDRLEN + GENL_HDRLEN) {
+                const uint8_t* attrs = reinterpret_cast<const uint8_t*>(header) + NLMSG_HDRLEN + GENL_HDRLEN;
+                const size_t attrsLen = header->nlmsg_len - NLMSG_HDRLEN - GENL_HDRLEN;
+                forEachAttr(attrs, attrsLen, [&](uint16_t type, std::span<const uint8_t> payload) {
+                    if (type != NL80211_ATTR_BSS)
+                        return;
+                    std::string bssid;
+                    uint32_t freq = 0;
+                    std::span<const uint8_t> infoElements;
+                    std::span<const uint8_t> beaconIes;
+                    forEachAttr(payload.data(), payload.size(),
+                                [&](uint16_t bssType, std::span<const uint8_t> bssData) {
+                                    if (bssType == NL80211_BSS_BSSID && bssData.size() == 6) {
+                                        char formatted[18];
+                                        std::snprintf(formatted, sizeof(formatted), "%02x:%02x:%02x:%02x:%02x:%02x",
+                                                      bssData[0], bssData[1], bssData[2], bssData[3], bssData[4],
+                                                      bssData[5]);
+                                        bssid = formatted;
+                                    } else if (bssType == NL80211_BSS_FREQUENCY && bssData.size() >= sizeof(uint32_t)) {
+                                        std::memcpy(&freq, bssData.data(), sizeof(freq));
+                                    } else if (bssType == NL80211_BSS_INFORMATION_ELEMENTS) {
+                                        infoElements = bssData;
+                                    } else if (bssType == NL80211_BSS_BEACON_IES) {
+                                        beaconIes = bssData;
+                                    }
+                                });
+                    if (bssid.empty())
+                        return;
+                    const WifiStandard standard = std::max(standardFromInformationElements(infoElements, freq),
+                                                           standardFromInformationElements(beaconIes, freq));
+                    if (standard != WifiStandard::Unknown)
+                        result[bssid] = std::max(result[bssid], standard);
+                });
+            }
+            header = NLMSG_NEXT(header, remaining);
+        }
+    }
+    return result;
 }
 
 } // namespace cutefish::networkmanager::wifi

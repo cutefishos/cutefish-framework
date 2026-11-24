@@ -4,6 +4,8 @@
 #pragma once
 
 #include <cstdint>
+#include <map>
+#include <span>
 #include <string>
 
 #include "base/dbus.h"
@@ -41,5 +43,11 @@ std::string strengthIcon(int strength);
 
 bool pskValid(const std::string& psk);
 std::string generatedPassword();
+
+// Highest 802.11 generation advertised in a BSS's Information Elements.
+WifiStandard standardFromInformationElements(std::span<const uint8_t> ies, uint32_t frequencyMHz);
+std::string standardLabel(WifiStandard standard);
+// Cached nl80211 scan results for an interface, keyed by lowercase BSSID.
+std::map<std::string, WifiStandard> scanStandards(const std::string& interfaceName);
 
 } // namespace cutefish::networkmanager::wifi

@@ -137,6 +137,18 @@ enum class SecurityType {
     Owe,
 };
 
+enum class WifiStandard {
+    Unknown = 0,
+    Ieee80211b,
+    Ieee80211a,
+    Ieee80211g,
+    Wifi4,
+    Wifi5,
+    Wifi6,
+    Wifi6E,
+    Wifi7,
+};
+
 // Calls made for an object hand their replies over only while the object's
 // context lives, so a reply arriving after it is gone goes nowhere.
 class CallContext

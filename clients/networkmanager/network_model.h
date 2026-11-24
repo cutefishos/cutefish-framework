@@ -52,6 +52,8 @@ struct NetworkItem
     std::string vpnUserName;
     // How the list names the security.
     std::string securityTypeString;
+    WifiStandard wifiStandard = WifiStandard::Unknown;
+    std::string wifiType;
 
     bool operator==(const NetworkItem&) const = default;
 };
